@@ -1,11 +1,7 @@
-<?php
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Mirrored from preview.colorlib.com/theme/riddle/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 08 May 2022 16:21:21 GMT -->
 <head>
 <title>Güney Güven ÇALIŞKAN</title>
 <meta charset="UTF-8">
@@ -44,7 +40,7 @@
 </div>
 </div>
 <div class="col-lg-8 col-md-9">
-<a href="contact.html" class="site-btn header-btn">Get in touch</a>
+<a href="#" class="site-btn header-btn">Get in touch</a>
 <nav class="main-menu">
 <ul>
 <li><a href="index.html">Home</a></li>
@@ -81,6 +77,7 @@
 <li class="control" data-filter=".digital">Digital Design</li>
 <li class="control" data-filter=".rened">3D Renedering</li>
 <li class="control" data-filter=".brand">Brand Identity</li>
+<li>hey masalla</li>
 </ul>
 </div>
 
@@ -88,12 +85,7 @@
 
 
 <div class="container-fluid p-md-0 ">
-
-<!-- watermark -->
-
-  <?php include('watermark.php') ?>
-
-
+  <?php require('watermark.php') ?>
 <div class="row portfolios-area">
 <div class="mix col-lg-6 col-md-6 web">
 <a href="img/portfolio/1.jpg" class="portfolio-item set-bg" data-setbg="img/portfolio/1.jpg">
