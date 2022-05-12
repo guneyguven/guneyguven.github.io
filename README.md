@@ -1,18 +1,23 @@
 # Portfolio Page
 # -------------------------------
 
- Personal information
+ **Personal information**
+ 
  &
- Gallery
+ 
+ **Gallery**
+ 
  &
- Communication Info
+ 
+ **Communication Info**
  
  .........................
  .........................
  
- Bootstrap
- PHP
- React
+ Bootstrap 
+ PHP 
+ React 
+ 
  
  ############
  ############
