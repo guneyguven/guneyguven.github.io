@@ -1909,12 +1909,20 @@ ul {
   position: relative;
   color: #fff;
   border: none;
-  background-color: #000;
+  background-color: purple;
   margin-right: 15px;
   margin-top: 30px;
   z-index: 1;
   border-radius: 4px;
+  transition: 500ms linear; /***hover state geri donus smooth tat, adeta bir ananas***/
 }
+
+/***contact butonu icin renk ve hover efekti***/
+.site-btn:hover {
+  background: darkorange;
+  transition: 500ms linear;
+}
+/***contact butonu icin renk ve hover efekti***/
 
 .site-btn.btn-fade {
   background-color: #979797
