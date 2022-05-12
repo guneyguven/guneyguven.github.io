@@ -163,6 +163,8 @@ button::-moz-focus-inner {
   line-height: 18px;
   white-space: nowrap; }
 
+
+  /***arrows***/
 .mfp-arrow {
   position: absolute;
   opacity: 0.65;
