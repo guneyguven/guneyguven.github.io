@@ -1504,6 +1504,11 @@ button.close {
   }
 }
 
+.scimg {
+    height: 70px;
+  /* github 84px olacak */
+}
+
 .fa-heart-o:before {
   content: "\f08a"
 }
@@ -1552,7 +1557,8 @@ button.close {
   z-index: 1043;
   position: fixed;
   outline: none !important;
-  -webkit-backface-visibility: visible
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
 }
 
 .mfp-container {
