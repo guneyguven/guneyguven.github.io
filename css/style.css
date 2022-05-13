@@ -1328,6 +1328,10 @@ button.close {
   content: ""
 }
 
+.conta { /**8contact me ortalama***/
+  margin: auto;
+}
+
 .carousel-indicators .active {
   background-color: #fff
 }
