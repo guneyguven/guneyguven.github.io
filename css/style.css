@@ -90,6 +90,7 @@ hr {
 
 h2,
 h3 {
+  font-family: Lato;
   margin-top: 0;
   margin-bottom: .5rem
 }
@@ -2146,7 +2147,7 @@ ul {
 
 .main-menu ul li a:hover {
   text-decoration: underline;
-  
+
 }
 
 .dark .main-menu ul li a {
@@ -2497,9 +2498,7 @@ main-menu ul li.current-menu-item a {
     color: #eee;
   }
 
-  .dark .nav-switch {
-    background: ;
-  }
+  
  /******************** Hamburger menü rengi(colorshift'i de buraya koydum)*******/
   
 
@@ -2544,7 +2543,7 @@ body.dark {
 }
 
 .dark .menuitems {
-  color: #grey;
+  color: grey;
   background: #292C35; /*******dark akordiyon menu arka plan rengi *********/
 }
 
