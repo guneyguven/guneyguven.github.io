@@ -609,13 +609,14 @@ tbody.collapse.show {
 .dropdown-menu {
   position: absolute;
   top: 100%;
+  left: 20%;
   left: 0;
   z-index: 1000;
   display: none;
   float: left;
   min-width: 10rem;
   padding: .5rem 0;
-  margin: .125rem 0 0;
+  margin: .125rem 1rem 0 0;
   font-size: 1rem;
   color: #212529;
   text-align: left;
@@ -2143,6 +2144,16 @@ ul {
   padding: 40px 0 5px
 }
 
+.dark .main-menu ul li a {
+  color: #eee;
+}
+
+
+  .dark .github-corner {
+    fill:#fff; 
+    color:#151513;
+  }
+
 
 .main-menu a:active {
   color: red;
@@ -2499,12 +2510,20 @@ body.dark {
   color: #eee;
 }
 
-.dark ul li {
+.dark  nav .main-menu ul li {
   color: white;
 }
 
-.dark ul li.a {
+.dark nav .main-menu ul li.a {
   color: red
+}
+
+.dark .menuitems {
+  color: #eee;
+}
+
+.dark .section-title span {
+  color: orange;
 }
 
 .checkbox {
