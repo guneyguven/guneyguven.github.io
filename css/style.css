@@ -2531,7 +2531,7 @@ body.dark {
 
 .dark .menuitems {
   color: #grey;
-  background: black;
+  background: black; /*******dark akordiyon menu arka plan rengi *********/
 }
 
 .dark .section-title span {
