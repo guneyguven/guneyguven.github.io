@@ -2483,6 +2483,10 @@ main-menu ul li.current-menu-item a {
   .dark .nav-switch {
     color: #eee;
   }
+
+  .dark .nav-switch {
+    background: ;
+  }
  /******************** Hamburger menü rengi(colorshift'i de buraya koydum)*******/
   
 
@@ -2526,7 +2530,8 @@ body.dark {
 }
 
 .dark .menuitems {
-  color: #eee;
+  color: #grey;
+  background: black;
 }
 
 .dark .section-title span {
