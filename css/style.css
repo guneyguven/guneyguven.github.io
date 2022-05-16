@@ -2144,6 +2144,11 @@ ul {
   padding: 40px 0 5px
 }
 
+.main-menu ul li a:hover {
+  text-decoration: underline;
+  
+}
+
 .dark .main-menu ul li a {
   color: #eee;
 }
@@ -2450,13 +2455,21 @@ main-menu ul li.current-menu-item a {
   .main-menu ul li a {
     padding: 10px 15px;
     border-bottom: 1px solid #ddd;
-    color: red;
+    color: white;
     display: block
   }
 
   .main-menu ul li {
-    display: block
+    display: block;
+    background: grey;
   }
+
+  .dark .main-menu ul li {
+    background: #495057;
+  }
+
+  
+
 
   .main-menu ul li:last-child a {
     border-bottom: none
@@ -2523,6 +2536,7 @@ body.dark {
 
 .dark  nav .main-menu ul li {
   color: white;
+  background-color: #000;
 }
 
 .dark nav .main-menu ul li.a {
@@ -2531,7 +2545,7 @@ body.dark {
 
 .dark .menuitems {
   color: #grey;
-  background: black; /*******dark akordiyon menu arka plan rengi *********/
+  background: #292C35; /*******dark akordiyon menu arka plan rengi *********/
 }
 
 .dark .section-title span {
