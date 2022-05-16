@@ -1975,7 +1975,7 @@ ul {
   display: block;
   padding: 12px 50px;
   padding-left: 30px;
-  font-size: 14px;
+  font-size: 24px;
   font-weight: 600;
   position: relative;
   border: 2px solid #000;
@@ -2470,14 +2470,21 @@ main-menu ul li.current-menu-item a {
     top: 99px
   }
 
+  /******************** Hamburger menü rengi(colorshift'i de buraya koydum)*******/
   .nav-switch {
     position: absolute;
-    right: 25px;
+    right: 95px;
     font-size: 30px;
     color: #333;
-    top: 35px;
+    top: 55px;
     display: block
   }
+
+  .dark .nav-switch {
+    color: #eee;
+  }
+ /******************** Hamburger menü rengi(colorshift'i de buraya koydum)*******/
+  
 
   .header-btn {
     display: none
