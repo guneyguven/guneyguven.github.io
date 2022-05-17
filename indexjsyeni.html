@@ -52,9 +52,15 @@
 
           <nav class="main-menu">
             <ul class="menuitems">
+            <script>
+              slida({
+                lineContainer: $('.container')
+              });
+            </script>
+              
               <li><a href="index.html">Home</a></li>
               <li><a href="about.html">About</a></li>
-              <li><a href="work.html">Work</a></li>
+              <li><a href="home-2.html">Work</a></li>
               <li><a href="contact.html">Contact</a></li>
 
 
@@ -93,14 +99,32 @@
     </label>
   </div>
   
-  <script type="text/javascript">
-    const chk = document.getElementById('chk');
-    
-    chk.addEventListener('change', () => {
-      document.body.classList.toggle('dark');
-    });
-    </script>
-    </div>
+  <script>
+  const btn = document.querySelector(".btn-toggle");
+  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+  
+  const currentTheme = localStorage.getItem("theme");
+  if (currentTheme == "dark") {
+    document.body.classList.toggle("dark");
+  } else if (currentTheme == "light") {
+    document.body.classList.toggle("");
+  }
+  
+  btn.addEventListener("click", function () {
+    if (prefersDarkScheme.matches) {
+      document.body.classList.toggle("light-theme");
+      var theme = document.body.classList.contains("light-theme")
+        ? "light"
+        : "dark";
+    } else {
+      document.body.classList.toggle("dark-theme");
+      var theme = document.body.classList.contains("dark")
+        ? "dark"
+        : "light";
+    }
+    localStorage.setItem("theme", theme);
+  });
+</script>
   <!--colorshifter-->
 
   
@@ -110,7 +134,7 @@
     <div class="container text-center">
       <div class="row">
         <div class="col-xl-10 offset-xl-1">
-          <h2 class="section-title">I’m <span>Güney Güven ÇALIŞKAN</span>. </h2>
+          <h2 class="section-title">I’m <span>Güney Güven ÇALIŞKAN</span>. I'm a software engineer, a project manager and an artist.</h2>
         </div>
       </div>
     </div>
@@ -120,10 +144,11 @@
   <section class="portfolio-section">
     <div class="container">
       <ul class="portfolio-filter controls">
+
         <li class="control" data-filter="all">All</li>
         <li class="control" data-filter=".cs">CS</li>
         <li class="control" data-filter=".art">Art</li>
-        <li class="control" data-filter=".pm">Photo Filtering</li><!--eklemeleri yaptiktan sonra photo manipulation-->
+        <li class="control" data-filter=".pm">Photo Manipulation</li>
       </ul>
     </div>
 
@@ -199,9 +224,9 @@
       <h2 class="section-title mb-5">Contact me</h2>
       <a href="contact.html" class="site-btn">Get in touch</a>
       <div class="social-links">
-        <a href="https://github.com/guneyguven"><img class="scimg" src="img/social/Octocat.png"></a>
-        <a href="https://www.instagram.com/thorun_kankasi"><img class="scimg" src="img/social/instagram.png"></span></a>
-        <a href="https://wwww.facebook.com/guneyguven"><img class="scimg" src="img/social/facebook.png"></span></a>
+        <a href="#"><img class="scimg" src="img/social/Octocat.png"></a>
+        <a href="#"><img class="scimg" src="img/social/instagram.png"></span></a>
+        <a href="#"><img class="scimg" src="img/social/facebook.png"></span></a>
         
       </div>
       <div class="copyright">
@@ -221,6 +246,7 @@
   <script src="js/mixitup.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="jquery.slida.js"></script> <!--menu icin-->
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
   <script>

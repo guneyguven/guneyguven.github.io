@@ -1799,18 +1799,25 @@ img.mfp-img {
   }
 }
 
+/*****************FONTiNGENiSM************************/
 html,
 body {
   height: 100%;
-  font-family: 'Josefin Sans', sans-serif
+  font-family: 'Raleway', sans-serif
 }
 
 h2,
 h3 {
   color: #001418;
   margin: 0;
-  font-weight: 600;
-  font-family: 'Josefin Sans', sans-serif
+  font-weight: 900;
+  font-family: 'Roboto', sans-serif
+}
+/*****************************************/
+
+.inpage {
+  width: 70%;
+  height: 70;
 }
 
 p {
@@ -2595,4 +2602,6 @@ body.dark {
 	color: #f39c12;
 }
 
+
+/*********************************************************/
 
