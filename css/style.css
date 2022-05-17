@@ -1334,6 +1334,11 @@ button.close {
   margin: auto;
 }
 
+.conta2 {
+  margin: auto;
+  padding-top: 0.5rem;
+}
+
 .carousel-indicators .active {
   background-color: #fff
 }
