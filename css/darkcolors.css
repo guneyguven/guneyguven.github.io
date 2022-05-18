@@ -1,0 +1,46 @@
+.dark .main-menu ul li a {
+    color: #eee;
+  }
+  
+  
+    .dark .github-corner {
+      fill:#fff; 
+      color:#151513;
+    }
+
+    .dark .main-menu ul li {
+        background: #495057;
+      }
+
+      
+      .dark .nav-switch {
+        color: #eee;
+      }
+
+      
+      body.dark {
+        background: #292C35;
+      color: rgb(249, 244, 244);
+    }
+    
+    .dark h2 {
+      color: #eee;
+    }
+    
+    .dark  nav .main-menu ul li {
+      color: white;
+      background-color: #000;
+    }
+    
+    .dark nav .main-menu ul li.a {
+      color: red
+    }
+    
+    .dark .menuitems {
+      color: grey;
+      background: #292C35; /*******dark akordiyon menu arka plan rengi *********/
+    }
+    
+    .dark .section-title span {
+      color: orange;
+    }
