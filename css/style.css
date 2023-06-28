@@ -2306,8 +2306,7 @@ main-menu ul li.current-menu-item a {
     .social-links {
       height: 200px;
       width: 200px;
-      padding-inline: 20px;
-      padding-block: 20px;
+      padding-top: 20px;
     }
   }
 }
