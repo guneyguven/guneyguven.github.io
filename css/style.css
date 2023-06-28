@@ -1518,8 +1518,7 @@ button.close {
 .scimg {
     height: 70px;
     margin: 20px;
-    padding-inline: 20px;
-    padding-block: 20px;
+   
   /* github 84px olacak */
 }
 
@@ -2305,6 +2304,8 @@ main-menu ul li.current-menu-item a {
     .social-links {
       height: 75px;
       width: 300px;
+      padding-inline: 20px;
+      padding-block: 20px;
     }
   }
 }
