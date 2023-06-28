@@ -1517,6 +1517,9 @@ button.close {
 
 .scimg {
     height: 70px;
+    margin: 20px;
+    padding-inline: 20px;
+    padding-block: 20px;
   /* github 84px olacak */
 }
 
