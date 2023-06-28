@@ -2304,9 +2304,9 @@ main-menu ul li.current-menu-item a {
 @media only screen and (max-width: 900px) {
   body {
     .social-links {
-      height: 200px;
+      
       width: 200px;
-      padding-top: 20px;
+     
     }
   }
 }
