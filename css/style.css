@@ -2298,7 +2298,8 @@ main-menu ul li.current-menu-item a {
 @media only screen and (max-width: 900px) {
   body {
     .social-links {
-      width: 150px;
+      height: 75px;
+      width: 300px;
     }
   }
 }
