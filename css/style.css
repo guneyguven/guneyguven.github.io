@@ -1515,12 +1515,7 @@ button.close {
   }
 }
 
-.scimg {
-    height: 70px;
-    margin: 20px;
-   
-  /* github 84px olacak */
-}
+
 
 .fa-heart-o:before {
   content: "\f08a"
@@ -2286,6 +2281,12 @@ main-menu ul li.current-menu-item a {
   color: #979797
 }
 
+
+.scimg {
+  height: 70px;
+  margin: 20px;
+}
+
 .social-links {
   margin-top: 20px;
   margin-bottom: 30px;
@@ -2310,9 +2311,9 @@ main-menu ul li.current-menu-item a {
   }
 }
 
-.social-links a:last-child {
+/*.social-links a:last-child {
   margin-right: 0
-}
+}*/
 
 .pic-frame {
   position: relative;
