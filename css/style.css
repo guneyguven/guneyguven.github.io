@@ -2297,15 +2297,17 @@ main-menu ul li.current-menu-item a {
 .social-links a {
   color: #979797;
   font-size: 15px;
-  margin-right: 50px;
+  margin-right: 30px;
   align: center;
 }
 
 @media only screen and (max-width: 900px) {
   body {
     .social-links {
-      height: 200px;
-      width: 200px;
+      height: 72px;
+      width: 250px;
+      padding-inline: 20px;
+      padding-block: 20px;
     }
   }
 }
