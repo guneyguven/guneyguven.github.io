@@ -2285,6 +2285,7 @@ main-menu ul li.current-menu-item a {
 
 .scimg {
   height: 70px;
+  margin: 0 30px;
 }
 
 .social-links {
@@ -2302,6 +2303,11 @@ main-menu ul li.current-menu-item a {
       background: yellow;
       float: right;
       align-content: space-between;
+    }
+
+    .scimg {
+      height: 70px;
+      margin: 0 10px;
     }
   }
 }
