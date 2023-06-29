@@ -2301,14 +2301,12 @@ main-menu ul li.current-menu-item a {
   align: center;
 }
 
-@media only screen and (max-width: 900px) {
-  body {
-    .social-links {
-      height: 72px;
-      width: 250px;
-      padding-inline: 20px;
-      padding-block: 20px;
-    }
+@media screen and (max-width: 1024px){
+  body{
+   margin-bottom: 0;
+  }
+  .social-links {
+    position: relative;
   }
 }
 
