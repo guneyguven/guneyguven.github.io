@@ -2290,7 +2290,7 @@ main-menu ul li.current-menu-item a {
 .social-links {
   display: grid;
   height: 70px;
-  align: center;
+  box-align: center;
 
 }
 
