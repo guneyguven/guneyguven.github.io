@@ -2304,16 +2304,16 @@ main-menu ul li.current-menu-item a {
   
 }
 
-@media screen and (max-width: 1024px){
-  body{
-   /*margin-bottom: ;*/
+@media (max-width:500px) {
+  .social-links ul{
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 20px;
   }
-  .social-links {
-    display: grid;
-    position: relative;
-    width: 500px;
-    height: 70px;
   }
+
+.slinks {
+
 }
 
 /*.social-links a:last-child {
