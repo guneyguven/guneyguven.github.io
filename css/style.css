@@ -2300,7 +2300,8 @@ main-menu ul li.current-menu-item a {
     .social-links { 
       height: 150px;
       width: 300px;
-      background: yellow;
+      margin: auto;
+      background: lightyellow;
       float: right;
       align-content: space-between;
     }
