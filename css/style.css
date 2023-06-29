@@ -2289,6 +2289,8 @@ main-menu ul li.current-menu-item a {
 }
 
 .social-links {
+  width: 800px;
+  height: 70px;
   margin-top: 20px;
   margin-bottom: 30px;
 
