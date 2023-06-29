@@ -2288,9 +2288,8 @@ main-menu ul li.current-menu-item a {
 }
 
 .social-links {
-  display: grid;
-  height: 70px;
-  box-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
 
 }
 
@@ -2298,35 +2297,21 @@ main-menu ul li.current-menu-item a {
   color: #979797;
   font-size: 15px;
   margin-right: 30px;
-  
+  align: center;
 }
 
-
-  .social-links {
-    float: right;
+@media only screen and (max-width: 900px) {
+  body {
+    .social-links {
+      height: 75px;
+      width: 300px;
+    }
   }
-  
-  .social-links  ul{
-    display: flex;
-  }
-  
-  .social-links  ul li{
-  padding-right: 10px;
-  display: block;
-  }
-  
-  
-  
+}
 
 .social-links a:last-child {
   margin-right: 0
 }
-
-@media (max-width:900px) {
-  .social-links ul{
-   flex-wrap: wrap;
-  }
-  }
 
 .pic-frame {
   position: relative;
