@@ -2299,16 +2299,16 @@ main-menu ul li.current-menu-item a {
   body {
     .social-links { 
       height: 150px;
-      width: 100px;
+      width: 150px;
       margin: auto;
-      background: lightyellow;
-      float: right;
+      background: lightgoldenrodyellow;
+      float: right; 
       align-content: space-between;
-    }
+    } 
 
     .scimg {
       height: 70px;
-      margin: 0 10px;
+      margin: 0 12px;
     }
   }
 }
