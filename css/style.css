@@ -2307,6 +2307,8 @@ main-menu ul li.current-menu-item a {
   }
   .social-links {
     position: relative;
+    width: 600px;
+    height: 70px;
   }
 }
 
