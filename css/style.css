@@ -2293,6 +2293,7 @@ main-menu ul li.current-menu-item a {
   height: 70px;
   margin-top: 20px;
   margin-bottom: 30px;
+  align: center;
 
 }
 
@@ -2300,12 +2301,12 @@ main-menu ul li.current-menu-item a {
   color: #979797;
   font-size: 15px;
   margin-right: 30px;
-  align: center;
+  
 }
 
 @media screen and (max-width: 1024px){
   body{
-   margin-bottom: 0;
+   /*margin-bottom: ;*/
   }
   .social-links {
     position: relative;
