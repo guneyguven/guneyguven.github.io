@@ -2312,12 +2312,14 @@ main-menu ul li.current-menu-item a {
       height: 70px;
       margin: 7px 12px;
     }
+
+    .copyright {
+      margin: 50px auto;
+    }
+    
   }
 }
 
-.copyright {
-  margin: 50px auto;
-}
 
 /* footer social section icon kısmı */   
 
