@@ -2294,7 +2294,7 @@ main-menu ul li.current-menu-item a {
   float: center;
   align-content: space-between;
   margin: 50px auto;
-  background: lightgoldenrodyellow;
+  /*background: lightgoldenrodyellow;*/
 }
 
 @media only screen and (max-width: 900px) {
@@ -2303,7 +2303,7 @@ main-menu ul li.current-menu-item a {
       height: 150px;
       width: 200px;
       margin: 100px auto;
-      background: lightgoldenrodyellow;
+      /*background: lightgoldenrodyellow;*/
       float: center; 
       align-content: space-between;
     } 
