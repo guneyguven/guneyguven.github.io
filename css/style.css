@@ -2290,16 +2290,18 @@ main-menu ul li.current-menu-item a {
 
 .social-links {
   height: 70px;
-  width: 600px;
+  width: 540px;
   float: right;
   align-content: space-between;
+  margin: 50px auto;
+  background: lightgoldenrodyellow;
 }
 
 @media only screen and (max-width: 900px) {
   body {
     .social-links { 
       height: 150px;
-      width: 240px;
+      width: 200px;
       margin: auto;
       background: lightgoldenrodyellow;
       float: right; 
