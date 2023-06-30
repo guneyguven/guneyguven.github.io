@@ -2315,7 +2315,9 @@ main-menu ul li.current-menu-item a {
   }
 }
 
-
+.copyright {
+  margin: 50px auto;
+}
 
 /* footer social section icon kısmı */   
 
