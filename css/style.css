@@ -2291,7 +2291,7 @@ main-menu ul li.current-menu-item a {
 .social-links {
   height: 70px;
   width: 540px;
-  float: right;
+  float: center;
   align-content: space-between;
   margin: 50px auto;
   background: lightgoldenrodyellow;
