@@ -1,0 +1,1185 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>3'ü 1 Arada</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #2d2d2d, #4b4b4b);
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGUlEQVQYV2NkYGD4z8DAwMgABXAG/QJAAgAAfQEB6z2z9AAAAABJRU5ErkJggg==');
+            background-size: 20px 20px;
+            color: #e5e7eb;
+            overflow: auto;
+            position: relative;
+            touch-action: manipulation;
+            transition: background 0.5s ease;
+        }
+
+        body.light-theme {
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+            color: #1f2937;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10%);
+            background-size: 20px 20px;
+            opacity: 0.2;
+        }
+
+        #gameContainer {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            width: 90vw;
+            max-width: 400px;
+            background: rgba(31, 41, 55, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        body.light-theme #gameContainer {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        #gameCanvas {
+            width: 100%;
+            max-width: 360px;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            border: 3px solid #3f3f3f;
+            background-color: #2b2b2b;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.light-theme #gameCanvas {
+            background-color: #ffffff;
+            border-color: #2b2b2b;
+        }
+
+        #gameCanvas:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        #themeSelector, #customSymbol1, #customSymbol2, #playerNameInput {
+            margin: 8px;
+            padding: 12px;
+            font-size: 1.1rem;
+            border: 1px solid #4b5563;
+            border-radius: 8px;
+            background-color: #374151;
+            color: #e5e7eb;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            width: calc(100% - 20px);
+            transition: all 0.3s ease;
+        }
+
+        body.light-theme #themeSelector,
+        body.light-theme #customSymbol1,
+        body.light-theme #customSymbol2,
+        body.light-theme #playerNameInput {
+            background-color: #ffffff;
+            border-color: #d1d5db;
+            color: #1f2937;
+        }
+
+        #themeSelector:focus, #customSymbol1:focus, #customSymbol2:focus, #playerNameInput:focus {
+            outline: none;
+            border-color: #dc2626;
+            box-shadow: 0 0 8px rgba(220, 38, 38, 0.5);
+        }
+
+        #controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #4b5563, #6b7280);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+
+        button:hover::after {
+            width: 200%;
+            height: 200%;
+        }
+
+        button:hover {
+            transform: translateY(-2px) scale(1.05);
+            background: linear-gradient(45deg, #6b7280, #9ca3af);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        #soundToggle {
+            background: linear-gradient(45deg, #dc2626, #ef4444);
+        }
+
+        #soundToggle:hover {
+            background: linear-gradient(45deg, #ef4444, #f87171);
+        }
+
+        #scoreDisplay, #leaderboard {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e5e7eb;
+            background: rgba(31, 41, 55, 0.9);
+            padding: 12px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        body.light-theme #scoreDisplay,
+        body.light-theme #leaderboard {
+            background: rgba(255, 255, 255, 0.9);
+            color: #1f2937;
+        }
+
+        #leaderboard {
+            font-size: 1rem;
+            max-width: 90%;
+            text-align: left;
+        }
+
+        #leaderboard:hover {
+            transform: translateY(-3px);
+        }
+
+        .error {
+            animation: shake 0.3s;
+            background-color: #b91c1c;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-4px); }
+            75% { transform: translateX(4px); }
+        }
+
+        .pulse-rotate {
+            animation: pulse-rotate 0.4s ease-out;
+        }
+
+        @keyframes pulse-rotate {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.15) rotate(10deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        .fade {
+            animation: fade 0.3s ease;
+        }
+
+        @keyframes fade {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .blink {
+            animation: blink 0.5s ease-in-out 2;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .win-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, #dc2626, #ef4444);
+            padding: 15px 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            animation: win-pop 1s ease forwards;
+            z-index: 10;
+        }
+
+        @keyframes win-pop {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        .win-glow {
+            animation: win-glow 0.5s ease-in-out;
+        }
+
+        @keyframes win-glow {
+            0%, 100% { background-color: #2b2b2b; }
+            50% { background-color: #4b5563; }
+        }
+
+        body.light-theme .win-glow {
+            animation: win-glow-light 0.5s ease-in-out;
+        }
+
+        @keyframes win-glow-light {
+            0%, 100% { background-color: #ffffff; }
+            50% { background-color: #d1fae5; }
+        }
+
+        .constraint-glow {
+            animation: constraint-glow 0.3s ease;
+        }
+
+        @keyframes constraint-glow {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        #themeToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background: linear-gradient(45deg, #dc2626, #ef4444);
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        #themeToggle:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(45deg, #ef4444, #f87171);
+        }
+
+        @media (max-width: 600px) {
+            #gameContainer {
+                width: 95vw;
+                padding: 10px;
+            }
+            #gameCanvas {
+                max-width: 100%;
+                border-width: 2px;
+            }
+            button, #themeSelector, #customSymbol1, #customSymbol2, #playerNameInput {
+                font-size: 0.95rem;
+                padding: 8px;
+            }
+            .win-overlay {
+                font-size: 1.1rem;
+                padding: 8px 16px;
+            }
+            #leaderboard {
+                font-size: 0.85rem;
+                padding: 10px;
+            }
+            #themeToggle {
+                top: 10px;
+                right: 10px;
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="themeToggle" onclick="toggleTheme()">Açık Tema</button>
+    <div id="gameContainer">
+        <select id="themeSelector">
+            <option value="sunMoon">Güneş & Ay (☀️/🌙)</option>
+            <option value="starFlower">Yıldız & Çiçek (⭐/🌸)</option>
+            <option value="catDog">Kedi & Köpek (🐱/🐶)</option>
+            <option value="custom">Özel Çizimler</option>
+        </select>
+        <input type="file" id="customSymbol1" accept="image/*" style="display: none;" />
+        <input type="file" id="customSymbol2" accept="image/*" style="display: none;" />
+        <canvas id="gameCanvas" width="360" height="360"></canvas>
+        <div id="controls">
+            <button onclick="generateNewPuzzle()">Yeni Bulmaca</button>
+            <button onclick="getHint()">İpucu</button>
+            <button id="soundToggle" onclick="toggleSound()">Sesi Kapat</button>
+        </div>
+        <div id="scoreDisplay">Skor: 0</div>
+        <div id="leaderboard"></div>
+        <div id="winOverlay" style="display: none;">
+            Tebrikler! Skor: <span id="finalScore">0</span><br>
+            <input type="text" id="playerNameInput" placeholder="Adınızı girin" maxlength="20">
+            <button onclick="saveScore()">Skoru Kaydet</button>
+        </div>
+    </div>
+    <script>
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+            return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+            if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+                try {
+                    var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                    var firstSheetName = workbook.SheetNames[0];
+                    var worksheet = workbook.Sheets[firstSheetName];
+                    var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                    var filteredData = jsonData.filter(row => row.some(filledCell));
+                    var headerRowIndex = filteredData.findIndex((row, index) =>
+                        row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                    );
+                    if (headerRowIndex === -1 || headerRowIndex > 25) {
+                        headerRowIndex = 0;
+                    }
+                    var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
+                    csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                    return csv;
+                } catch (e) {
+                    console.error(e);
+                    return "";
+                }
+            }
+            return gk_fileData[filename] || "";
+        }
+
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const themeSelector = document.getElementById('themeSelector');
+        const customSymbol1 = document.getElementById('customSymbol1');
+        const customSymbol2 = document.getElementById('customSymbol2');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const winOverlay = document.getElementById('winOverlay');
+        const finalScoreSpan = document.getElementById('finalScore');
+        const soundToggle = document.getElementById('soundToggle');
+        const playerNameInput = document.getElementById('playerNameInput');
+        const leaderboardDiv = document.getElementById('leaderboard');
+
+        const gridSize = 6;
+        const cellSize = canvas.width / gridSize;
+        let grid = [];
+        let solution = [];
+        let constraints = [];
+        let currentTheme = { symbol1: '☀️', symbol2: '🌙', isImage: false };
+        let starParticles = [];
+        let score = 0;
+        let hintCount = 0;
+        let errorCount = 0;
+        let initialClues = 0;
+        let isSoundOn = true;
+        let isGameWon = false;
+        let lastDrawnState = null;
+
+        const clickSound = new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAAACAAAAAwAAABYAAAAaAAAAJAAAADQAAAA+AAAAAwAAACcAAAAIAAAAJAAAADQAAAA+AAAAAwAAACcAAAAIAAAAJAAAADQAAAA+AAAAAwAA');
+        const errorSound = new Audio('data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAAACAAAAAwAAABYAAAAaAAAAJAAAادQAAAA+AAAAAwAAACcAAAAIAAAAJAAAADQAAAA+AAAAAwAAACcAAAAIAAAAJAAAADQAAAA+AAAAAwAA');
+        const winSound = new Audio('data:audio/wav;base64,UklGRlQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAAACAAAAAwAAABYAAAAaAAAAJAAAADQAAAA+AAAAAwAAACcAAAAIAAAAJAAAADQAAAA+AAAAAwAAACcAAAAIAAAAJAAAADQAAAA+AAAAAwAA');
+
+        function toggleSound() {
+            isSoundOn = !isSoundOn;
+            soundToggle.textContent = isSoundOn ? 'Sesi Kapat' : 'Sesi Aç';
+        }
+
+        function playSound(sound) {
+            if (isSoundOn) {
+                sound.currentTime = 0;
+                sound.play().catch(() => {});
+            }
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-theme');
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.textContent = document.body.classList.contains('light-theme') ? 'Koyu Tema' : 'Açık Tema';
+            drawGrid();
+        }
+
+        function loadLeaderboard() {
+            const leaderboard = JSON.parse(localStorage.getItem('leaderboard') || '[]');
+            leaderboard.sort((a, b) => b.score - a.score);
+            leaderboardDiv.innerHTML = '<strong>Lider Tablosu</strong><br>' + 
+                leaderboard.slice(0, 5).map((entry, i) => `${i + 1}. ${entry.name}: ${entry.score}`).join('<br>');
+            return leaderboard;
+        }
+
+        function saveScore() {
+            const name = playerNameInput.value.trim() || 'Adsız';
+            const leaderboard = loadLeaderboard();
+            leaderboard.push({ name, score });
+            leaderboard.sort((a, b) => b.score - a.score);
+            localStorage.setItem('leaderboard', JSON.stringify(leaderboard.slice(0, 5)));
+            loadLeaderboard();
+            playerNameInput.value = '';
+            winOverlay.style.display = 'none';
+            generateNewPuzzle();
+        }
+
+        const themes = {
+            sunMoon: { symbol1: '☀️', symbol2: '🌙', isImage: false },
+            starFlower: { symbol1: '⭐', symbol2: '🌸', isImage: false },
+            catDog: { symbol1: '🐱', symbol2: '🐶', isImage: false },
+            custom: { symbol1: null, symbol2: null, isImage: true }
+        };
+
+        let customImage1 = null;
+        let customImage2 = null;
+
+        customSymbol1.addEventListener('change', e => {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                customImage1 = new Image();
+                customImage1.src = URL.createObjectURL(file);
+                customImage1.onload = () => {
+                    themes.custom.symbol1 = customImage1;
+                    if (themeSelector.value === 'custom') {
+                        currentTheme.symbol1 = customImage1;
+                        drawGrid();
+                    }
+                };
+            } else {
+                alert('Lütfen geçerli bir resim dosyası seçin!');
+            }
+        });
+
+        customSymbol2.addEventListener('change', e => {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                customImage2 = new Image();
+                customImage2.src = URL.createObjectURL(file);
+                customImage2.onload = () => {
+                    themes.custom.symbol2 = customImage2;
+                    if (themeSelector.value === 'custom') {
+                        currentTheme.symbol2 = customImage2;
+                        drawGrid();
+                    }
+                };
+            } else {
+                alert('Lütfen geçerli bir resim dosyası seçin!');
+            }
+        });
+
+        themeSelector.addEventListener('change', () => {
+            if (themeSelector.value === 'custom') {
+                customSymbol1.style.display = 'inline';
+                customSymbol2.style.display = 'inline';
+                if (!customImage1 || !customImage2) {
+                    alert('Özel tema için iki resim yüklemelisiniz!');
+                    customSymbol1.click();
+                } else {
+                    currentTheme = { symbol1: customImage1, symbol2: customImage2, isImage: true };
+                }
+            } else {
+                customSymbol1.style.display = 'none';
+                customSymbol2.style.display = 'none';
+                currentTheme = themes[themeSelector.value];
+            }
+            drawGrid();
+        });
+
+        function createStarBurst() {
+            starParticles = [];
+            for (let i = 0; i < 50; i++) {
+                starParticles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    radius: Math.random() * 3 + 2,
+                    color: `hsl(${Math.random() * 60 + 40}, 80%, 60%)`,
+                    angle: Math.random() * Math.PI * 2,
+                    speed: Math.random() * 5 + 2,
+                    life: 80
+                });
+            }
+            animateStarBurst();
+        }
+
+        function animateStarBurst() {
+            ctx.globalAlpha = 0.8;
+            starParticles.forEach(p => {
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p.x + p.radius * 2, p.y);
+                ctx.lineTo(p.x + p.radius, p.y + p.radius * 1.732);
+                ctx.lineTo(p.x - p.radius, p.y + p.radius * 1.732);
+                ctx.lineTo(p.x - p.radius * 2, p.y);
+                ctx.closePath();
+                ctx.fillStyle = p.color;
+                ctx.fill();
+                p.x += Math.cos(p.angle) * p.speed;
+                p.y += Math.sin(p.angle) * p.speed;
+                p.life--;
+                if (p.life <= 0) {
+                    p.x = canvas.width / 2;
+                    p.y = canvas.height / 2;
+                    p.angle = Math.random() * Math.PI * 2;
+                    p.speed = Math.random() * 5 + 2;
+                    p.life = 80;
+                }
+            });
+            ctx.globalAlpha = 1.0;
+            if (winOverlay.style.display === 'block') {
+                requestAnimationFrame(animateStarBurst);
+            }
+        }
+
+        function animateWinGlow() {
+            let delay = 0;
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    setTimeout(() => {
+                        if (grid[i][j]) {
+                            grid[i][j].glow = true;
+                            drawGrid();
+                            setTimeout(() => {
+                                grid[i][j].glow = false;
+                                drawGrid();
+                            }, 500);
+                        }
+                    }, delay);
+                    delay += 50;
+                }
+            }
+        }
+
+        function calculateScore() {
+            let baseScore = initialClues * 2;
+            let filledCells = 0;
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    if (grid[i][j] && typeof grid[i][j] === 'object' && !grid[i][j].isClue) {
+                        filledCells++;
+                    }
+                }
+            }
+            let cellScore = filledCells * 4;
+            let penalty = hintCount * 10 + errorCount * 2;
+            score = Math.max(0, baseScore + cellScore - penalty);
+            score = Math.min(100, Math.round(score));
+            scoreDisplay.textContent = `Skor: ${score}`;
+        }
+
+        function generateNewPuzzle() {
+            winOverlay.style.display = 'none';
+            starParticles = [];
+            score = 0;
+            hintCount = 0;
+            errorCount = 0;
+            initialClues = 0;
+            isGameWon = false;
+            grid = Array(gridSize).fill().map(() => Array(gridSize).fill(null));
+            solution = Array(gridSize).fill().map(() => Array(gridSize).fill(null));
+            constraints = [];
+            let isSolvable = false;
+            let attempts = 0;
+            while (!isSolvable && attempts < 100) {
+                generateSolution();
+                applyConstraints();
+                initializeGrid();
+                isSolvable = isPuzzleLogicallySolvable();
+                attempts++;
+            }
+            if (!isSolvable) {
+                alert('Mantıksal olarak çözülebilir bir bulmaca üretilemedi. Lütfen tekrar deneyin.');
+                generateNewPuzzle();
+                return;
+            }
+            calculateScore();
+            loadLeaderboard();
+            drawGrid();
+        }
+
+        function generateSolution() {
+            let tempGrid = Array(gridSize).fill().map(() => Array(gridSize).fill(null));
+
+            function isValid(row, col, symbol) {
+                let rowSymbols = tempGrid[row].filter(x => x !== null);
+                let colSymbols = tempGrid.map(r => r[col]).filter(x => x !== null);
+                let rowCount1 = rowSymbols.filter(x => x === 1).length;
+                let rowCount2 = rowSymbols.filter(x => x === 2).length;
+                let colCount1 = colSymbols.filter(x => x === 1).length;
+                let colCount2 = colSymbols.filter(x => x === 2).length;
+                if (rowCount1 >= 3 && symbol === 1 || rowCount2 >= 3 && symbol === 2) return false;
+                if (colCount1 >= 3 && symbol === 1 || colCount2 >= 3 && symbol === 2) return false;
+
+                if (col >= 2 && tempGrid[row][col-1] === symbol && tempGrid[row][col-2] === symbol) return false;
+                if (col <= 3 && tempGrid[row][col+1] === symbol && tempGrid[row][col+2] === symbol) return false;
+                if (row >= 2 && tempGrid[row-1][col] === symbol && tempGrid[row-2][col] === symbol) return false;
+                if (row <= 3 && tempGrid[row+1][col] === symbol && tempGrid[row+2][col] === symbol) return false;
+
+                return true;
+            }
+
+            function fillGrid(pos) {
+                if (pos >= gridSize * gridSize) {
+                    for (let i = 0; i < gridSize; i++) {
+                        let rowCount1 = tempGrid[i].filter(x => x === 1).length;
+                        let rowCount2 = tempGrid[i].filter(x => x === 2).length;
+                        let colCount1 = tempGrid.map(r => r[i]).filter(x => x === 1).length;
+                        let colCount2 = tempGrid.map(r => r[i]).filter(x => x === 2).length;
+                        if (rowCount1 !== 3 || rowCount2 !== 3 || colCount1 !== 3 || colCount2 !== 3) return false;
+                    }
+                    solution = tempGrid.map(row => [...row]);
+                    return true;
+                }
+                let row = Math.floor(pos / gridSize);
+                let col = pos % gridSize;
+                let symbols = [1, 2];
+                symbols.sort(() => Math.random() - 0.5);
+                for (let symbol of symbols) {
+                    if (isValid(row, col, symbol)) {
+                        tempGrid[row][col] = symbol;
+                        if (fillGrid(pos + 1)) return true;
+                        tempGrid[row][col] = null;
+                    }
+                }
+                return false;
+            }
+
+            fillGrid(0);
+        }
+
+        function applyConstraints() {
+            const maxConstraints = 6;
+            let attempts = 0;
+            while (constraints.length < maxConstraints && attempts < 100) {
+                attempts++;
+                let r1 = Math.floor(Math.random() * gridSize);
+                let c1 = Math.floor(Math.random() * (gridSize - 1));
+                let isHorizontal = Math.random() < 0.5;
+                let r2 = isHorizontal ? r1 : r1 + 1;
+                let c2 = isHorizontal ? c1 + 1 : c1;
+
+                if (r2 >= gridSize || c2 >= gridSize) continue;
+
+                let exists = constraints.some(c => 
+                    (c.r1 === r1 && c.c1 === c1 && c.r2 === r2 && c.c2 === c2) ||
+                    (c.r1 === r2 && c.c1 === c2 && c.r2 === r1 && c.c2 === c1)
+                );
+                if (exists) continue;
+
+                let same = solution[r1][c1] === solution[r2][c2];
+                constraints.push({
+                    type: same ? '=' : '×',
+                    r1: r1,
+                    c1: c1,
+                    r2: r2,
+                    c2: c2,
+                    hover: false
+                });
+            }
+        }
+
+        function initializeGrid() {
+            let clueCount = Math.floor(gridSize * gridSize * 0.4);
+            let positions = [];
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    positions.push([i, j]);
+                }
+            }
+            positions.sort(() => Math.random() - 0.5);
+            for (let i = 0; i < clueCount; i++) {
+                let [row, col] = positions[i];
+                grid[row][col] = { value: solution[row][col], pulse: false, blink: false, isClue: true, glow: false, fade: false };
+                initialClues++;
+            }
+        }
+
+        function isPuzzleLogicallySolvable() {
+            let testGrid = grid.map(row => [...row]);
+            let steps = [];
+
+            function deduce() {
+                let madeProgress = false;
+
+                for (let c of constraints) {
+                    let val1 = testGrid[c.r1][c.c1] && typeof testGrid[c.r1][c.c1] === 'object' ? testGrid[c.r1][c.c1].value : null;
+                    let val2 = testGrid[c.r2][c.c2] && typeof testGrid[c.r2][c.c2] === 'object' ? testGrid[c.r2][c.c2].value : null;
+
+                    if (c.type === '=') {
+                        if (val1 && !val2) {
+                            testGrid[c.r2][c.c2] = { value: val1, pulse: false, blink: false, isClue: true, glow: false, fade: false };
+                            madeProgress = true;
+                        } else if (val2 && !val1) {
+                            testGrid[c.r1][c.c1] = { value: val2, pulse: false, blink: false, isClue: true, glow: false, fade: false };
+                            madeProgress = true;
+                        }
+                    } else if (c.type === '×') {
+                        if (val1 && !val2) {
+                            testGrid[c.r2][c.c2] = { value: val1 === 1 ? 2 : 1, pulse: false, blink: false, isClue: true, glow: false, fade: false };
+                            madeProgress = true;
+                        } else if (val2 && !val1) {
+                            testGrid[c.r1][c.c1] = { value: val2 === 1 ? 2 : 1, pulse: false, blink: false, isClue: true, glow: false, fade: false };
+                            madeProgress = true;
+                        }
+                    }
+                }
+
+                for (let i = 0; i < gridSize; i++) {
+                    let rowSymbols = testGrid[i].map(x => x && typeof x === 'object' ? x.value : null).filter(x => x !== null);
+                    let colSymbols = testGrid.map(r => r[i] && typeof r[i] === 'object' ? r[i].value : null).filter(x => x !== null);
+                    let rowCount1 = rowSymbols.filter(x => x === 1).length;
+                    let rowCount2 = rowSymbols.filter(x => x === 2).length;
+                    let colCount1 = colSymbols.filter(x => x === 1).length;
+                    let colCount2 = colSymbols.filter(x => x === 2).length;
+
+                    if (rowCount1 === 3) {
+                        for (let j = 0; j < gridSize; j++) {
+                            if (!testGrid[i][j]) {
+                                testGrid[i][j] = { value: 2, pulse: false, blink: false, isClue: true, glow: false, fade: false };
+                                madeProgress = true;
+                            }
+                        }
+                    } else if (rowCount2 === 3) {
+                        for (let j = 0; j < gridSize; j++) {
+                            if (!testGrid[i][j]) {
+                                testGrid[i][j] = { value: 1, pulse: false, blink: false, isClue: true, glow: false, fade: false };
+                                madeProgress = true;
+                            }
+                        }
+                    }
+                    if (colCount1 === 3) {
+                        for (let j = 0; j < gridSize; j++) {
+                            if (!testGrid[j][i]) {
+                                testGrid[j][i] = { value: 2, pulse: false, blink: false, isClue: true, glow: false, fade: false };
+                                madeProgress = true;
+                            }
+                        }
+                    } else if (colCount2 === 3) {
+                        for (let j = 0; j < gridSize; j++) {
+                            if (!testGrid[j][i]) {
+                                testGrid[j][i] = { value: 1, pulse: false, blink: false, isClue: true, glow: false, fade: false };
+                                madeProgress = true;
+                            }
+                        }
+                    }
+                }
+
+                for (let i = 0; i < gridSize; i++) {
+                    for (let j = 0; j < gridSize; j++) {
+                        if (!testGrid[i][j]) {
+                            if (j >= 2 && testGrid[i][j-1] && testGrid[i][j-2] && testGrid[i][j-1].value === testGrid[i][j-2].value) {
+                                testGrid[i][j] = { value: testGrid[i][j-1].value === 1 ? 2 : 1, pulse: false, blink: false, isClue: true, glow: false, fade: false };
+                                madeProgress = true;
+                            }
+                            if (j <= 3 && testGrid[i][j+1] && testGrid[i][j+2] && testGrid[i][j+1].value === testGrid[i][j+2].value) {
+                                testGrid[i][j] = { value: testGrid[i][j+1].value === 1 ? 2 : 1, pulse: false, blink: false, isClue: true, glow: false, fade: false };
+                                madeProgress = true;
+                            }
+                            if (i >= 2 && testGrid[i-1][j] && testGrid[i-2][j] && testGrid[i-1][j].value === testGrid[i-2][j].value) {
+                                testGrid[i][j] = { value: testGrid[i-1][j].value === 1 ? 2 : 1, pulse: false, blink: false, isClue: true, glow: false, fade: false };
+                                madeProgress = true;
+                            }
+                            if (i <= 3 && testGrid[i+1][j] && testGrid[i+2][j] && testGrid[i+1][j].value === testGrid[i+2][j].value) {
+                                testGrid[i][j] = { value: testGrid[i+1][j].value === 1 ? 2 : 1, pulse: false, blink: false, isClue: true, glow: false, fade: false };
+                                madeProgress = true;
+                            }
+                        }
+                    }
+                }
+
+                return madeProgress;
+            }
+
+            while (deduce()) {
+                steps.push(testGrid.map(row => [...row]));
+            }
+
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    let val = testGrid[i][j] && typeof testGrid[i][j] === 'object' ? testGrid[i][j].value : null;
+                    if (val !== solution[i][j]) return false;
+                }
+            }
+            return true;
+        }
+
+        function drawGrid(changedRow = -1, changedCol = -1) {
+            if (isGameWon) return;
+
+            const drawAll = changedRow === -1 || changedCol === -1;
+            if (drawAll) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            } else {
+                ctx.clearRect(changedCol * cellSize, changedRow * cellSize, cellSize, cellSize);
+            }
+
+            ctx.font = '24px "Inter", Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    if (!drawAll && i !== changedRow && j !== changedCol) continue;
+
+                    let cellValid = isCellValid(i, j);
+                    ctx.fillStyle = cellValid ? (grid[i][j] && grid[i][j].glow ? '#4b5563' : '#2b2b2b') : '#b91c1c';
+                    if (document.body.classList.contains('light-theme')) {
+                        ctx.fillStyle = cellValid ? (grid[i][j] && grid[i][j].glow ? '#d1fae5' : '#ffffff') : '#fecaca';
+                    }
+                    ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                    ctx.strokeStyle = document.body.classList.contains('light-theme') ? '#2b2b2b' : '#3f3f3f';
+                    ctx.lineWidth = 1.5;
+                    ctx.strokeRect(j * cellSize, i * cellSize, cellSize, cellSize);
+
+                    if (grid[i][j] && typeof grid[i][j] === 'object') {
+                        ctx.globalAlpha = grid[i][j].fade ? 0 : 1;
+                        if (currentTheme.isImage && currentTheme.symbol1 && currentTheme.symbol2) {
+                            let img = grid[i][j].value === 1 ? currentTheme.symbol1 : currentTheme.symbol2;
+                            ctx.save();
+                            if (grid[i][j].pulse) {
+                                ctx.translate(j * cellSize + cellSize / 2, i * cellSize + cellSize / 2);
+                                ctx.scale(1.15, 1.15);
+                                ctx.rotate(Math.PI / 18);
+                                ctx.translate(-cellSize / 2, -cellSize / 2);
+                            }
+                            ctx.drawImage(img, j * cellSize + 5, i * cellSize + 5, cellSize - 10, cellSize - 10);
+                            ctx.restore();
+                        } else {
+                            ctx.fillStyle = document.body.classList.contains('light-theme') ? '#1f2937' : '#e5e7eb';
+                            ctx.fillText(grid[i][j].value === 1 ? currentTheme.symbol1 : currentTheme.symbol2, j * cellSize + cellSize / 2, i * cellSize + cellSize / 2);
+                        }
+                        if (grid[i][j].blink) {
+                            ctx.fillStyle = 'rgba(250, 204, 21, 0.4)';
+                            ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                            setTimeout(() => { grid[i][j].blink = false; drawGrid(i, j); }, 1000);
+                        }
+                        if (grid[i][j].fade) {
+                            setTimeout(() => { grid[i][j].fade = false; ctx.globalAlpha = 1; drawGrid(i, j); }, 300);
+                        }
+                    }
+                }
+            }
+
+            constraints.forEach(c => {
+                if (!drawAll && c.r1 !== changedRow && c.r2 !== changedRow && c.c1 !== changedCol && c.c2 !== changedCol) return;
+                ctx.fillStyle = c.hover ? '#ef4444' : (document.body.classList.contains('light-theme') ? '#1f2937' : '#e5e7eb');
+                ctx.font = c.hover ? '26px "Inter", Arial' : '24px "Inter", Arial';
+                ctx.save();
+                if (c.hover) {
+                    ctx.translate(c.r1 === c.r2 ? (c.c1 + 0.5) * cellSize + cellSize / 2 : c.c1 * cellSize + cellSize / 2, 
+                                 c.r1 === c.r2 ? c.r1 * cellSize + cellSize / 2 : (c.r1 + 0.5) * cellSize + cellSize / 2);
+                    ctx.scale(1.2, 1.2);
+                    ctx.translate(c.r1 === c.r2 ? -(c.c1 + 0.5) * cellSize - cellSize / 2 : -c.c1 * cellSize - cellSize / 2, 
+                                 c.r1 === c.r2 ? -c.r1 * cellSize - cellSize / 2 : -(c.r1 + 0.5) * cellSize - cellSize / 2);
+                }
+                ctx.fillText(c.type, c.r1 === c.r2 ? (c.c1 + 0.5) * cellSize + cellSize / 2 : c.c1 * cellSize + cellSize / 2, 
+                             c.r1 === c.r2 ? c.r1 * cellSize + cellSize / 2 : (c.r1 + 0.5) * cellSize + cellSize / 2);
+                ctx.restore();
+            });
+
+            if (checkWin() && !isGameWon) {
+                isGameWon = true;
+                finalScoreSpan.textContent = score;
+                winOverlay.style.display = 'block';
+                playSound(winSound);
+                createStarBurst();
+                animateWinGlow();
+            }
+        }
+
+        function isCellValid(row, col) {
+            if (!grid[row][col] || typeof grid[row][col] !== 'object') return true;
+
+            let rowSymbols = grid[row].map(x => x && typeof x === 'object' ? x.value : null).filter(x => x !== null);
+            let colSymbols = grid.map(r => r[col] && typeof r[col] === 'object' ? r[col].value : null).filter(x => x !== null);
+            let rowCount1 = rowSymbols.filter(x => x === 1).length;
+            let rowCount2 = rowSymbols.filter(x => x === 2).length;
+            let colCount1 = colSymbols.filter(x => x === 1).length;
+            let colCount2 = colSymbols.filter(x => x === 2).length;
+            if (rowCount1 > 3 || rowCount2 > 3 || colCount1 > 3 || colCount2 > 3) {
+                if (grid[row][col].isClue !== true) {
+                    errorCount++;
+                    playSound(errorSound);
+                }
+                return false;
+            }
+
+            if (col >= 2) {
+                let val = grid[row][col].value;
+                let val1 = grid[row][col-1] && typeof grid[row][col-1] === 'object' ? grid[row][col-1].value : null;
+                let val2 = grid[row][col-2] && typeof grid[row][col-2] === 'object' ? grid[row][col-2].value : null;
+                if (val1 === val && val2 === val) {
+                    if (grid[row][col].isClue !== true) {
+                        errorCount++;
+                        playSound(errorSound);
+                    }
+                    return false;
+                }
+            }
+            if (col <= 3) {
+                let val = grid[row][col].value;
+                let val1 = grid[row][col+1] && typeof grid[row][col+1] === 'object' ? grid[row][col+1].value : null;
+                let val2 = grid[row][col+2] && typeof grid[row][col+2] === 'object' ? grid[row][col+2].value : null;
+                if (val1 === val && val2 === val) {
+                    if (grid[row][col].isClue !== true) {
+                        errorCount++;
+                        playSound(errorSound);
+                    }
+                    return false;
+                }
+            }
+            if (row >= 2) {
+                let val = grid[row][col].value;
+                let val1 = grid[row-1][col] && typeof grid[row-1][col] === 'object' ? grid[row-1][col].value : null;
+                let val2 = grid[row-2][col] && typeof grid[row-2][col] === 'object' ? grid[row-2][col].value : null;
+                if (val1 === val && val2 === val) {
+                    if (grid[row][col].isClue !== true) {
+                        errorCount++;
+                        playSound(errorSound);
+                    }
+                    return false;
+                }
+            }
+            if (row <= 3) {
+                let val = grid[row][col].value;
+                let val1 = grid[row+1][col] && typeof grid[row+1][col] === 'object' ? grid[row+1][col].value : null;
+                let val2 = grid[row+2][col] && typeof grid[row+2][col] === 'object' ? grid[row+2][col].value : null;
+                if (val1 === val && val2 === val) {
+                    if (grid[row][col].isClue !== true) {
+                        errorCount++;
+                        playSound(errorSound);
+                    }
+                    return false;
+                }
+            }
+
+            for (let c of constraints) {
+                if (c.r1 === row && c.c1 === col) {
+                    let val1 = grid[c.r1][c.c1] && typeof grid[c.r1][c.c1] === 'object' ? grid[c.r1][c.c1].value : null;
+                    let val2 = grid[c.r2][c.c2] && typeof grid[c.r2][c.c2] === 'object' ? grid[c.r2][c.c2].value : null;
+                    if (val2 === null) continue;
+                    if (c.type === '=' && val1 !== val2) {
+                        if (grid[row][col].isClue !== true) {
+                            errorCount++;
+                            playSound(errorSound);
+                        }
+                        return false;
+                    }
+                    if (c.type === '×' && val1 === val2) {
+                        if (grid[row][col].isClue !== true) {
+                            errorCount++;
+                            playSound(errorSound);
+                        }
+                        return false;
+                    }
+                } else if (c.r2 === row && c.c2 === col) {
+                    let val1 = grid[c.r1][c.c1] && typeof grid[c.r1][c.c1] === 'object' ? grid[c.r1][c.c1].value : null;
+                    let val2 = grid[c.r2][c.c2] && typeof grid[c.r2][c.c2] === 'object' ? grid[c.r2][c.c2].value : null;
+                    if (val1 === null) continue;
+                    if (c.type === '=' && val1 !== val2) {
+                        if (grid[row][col].isClue !== true) {
+                            errorCount++;
+                            playSound(errorSound);
+                        }
+                        return false;
+                    }
+                    if (c.type === '×' && val1 === val2) {
+                        if (grid[row][col].isClue !== true) {
+                            errorCount++;
+                            playSound(errorSound);
+                        }
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        function checkWin() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    if (!grid[i][j] || typeof grid[i][j] !== 'object') return false;
+                    if (grid[i][j].value !== solution[i][j]) return false;
+                    if (!isCellValid(i, j)) return false;
+                }
+            }
+            return true;
+        }
+
+        function getHint() {
+            if (isGameWon) return;
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    if (!grid[i][j]) {
+                        grid[i][j] = { value: solution[i][j], pulse: false, blink: true, isClue: false, glow: false, fade: true };
+                        hintCount++;
+                        playSound(clickSound);
+                        calculateScore();
+                        drawGrid(i, j);
+                        return;
+                    }
+                }
+            }
+        }
+
+        function handleInput(e) {
+            if (isGameWon) return;
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.type === 'touchstart' ? e.touches[0].clientX : e.clientX) - rect.left;
+            const y = (e.type === 'touchstart' ? e.touches[0].clientY : e.clientY) - rect.top;
+            const col = Math.floor(x / cellSize);
+            const row = Math.floor(y / cellSize);
+            if (row < 0 || row >= gridSize || col < 0 || col >= gridSize) return;
+            let currentVal = grid[row][col] && typeof grid[row][col] === 'object' ? grid[row][col].value : null;
+            if (currentVal === null) {
+                grid[row][col] = { value: 1, pulse: true, blink: false, isClue: false, glow: false, fade: true };
+                setTimeout(() => { grid[row][col].pulse = false; drawGrid(row, col); }, 400);
+                playSound(clickSound);
+            } else if (currentVal === 1) {
+                grid[row][col] = { value: 2, pulse: true, blink: false, isClue: false, glow: false, fade: true };
+                setTimeout(() => { grid[row][col].pulse = false; drawGrid(row, col); }, 400);
+                playSound(clickSound);
+            } else {
+                grid[row][col] = null;
+                playSound(clickSound);
+            }
+            calculateScore();
+            drawGrid(row, col);
+        }
+
+        canvas.addEventListener('click', handleInput);
+        canvas.addEventListener('touchstart', handleInput);
+
+        canvas.addEventListener('mousemove', e => {
+            if (isGameWon) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            let hoverDetected = false;
+            constraints.forEach(c => {
+                c.hover = false;
+                if (c.r1 === c.r2) {
+                    let cx = (c.c1 + 0.5) * cellSize + cellSize / 2;
+                    let cy = c.r1 * cellSize + cellSize / 2;
+                    if (Math.abs(x - cx) < 10 && Math.abs(y - cy) < 10) {
+                        c.hover = true;
+                        hoverDetected = true;
+                    }
+                } else {
+                    let cx = c.c1 * cellSize + cellSize / 2;
+                    let cy = (c.r1 + 0.5) * cellSize + cellSize / 2;
+                    if (Math.abs(x - cx) < 10 && Math.abs(y - cy) < 10) {
+                        c.hover = true;
+                        hoverDetected = true;
+                    }
+                }
+            });
+            canvas.style.cursor = hoverDetected ? 'pointer' : 'default';
+            drawGrid();
+        });
+
+        canvas.addEventListener('touchmove', e => {
+            if (isGameWon) return;
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            const x = e.touches[0].clientX - rect.left;
+            const y = e.touches[0].clientY - rect.top;
+            let hoverDetected = false;
+            constraints.forEach(c => {
+                c.hover = false;
+                if (ciyahya1 === c.r2) {
+                    let cx = (c.c1 + 0.5) * cellSize + cellSize / 2;
+                    let cy = c.r1 * cellSize + cellSize / 2;
+                    if (Math.abs(x - cx) < 10 && Math.abs(y - cy) < 10) {
+                        c.hover = true;
+                        hoverDetected = true;
+                    }
+                } else {
+                    let cx = c.c1 * cellSize + cellSize / 2;
+                    let cy = (c.r1 + 0.5) * cellSize + cellSize / 2;
+                    if (Math.abs(x - cx) < 10 && Math.abs(y - cy) < 10) {
+                        c.hover = true;
+                        hoverDetected = true;
+                    }
+                }
+            });
+            drawGrid();
+        });
+
+        generateNewPuzzle();
+    </script>
+</body>
+</html>
