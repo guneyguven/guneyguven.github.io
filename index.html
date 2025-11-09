@@ -29,9 +29,51 @@
 
   <!--cookie-->
 
-</head>
+<script>
+  $('#vid').on('ended', function(){this.playedThrough = true;});
+
+$(window).scroll(function(){
+    var myVideo = document.getElementById("vid");
+
+    if($(window).scrollTop() > 300 && $(window).scrollTop() < 975){
+       // only if we didn't reached the end yet
+       if(!myVideo.playedThrough)
+          myVideo.play();
+    }else{
+       myVideo.pause();
+    }
+ })
+</script>
+
+<style>
+  .video_contain {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 20%;
+    height: 20%;
+}
+
+video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    min-height: 50%;
+    min-width: 50%;
+}
+</style>
+</html>
 
 <body>
+
+  <!-- Background video -->
+    <video id="bgvid" autoplay muted playsinline style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; height: auto; z-index: -1;" poster="img/ggc/GG_WH.jpg">
+      <source src="img/ggc/GG_WH.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
 
   <div id="preloder">
     <div class="loader"></div>
@@ -152,12 +194,16 @@ window.addEventListener('load', (event) => {
 
       <div class="row portfolios-area">
 
-        <div class="mix col-lg-6 col-md-6 art">
+        <div class="mix col-lg-6 col-md-6 art" style="display: block; justify-content: center; align-items: center;">
+            <img src="https://ik.imagekit.io/guneyguven/ggc/ggwhite.png" alt="Project 1" class="img-fluid">
+        </div>
+
+          <!---
           <a href="https://ik.imagekit.io/guneyguven/ggc/IMG_4182.jpeg" class="portfolio-item set-bg " data-setbg="https://ik.imagekit.io/guneyguven/ggc/IMG_4182.jpeg">
             <div class="pi-inner">
               <h2>+ See Project</h2>
             </div>
-          </a>
+          </a>-->
         </div>
         
        
