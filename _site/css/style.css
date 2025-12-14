@@ -1,0 +1,349 @@
+
+/* 
+Template Name   : Solopreneur, a personal website template.
+Author           : Jorge Perez
+Version          : 1.0.0
+Created          : May 2023
+File Description : Main CSS File  */
+
+
+/* Font Used for the template */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Google+Sans+Flex:wght@100;400;700&display=swap');
+
+/*===================================
+    Body / Root / General settings 
+=====================================*/
+body {
+    font-family: 'Google Sans Flex', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Inter', 'Google Sans Flex', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.header-1 {
+    font-size: 46px;
+    font-weight: 700;
+}
+
+.header-2 {
+    font-size: 55px;
+    font-weight: 900;
+}
+
+a,
+a:hover,
+a:focus,
+button,
+button:focus {
+    text-decoration: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+::selection {
+    background: rgba(166, 175, 189, 0.3);
+}
+
+::-moz-selection {
+    background: rgba(166, 175, 189, 0.3);
+}
+
+.btn-round {
+    border-radius: 30px;
+}
+
+/*================================
+    Preloader/Spinner settings 
+==================================*/
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 9999999;
+}
+
+#status {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -20px 0 0 -20px;
+}
+
+.spinner {
+    margin: 0 auto;
+    font-size: 10px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 5px solid rgba(0, 0, 0, 0.2);
+    border-right: 5px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 5px solid rgba(0, 0, 0, 0.2);
+    border-left: 5px solid #000;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    animation: load8 1.1s infinite linear;
+}
+
+.spinner,
+.spinner:after {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+@-webkit-keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+/*============================
+    Back To Top Settings 
+=============================*/
+.back_top {
+    text-align: center;
+    position: fixed;
+    bottom: 15px;
+    height: 35px;
+    width: 35px;
+    display: none;
+    z-index: 10000;
+    border-radius: 3px;
+    right: 20px;
+    transition: all 0.5s;
+}
+
+.back_top i {
+    line-height: 35px;
+    font-size: 32px;
+    display: block;
+}
+
+/* SVG fallback for back-to-top when icon font is unavailable */
+.back_top svg {
+    width: 32px;
+    height: 32px;
+    display: block;
+    margin: 0 auto;
+}
+.back_top svg path { fill: currentColor; }
+
+/*==========================
+    Helper
+============================*/
+.section-home {
+    padding-top: 100px;
+    position: relative;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.section {
+    padding-top: 100px;
+    position: relative;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.section_contact {
+    padding-top: 100px;
+    padding-bottom: 120px;
+    position: relative;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.h-100vh {
+    height: 100vh;
+}
+
+.z-index {
+    z-index: 2;
+}
+
+.clippath_none {
+    clip-path: none !important;
+}
+
+.section-subtitle {
+    max-width: 500px;
+}
+
+.rounded-circle {
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
+
+/*==========================
+    Projects Section
+============================*/
+.projects-boxes {
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.projects-boxes .projects-boxes-icon i {
+    font-size: 44px;
+}
+
+.projects-boxes .projects-title-border {
+    height: 2px;
+    width: 40px;
+    margin: 15px auto;
+    transition: all 0.5s;
+}
+
+.projects-boxes:hover {
+    transition: all 0.5s;
+}
+
+.projects-boxes:hover .projects-title-border {
+    width: 100px;
+}
+
+.projects-box {
+    border-radius: 8px;
+}
+
+.projects-boxes h5 {
+    font-weight: 600;
+}
+
+.projects-boxes p {
+    font-size: 16px;
+}
+
+/*==========================
+    Uses Section
+============================*/
+.uses-boxes {
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    padding-top: 12px;
+    padding-left: 16px;
+}
+
+.uses-boxes:hover {
+    transition: all 0.5s;
+}
+
+.category {
+    padding-top: 12px;
+}
+
+/*==========================
+    Contact Form
+============================*/
+.form-solopreneur .form-control {
+    box-shadow: none !important;
+    height: 50px;
+    margin-bottom: 14px;
+    border: 2px solid #e0e0e0;
+}
+
+.form-solopreneur textarea.form-control {
+    height: auto;
+}
+
+.contact_detail-title {
+    font-size: 18px;
+}
+
+.error {
+    margin: 8px 0px;
+    display: none;
+    color: #ec5f79;
+}
+
+.error_msg {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #ec5f79;
+    font-weight: 700;
+}
+
+.gig_loader {
+    display: none;
+}
+
+#success_msg {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#success_msg h3 {
+    color: #64d674;
+    font-size: 22px;
+}
+
+/*==========================
+    Footer Section
+============================*/
+.footer {
+    padding: 70px 0px;
+    margin-top: 3rem;
+}
+
+.footer .footer-alt p {
+    font-size: 16px;
+}
+
+.footer .footer-alt ul li a {
+    transition: all 0.5s;
+    font-size: 18px;
+    text-align: center;
+}
+
+.footer-alt li a i{
+    transition: all 0.5s;
+}
+
+/*==========================
+    Toogle Switch
+============================*/
+.form-check {
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 8px;
+    margin-bottom: .125rem;
+    margin-top: 5px;
+  }
+  
+.form-switch .form-check-input {
+    margin-left: 0rem;
+}
+    

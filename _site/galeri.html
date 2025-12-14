@@ -1,0 +1,180 @@
+
+<!-- 
+ -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Güven ÇALIŞKAN</title>
+        <meta name="description" content="mühendis engineer çizer software inşaat bilgisayar proje yönetimi kaizen" />
+        <meta name="keywords" content="add your keywords here" />
+        <meta name="author" content="guneyguven" />
+        <link rel="shortcut icon" href="images/icon.png">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        
+        <link rel="stylesheet" type="text/css" href="css/materialdesignicons-local.css">
+        <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="css/mobiriseicons.css"> 
+        <link rel="stylesheet" type="text/css" href="css/simpletextrotator.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/gallery.css">
+        <link rel="stylesheet" type="text/css" href="css/colors/light-mode.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div id="preloader">
+            <div id="status">
+                <div class="spinner">Yükleniyor...</div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg custom-nav fixed-top sticky">
+            <div class="container">
+
+                <!-- Clicking on the site name will redirect you to HOME. Replace the href below if needed -->
+                <a class="navbar-brand pt-0 logo" href="index.html">
+
+                    <!-- Your site name here, edit both divs below, one is for the light mode, the other is for the dark mode. -->
+                    <div class="img-fluid logo-light">Güven ÇALIŞKAN</div>
+                    <div class="img-fluid logo-dark">Güven ÇALIŞKAN</div>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto" id="main_nav">
+
+                         <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fa-solid fa-house-chimney-window fa-xl"></i>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="hakkimda.html">Hakkında</a>
+                        </li>
+
+                        <!-- Menu Item #2 - Edit below if needed. -->
+                        
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="profil.html">Profil</a>
+                        </li>
+
+                        <!-- Menu Item #3 - Edit below if needed. -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="galeri.html">Galeri</a>
+                        </li>
+
+                        <!-- Menu Item #3 - Edit below if needed. -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.html">Blog</a>
+                        </li>
+
+                        <!-- Menu Item #4 - Edit below if needed. -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="iletisim.html">İletişim</a>
+                        </li>
+
+                        <!-- Light/Dark Toggle Switch -->
+                        <li class="nav-item form-check form-switch">
+                            
+                            <input class="nav-link form-check-input" type="checkbox" onchange="toggle()" id="flexSwitchCheckDefault">
+                            
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Gallery Section -->
+        <section class="section-gallery py-5" id="gallery">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-4"><br><br>
+                    <h2 class="custom-text-color-primary header-2 text-center">Galeri</h2>
+
+                        <p class="custom-text-color-secondary" >Resimlere tıklayarak büyütebilirsiniz.</p>
+                    </div>
+                </div>
+
+                <div class="masonry" id="masonry-gallery">
+                    <div class="masonry-item"><figure><img src="images/about-1.jpg" alt="About 1"><figcaption>About 1</figcaption></figure></div>
+                    <div class="masonry-item"><figure><img src="images/about-2.jpg" alt="About 2"><figcaption>About 2</figcaption></figure></div>
+                    <div class="masonry-item"><figure><img src="images/about.jpg" alt="About"><figcaption>About</figcaption></figure></div>
+                    <div class="masonry-item"><figure><img src="images/amazingirl.jpg" alt="Amazing"><figcaption>Amazing</figcaption></figure></div>
+                    <div class="masonry-item"><figure><img src="images/bluebird.jpg" alt="Bluebird"><figcaption>Bluebird</figcaption></figure></div>
+                    <div class="masonry-item"><figure><img src="images/bomber.jpg" alt="Bomber"><figcaption>Bomber</figcaption></figure></div>
+                    <div class="masonry-item"><figure><img src="images/foxie.jpg" alt="Foxie"><figcaption>Foxie</figcaption></figure></div>
+                    <div class="masonry-item"><figure><img src="images/roboduck.jpg" alt="RoboDuck"><figcaption>RoboDuck</figcaption></figure></div>
+                    <div class="masonry-item"><figure><img src="images/run.jpg" alt="Run"><figcaption>Run</figcaption></figure></div>
+                    <div class="masonry-item"><figure><img src="images/sahra.jpg" alt="Sahra"><figcaption>Sahra</figcaption></figure></div>
+                    <div class="masonry-item"><figure><img src="images/banner.png" alt="Banner"><figcaption>Banner</figcaption></figure></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox / Modal -->
+        <div id="lightbox" class="lightbox" aria-hidden="true">
+            <div class="lb-backdrop" data-lb="backdrop"></div>
+            <button class="lb-close" aria-label="Close">×</button>
+            <button class="lb-prev" aria-label="Previous">‹</button>
+            <button class="lb-next" aria-label="Next">›</button>
+            <div class="lb-content">
+                <img class="lb-img" src="" alt="">
+                <div class="lb-caption"></div>
+            </div>
+        </div>
+       
+        <footer class="footer">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-md-12">
+                        <div class="text-center footer-alt">
+                            <ul class="list-unstyled list-inline mb-0">
+                                <li class="list-inline-item"><a href="index.html#home">Hakkında</a></li>
+                                    <li class="list-inline-item"><a href="index.html#about">Profil</a></li>
+                                    <li class="list-inline-item"><a href="index.html#projects">Galeri</a></li>
+                                    <li class="list-inline-item"><a href="index.html#uses">Blog</a></li>
+                                    <li class="list-inline-item"><a href="index.html#contact">İletişim</a></li>
+                            </ul>
+                            <p class="custom-text-color-secondary mb-0 mt-3"> 2025 &copy; - guneyguven </p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <a href="index.html#home" class="back_top">
+            <svg class="back_top_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                <path fill="currentColor" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path>
+            </svg>
+        </a>
+
+        <script src="https://kit.fontawesome.com/e8e4a5565a.js" crossorigin="anonymous"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/contact.js"></script>
+        <script src="js/custom.js"></script>
+        <script src="js/simple-text-rotator.js"></script>
+        <script src="js/gallery.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                if (window.textrotator) {
+                    window.textrotator('.demo4 .rotate', {
+                        animation: 'flipUp',
+                        speed: 2000
+                    });
+                }
+            });
+        </script>
+        <link id="style1" rel="stylesheet" type="text/css" href="css/colors/light-mode.css" />
+        <link id="style2" rel="stylesheet" type="text/css" href="css/colors/dark-mode.css" disabled="disabled" />
+        <script src="js/theme.js"></script>
+    </body>
+</html>

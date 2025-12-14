@@ -1,0 +1,294 @@
+
+/* 
+Template Name   : Solopreneur, a personal website template.
+Author           : Jorge Perez
+Version          : 1.0.0
+Created          : May 2023
+File Description : Light Mode CSS.
+This affects the color BG, color text, text highlights, color of buttons,
+color of the social media icons & projects/Uses boxes, footer and toggle switch colors */
+
+    /*===================================
+        Background Color
+    =====================================*/
+    body {
+        background-color: #f9f9f9;
+    }
+
+    /*===================================
+        Text Effect Settings 
+    =====================================*/
+    .custom-text-color-primary {
+        color: #0d0d0d;
+    }
+
+    .custom-text-color-secondary {
+        color: #606060;
+    }
+
+    .bold-underline {
+        color: #0d0d0d;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    .highlight-contrast {
+        color: #fff;
+        border-radius: 0 0 1em 0;
+        background-image: linear-gradient( -100deg, rgba(61, 59, 60, 0.2), rgba(61, 59, 60, 0.95) 98%, rgba(61, 59, 60, 0.5) );
+    }
+
+    .highlight-yellow {
+        color: #000000;
+        border-radius: 0 0 1em 0;
+        background-image: linear-gradient( -100deg, rgba(255, 224, 0, 0.2), rgba(255, 224, 0, 0.7) 95%, rgba(255, 224, 0, 0.1) );
+    }
+
+    a {
+        color:#606060;
+        font-weight: 700;
+    }
+    a:hover {
+        color: #0d0d0d;
+        font-weight: 700;
+    }
+
+    /*===================================
+        Footnote Settings
+    =====================================*/
+    .footnote:hover {
+        color: #fff;
+        text-shadow: 0px 0px 5px #FDD835,
+        0px 0px 10px #ffe000,
+        0px 0px 15px #ffe000;
+        transition-duration: 1s;
+        cursor: pointer;
+    }
+
+    /* Rocket Icon */
+    .mbri-rocket {
+        font-size:22px;
+        color:#606060;
+    }
+        
+    .mbri-rocket:hover {
+        color: #fff;
+        text-shadow: 0px 0px 5px #FDD835,
+        0px 0px 10px #ffe000,
+        0px 0px 15px #ffe000;
+        transition-duration: 1s;
+    }
+
+    /*===================================
+        Back To Top Settings
+    =====================================*/
+    .back_top {
+        background-color: rgb(61, 59, 60);
+    }
+
+    .back_top i {
+        color: #fff;
+    }
+    .back_top svg path { fill: #fff; }
+    
+    /*===================================
+        Social Media Icons Settings
+    =====================================*/
+    .about-social {
+        text-align: center;
+    }
+
+    .about-social li a {
+        align-items: center;
+        color: rgb(255, 255, 255);
+        background-color: rgb(61, 59, 60);
+        display: inline-block;
+        height: 42px;
+        width: 42px;
+        font-size: 20px;
+        border-radius: 50%;
+        line-height: 38px;
+        transition: all 0.5s;
+        text-align: center;
+        border: 1px solid rgb(61, 59, 60);
+        box-shadow: 2px 5px 8px rgba(0,0,0,30%);
+    }
+    
+    .about-social li a:hover {
+        border: 1px solid rgb(61, 59, 60);
+        color: rgb(61, 59, 60);
+        background-color: #ffffff;
+    }
+    
+    /*===================================
+        Custom Button Settings
+    =====================================*/
+    .btn-custom {
+        padding: 18px;
+        font-size: 16px;
+        font-weight: 500;
+        transition: all 0.5s;
+        letter-spacing: 0.6px;
+        color: rgb(255, 255, 255);
+        border: 1px solid rgb(61, 59, 60);
+        background-color: rgb(61, 59, 60);
+        box-shadow: 2px 3px 7px rgba(0,0,0,40%);
+    }
+    
+    .btn-custom:hover,
+    .btn-custom:focus,
+    .btn-custom:active,
+    .btn-custom.active,
+    .btn-custom.focus,
+    .btn-custom:active,
+    .btn-custom:focus,
+    .btn-custom:hover,
+    .open > .dropdown-toggle.btn-custom {
+        color: rgb(61, 59, 60);
+        border-color: rgb(61, 59, 60);
+        border: 1px solid rgb(61, 59, 60);
+        background-color: #fff;
+    }
+    
+    /*===================================
+        Custom NavBar Settings
+    =====================================*/
+    .custom-nav {
+        color: chocolate;
+        background-color: #f9f9f9;
+        padding: 20px 0px;
+        width: 100%;
+        border-radius: 0px;
+        z-index: 999;
+        margin-bottom: 0px;
+        transition: all 0.5s;
+    }
+
+    .custom-nav .navbar-nav li a {
+        color: #606060 !important;
+        font-size: 16px;
+        margin: 0 4px;
+        letter-spacing: 0.05em;
+        line-height: 24px;
+        transition: all 0.5s;
+        font-weight: 700;
+    }
+
+    .custom-nav .navbar-nav li a:hover {
+        color: #0d0d0d !important;
+        transition: all 0.5s;
+    }
+
+    .custom-nav .navbar-brand .logo-light,
+    .custom-nav .navbar-brand .logo-dark {
+        height: 27px;
+    }
+
+    .logo .logo-light {
+        display: inline-block;
+    }
+
+    .stickyadd .logo .logo-dark {
+        display: inline-block;
+        color: #0d0d0d;
+        transition: all 0.5s;
+    }
+
+    .stickyadd .logo .logo-light {
+        display: none;
+    }
+
+    .logo .logo-dark {
+        display: none;
+    }
+
+    .custom-nav .navbar-brand {
+        color: #606060 !important;
+        font-weight: 900;
+        font-size: 28px;
+    }
+
+    .custom-nav .navbar-brand:hover {
+        color: #0d0d0d !important;
+        transition: all 0.5s;
+    }
+
+    .custom-nav .navbar-toggler {
+        color: #606060;
+        font-size: 40px;
+        padding: 0px;
+    }
+
+    .custom-nav.stickyadd {
+        color: #0d0d0d !important;
+        background-color: #fff !important;
+        box-shadow: 0 1px 8px 3px rgba(0, 0, 0, 0.1);
+        padding: 15px 0px;
+        transition: all 0.5s;
+    }
+
+    .custom-nav.stickyadd .navbar-nav li a {
+        color: #0d0d0d !important;
+        transition: all 0.5s;
+    }
+
+    .custom-nav.stickyadd .navbar-toggler {
+        color: #0d0d0d !important;
+        transition: all 0.5s;
+    }
+
+    /*===================================
+        Form Success paragraph color
+    =====================================*/
+    #success_msg {
+        color: #606060;
+    }
+
+    /*===================================
+        Projects Boxes Section
+    =====================================*/
+    .projects-boxes {
+        border: 1px solid #e0e0e0;
+        background-color: #f0f1f4;
+    }
+
+    .projects-boxes:hover {
+        background-color: #ffffff;
+        transition: all 0.5s;
+    }
+
+    .projects-boxes .projects-title-border,
+    .work_menu a.active,
+    .work_menu a:hover {
+        background-color: rgb(164, 153, 55);
+    }
+
+    /*===================================
+        Uses Boxes Section
+    =====================================*/
+    .uses-boxes {
+        border: 1px solid #e0e0e0;
+        background-color: #f0f1f4;
+    }
+
+    .uses-boxes:hover {
+        background-color: #ffffff;
+    }
+
+    .border-start {
+        border-left: 1px solid #e0e0e0 !important;
+    }
+
+    /*===================================
+        Footer BG Color
+    =====================================*/
+    .footer {
+        background-color: #fff !important;
+    }
+
+    /*===================================
+        Toggle Switch Colors
+    =====================================*/
+    .form-check-input {
+        background-color: #aaa;
+    }

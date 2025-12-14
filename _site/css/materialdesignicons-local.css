@@ -1,0 +1,11 @@
+/* Local override for Material Design Icons - use bundled font files only */
+@font-face{
+  font-family: "Material Design Icons";
+  src: url("../fonts/materialdesignicons-webfont-v=2.0.46.woff2") format("woff2"),
+       url("../fonts/materialdesignicons-webfont-v=2.0.46.woff") format("woff"),
+       url("../fonts/materialdesignicons-webfont-v=2.0.46.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* No other rules here — the glyph mappings remain in materialdesignicons.min.css */
