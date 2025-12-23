@@ -40,9 +40,7 @@
         <link rel="stylesheet" type="text/css" href="css/simpletextrotator.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" type="text/css" href="css/colors/light-mode.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/fontawesome.min.css">
     </head>
 
     <body>
@@ -53,7 +51,7 @@
             </div>
         </div>
 
-        <nav class="navbar navbar-expand-lg custom-nav fixed-top sticky">
+        <nav class="navbar custom-nav fixed-top sticky">
             <div class="container">
 
                 <!-- Clicking on the site name will redirect you to HOME. Replace the href below if needed -->
@@ -63,8 +61,8 @@
                     <div class="img-fluid logo-light">Güven ÇALIŞKAN</div>
                     <div class="img-fluid logo-dark">Güven ÇALIŞKAN</div>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="mdi mdi-menu"></span>
+                <button class="navbar-toggler" type="button" onclick="toggleMenu()" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="fas fa-bars"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto" id="main_nav">
@@ -145,16 +143,6 @@
         <script src="js/contact.js"></script>
         <script src="js/custom.js"></script>
         <script src="js/simple-text-rotator.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function(){
-                if (window.textrotator) {
-                    window.textrotator('.demo4 .rotate', {
-                        animation: 'flipUp',
-                        speed: 2000
-                    });
-                }
-            });
-        </script>
         <link id="style1" rel="stylesheet" type="text/css" href="css/colors/light-mode.css" />
         <link id="style2" rel="stylesheet" type="text/css" href="css/colors/dark-mode.css" disabled="disabled" />
         <script src="js/theme.js"></script>

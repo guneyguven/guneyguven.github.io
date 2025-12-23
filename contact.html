@@ -33,13 +33,23 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" type="text/css" href="css/theme.css">
         <link rel="stylesheet" type="text/css" href="css/theme-bs.css">
-        <script>(function(){function getCookie(n){var m=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return m?decodeURIComponent(m.pop()):null}var t=null;try{t=getCookie('siteTheme')}catch(e){}if(!t){try{t=localStorage.getItem('siteTheme')}catch(e){}}if(!t){try{t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'}catch(e){t='light'}}var criticalDark='html,body{background-color:#2D2D30;color:#fff} .custom-nav{background-color:#1f1f1f} .footer{background-color:#000} .custom-text-color-primary{color:#fff} .custom-text-color-secondary{color:#aaa} .projects-boxes,.uses-boxes{background-color:#171717} .about-social li a{background-color:#434343;border:1px solid #434343} .btn-custom{background-color:#434343;border:1px solid #434343;color:#fff}';var criticalLight='html,body{background-color:#f9f9f9;color:#0d0d0d} .custom-nav{background-color:#f9f9f9} .footer{background-color:#fff} .custom-text-color-primary{color:#0d0d0d} .custom-text-color-secondary{color:#606060} .projects-boxes,.uses-boxes{background-color:#f0f1f4} .about-social li a{background-color:rgb(61,59,60);border:1px solid rgb(61,59,60)} .btn-custom{background-color:rgb(61,59,60);border:1px solid rgb(61,59,60);color:#fff}';var css=(t==='dark')?criticalDark:criticalLight;var st=document.createElement('style');st.id='theme-critical';st.appendChild(document.createTextNode(css));document.head.appendChild(st);var l=document.createElement('link');l.rel='stylesheet';l.type='text/css';l.id='style1';l.href='css/colors/'+(t==='dark'?'dark-mode.css':'light-mode.css');document.head.appendChild(l)})();</script>
+        <script>(function(){function getCookie(n){var m=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return m?decodeURIComponent(m.pop()):null}var t=null;try{t=getCookie('siteTheme');}catch(e){}if(!t){try{t=localStorage.getItem('siteTheme')}catch(e){}}if(!t){try{t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}catch(e){t='light'}}var bg=(t==='dark'?'#2D2D30':'#f9f9f9');var fg=(t==='dark'?'#fff':'#0d0d0d');var s=document.createElement('style');s.id='theme-init';s.appendChild(document.createTextNode('html, body{background-color:'+bg+';color:'+fg+'}'));document.head.appendChild(s);var l=document.createElement('link');l.rel='stylesheet';l.type='text/css';l.id='style1';l.href='css/colors/'+(t==='dark'?'dark-mode.css':'light-mode.css');document.head.appendChild(l)})();</script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
     </head>
 
     <body>
+    <script>
+        (function(){
+            var theme = null;
+            try{ theme = localStorage.getItem('theme'); }catch(e){}
+            if(!theme){ try{ theme = localStorage.getItem('siteTheme'); }catch(e){} }
+            if(!theme){ try{ theme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'; }catch(e){ theme = 'light'; } }
+            if(theme === 'dark') document.body.classList.add('dark-mode');
+            else document.body.classList.add('light-mode');
+        })();
+    </script>
 
         <div id="preloader">
             <div id="status">
@@ -63,8 +73,8 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto" id="main_nav">
 
-                        <!-- Menu Item #1  -->
-                         <li class="nav-item">
+                        <!-- Menu Item #1 - Edit below if needed. -->
+                          <li class="nav-item">
                             <a class="nav-link" href="index.html">
                                 <i class="fa-solid fa-house-chimney-window fa-xl"></i>
                             </a>
@@ -74,22 +84,22 @@
                             <a class="nav-link" href="about.html">About</a>
                         </li>
 
-                        <!-- Menu Item #2  -->
+                        <!-- Menu Item #2 - Edit below if needed. -->
                         <li class="nav-item">
                             <a class="nav-link" href="profile.html">Profile</a>
                         </li>
 
-                        <!-- Menu Item #3 -->
+                        <!-- Menu Item #3 - Edit below if needed. -->
                         <li class="nav-item">
                             <a class="nav-link" href="gallery.html">Gallery</a>
                         </li>
 
-                        <!-- Menu Item #4 -->
+                        <!-- Menu Item #4 - Edit below if needed. -->
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
 
-                        <!-- Light/Dark  -->
+                        <!-- Light/Dark Toggle Switch -->
                         <li class="nav-item form-check form-switch">
                             <input class="nav-link form-check-input" type="checkbox" onchange="toggle()" id="flexSwitchCheckDefault">
                         </li>
@@ -97,35 +107,35 @@
                 </div>
             </div>
         </nav>
+
         <main id="pjax-container">
-        <section class="section-home align-items-center d-flex page-spacer" id="home">
-            <div class="container" style="width: 1100px; max-width: min(100%, 1200px);">
-                <div class="row justify-content-center mt-4">
-
-                    <div class="col-lg-6">
-                        
-                        <img src="images/banner.png" alt="Güven the Engineer" style="width: 70%; margin-top: -50px;">
-
-                    </div>
-                   
-                    <div class="col-lg-6">
-                        <div class="mt-4">
-                            <h1 class="custom-text-color-primary header-1">Güven ÇALIŞKAN</h1>
-                            <h1 class="mt-2 demo4 custom-text-color-primary header-2"><span class="rotate">Civil Engineer, Software Engineer, Artist, Project Manager, Kaizen Operator</span></h1><br>
-                            <p class="custom-text-color-secondary mt-2"><span class="highlight-yellow fw-bold">Welcome to my site.</span>  <span class="highlight-contrast fw-bolder"> </span>Nice to see you here. Feel free to look at all pages, have a tasty journey.  </p>
-                            <p class="custom-text-color-secondary mt-2">Here you can see my artwork and gain some information about me. Also some photos from activities I attended and some news from me(like preinvitations to my exhibitions) will be here too.</p>
-                            <p class="custom-text-color-secondary mt-2">Also if you have a <span class="highlight-contrast fw-bolder">question</span> about my art or work or if you have a job offering, here you can find ways to communicate. <span class="highlight-yellow fw-bold"></span></p>
+        <section class="section_contact align-items-center d-flex" id="contact">
+            <div class="container" style="width: 900px; max-width: min(100%, 900px); padding-top: 100px;">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="mt-3">
                             
+                            <span style="margin-top: 5rem;" class="custom-text-color-primary header-1">Contact Me</span>
+                            <p class="custom-text-color-secondary mt-2">If you have a question or job offering, feel free to reach out!
+                             <span class="highlight-yellow">From social media to email, you can connect with me through these channels.</span></p><br><br>
+                            <img src="images/mail.png" alt="Contact Güven ÇALIŞKAN" style="width: 20%; float: left; margin-right: 20px; margin-bottom: 10px;">
+                             <br><br><h1 class="header-2 text-center custom-text-color-primary">guneyguven@gmail.com</h1>
                         </div>
                     </div>
-                    <h5 class="mt-5 custom-text-color-secondary text-center footnote">Multidisciplinary engineer&artist from İzmir <i class="fas fa-rocket fw-bolder"></i></span></h5>
-                </div>
-            </div>            
-        </section>
-        
+                </div> 
+                
+               
+            </div>
+
+            </section>
+
         </main>
-        
-        <footer class="footer">
+
+            <section>
+
+
+       
+        <footer class="footer" style="width: 100%;">
             <div class="container">
                 <div class="row justify-content-center text-center">
                     <div class="col-md-12">
@@ -152,7 +162,7 @@
             </div>
         </footer>
 
-        <a href="index.html#home" class="back_top"><i class="fas fa-chevron-up"></i></a>
+        <a href="index-ref=jperez.ca.html#home" class="back_top"><i class="fas fa-chevron-up"></i></a>
 
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/contact.js"></script>
@@ -171,6 +181,5 @@
             });
         </script>
         <script src="js/theme.js"></script>
-        <script src="js/pjax.js"></script>
     </body>
 </html>

@@ -31,9 +31,9 @@ File Description : Main JavaScript file for the template.  */
         initPreLoader() {
             const status = document.getElementById('status');
             const preloader = document.getElementById('preloader');
-            if (status) fadeOut(status, 200);
-            if (preloader) setTimeout(() => fadeOut(preloader, 600), 350);
-            setTimeout(() => { document.body.style.overflow = 'visible'; }, 350);
+            if (status) status.style.display = 'none';
+            if (preloader) preloader.style.display = 'none';
+            document.body.style.overflow = 'visible';
         }
         // sticky menu
         initStickyMenu() {
@@ -77,12 +77,23 @@ File Description : Main JavaScript file for the template.  */
                     return false;
                 });
             });
+        // Hamburger Toggle
+        initHamburgerToggle() {
+            window.toggleMenu = () => {
+                const collapse = document.querySelector('#navbarNav');
+                const toggler = document.querySelector('.navbar-toggler');
+                if (!collapse || !toggler) return;
+                const isExpanded = collapse.classList.contains('show');
+                collapse.classList.toggle('show');
+                toggler.setAttribute('aria-expanded', !isExpanded);
+            };
         }
         init() {
             this.initPreLoader();
             this.initStickyMenu();
             this.initScrollspy();
             this.initBackToTop();
+            this.initHamburgerToggle();
         }
     }
 

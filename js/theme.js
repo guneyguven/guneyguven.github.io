@@ -1,56 +1,51 @@
+/* Persistent theme toggle: saves selection in localStorage and cookie
+   Defines global `toggle()` used by the inline checkbox `onchange` handlers.
+*/
+/* Modern theme manager
+   - Stores chosen theme in localStorage ('theme') and cookie ('siteTheme')
+   - Applies dataset attribute on <html> immediately and updates the theme stylesheet
+   - Exposes `toggleTheme()` and `setTheme(theme)` globals
+*/
 (function(){
-    function setCookie(name, value, days) {
-        var d = new Date();
-        d.setTime(d.getTime() + (days*24*60*60*1000));
-        var expires = "expires=" + d.toUTCString();
-        document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
-    }
+  'use strict';
 
-    function getCookie(name) {
-        var v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
-        return v ? decodeURIComponent(v.pop()) : null;
-    }
+  function setCookie(name, value, days){
+    try{ var cookie = name+'='+encodeURIComponent(value)+'; path=/'; if(days) cookie+='; max-age='+ (days*24*60*60); cookie+='; SameSite=Lax'; document.cookie = cookie; }catch(e){}
+  }
 
-    function applyTheme(mode) {
-        var s1 = document.getElementById('style1');
-        var s2 = document.getElementById('style2');
-        if (!s1) return;
-        if (mode === 'dark') {
-            s1.href = 'css/colors/dark-mode.css';
-            if (s2) s2.disabled = true;
-        } else {
-            s1.href = 'css/colors/light-mode.css';
-            if (s2) s2.disabled = true;
-        }
-        var chk = document.getElementById('flexSwitchCheckDefault');
-        if (chk) chk.checked = (mode === 'dark');
-    }
+  function getCookie(name){ try{ var m=document.cookie.match('(^|;)\\s*'+name+'\\s*=\\s*([^;]+)'); return m?decodeURIComponent(m.pop()):null }catch(e){return null} }
 
-    function setAndApply(mode) {
-        setCookie('site_theme', mode, 365);
-        applyTheme(mode);
-    }
+  function applyThemeToDOM(theme){
+    try{ document.documentElement.setAttribute('data-bs-theme', theme); }catch(e){}
+    var checkbox = document.getElementById('flexSwitchCheckDefault');
+    if(checkbox) checkbox.checked = (theme === 'dark');
+    var link = document.getElementById('style1');
+    if(link) link.href = 'css/colors/' + (theme === 'dark' ? 'dark-mode.css' : 'light-mode.css');
+  }
 
-    function toggle() {
-        var cur = getCookie('site_theme') || 'light';
-        var next = cur === 'dark' ? 'light' : 'dark';
-        setAndApply(next);
-    }
+  window.setTheme = function(theme){
+    if(theme !== 'dark' && theme !== 'light') return;
+    try{ localStorage.setItem('theme', theme); }catch(e){}
+    setCookie('siteTheme', theme, 365);
+    applyThemeToDOM(theme);
+  };
 
-    window.toggle = toggle;
+  window.toggleTheme = function(){
+    var cur = document.documentElement.getAttribute('data-bs-theme') || 'light';
+    var next = cur === 'dark' ? 'light' : 'dark';
+    window.setTheme(next);
+  };
 
-    document.addEventListener('DOMContentLoaded', function(){
-        var saved = getCookie('site_theme');
-        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var mode = saved || (prefersDark ? 'dark' : 'light');
-        applyTheme(mode);
+  // keep legacy `toggle` name for existing inline handlers
+  window.toggle = window.toggleTheme;
 
-        var chk = document.getElementById('flexSwitchCheckDefault');
-        if (chk) {
-            chk.addEventListener('change', function(){
-                var next = chk.checked ? 'dark' : 'light';
-                setAndApply(next);
-            });
-        }
-    });
+  // initialization: prefer localStorage -> cookie -> prefers-color-scheme -> light
+  (function init(){
+    var t = null;
+    try{ t = localStorage.getItem('theme') || localStorage.getItem('siteTheme'); }catch(e){}
+    if(!t) t = getCookie('siteTheme');
+    if(!t){ try{ t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light' }catch(e){ t='light' } }
+    applyThemeToDOM(t);
+  })();
+
 })();

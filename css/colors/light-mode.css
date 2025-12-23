@@ -217,6 +217,8 @@ color of the social media icons & projects/Uses boxes, footer and toggle switch 
         color: #606060;
         font-size: 40px;
         padding: 0px;
+        background-color: transparent;
+        border: 1px solid #606060;
     }
 
     .custom-nav.stickyadd {
@@ -235,6 +237,7 @@ color of the social media icons & projects/Uses boxes, footer and toggle switch 
     .custom-nav.stickyadd .navbar-toggler {
         color: #0d0d0d !important;
         transition: all 0.5s;
+        border-color: #0d0d0d !important;
     }
 
     /*===================================

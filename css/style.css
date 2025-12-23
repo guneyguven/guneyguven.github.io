@@ -8,13 +8,14 @@ File Description : Main CSS File  */
 
 
 /* Font Used for the template */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Google+Sans+Flex:wght@100;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap');
 
 /*===================================
     Body / Root / General settings 
 =====================================*/
 body {
-    font-family: 'Google Sans Flex', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    /* font-family: 'Lato', -apple-system, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, Helvetica, sans-serif, 'Helvetica Neue', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; */
+    font-family: 'Inter', sans-serif, -apple-system, BlinkMacSystemFont,'Helvetica Neue', 'Apple Color Emoji',;
     font-size: 20px;
     line-height: 30px;
     -webkit-font-smoothing: antialiased;
@@ -29,7 +30,8 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Inter', 'Google Sans Flex', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Google Sans Flex', sans-serif, -apple-system, BlinkMacSystemFont,'Helvetica Neue', 'Apple Color Emoji',;
+    /* font-family: 'Lato', -apple-system, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, Helvetica, sans-serif, 'Helvetica Neue', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; */
 }
 
 .header-1 {
@@ -152,15 +154,6 @@ button:focus {
     font-size: 32px;
     display: block;
 }
-
-/* SVG fallback for back-to-top when icon font is unavailable */
-.back_top svg {
-    width: 32px;
-    height: 32px;
-    display: block;
-    margin: 0 auto;
-}
-.back_top svg path { fill: currentColor; }
 
 /*==========================
     Helper
@@ -314,8 +307,14 @@ button:focus {
     Footer Section
 ============================*/
 .footer {
-    padding: 70px 0px;
-    margin-top: 3rem;
+    /* Make footer total height equal to twice the navbar height.
+       Use min-height so content can center, and keep small vertical padding. */
+    min-height: calc(var(--navbar-height, 56px) * 2);
+    padding: 1.25rem 0;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer .footer-alt p {
@@ -346,4 +345,51 @@ button:focus {
 .form-switch .form-check-input {
     margin-left: 0rem;
 }
+
+/* Modal / popup image constraints: keep popups within 70% of viewport */
+.modal-dialog {
+    max-width: 70vw;
+    width: auto;
+    margin: 1.75rem auto;
+}
+.modal-content {
+    max-height: 80vh;
+}
+.modal-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+.modal-body img,
+.modal-content img,
+.modal img {
+    max-width: 70vw;
+    max-height: 70vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
     
+/* Prevent flicker when rotating text (Typed.js) updates content.
+   Promote the rotating element to its own layer and avoid wrapping/layout shifts. */
+.demo4 .rotate {
+    display: inline-block;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: opacity, transform;
+}
+
+/* Prevent line breaks and width jumps while text changes */
+.demo4 .rotate, .demo4 .rotate span {
+    white-space: nowrap;
+}
+
+/* Page spacer utility: add vertical space before the footer on pages that need it */
+.page-spacer {
+    margin-bottom: 5rem;
+}
