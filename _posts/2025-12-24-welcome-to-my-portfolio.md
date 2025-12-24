@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Welcome to My Portfolio"
-date: 2025-12-24 10:00:00 +0000
+date: 2024-12-24 10:00:00 +0000
 categories: blog welcome
 author: Güney Güven
 ---
