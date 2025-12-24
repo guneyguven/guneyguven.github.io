@@ -1,0 +1,42 @@
+# Site settings
+title: Güney Güven
+email: your-email@example.com
+description: >-
+  Personal portfolio website showcasing my work, projects, and blog posts.
+  Built with Bootstrap and Jekyll.
+baseurl: ""
+url: "https://guneyguven.github.io"
+twitter_username: yourusername
+github_username: guneyguven
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Güney Güven"

@@ -1,0 +1,20 @@
+<footer class="bg-dark text-white py-4 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+        <p class="mb-0">&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <a href="https://github.com/{{ site.github_username }}" class="text-white me-3" target="_blank">
+          <i class="bi bi-github"></i>
+        </a>
+        <a href="https://twitter.com/{{ site.twitter_username }}" class="text-white me-3" target="_blank">
+          <i class="bi bi-twitter"></i>
+        </a>
+        <a href="mailto:{{ site.email }}" class="text-white">
+          <i class="bi bi-envelope"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

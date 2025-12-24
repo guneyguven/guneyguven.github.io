@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+<article class="container py-5">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h1 class="mb-3">{{ page.title }}</h1>
+      <p class="text-muted mb-4">
+        <i class="bi bi-calendar"></i> {{ page.date | date: "%B %d, %Y" }}
+        {% if page.author %}
+        | <i class="bi bi-person"></i> {{ page.author }}
+        {% endif %}
+      </p>
+      
+      <div class="post-content">
+        {{ content }}
+      </div>
+      
+      <hr class="my-5">
+      
+      <div class="d-flex justify-content-between">
+        <a href="/blog/" class="btn btn-outline-primary">
+          <i class="bi bi-arrow-left"></i> Back to Blog
+        </a>
+        <div class="social-share">
+          <span class="me-2">Share:</span>
+          <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" target="_blank" class="btn btn-sm btn-outline-primary">
+            <i class="bi bi-twitter"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

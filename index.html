@@ -1,0 +1,108 @@
+---
+layout: default
+title: Home
+---
+
+<section id="hero" class="py-5 bg-light">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-4 fw-bold mb-3">Hello, I'm Güney Güven</h1>
+        <p class="lead mb-4">Welcome to my personal portfolio. I'm passionate about technology, development, and creating meaningful solutions.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <a href="#projects" class="btn btn-primary btn-lg px-4 gap-3">View Projects</a>
+          <a href="#contact" class="btn btn-outline-secondary btn-lg px-4">Contact Me</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2 class="mb-4">About Me</h2>
+        <p class="lead">I'm a passionate developer focused on creating innovative solutions and learning new technologies.</p>
+        <p>This portfolio showcases my work, projects, and thoughts on various topics in technology and software development.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="mb-4 text-center">Projects</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Project One</h5>
+            <p class="card-text">Description of your first project. Add details about technologies used and what it accomplishes.</p>
+            <a href="#" class="btn btn-primary">View Project</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Project Two</h5>
+            <p class="card-text">Description of your second project. Highlight key features and technologies.</p>
+            <a href="#" class="btn btn-primary">View Project</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Project Three</h5>
+            <p class="card-text">Description of your third project. Showcase your skills and accomplishments.</p>
+            <a href="#" class="btn btn-primary">View Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blog" class="py-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">Latest Blog Posts</h2>
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        {% for post in site.posts limit:3 %}
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text text-muted">{{ post.date | date: "%B %d, %Y" }}</p>
+            <p class="card-text">{{ post.excerpt }}</p>
+            <a href="{{ post.url }}" class="btn btn-sm btn-outline-primary">Read More</a>
+          </div>
+        </div>
+        {% endfor %}
+        <div class="text-center mt-4">
+          <a href="/blog/" class="btn btn-primary">View All Posts</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 mx-auto text-center">
+        <h2 class="mb-4">Get In Touch</h2>
+        <p class="lead mb-4">Feel free to reach out for collaborations or just a friendly hello!</p>
+        <div class="d-flex justify-content-center gap-3">
+          <a href="https://github.com/guneyguven" class="btn btn-outline-dark" target="_blank">
+            <i class="bi bi-github"></i> GitHub
+          </a>
+          <a href="mailto:your-email@example.com" class="btn btn-outline-primary">
+            <i class="bi bi-envelope"></i> Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
