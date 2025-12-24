@@ -4,7 +4,7 @@ const URLS_TO_CACHE = [
   '/index.html',
   '/about.html',
   '/profile.html',
-  '/gallery.html',
+  // '/gallery.html', // Temporarily disabled caching for gallery page
   '/contact.html',
   '/content.html',
   '/css/style.css',
