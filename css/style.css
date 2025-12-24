@@ -1,4 +1,3 @@
-
 /* 
 Template Name   : Solopreneur, a personal website template.
 Author           : Jorge Perez
@@ -392,4 +391,15 @@ button:focus {
 /* Page spacer utility: add vertical space before the footer on pages that need it */
 .page-spacer {
     margin-bottom: 5rem;
+}
+
+/* Global CSS to prevent horizontal scrolling on mobile */
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* Ensure all elements respect the viewport width */
+* {
+    box-sizing: border-box;
 }
