@@ -3,13 +3,13 @@ Quick publish options
 1) Fastest (requires a GitHub Personal Access Token - PAT)
 
 - Create a PAT with `repo` scope.
-- Run from repo root:
+-- Run from the repository (the script will detect the repo root automatically):
 
 ```bash
 GITHUB_TOKEN=ghp_xxx ./publish_with_token.sh
 ```
 
-This will set `origin` to use the token and push `main`.
+This will detect the git repository root (walking up from the script location), temporarily set `origin` to use the token, push `main`, and restore the original remote URL.
 
 2) SSH (recommended long-term)
 
