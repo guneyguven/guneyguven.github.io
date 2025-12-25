@@ -110,7 +110,7 @@
         </nav>
 
         <main id="pjax-container">
-         <section class="section" id="projects">
+         < class="section" id="projects">
             <div class="container" style="width: 1000px; max-width: min(100%, 1000px);">
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
@@ -230,7 +230,7 @@
                             </div>
                         </div>
                     </div>
-
+                </div>
                 </div>
             </div>
         </section>
@@ -359,6 +359,20 @@
           "running";
       });
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slider = document.querySelector(".logo-slider");
+        const track = document.querySelector(".logo-track");
+        if (slider && track) {
+            const logos = Array.from(track.children);
+            logos.forEach((logo) => {
+                const clone = logo.cloneNode(true);
+                track.appendChild(clone);
+            });
+            track.style.animationPlayState = "running";
+        }
+    });
+</script>
 
 
         <a href="index-ref=jperez.ca.html#home" class="back_top"><i class="fas fa-chevron-up"></i></a>
