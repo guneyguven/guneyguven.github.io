@@ -234,6 +234,18 @@ button:focus {
     font-size: 16px;
 }
 
+/* Ensure all cards align side by side */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.projects-boxes {
+    flex: 1 1 calc(33.33% - 20px); /* Three cards per row */
+    margin: 10px;
+}
+
 /*==========================
     Uses Section
 ============================*/
