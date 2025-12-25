@@ -189,17 +189,8 @@ button:focus {
     Projects Section
 ============================*/
 .projects-boxes {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 15px auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Ensure all cards take equal width */
-    max-width: 300px; /* Set a maximum width for consistency */
-    margin: 0 auto; /* Center align the cards */
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 .projects-boxes .projects-boxes-icon i {
@@ -207,10 +198,9 @@ button:focus {
 }
 
 .projects-boxes .projects-title-border {
-    width: 50%;
     height: 2px;
-    background-color: #ccc;
-    margin: 10px auto;
+    width: 40px;
+    margin: 15px auto;
     transition: all 0.5s;
 }
 
@@ -232,19 +222,6 @@ button:focus {
 
 .projects-boxes p {
     font-size: 16px;
-}
-
-/* Ensure all cards align side by side */
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* Adjust alignment */
-    gap: 20px; /* Add consistent spacing between rows */
-}
-
-.projects-boxes {
-    flex: 1 1 calc(33.33% - 20px); /* Ensure three cards per row */
-    margin: 10px; /* Add consistent spacing around cards */
 }
 
 /*==========================
