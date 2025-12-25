@@ -238,12 +238,13 @@ button:focus {
 .row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between; /* Adjust alignment */
+    gap: 20px; /* Add consistent spacing between rows */
 }
 
 .projects-boxes {
-    flex: 1 1 calc(33.33% - 15px); /* Reduced margin adjustment */
-    margin: 5px; /* Reduced margin to fit within the container */
+    flex: 1 1 calc(33.33% - 20px); /* Ensure three cards per row */
+    margin: 10px; /* Add consistent spacing around cards */
 }
 
 /*==========================
