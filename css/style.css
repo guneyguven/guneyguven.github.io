@@ -416,3 +416,10 @@ html, body {
         max-width: calc(25% - 10px);
     }
 }
+
+/* Ensure gallery images are responsive and fit within their containers */
+#lightgallery .gallery-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
