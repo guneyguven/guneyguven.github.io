@@ -242,8 +242,8 @@ button:focus {
 }
 
 .projects-boxes {
-    flex: 1 1 calc(33.33% - 20px); /* Three cards per row */
-    margin: 10px;
+    flex: 1 1 calc(33.33% - 15px); /* Reduced margin adjustment */
+    margin: 5px; /* Reduced margin to fit within the container */
 }
 
 /*==========================
