@@ -450,3 +450,25 @@ html, body {
         line-height: 1.8; /* Adjust line height for multi-line text */
     }
 }
+
+/* Banner image responsive positioning */
+.banner-img{
+    transition: transform .15s ease, margin .15s ease;
+}
+
+@media (max-width: 767.98px){
+    /* Center banner on mobile */
+    .banner-img{
+        display: block;
+        margin: -50px auto 0; /* keep existing top offset but center horizontally */
+        transform: none !important;
+        width: 70% !important;
+    }
+}
+
+@media (min-width: 992px){
+    /* Shift banner 25% to the right on desktop */
+    .banner-img{
+        transform: translateX(25%);
+    }
+}
