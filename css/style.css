@@ -441,4 +441,9 @@ html, body {
     .contact-section h1 {
         text-align: center;
     }
+    
+    .demo4 {
+        margin-top: 1.5rem; /* Increase top margin for better spacing */
+        line-height: 1.8; /* Adjust line height for multi-line text */
+    }
 }
