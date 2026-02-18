@@ -334,32 +334,39 @@
 
 
 
-         <script>
-      // Get the slider container
-      const slider = document.querySelector(".logo-slider");
+                <script>
+        (function(){
+            function initLogoSlider(){
+                var slider = document.querySelector('.logo-slider');
+                if (!slider) return;
+                var track = slider.querySelector('.logo-track');
+                if (!track) return;
+                if (track.dataset.logoSliderInitialized === 'true') return;
 
-      // Get the logo track and all logo images inside
-      const track = document.querySelector(".logo-track");
-      const logos = Array.from(track.children);
+                // Mark original items and clone only originals to avoid duplicate cloning
+                var originals = Array.prototype.slice.call(track.children).filter(function(ch){
+                    return !ch.classList.contains('logo-clone') && !ch.classList.contains('logo-original');
+                });
+                originals.forEach(function(ch){ ch.classList.add('logo-original'); });
 
-      // Clone all logos and append them to the end to create an infinite loop
-      logos.forEach((logo) => {
-        const clone = logo.cloneNode(true);
-        track.appendChild(clone);
-      });
+                originals.forEach(function(logo){
+                    var clone = logo.cloneNode(true);
+                    clone.classList.add('logo-clone');
+                    track.appendChild(clone);
+                });
 
-      // Pause animation on hover
-      slider.addEventListener("mouseover", function () {
-        document.querySelector(".logo-track").style.animationPlayState =
-          "paused";
-      });
+                // Pause/resume animation on hover
+                slider.addEventListener('mouseover', function(){ track.style.animationPlayState = 'paused'; });
+                slider.addEventListener('mouseout', function(){ track.style.animationPlayState = 'running'; });
 
-      // Resume animation when hover ends
-      slider.addEventListener("mouseout", function () {
-        document.querySelector(".logo-track").style.animationPlayState =
-          "running";
-      });
-    </script>
+                track.dataset.logoSliderInitialized = 'true';
+            }
+
+                // expose for external callers (PJAX reinit enhancer will call this after images load)
+                window.initLogoSlider = initLogoSlider;
+        })();
+            );
+
 
 
         <a href="index-ref=jperez.ca.html#home" class="back_top"><i class="fas fa-chevron-up"></i></a>
@@ -368,6 +375,30 @@
         <script src="js/contact.js"></script>
         <script src="js/custom.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
+                <script>
+                    (function(){
+                        function safeRun(){
+                            if (typeof window.initLogoSlider === 'function') {
+                                // wait for images to load to ensure track widths are correct
+                                if (document.readyState === 'complete') {
+                                    try{ window.initLogoSlider(); }catch(e){console.error(e)}
+                                } else {
+                                    window.addEventListener('load', function(){ try{ window.initLogoSlider(); }catch(e){console.error(e)} });
+                                }
+                            }
+                        }
+
+                        // augment existing __reinitPage to also call initLogoSlider
+                        var prev = window.__reinitPage;
+                        window.__reinitPage = function(){
+                            try{ if (typeof prev === 'function') prev(); }catch(e){console.error(e)}
+                            try{ if (typeof window.initLogoSlider === 'function') window.initLogoSlider(); }catch(e){console.error(e)}
+                        };
+
+                        // run once now (after custom.js loaded)
+                        safeRun();
+                    })();
+                </script>
         <script>
             document.addEventListener('DOMContentLoaded', function(){
                 if (typeof Typed === 'undefined') return;
