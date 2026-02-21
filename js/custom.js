@@ -114,6 +114,16 @@ window.__reinitPage = function(){
     }catch(e){console.error('reinit Typed',e)}
 };
 
+// Ensure page-specific initializers are called after PJAX swaps
+try{
+    var _prevReinit = window.__reinitPage;
+    window.__reinitPage = function(){
+        try{ if (typeof _prevReinit === 'function') _prevReinit(); }catch(e){console.error(e)}
+        try{ if (typeof window.initGallery === 'function') window.initGallery(); }catch(e){console.error('reinit initGallery', e)}
+        try{ if (typeof window.initLogoSlider === 'function') window.initLogoSlider(); }catch(e){console.error('reinit initLogoSlider', e)}
+    };
+}catch(e){console.error(e)}
+
 document.addEventListener('DOMContentLoaded', () => {
     window.__reinitPage();
 });

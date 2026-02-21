@@ -155,26 +155,33 @@
             </style>
 
             <script>
-                document.addEventListener('DOMContentLoaded', function(){
-                    const modalEl = document.getElementById('imageModal');
-                    const modalImage = document.getElementById('modalImage');
-                    let bsModal = null;
-                    if (typeof bootstrap !== 'undefined') bsModal = new bootstrap.Modal(modalEl);
+                (function(){
+                    function setupGallery(){
+                        const modalEl = document.getElementById('imageModal');
+                        const modalImage = document.getElementById('modalImage');
+                        let bsModal = null;
+                        if (typeof bootstrap !== 'undefined' && modalEl) bsModal = new bootstrap.Modal(modalEl);
 
-                    document.querySelectorAll('.gallery-grid a').forEach(a => {
-                        a.addEventListener('click', function(e){
-                            e.preventDefault();
-                            const src = a.getAttribute('href') || a.querySelector('img').getAttribute('src');
-                            modalImage.setAttribute('src', src);
-                            if (bsModal) bsModal.show();
+                        document.querySelectorAll('.gallery-grid a').forEach(function(a){
+                            a.addEventListener('click', function(e){
+                                e.preventDefault();
+                                const src = a.getAttribute('href') || (a.querySelector('img') && a.querySelector('img').getAttribute('src'));
+                                if (modalImage && src) modalImage.setAttribute('src', src);
+                                if (bsModal) bsModal.show();
+                            });
                         });
-                    });
 
-                    // clear modal image when hidden
-                    if (modalEl){
-                        modalEl.addEventListener('hidden.bs.modal', function(){ modalImage.removeAttribute('src'); });
+                        if (modalEl && modalImage){
+                            modalEl.addEventListener('hidden.bs.modal', function(){ modalImage.removeAttribute('src'); });
+                        }
                     }
-                });
+
+                    // expose for PJAX reinit
+                    window.initGallery = setupGallery;
+
+                    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setupGallery);
+                    else setupGallery();
+                })();
             </script>
         </section>
 
