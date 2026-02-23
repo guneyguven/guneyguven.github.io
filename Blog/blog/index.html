@@ -1,0 +1,36 @@
+---
+layout: default
+title: Blog
+---
+
+<section class="blog-container">
+
+  <div class="blog-grid">
+
+  {% assign posts = site.blog | sort: "date" | reverse %}
+
+  {% for post in posts %}
+
+    <a href="{{ post.url }}" class="blog-card">
+
+      {% if post.image %}
+        <div class="blog-thumb">
+          <img src="/blog_assets/{{ post.image }}" alt="{{ post.title }}">
+        </div>
+      {% endif %}
+
+      <div class="blog-card-content">
+        <h2 class="blog-title">{{ post.title }}</h2>
+
+        <div class="blog-date">
+          {{ post.date | date: "%d %B %Y" }}
+        </div>
+      </div>
+
+    </a>
+
+  {% endfor %}
+
+  </div>
+
+</section>
