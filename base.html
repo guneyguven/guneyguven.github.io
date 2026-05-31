@@ -43,10 +43,7 @@
         <script id="pjax-anti-flash-script">(function(){var root=document.documentElement,cls='pjax-no-flash';root.classList.add(cls);function removeNow(){try{root.classList.remove(cls)}catch(e){}}if(document.readyState==='complete' || document.readyState==='interactive') removeNow();else document.addEventListener('DOMContentLoaded', removeNow);if(!window.fetch) return;var _fetch=window.fetch.bind(window);window.fetch=function(input,init){var isPjax=false;try{if(init&&init.headers){if(init.headers instanceof Headers){if(init.headers.get&&init.headers.get('X-PJAX')) isPjax=true}else if(init.headers['X-PJAX']||init.headers['x-pjax']) isPjax=true}}catch(e){}if(!isPjax) return _fetch(input,init);root.classList.add(cls);return _fetch(input,init).then(function(res){try{res.clone().text().then(function(){setTimeout(removeNow,40)}).catch(removeNow)}catch(e){setTimeout(removeNow,40)}return res}).catch(function(err){removeNow();throw err})};})();</script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     </head>
 
     <body>
