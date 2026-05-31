@@ -1,11 +1,4 @@
 
-/* 
-Template Name   : Solopreneur, a personal website template.
-Author           : Jorge Perez
-Version          : 1.0.0
-Created          : May 2023
-File Description : Main CSS File  */
-
 
 /* Font Used for the template */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap');
@@ -30,7 +23,11 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Google Sans Flex', sans-serif, -apple-system, BlinkMacSystemFont,'Helvetica Neue', 'Apple Color Emoji',;
+    font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+    /*font-family: 'Google Sans Flex', sans-serif, -apple-system, BlinkMacSystemFont,'Helvetica Neue', 'Apple Color Emoji',;
     /* font-family: 'Lato', -apple-system, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, Helvetica, sans-serif, 'Helvetica Neue', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; */
 }
 
