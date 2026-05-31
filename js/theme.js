@@ -9,6 +9,20 @@
 (function(){
   'use strict';
 
+  // Critical CSS for FOUC prevention (must match css/theme.css)
+  var criticalDark = 'html,body{background-color:#2D2D30;color:#fff} .custom-nav{background-color:#1f1f1f} .footer{background-color:#000} .custom-text-color-primary{color:#fff} .custom-text-color-secondary{color:#aaa} .projects-boxes,.uses-boxes{background-color:#171717} .about-social li a{background-color:#434343;border:1px solid #434343} .btn-custom{background-color:#434343;border:1px solid #434343;color:#fff}';
+  var criticalLight = 'html,body{background-color:#f9f9f9;color:#0d0d0d} .custom-nav{background-color:#f9f9f9} .footer{background-color:#fff} .custom-text-color-primary{color:#0d0d0d} .custom-text-color-secondary{color:#606060} .projects-boxes,.uses-boxes{background-color:#f0f1f4} .about-social li a{background-color:rgb(61,59,60);border:1px solid rgb(61,59,60)} .btn-custom{background-color:rgb(61,59,60);border:1px solid rgb(61,59,60);color:#fff}';
+  var st = document.createElement('style');
+  st.id = 'theme-critical';
+  st.textContent = (document.documentElement.getAttribute('data-theme-init') === 'dark') ? criticalDark : criticalLight;
+  document.head.appendChild(st);
+  var l = document.createElement('link');
+  l.rel = 'stylesheet';
+  l.type = 'text/css';
+  l.id = 'style1';
+  l.href = 'css/colors/' + ((document.documentElement.getAttribute('data-theme-init') === 'dark') ? 'dark-mode.css' : 'light-mode.css');
+  document.head.appendChild(l);
+
   function setCookie(name, value, days){
     try{ var cookie = name+'='+encodeURIComponent(value)+'; path=/'; if(days) cookie+='; max-age='+ (days*24*60*60); cookie+='; SameSite=Lax'; document.cookie = cookie; }catch(e){}
   }
