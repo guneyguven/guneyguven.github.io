@@ -21,16 +21,21 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-        font-family: 'Roboto', sans-serif;
+h6,
+.header-1,
+.header-2,
+.header-3 {
+        font-family: 'Roboto', sans-serif !important;
         font-optical-sizing: auto;
         font-weight: 700;
         font-style: normal;
 }
 
-/* Ensure rotating text (Typed.js) uses Roboto as well */
-.demo4 .rotate, .demo4 .rotate span {
-    font-family: 'Roboto', sans-serif;
+/* Ensure rotating text (Typed.js) and any rotate helpers use Roboto */
+.demo4 .rotate,
+.demo4 .rotate span,
+.rotate {
+    font-family: 'Roboto', sans-serif !important;
 }
 
 .header-1 {
