@@ -2,6 +2,11 @@
 
 /* Font Used for the template - loaded via <link> in HTML head for priority */
 
+/* Prefer Roboto for system font variable used by Bootstrap components */
+:root {
+    --bs-font-sans-serif: 'Roboto', 'Inter', system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
 /*===================================
     Body / Root / General settings 
 =====================================*/
