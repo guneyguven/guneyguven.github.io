@@ -1,7 +1,6 @@
 
 
-/* Font Used for the template */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Roboto:wght@300;400;500;700&display=swap');
+/* Font Used for the template - loaded via <link> in HTML head for priority */
 
 /*===================================
     Body / Root / General settings 
