@@ -160,19 +160,39 @@
                     el.textContent = '';
                     new Typed(el, { strings: strings, typeSpeed: 60, backSpeed: 40, backDelay: 1500, loop: true, showCursor: false, smartBackspace: true });
                 });
+                // Initialize theme toggle checkbox to reflect current theme
+                try{
+                    var chk = document.getElementById('flexSwitchCheckDefault');
+                    if(chk){
+                        var cur = null;
+                        try{ cur = localStorage.getItem('theme') || localStorage.getItem('siteTheme'); }catch(e){}
+                        if(!cur){ cur = document.documentElement.getAttribute('data-bs-theme') || (document.body && document.body.classList.contains('dark-mode') ? 'dark' : 'light'); }
+                        chk.checked = (cur === 'dark');
+                    }
+                }catch(e){}
             });
         </script>
         <script type="text/javascript">
             function toggle() {
                 var current = null;
-                try{ current = localStorage.getItem('theme'); }catch(e){}
-                if(!current){ current = document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light'; }
+                try{ current = localStorage.getItem('theme') || localStorage.getItem('siteTheme'); }catch(e){}
+                if(!current){
+                    current = document.documentElement.getAttribute('data-bs-theme') || (document.body && document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+                }
                 var next = (current === 'dark') ? 'light' : 'dark';
-                try{ localStorage.setItem('theme', next); }catch(e){}
-                document.documentElement.classList.remove(current==='dark' ? 'theme-dark' : 'theme-light');
-                document.documentElement.classList.add(next==='dark' ? 'theme-dark' : 'theme-light');
-                try{ if(document.body){ document.body.classList.remove(current==='dark'?'dark-mode':'light-mode'); document.body.classList.add(next==='dark'?'dark-mode':'light-mode'); } }catch(e){}
+                try{ localStorage.setItem('theme', next); localStorage.setItem('siteTheme', next); }catch(e){}
+                try{ document.documentElement.setAttribute('data-bs-theme', next); }catch(e){}
+                // Maintain legacy/theme-* classes if present
+                try{
+                    document.documentElement.classList.remove(current==='dark' ? 'theme-dark' : 'theme-light');
+                    document.documentElement.classList.add(next==='dark' ? 'theme-dark' : 'theme-light');
+                }catch(e){}
+                try{
+                    if(document.body){ document.body.classList.remove(current==='dark'?'dark-mode':'light-mode'); document.body.classList.add(next==='dark'?'dark-mode':'light-mode'); }
+                }catch(e){}
                 var el = document.getElementById('style1'); if(el){ el.href = 'css/colors/' + (next==='dark' ? 'dark-mode.css' : 'light-mode.css'); }
+                // Update checkbox state if present
+                try{ var chk = document.getElementById('flexSwitchCheckDefault'); if(chk) chk.checked = (next==='dark'); }catch(e){}
             }
         </script>
         <script src="js/pjax.js"></script>
