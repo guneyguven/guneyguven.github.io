@@ -1,4 +1,4 @@
-const CACHE_NAME = 'site-shell-v1';
+const CACHE_NAME = 'site-shell-v2';
 const URLS_TO_CACHE = [
   '/',
   '/index.html',
@@ -26,6 +26,8 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   const req = event.request;
+
+  // Navigation requests: try cache first, then network (keep offline fallback)
   if (req.mode === 'navigate' || (req.method === 'GET' && req.headers.get('accept') && req.headers.get('accept').includes('text/html'))) {
     event.respondWith(
       caches.match(req).then(cached => {
@@ -38,6 +40,20 @@ self.addEventListener('fetch', event => {
         }).catch(()=>null);
         return cached || networkFetch || caches.match('/index.html');
       })
+    );
+    return;
+  }
+
+  // For CSS files, prefer network-first so theme switches fetch the latest CSS
+  if (req.destination === 'style' || req.url.endsWith('.css')) {
+    event.respondWith(
+      fetch(req).then(resp => {
+        if (resp && resp.ok) {
+          const copy = resp.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(req, copy));
+        }
+        return resp;
+      }).catch(() => caches.match(req))
     );
     return;
   }
