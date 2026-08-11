@@ -1,36 +1,50 @@
 .logo-slider {
-  overflow: hidden; /* Hide overflowing logos for smooth scroll effect */
-  white-space: nowrap; /* Prevent line break */
   width: 100%;
-  padding: 3rem 0; /* Vertical spacing */
-  background-color: transparent;
-  margintop: auto 10rem;
+  overflow: hidden;
+  padding: 2.5rem 0;
+  background: transparent;
+  position: relative;
 }
 
 .logo-track {
-  display: inline-block;
-  white-space: nowrap;
-  animation: scroll 25s linear infinite; /* Continuous scrolling effect */
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: logo-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+.logo-set {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
 }
 
 .logo-track img {
-  height: 85px;
-  margin: 0 3rem; /* Horizontal spacing between logos */
+  display: block;
+  width: auto;
+  height: 64px;
+  margin: 0 2.25rem;
+  object-fit: contain;
   vertical-align: middle;
-  transition: transform 0.3s ease; /* Smooth scale on hover */
+  transition: transform .25s ease, opacity .25s ease;
 }
 
-/* Enlarge logo slightly on hover for interactivity */
 .logo-track img:hover {
-  transform: scale(1.2);
+  transform: scale(1.12);
 }
 
-/* Keyframes to create leftward scrolling effect */
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%); /* Move left by 50% of the track width */
-  }
+@keyframes logo-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (max-width: 767.98px) {
+  .logo-slider { padding: 2rem 0; }
+  .logo-track img { height: 48px; margin: 0 1.5rem; }
+  .logo-track { animation-duration: 22s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-track { animation: none; transform: none; }
 }
