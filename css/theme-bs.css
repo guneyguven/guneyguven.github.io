@@ -1,46 +1,61 @@
 :root{
-  --bg: #f9f9f9;
-  --fg: #0d0d0d;
-  --overlay-bg: rgba(255,255,255,0.98);
+  --bg:#f9f9f9;
+  --fg:#0d0d0d;
+  --muted:#606060;
+  --card:#f0f1f4;
+  --border:#e0e0e0;
+  --nav:#f9f9f9;
+  --footer:#fff;
+  --overlay-bg:rgba(255,255,255,.98);
 }
 
 html[data-bs-theme="dark"]{
-  --bg: #2D2D30;
-  --fg: #ffffff;
-  --overlay-bg: rgba(0,0,0,0.9);
+  --bg:#2D2D30;
+  --fg:#fff;
+  --muted:#aaa;
+  --card:#171717;
+  --border:#383838;
+  --nav:#1f1f1f;
+  --footer:#000;
+  --overlay-bg:rgba(0,0,0,.9);
 }
 
 html[data-bs-theme="light"]{
-  --bg: #f9f9f9;
-  --fg: #0d0d0d;
-  --overlay-bg: rgba(255,255,255,0.98);
+  --bg:#f9f9f9;
+  --fg:#0d0d0d;
+  --muted:#606060;
+  --card:#f0f1f4;
+  --border:#e0e0e0;
+  --nav:#f9f9f9;
+  --footer:#fff;
+  --overlay-bg:rgba(255,255,255,.98);
 }
 
-html,body{
-  background-color: var(--bg);
-  color: var(--fg);
-}
+html,body{background-color:var(--bg);color:var(--fg)}
+body{transition:background-color .15s ease,color .15s ease}
 
-#pjax-overlay{
-  position: fixed;
-  inset: 0;
-  background: var(--bg);
-  transition: opacity .12s ease-in-out, visibility .12s;
-  opacity: 0;
-  visibility: hidden;
-  z-index: 9999;
-  pointer-events: none;
-}
+.custom-text-color-primary{color:var(--fg)!important}
+.custom-text-color-secondary{color:var(--muted)!important}
+.custom-nav{background-color:var(--nav)!important}
+.footer{background-color:var(--footer)!important}
+.projects-boxes,.uses-boxes,.info-card{background-color:var(--card);border-color:var(--border)}
+body.dark-mode .projects-boxes,body.dark-mode .uses-boxes,body.dark-mode .info-card{background-color:#171717;border-color:#383838}
+body.light-mode .projects-boxes,body.light-mode .uses-boxes,body.light-mode .info-card{background-color:#f0f1f4;border-color:#e0e0e0}
 
-#pjax-overlay.visible{
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
+body.dark-mode a{color:#aaa}
+body.dark-mode a:hover{color:#fff}
+body.light-mode a{color:#606060}
+body.light-mode a:hover{color:#0d0d0d}
 
-body.pjax-loading{
-  overflow: hidden;
-}
+body.dark-mode .btn-custom{background:#434343;border-color:#434343;color:#fff}
+body.light-mode .btn-custom{background:#3d3b3c;border-color:#3d3b3c;color:#fff}
+body.dark-mode .back_top{background:#fff}
+body.dark-mode .back_top i{color:#3d3b3c}
+body.light-mode .back_top{background:#3d3b3c}
+body.light-mode .back_top i{color:#fff}
 
-/* keep a minimal transition for color changes to avoid perceptible flash */
-*{transition: color .12s ease, background-color .12s ease}
+#pjax-overlay{position:fixed;inset:0;background:var(--bg);transition:opacity .12s ease-in-out,visibility .12s;opacity:0;visibility:hidden;z-index:9999;pointer-events:none}
+#pjax-overlay.visible{opacity:1;visibility:visible;pointer-events:auto}
+body.pjax-loading{overflow:hidden}
+
+*{transition:color .12s ease,background-color .12s ease,border-color .12s ease}
