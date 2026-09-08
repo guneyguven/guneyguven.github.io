@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Güven ÇALIŞKAN — interactive portfolio">
+<title>Güven ÇALIŞKAN — Interactive Portfolio</title>
+<link rel="icon" type="image/png" href="images/icon.png">
+<style>
+:root{--bg:#f5f5f3;--fg:#101010;--muted:#6f6f6a;--card:#fff;--line:rgba(0,0,0,.11);--accent:#111;--ease:cubic-bezier(.2,.75,.2,1)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit}
+.noise{position:fixed;inset:0;pointer-events:none;opacity:.035;z-index:20;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")}
+.nav{position:fixed;top:0;left:0;right:0;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;z-index:30;mix-blend-mode:multiply}.logo{font-size:14px;font-weight:800;letter-spacing:.09em}.navlinks{display:flex;gap:28px;font-size:12px;text-transform:uppercase;letter-spacing:.12em}.navlinks a{opacity:.55;transition:.25s}.navlinks a:hover{opacity:1}
+.hero{min-height:100svh;padding:120px 5vw 70px;display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;position:relative}.hero-copy{position:relative;z-index:3}.kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 24px}.title{font-size:clamp(60px,9vw,145px);line-height:.79;letter-spacing:-.075em;margin:0;font-weight:850}.title span{display:block;margin-left:.32em}.role{font-size:clamp(22px,3vw,42px);letter-spacing:-.035em;margin:34px 0 20px;font-weight:500}.desc{max-width:520px;font-size:15px;line-height:1.75;color:var(--muted)}.hero-links{display:flex;gap:22px;margin-top:34px;align-items:center}.pill{border:1px solid var(--fg);padding:13px 18px;border-radius:999px;font-size:11px;text-transform:uppercase;letter-spacing:.13em;transition:.3s}.pill:hover{background:var(--fg);color:var(--bg);transform:translateY(-3px)}.arrowlink{font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.hero-art{height:min(72vh,760px);position:relative;perspective:1100px}.art-frame{position:absolute;inset:5% 3% 5% 3%;border-radius:28px;overflow:hidden;background:#e7e7e4;transform-style:preserve-3d;transition:transform .12s linear;box-shadow:0 30px 90px rgba(0,0,0,.13)}.art-frame img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.035);transition:transform 1s var(--ease)}.art-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(130deg,rgba(255,255,255,.2),transparent 35%,rgba(0,0,0,.12));pointer-events:none}.art-label{position:absolute;right:7%;bottom:9%;z-index:4;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);padding:13px 16px;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.scroll{position:absolute;bottom:38px;left:5vw;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:12px}.scroll:after{content:"";display:block;width:55px;height:1px;background:currentColor}
+.work{padding:100px 5vw 130px}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:44px}.section-head h2{font-size:clamp(40px,6vw,90px);letter-spacing:-.065em;line-height:.9;margin:0}.section-head p{max-width:360px;color:var(--muted);font-size:13px;line-height:1.7;margin:0}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.card{position:relative;overflow:hidden;border-radius:20px;background:var(--card);min-height:320px;cursor:pointer;transform:translateZ(0)}.card:nth-child(1){grid-column:span 7;min-height:600px}.card:nth-child(2){grid-column:span 5;min-height:600px}.card:nth-child(3){grid-column:span 4;min-height:430px}.card:nth-child(4){grid-column:span 4;min-height:430px}.card:nth-child(5){grid-column:span 4;min-height:430px}.card:nth-child(6){grid-column:span 7;min-height:520px}.card:nth-child(7){grid-column:span 5;min-height:520px}.card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s var(--ease);filter:saturate(.95)}.card:hover img{transform:scale(1.075)}.card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.65));opacity:.7}.caption{position:absolute;z-index:2;left:22px;right:22px;bottom:20px;color:white;display:flex;justify-content:space-between;align-items:end}.caption b{font-size:18px;letter-spacing:-.02em}.caption small{font-size:9px;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+.statement{min-height:65vh;padding:10vh 5vw;display:flex;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.statement h3{font-size:clamp(44px,7vw,110px);letter-spacing:-.07em;line-height:.93;font-weight:650;max-width:1100px;margin:0}.statement em{font-style:normal;color:var(--muted)}
+.footer{padding:45px 5vw 60px;display:flex;justify-content:space-between;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase}.social{display:flex;gap:18px}.social a:hover{color:var(--fg)}
+.reveal{opacity:0;transform:translateY(45px);transition:opacity .9s var(--ease),transform .9s var(--ease)}.reveal.visible{opacity:1;transform:none}
+.cursor{position:fixed;left:0;top:0;width:14px;height:14px;border:1px solid #111;border-radius:50%;pointer-events:none;z-index:100;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference}.cursor.big{width:52px;height:52px;background:#fff}
+@media(max-width:800px){.nav{height:64px;padding:0 6vw}.navlinks{display:none}.hero{grid-template-columns:1fr;padding:105px 6vw 70px;gap:35px}.hero-art{height:60vh;order:-1}.art-frame{inset:0;border-radius:20px}.title{font-size:clamp(64px,20vw,110px)}.scroll{display:none}.work{padding:80px 6vw}.section-head{display:block}.section-head p{margin-top:20px}.grid{display:block}.card,.card:nth-child(n){min-height:420px;margin-bottom:14px}.statement{padding:80px 6vw;min-height:55vh}.footer{padding:35px 6vw;display:block}.social{margin-bottom:18px}.cursor{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.art-frame,.art-frame img,.card img{transition:none}}
+</style>
+</head>
+<body>
+<div class="noise"></div><div class="cursor" id="cursor"></div>
+<header class="nav"><a class="logo" href="index.html">GÜVEN ÇALIŞKAN</a><nav class="navlinks"><a href="#work">Work</a><a href="about.html">About</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a></nav></header>
+<main>
+<section class="hero">
+<div class="hero-copy reveal"><p class="kicker">Engineer · Software · Projects · Art</p><h1 class="title">Güven<span>ÇALIŞKAN</span></h1><div class="role" id="role">Civil Engineer</div><p class="desc">A multidisciplinary practice connecting engineering, software, project management, Kaizen and visual art. This is the interactive version of my portfolio.</p><div class="hero-links"><a class="pill" href="#work">Explore work</a><a class="arrowlink" href="contact.html">Get in touch ↗</a></div></div>
+<div class="hero-art reveal" id="heroArt"><div class="art-frame" id="artFrame"><img src="images/banner.png" alt="Güven Çalışkan artwork"><div class="art-label">01 / Engineer × Artist</div></div></div>
+<div class="scroll">Scroll to explore</div>
+</section>
+<section class="work" id="work"><div class="section-head reveal"><h2>Selected<br>Work.</h2><p>Real artwork from the existing portfolio — no generated placeholders. Move across the cards, then open the full gallery for the complete collection.</p></div>
+<div class="grid">
+<article class="card reveal"><img src="images/roboduck.jpg" alt="Robo Duck" loading="lazy"><div class="caption"><b>Robo Duck</b><small>01 · Character</small></div></article>
+<article class="card reveal"><img src="images/run.jpg" alt="Run" loading="lazy"><div class="caption"><b>Run</b><small>02 · Illustration</small></div></article>
+<article class="card reveal"><img src="images/bomber.jpg" alt="Bomber" loading="lazy"><div class="caption"><b>Bomber</b><small>03 · Character</small></div></article>
+<article class="card reveal"><img src="images/Gp.png" alt="Gp" loading="lazy"><div class="caption"><b>Gp</b><small>04 · Concept</small></div></article>
+<article class="card reveal"><img src="images/foxie.jpg" alt="Foxie" loading="lazy"><div class="caption"><b>Foxie</b><small>05 · Character</small></div></article>
+<article class="card reveal"><img src="images/sahra.jpg" alt="Sahra" loading="lazy"><div class="caption"><b>Sahra</b><small>06 · Character</small></div></article>
+<article class="card reveal"><img src="images/hehevakvak.JPG" alt="Hehe Vakvak" loading="lazy"><div class="caption"><b>Hehe Vakvak</b><small>07 · Illustration</small></div></article>
+</div></section>
+<section class="statement"><h3 class="reveal">Different disciplines.<br><em>One way of thinking.</em></h3></section>
+</main>
+<footer class="footer"><div>GÜVEN © 2026</div><div class="social"><a href="https://github.com/guneyguven">GitHub</a><a href="https://www.linkedin.com/in/guneyguven">LinkedIn</a><a href="https://www.instagram.com/guneyguven">Instagram</a></div></footer>
+<script>
+const roles=['Civil Engineer','Software Engineer','Project Manager','Digital Artist','Kaizen Operator'];let ri=0;const role=document.getElementById('role');setInterval(()=>{ri=(ri+1)%roles.length;role.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-8px)'}],{duration:180,fill:'forwards'}).finished.then(()=>{role.textContent=roles[ri];role.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:280,fill:'forwards'})})},2200);
+const frame=document.getElementById('artFrame'),hero=document.getElementById('heroArt');hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;frame.style.transform=`rotateY(${x*8}deg) rotateX(${-y*8}deg) translateZ(0)`;});hero.addEventListener('pointerleave',()=>frame.style.transform='');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach((e,i)=>{e.style.transitionDelay=`${Math.min(i%5,4)*70}ms`;io.observe(e)});
+const cursor=document.getElementById('cursor');window.addEventListener('pointermove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'});document.querySelectorAll('a,.card').forEach(e=>{e.addEventListener('mouseenter',()=>cursor.classList.add('big'));e.addEventListener('mouseleave',()=>cursor.classList.remove('big'))});
+</script>
+</body></html>
