@@ -1,9 +1,80 @@
-(function(){const root=document.documentElement;let theme='light';try{theme=localStorage.getItem('siteTheme')||localStorage.getItem('theme')||'light'}catch(e){}root.dataset.theme=theme==='dark'?'dark':'light';const btn=document.querySelector('[data-theme-toggle]');if(btn)btn.addEventListener('click',()=>{const next=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=next;try{localStorage.setItem('siteTheme',next);localStorage.setItem('theme',next)}catch(e){}});const menu=document.querySelector('[data-menu]'),desktop=document.querySelector('.nav-links');if(menu&&desktop){const mobile=desktop.cloneNode(true);mobile.classList.add('mobile-nav');mobile.removeAttribute('data-mobile-nav');desktop.parentElement.appendChild(mobile);menu.addEventListener('click',()=>{const open=mobile.classList.toggle('open');menu.setAttribute('aria-expanded',open)});mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobile.classList.remove('open')))}const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(e=>io.observe(e));})();
+(function () {
+  'use strict';
 
-/* BACKGROUND VIDEO OPTION — intentionally hidden from the frontend.
-   To enable later, place /media/background.mp4 in the repository and add:
-   <video class="background-video" autoplay muted loop playsinline aria-hidden="true">
-     <source src="media/background.mp4" type="video/mp4">
-   </video>
-   There is deliberately no video control or video UI in the frontend.
-*/
+  const root = document.documentElement;
+  const themeButton = document.querySelector('[data-theme-toggle]');
+  const menuButton = document.querySelector('[data-menu]');
+  const desktopNav = document.querySelector('header .nav-links');
+  const mobileNav = document.querySelector('[data-mobile-nav]');
+
+  const getStoredTheme = () => {
+    try { return localStorage.getItem('siteTheme') || localStorage.getItem('theme'); }
+    catch (_) { return null; }
+  };
+
+  const saveTheme = (theme) => {
+    try {
+      localStorage.setItem('siteTheme', theme);
+      localStorage.setItem('theme', theme);
+    } catch (_) {}
+  };
+
+  const setTheme = (theme) => {
+    const value = theme === 'dark' ? 'dark' : 'light';
+    root.dataset.theme = value;
+    if (themeButton) {
+      const dark = value === 'dark';
+      themeButton.setAttribute('aria-pressed', String(dark));
+      themeButton.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+  };
+
+  setTheme(getStoredTheme() || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+
+  themeButton?.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    saveTheme(next);
+  });
+
+  const closeMenu = () => {
+    if (!menuButton || !mobileNav) return;
+    mobileNav.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Open navigation');
+  };
+
+  if (desktopNav && mobileNav && menuButton) {
+    mobileNav.innerHTML = desktopNav.innerHTML;
+    mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+    menuButton.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    });
+
+    document.addEventListener('click', (event) => {
+      if (mobileNav.classList.contains('open') && !mobileNav.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
+    });
+  }
+
+  const reveal = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('on');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveal.forEach((element) => observer.observe(element));
+  } else {
+    reveal.forEach((element) => element.classList.add('on'));
+  }
+}());
