@@ -4,7 +4,6 @@
   const root = document.documentElement;
   const themeButton = document.querySelector('[data-theme-toggle]');
   const menuButton = document.querySelector('[data-menu]');
-  const desktopNav = document.querySelector('header .nav-links');
   const mobileNav = document.querySelector('[data-mobile-nav]');
 
   const getStoredTheme = () => {
@@ -29,13 +28,15 @@
     }
   };
 
-  setTheme(getStoredTheme() || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+  setTheme(getStoredTheme() || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
 
-  themeButton?.addEventListener('click', () => {
-    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-    saveTheme(next);
-  });
+  if (themeButton) {
+    themeButton.addEventListener('click', () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+      saveTheme(next);
+    });
+  }
 
   const closeMenu = () => {
     if (!menuButton || !mobileNav) return;
@@ -44,18 +45,24 @@
     menuButton.setAttribute('aria-label', 'Open navigation');
   };
 
-  if (desktopNav && mobileNav && menuButton) {
-    mobileNav.innerHTML = desktopNav.innerHTML;
-    mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
-
-    menuButton.addEventListener('click', () => {
+  if (menuButton && mobileNav) {
+    menuButton.addEventListener('click', (event) => {
+      event.stopPropagation();
       const open = mobileNav.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-expanded', open ? 'true' : 'false');
       menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
     });
 
+    mobileNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
     document.addEventListener('click', (event) => {
-      if (mobileNav.classList.contains('open') && !mobileNav.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
+      if (mobileNav.classList.contains('open') &&
+          !mobileNav.contains(event.target) &&
+          !menuButton.contains(event.target)) {
+        closeMenu();
+      }
     });
 
     document.addEventListener('keydown', (event) => {
