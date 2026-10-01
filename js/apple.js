@@ -70,7 +70,15 @@
     });
   }
 
-  const reveal = document.querySelectorAll('.reveal');
+  // Close the native mobile menu when tapping outside it.
+  document.addEventListener('click', (event) => {
+    const mobileMenu = document.querySelector('.mobile-menu[open]');
+    if (mobileMenu && !mobileMenu.contains(event.target)) {
+      mobileMenu.removeAttribute('open');
+    }
+  });
+
+    const reveal = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach((entry) => {
