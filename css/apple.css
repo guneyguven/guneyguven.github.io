@@ -238,7 +238,7 @@ html[data-theme=dark] .skills{box-shadow:0 20px 80px rgba(0,0,0,.28)}
 .skill{padding:clamp(28px,3vw,42px);min-height:190px}
 .skill h3{letter-spacing:-.025em}
 .skill p{max-width:360px}
-.skill::before{content:"";display:block;width:24px;height:1px;background:var(--text);opacity:.45;margin-bottom:26px}
+
 
 /* 06 — exhibition-style art gallery */
 .gallery{gap:20px}
