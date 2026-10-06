@@ -32,3 +32,72 @@ html[data-theme=dark] .hero-media:hover,html[data-theme=dark] .media-wide:hover,
 @keyframes menu-in{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
 @media(max-width:800px){:root{--nav:56px}.nav{height:var(--nav)}.mobile-nav{top:var(--nav)}.hero{padding-top:calc(var(--nav) + 44px)}.theme{width:30px;height:30px}}
 @media(prefers-reduced-motion:reduce){body::before{display:none}.nav-links a,.brand,.theme,.mobile-menu>summary,.link{transition:none}.hero-media img,.media-wide img,.project img{transition:none;transform:none}.reveal{filter:none;transition:none}.mobile-nav{animation:none}}
+/* --- Apple-style section flow --- */
+main>.section{
+  max-width:none;
+  padding-left:max(24px,calc((100vw - var(--max))/2 + 24px));
+  padding-right:max(24px,calc((100vw - var(--max))/2 + 24px));
+  background:var(--surface);
+  transition:background-color .8s var(--ease),color .8s var(--ease);
+  overflow:hidden;
+}
+main>.section+.section{background:var(--bg)}
+main>.section::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--line),transparent);
+  opacity:.7;
+}
+main>.section .section,
+main>.section .section-inner{max-width:var(--max)}
+.section .media-wide{transform:translateZ(0)}
+.section .display,
+.section .intro,
+.section>.eyebrow,
+.section>.split,
+.section>.resume-grid,
+.section>.skills,
+.section>.gallery,
+.section>.project,
+.section>.contact-email{position:relative}
+.project{
+  position:relative;
+  transition:transform .8s var(--ease-slow),background-color .8s var(--ease);
+}
+.project:nth-of-type(even){background:var(--bg)}
+.project:nth-of-type(odd){background:var(--surface)}
+.project::before{
+  content:"";
+  position:absolute;
+  left:calc((var(--max) - 100vw)/2 - 24px);
+  right:calc((var(--max) - 100vw)/2 - 24px);
+  top:0;bottom:0;
+  z-index:-1;
+  background:inherit;
+}
+.timeline,.skills{transition:background-color .8s var(--ease),border-color .8s var(--ease)}
+.skill{transition:background-color .8s var(--ease),transform .5s var(--ease)}
+.skill:hover{transform:translateY(-3px)}
+.gallery figure{transition:transform .7s var(--ease-slow),box-shadow .6s var(--ease)}
+.gallery figure:hover{transform:translateY(-4px)}
+.hero-media img,.media-wide img,.project img{
+  --parallax-y:0px;
+  transform:translate3d(0,var(--parallax-y),0) scale(1.035);
+}
+.hero-media:hover img,.media-wide:hover img{transform:translate3d(0,var(--parallax-y),0) scale(1.055)}
+.project:hover img{transform:translate3d(0,var(--parallax-y),0) scale(1.025)}
+@media(max-width:800px){
+  main>.section{
+    padding-left:20px;
+    padding-right:20px;
+  }
+  .project::before{left:-20px;right:-20px}
+}
+@media(prefers-reduced-motion:reduce){
+  main>.section{transition:none}
+  .project,.skill,.gallery figure{transition:none}
+  .gallery figure:hover,.skill:hover{transform:none}
+  .hero-media img,.media-wide img,.project img{transform:scale(1.035)}
+}
