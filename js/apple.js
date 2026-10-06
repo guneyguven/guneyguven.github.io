@@ -37,3 +37,8 @@ const transitionable=l=>l&&l.href&&l.origin===location.origin&&l.target!=='_blan
 document.addEventListener('click',e=>{const l=e.target.closest('a');if(!transitionable(l)||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();closeMenu();document.body.classList.remove('page-enter');document.body.classList.add('page-leave');setTimeout(()=>location.href=l.href,560)});
 document.body.classList.add('page-enter');
 })();
+
+/* Keep the copyright year current automatically. */
+document.querySelectorAll('[data-current-year]').forEach(el=>{
+  el.textContent=new Date().getFullYear();
+});
