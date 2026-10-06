@@ -304,3 +304,291 @@ html[data-theme=dark] .art-lightbox{background:rgba(0,0,0,.92)}
   .hero:hover .eyebrow{letter-spacing:.01em}
   .art-lightbox,.art-lightbox img{transition:none}
 }
+
+
+/* =========================================================
+   Final polish — editorial portfolio system
+   ========================================================= */
+:root{
+  --section-a:#f5f5f7;
+  --section-b:#f0f0f2;
+  --content-max:1400px;
+  --hairline:rgba(29,29,31,.10);
+}
+html[data-theme=dark]{
+  --section-a:#000;
+  --section-b:#0f0f11;
+  --hairline:rgba(255,255,255,.10);
+}
+
+/* Keep every page on the same spatial grid. */
+main{
+  overflow:hidden;
+}
+main>.section{
+  max-width:var(--content-max);
+  padding-left:clamp(24px,4vw,56px);
+  padding-right:clamp(24px,4vw,56px);
+}
+main>.section[style]{
+  padding-top:128px!important;
+}
+
+/* Page headers: less empty space, stronger entry point. */
+main>.section>.eyebrow:first-child{
+  margin-bottom:24px;
+}
+main>.section>.display:first-of-type{
+  max-width:1000px;
+}
+main>.section>.intro{
+  max-width:760px;
+}
+
+/* Projects: tighter composition and stronger visual rhythm. */
+.project{
+  position:relative;
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:clamp(42px,6vw,92px);
+  min-height:640px;
+  padding:88px 0;
+  border-top:1px solid var(--hairline);
+}
+.project:first-of-type{
+  margin-top:42px;
+}
+.project img{
+  height:560px;
+  border-radius:30px;
+  object-fit:cover;
+  box-shadow:0 28px 80px rgba(0,0,0,.09);
+  transform:translateY(var(--parallax-y,0));
+  will-change:transform;
+}
+html[data-theme=dark] .project img{
+  box-shadow:0 28px 90px rgba(0,0,0,.40);
+}
+.project>div{
+  max-width:560px;
+  padding:10px 0;
+}
+.project h2{
+  margin-top:14px;
+  margin-bottom:22px;
+}
+.project p{
+  max-width:500px;
+  line-height:1.65;
+}
+.project .link{
+  margin-top:24px;
+  position:relative;
+}
+.project .link::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:100%;
+  bottom:-5px;
+  height:1px;
+  background:currentColor;
+  transition:right .45s var(--ease);
+}
+.project .link:hover::after{
+  right:0;
+}
+
+/* Full-bleed tonal bands without turning sections into cards. */
+.project:nth-of-type(2){
+  background:var(--section-b);
+  box-shadow:0 0 0 100vmax var(--section-b);
+  clip-path:inset(0 -100vmax);
+}
+.project:nth-of-type(3){
+  background:var(--section-a);
+  box-shadow:0 0 0 100vmax var(--section-a);
+  clip-path:inset(0 -100vmax);
+}
+
+/* Give the project sequence a quiet editorial index. */
+.project .meta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.project .meta::before{
+  width:26px;
+  opacity:.4;
+}
+
+/* About: image feels like part of the composition, not a card. */
+.about-image,
+.split>div:last-child img{
+  box-shadow:0 28px 90px rgba(0,0,0,.10);
+}
+html[data-theme=dark] .about-image,
+html[data-theme=dark] .split>div:last-child img{
+  box-shadow:0 28px 100px rgba(0,0,0,.40);
+}
+
+/* Resume: make the information hierarchy quieter and more premium. */
+.resume-grid{
+  gap:clamp(50px,7vw,110px);
+  margin-top:88px!important;
+}
+.timeline-row{
+  min-height:82px;
+  align-items:start;
+}
+.skills{
+  margin-top:82px;
+  box-shadow:0 24px 80px rgba(0,0,0,.055);
+}
+html[data-theme=dark] .skills{
+  box-shadow:0 24px 90px rgba(0,0,0,.28);
+}
+.skill{
+  min-height:205px;
+  padding:clamp(30px,3.2vw,46px);
+}
+
+/* Art: exhibition wall rather than a conventional image grid. */
+.gallery{
+  gap:24px;
+  margin-top:76px;
+}
+.gallery figure{
+  border-radius:28px;
+  box-shadow:0 18px 60px rgba(0,0,0,.065);
+  transition:transform .65s var(--ease),box-shadow .65s var(--ease);
+}
+.gallery figure:hover{
+  transform:translateY(-5px);
+  box-shadow:0 28px 80px rgba(0,0,0,.11);
+}
+html[data-theme=dark] .gallery figure{
+  box-shadow:0 18px 65px rgba(0,0,0,.32);
+}
+html[data-theme=dark] .gallery figure:hover{
+  box-shadow:0 28px 85px rgba(0,0,0,.45);
+}
+
+/* Contact: make the final page feel deliberately sparse. */
+.contact{
+  max-width:var(--content-max)!important;
+  min-height:calc(100svh - var(--nav));
+  padding-top:clamp(110px,15vh,180px)!important;
+  padding-bottom:clamp(110px,15vh,180px)!important;
+}
+.contact>div{
+  max-width:900px;
+}
+.contact-email{
+  display:inline-block;
+  margin-top:12px;
+  position:relative;
+}
+.contact-email::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:100%;
+  bottom:-7px;
+  height:1px;
+  background:currentColor;
+  transition:right .45s var(--ease);
+}
+.contact-email:hover::after{
+  right:0;
+}
+
+/* Home: make the first fold feel intentional rather than merely full-screen. */
+.hero{
+  max-width:var(--content-max);
+  padding-left:clamp(24px,4vw,56px);
+  padding-right:clamp(24px,4vw,56px);
+}
+.hero-copy{
+  width:54%;
+}
+.hero-media{
+  width:46%;
+  margin-left:-2%;
+}
+.hero-media img{
+  transform:translateY(var(--parallax-y,0)) scale(1.002);
+}
+
+/* Section boundaries stay visible but quiet. */
+main>.section+ .section{
+  border-top:1px solid var(--hairline);
+}
+main>.section::before{
+  opacity:.35;
+}
+
+/* Make hover motion feel physical but restrained. */
+@media (hover:hover) and (pointer:fine){
+  .hero-media,
+  .media-wide{
+    transition:transform .7s var(--ease),box-shadow .7s var(--ease);
+  }
+  .hero-media:hover,
+  .media-wide:hover{
+    transform:translateY(-3px);
+  }
+}
+
+/* Mobile keeps the same visual hierarchy without forcing desktop geometry. */
+@media(max-width:800px){
+  main>.section[style]{
+    padding-top:104px!important;
+  }
+  .project{
+    min-height:auto;
+    padding:70px 0;
+    gap:34px;
+  }
+  .project:first-of-type{
+    margin-top:28px;
+  }
+  .project img{
+    height:62svh;
+    min-height:420px;
+    border-radius:24px;
+  }
+  .project:nth-of-type(2),
+  .project:nth-of-type(3){
+    box-shadow:0 0 0 100vmax var(--section-b);
+  }
+  .resume-grid{
+    margin-top:62px!important;
+  }
+  .skills{
+    margin-top:60px;
+    border-radius:26px;
+  }
+  .skills .skill:first-child{border-radius:26px 26px 0 0}
+  .skills .skill:nth-child(2),
+  .skills .skill:nth-child(3){border-radius:0}
+  .skills .skill:last-child{border-radius:0 0 26px 26px}
+  .gallery{
+    margin-top:56px;
+  }
+  .gallery figure{
+    border-radius:22px;
+  }
+}
+
+/* Respect reduced-motion settings. */
+@media(prefers-reduced-motion:reduce){
+  .project img,
+  .hero-media img{
+    transform:none!important;
+  }
+  .hero-media,
+  .media-wide,
+  .gallery figure{
+    transition:none;
+  }
+}
