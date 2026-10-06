@@ -1,95 +1,20 @@
-(function () {
-  'use strict';
-
-  const root = document.documentElement;
-  const themeButton = document.querySelector('[data-theme-toggle]');
-  const menuButton = document.querySelector('[data-menu]');
-  const mobileNav = document.querySelector('[data-mobile-nav]');
-
-  const getStoredTheme = () => {
-    try { return localStorage.getItem('siteTheme') || localStorage.getItem('theme'); }
-    catch (_) { return null; }
-  };
-
-  const saveTheme = (theme) => {
-    try {
-      localStorage.setItem('siteTheme', theme);
-      localStorage.setItem('theme', theme);
-    } catch (_) {}
-  };
-
-  const setTheme = (theme) => {
-    const value = theme === 'dark' ? 'dark' : 'light';
-    root.dataset.theme = value;
-    if (themeButton) {
-      const dark = value === 'dark';
-      themeButton.setAttribute('aria-pressed', String(dark));
-      themeButton.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
-    }
-  };
-
-  setTheme(getStoredTheme() || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
-
-  if (themeButton) {
-    themeButton.addEventListener('click', () => {
-      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-      setTheme(next);
-      saveTheme(next);
-    });
-  }
-
-  const closeMenu = () => {
-    if (!menuButton || !mobileNav) return;
-    mobileNav.classList.remove('open');
-    menuButton.setAttribute('aria-expanded', 'false');
-    menuButton.setAttribute('aria-label', 'Open navigation');
-  };
-
-  if (menuButton && mobileNav) {
-    menuButton.addEventListener('click', (event) => {
-      event.stopPropagation();
-      const open = mobileNav.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', open ? 'true' : 'false');
-      menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-    });
-
-    mobileNav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    document.addEventListener('click', (event) => {
-      if (mobileNav.classList.contains('open') &&
-          !mobileNav.contains(event.target) &&
-          !menuButton.contains(event.target)) {
-        closeMenu();
-      }
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') closeMenu();
-    });
-  }
-
-  // Close the native mobile menu when tapping outside it.
-  document.addEventListener('click', (event) => {
-    const mobileMenu = document.querySelector('.mobile-menu[open]');
-    if (mobileMenu && !mobileMenu.contains(event.target)) {
-      mobileMenu.removeAttribute('open');
-    }
-  });
-
-    const reveal = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('on');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    reveal.forEach((element) => observer.observe(element));
-  } else {
-    reveal.forEach((element) => element.classList.add('on'));
-  }
-}());
+(function(){'use strict';
+const root=document.documentElement,themeButton=document.querySelector('[data-theme-toggle]'),mobileMenu=document.querySelector('.mobile-menu'),mobileLinks=document.querySelectorAll('.mobile-nav a');
+const getStoredTheme=()=>{try{return localStorage.getItem('siteTheme')||localStorage.getItem('theme')}catch(_){return null}};
+const saveTheme=t=>{try{localStorage.setItem('siteTheme',t);localStorage.setItem('theme',t)}catch(_){}};
+const setTheme=t=>{const v=t==='dark'?'dark':'light';root.dataset.theme=v;if(themeButton){const dark=v==='dark';themeButton.textContent=dark?'☼':'◐';themeButton.setAttribute('aria-pressed',String(dark));themeButton.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode')}};
+setTheme(getStoredTheme()||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+if(themeButton)themeButton.addEventListener('click',()=>{const n=root.dataset.theme==='dark'?'light':'dark';setTheme(n);saveTheme(n)});
+const closeMenu=()=>{if(mobileMenu)mobileMenu.removeAttribute('open')};mobileLinks.forEach(l=>l.addEventListener('click',closeMenu));
+document.addEventListener('click',e=>{if(mobileMenu&&mobileMenu.hasAttribute('open')&&!mobileMenu.contains(e.target))closeMenu()},true);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+const targets=[...document.querySelectorAll('.reveal'),...document.querySelectorAll('.section > .eyebrow:not(.reveal)'),...document.querySelectorAll('.section > .display:not(.reveal)'),...document.querySelectorAll('.section > .intro:not(.reveal)')];
+targets.forEach((el,i)=>{if(!el.classList.contains('reveal'))el.classList.add('reveal');el.style.setProperty('--delay',Math.min(i*70,420)+'ms')});
+if('IntersectionObserver'in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){const ob=new IntersectionObserver((entries,o)=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -5% 0px'});targets.forEach(e=>ob.observe(e))}else targets.forEach(e=>e.classList.add('on'));
+const parallax=[...document.querySelectorAll('.hero-media img'),...document.querySelectorAll('.media-wide img')];let ticking=false;
+const update=()=>{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)parallax.forEach(img=>{const r=img.parentElement.getBoundingClientRect(),d=(r.top+r.height/2-window.innerHeight/2)/window.innerHeight,y=Math.max(-18,Math.min(18,d*-18));img.style.transform='translate3d(0,'+y.toFixed(2)+'px,0) scale(1.045)'});ticking=false};
+addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(update);ticking=true}},{passive:true});update();
+const transitionable=l=>l&&l.href&&l.origin===location.origin&&l.target!=='_blank'&&!l.hasAttribute('download')&&!l.href.includes('#');
+document.addEventListener('click',e=>{const l=e.target.closest('a');if(!transitionable(l)||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();closeMenu();document.body.classList.remove('page-enter');document.body.classList.add('page-leave');setTimeout(()=>location.href=l.href,560)});
+document.body.classList.add('page-enter');
+})();
