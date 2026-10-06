@@ -11,9 +11,28 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
 const targets=[...document.querySelectorAll('.reveal'),...document.querySelectorAll('.section > .eyebrow:not(.reveal)'),...document.querySelectorAll('.section > .display:not(.reveal)'),...document.querySelectorAll('.section > .intro:not(.reveal)')];
 targets.forEach((el,i)=>{if(!el.classList.contains('reveal'))el.classList.add('reveal');el.style.setProperty('--delay',Math.min(i*70,420)+'ms')});
 if('IntersectionObserver'in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){const ob=new IntersectionObserver((entries,o)=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -5% 0px'});targets.forEach(e=>ob.observe(e))}else targets.forEach(e=>e.classList.add('on'));
-const parallax=[...document.querySelectorAll('.hero-media img'),...document.querySelectorAll('.media-wide img')];let ticking=false;
-const update=()=>{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)parallax.forEach(img=>{const r=img.parentElement.getBoundingClientRect(),d=(r.top+r.height/2-window.innerHeight/2)/window.innerHeight,y=Math.max(-18,Math.min(18,d*-18));img.style.transform='translate3d(0,'+y.toFixed(2)+'px,0) scale(1.045)'});ticking=false};
-addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(update);ticking=true}},{passive:true});update();
+
+/* Section-aware scroll motion */
+const sections=[...document.querySelectorAll('main > section')];
+sections.forEach((section,i)=>{
+  section.dataset.section=i+1;
+  section.style.setProperty('--section-index',i);
+});
+const parallax=[...document.querySelectorAll('.hero-media img'),...document.querySelectorAll('.media-wide img'),...document.querySelectorAll('.project img')];
+let ticking=false;
+const updateParallax=()=>{
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    parallax.forEach(img=>{
+      const r=img.parentElement.getBoundingClientRect();
+      const d=(r.top+r.height/2-window.innerHeight/2)/window.innerHeight;
+      const y=Math.max(-16,Math.min(16,d*-10));
+      img.style.setProperty('--parallax-y',y.toFixed(2)+'px');
+    });
+  }
+  ticking=false;
+};
+addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(updateParallax);ticking=true}},{passive:true});
+updateParallax();
 const transitionable=l=>l&&l.href&&l.origin===location.origin&&l.target!=='_blank'&&!l.hasAttribute('download')&&!l.href.includes('#');
 document.addEventListener('click',e=>{const l=e.target.closest('a');if(!transitionable(l)||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();closeMenu();document.body.classList.remove('page-enter');document.body.classList.add('page-leave');setTimeout(()=>location.href=l.href,560)});
 document.body.classList.add('page-enter');
