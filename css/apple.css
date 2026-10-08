@@ -1718,3 +1718,330 @@ main > .section::before {
     transition: none;
   }
 }
+
+
+/* =========================================================
+   FINAL MOBILE REDESIGN
+   Desktop layout is intentionally untouched.
+   ========================================================= */
+
+@media (max-width: 800px) {
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Navigation */
+  .nav { height: 56px; }
+  .nav-inner { padding: 0 18px; }
+  .brand { font-size: 14px; }
+  .nav-tools { gap: 7px; }
+  .theme { width: 30px; height: 30px; font-size: 14px; }
+
+  .mobile-nav {
+    top: 56px;
+    padding: 22px 20px 28px;
+    gap: 18px;
+    font-size: 18px;
+  }
+
+  /* Hero: mobile is a composition, not a shrunken desktop grid. */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    min-height: auto;
+    max-width: none;
+    padding: calc(var(--nav) + 48px) 20px 58px;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .hero::before { display: none; }
+
+  .hero-copy {
+    width: 100%;
+    max-width: 100%;
+    z-index: 3;
+  }
+
+  .hero h1 {
+    font-size: clamp(58px, 17.5vw, 86px);
+    line-height: .87;
+    letter-spacing: -.075em;
+  }
+
+  .hero-lead {
+    max-width: 100%;
+    margin-top: 28px;
+    font-size: clamp(24px, 6.7vw, 30px);
+    line-height: 1.08;
+    letter-spacing: -.035em;
+  }
+
+  .hero-sub {
+    max-width: 100%;
+    margin: 18px 0 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .hero-media {
+    width: calc(100% + 28px);
+    min-height: 0;
+    height: auto;
+    margin: 28px -14px 0;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none !important;
+  }
+
+  .hero-media img {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
+    transform: none !important;
+    filter: none;
+  }
+
+  .hero-media:hover,
+  .hero-media:hover img {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Sections */
+  main > .section,
+  main > .section[style] {
+    width: 100%;
+    max-width: none;
+    padding: 76px 20px !important;
+    overflow: hidden;
+  }
+
+  .section .display,
+  .display {
+    max-width: 100%;
+    font-size: clamp(46px, 13vw, 68px);
+    line-height: .91;
+    letter-spacing: -.065em;
+  }
+
+  .intro {
+    max-width: 100%;
+    font-size: clamp(24px, 6.5vw, 30px);
+    line-height: 1.08;
+  }
+
+  /* Split layouts */
+  .split {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .split > * { width: 100%; }
+
+  .copy p {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .media-wide {
+    width: 100%;
+    margin-top: 38px;
+    border-radius: 22px;
+    box-shadow: 0 18px 55px rgba(0,0,0,.08);
+  }
+
+  .media-wide img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    transform: none !important;
+  }
+
+  /* Projects: image -> metadata -> title -> copy */
+  .project {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    gap: 28px;
+    padding: 64px 0;
+    border-top: 1px solid var(--ink-soft);
+  }
+
+  .project:first-of-type { margin-top: 0; }
+  .project:nth-child(even) { direction: ltr; }
+  .project > * { width: 100%; }
+  .project > div::before { display: none; }
+
+  .project img {
+    order: 0;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 22px;
+    transform: none !important;
+  }
+
+  .project > div {
+    order: 1;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .project .meta {
+    margin-bottom: 4px;
+    font-size: 11px;
+  }
+
+  .project h2 {
+    font-size: clamp(42px, 12vw, 64px);
+    line-height: .91;
+    letter-spacing: -.065em;
+    margin: 6px 0 18px;
+  }
+
+  .project p {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .project .link {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+
+  .project:nth-of-type(2) {
+    box-shadow: 0 0 0 100vmax var(--section-b);
+  }
+
+  .project:nth-of-type(3) {
+    box-shadow: 0 0 0 100vmax var(--section-a);
+  }
+
+  /* Resume */
+  .resume-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+    margin-top: 56px !important;
+  }
+
+  .timeline-row {
+    grid-template-columns: 1fr;
+    gap: 7px;
+    padding: 21px 0;
+  }
+
+  .timeline-row strong { font-size: 15px; }
+  .timeline-row span {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .skills {
+    grid-template-columns: 1fr;
+    margin-top: 46px;
+    border-radius: 22px;
+  }
+
+  .skills .skill:first-child { border-radius: 22px 22px 0 0; }
+  .skills .skill:nth-child(2),
+  .skills .skill:nth-child(3) { border-radius: 0; }
+  .skills .skill:last-child { border-radius: 0 0 22px 22px; }
+
+  .skill {
+    min-height: 0;
+    padding: 28px 24px;
+  }
+
+  .skill h3 { font-size: 20px; }
+  .skill p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* Art */
+  .gallery {
+    display: block;
+    margin-top: 46px;
+  }
+
+  .gallery figure {
+    width: 100%;
+    margin: 0 0 14px;
+    border-radius: 18px;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+  }
+
+  .gallery figure:hover,
+  .gallery figure:hover img {
+    transform: none;
+    filter: none;
+  }
+
+  /* Contact */
+  .contact {
+    min-height: calc(100svh - var(--nav));
+    padding-top: 68px !important;
+    padding-bottom: 68px !important;
+  }
+
+  .contact h1 {
+    font-size: clamp(58px, 17vw, 92px);
+    line-height: .9;
+  }
+
+  .contact p {
+    max-width: 100%;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .contact-email {
+    display: inline-block;
+    max-width: 100%;
+    margin-top: 8px;
+    font-size: clamp(21px, 5.8vw, 32px);
+    overflow-wrap: anywhere;
+  }
+
+  /* Footer */
+  footer { padding: 24px 20px; }
+
+  footer .footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+  }
+
+  footer .footer-inner div + div { margin-top: 0; }
+}
+
+@media (max-width: 390px) {
+  .hero { padding-left: 17px; padding-right: 17px; }
+  .hero h1 { font-size: 17.2vw; }
+  main > .section,
+  main > .section[style] {
+    padding-left: 17px !important;
+    padding-right: 17px !important;
+  }
+  .project h2 { font-size: 12.2vw; }
+}
