@@ -4011,3 +4011,18 @@ body:has(main > .section > .project.project--image-right) main > .section > .pro
   opacity: 0 !important;
   pointer-events: none !important;
 }
+
+
+/* About page: render portrait and copy immediately; avoid the delayed blur/reveal flash on reload. */
+body.about-page .split > .reveal,
+body.about-page .split > .reveal.on,
+body.about-page .split > .copy.reveal,
+body.about-page .split > .copy.reveal.on,
+body.about-page .split > .reveal > img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+}
