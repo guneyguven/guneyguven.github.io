@@ -3850,3 +3850,73 @@ body:not(.home-page) main > .section > .project.project--image-right > div {
     margin-bottom: 52px !important;
   }
 }
+
+
+/* Projects final correction: consistent section background, intro breathing room, true alternating rows. */
+body:has(main > .section > .project.project--image-left) main > .section,
+body:has(main > .section > .project.project--image-right) main > .section {
+  background: var(--section-a) !important;
+  padding-bottom: 64px !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .intro + .project.project--image-left,
+body:has(main > .section > .project.project--image-right) main > .section > .intro + .project.project--image-left {
+  margin-top: 64px !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
+body:has(main > .section > .project.project--right) main > .section > .project.project--image-right,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right,
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-right {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  width: min(100%, 1280px) !important;
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 88px !important;
+  padding: 0 24px !important;
+  box-sizing: border-box !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  column-gap: clamp(28px, 4vw, 64px) !important;
+  align-items: start !important;
+  direction: ltr !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > img,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > img {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > div,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > div {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > img {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > div {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+@media (max-width: 700px) {
+  body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
+  body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+    width: 100% !important;
+    padding: 0 !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    row-gap: 20px !important;
+    margin-bottom: 52px !important;
+  }
+  body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > img,
+  body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > img {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+  body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > div,
+  body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > div {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+}
