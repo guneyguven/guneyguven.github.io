@@ -2089,3 +2089,18 @@ footer {
     padding-top: 38px !important;
   }
 }
+
+
+/* Home: eliminate the viewport-height black gap completely on compact layouts. */
+@media (max-width: 1200px) {
+  main > .hero {
+    min-height: 0 !important;
+    height: auto !important;
+    padding-top: calc(var(--nav) + 28px) !important;
+    padding-bottom: 0 !important;
+  }
+  main > .hero + .section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
