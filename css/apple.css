@@ -3062,3 +3062,17 @@ main > .section .project h2 {
     max-width: none !important;
   }
 }
+
+
+/* Projects thumbnails: match the Art gallery's rounded-image radius exactly. */
+main > .section .project > img {
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+  overflow: hidden !important;
+}
+@media (max-width: 600px) {
+  main > .section .project > img {
+    border-radius: 16px !important;
+    clip-path: inset(0 round 16px) !important;
+  }
+}
