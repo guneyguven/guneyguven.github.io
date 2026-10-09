@@ -2969,3 +2969,65 @@ body:has(main > .hero) main > .section .media-wide img,
 body.nav-scrolled .nav {
   height: var(--nav) !important;
 }
+
+
+/* Site-wide section colour reset: restrained neutral bands, no gradients or rainbow-like transitions. */
+:root {
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --text: #1d1d1f;
+  --muted: #6e6e73;
+  --line: rgba(29, 29, 31, 0.12);
+  --section-a: #f5f5f7;
+  --section-b: #ededf0;
+}
+html[data-theme="dark"] {
+  --bg: #101012;
+  --surface: #18181b;
+  --text: #f5f5f7;
+  --muted: #a1a1a6;
+  --line: rgba(255, 255, 255, 0.12);
+  --section-a: #101012;
+  --section-b: #19191d;
+}
+body {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+}
+main > .section {
+  background: var(--section-a) !important;
+  box-shadow: none !important;
+  border-top: 0 !important;
+  transition: background-color 450ms ease, color 350ms ease !important;
+}
+main > .section:nth-of-type(2n) {
+  background: var(--section-b) !important;
+}
+main > .section:nth-of-type(2n + 1) {
+  background: var(--section-a) !important;
+}
+main > .section::before,
+main > .section::after {
+  content: none !important;
+  display: none !important;
+}
+main > .section + .section {
+  box-shadow: none !important;
+  border-top: 0 !important;
+}
+main > .section .section,
+main > .section .section:nth-of-type(n) {
+  background: transparent !important;
+}
+.hero {
+  background: var(--bg) !important;
+}
+footer {
+  background: var(--bg) !important;
+  border-top-color: var(--line) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  main > .section, body, footer {
+    transition: none !important;
+  }
+}
