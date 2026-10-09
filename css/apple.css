@@ -1051,6 +1051,11 @@ html[data-theme="dark"] .hero-media {
   box-shadow: 0 35px 110px rgba(0, 0, 0, 0.48);
 }
 .hero-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
   filter: saturate(0.96) contrast(1.01);
 }
 .hero .eyebrow {
