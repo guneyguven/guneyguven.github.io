@@ -2720,3 +2720,56 @@ main > .section .gallery img {
     max-height: 76svh !important;
   }
 }
+
+
+/* Home hero refinement: make the artwork lead the story on compact screens.
+   Desktop keeps the existing side-by-side composition; section tones remain untouched. */
+@media (max-width: 1200px) {
+  body:has(main > .hero) main > .hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding-top: calc(var(--nav) + 24px) !important;
+    padding-bottom: 36px !important;
+  }
+  body:has(main > .hero) main > .hero .hero-media {
+    order: 0 !important;
+    width: 100% !important;
+    margin: 0 0 30px !important;
+    min-height: 0 !important;
+    height: auto !important;
+    border-radius: 22px !important;
+  }
+  body:has(main > .hero) main > .hero .hero-media img {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: clamp(420px, 70svh, 760px) !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    border-radius: 22px !important;
+    clip-path: inset(0 round 22px) !important;
+  }
+  body:has(main > .hero) main > .hero .hero-copy {
+    order: 1 !important;
+    width: 100% !important;
+  }
+}
+@media (max-width: 600px) {
+  body:has(main > .hero) main > .hero {
+    padding-top: calc(var(--nav) + 16px) !important;
+    padding-left: 17px !important;
+    padding-right: 17px !important;
+    padding-bottom: 30px !important;
+  }
+  body:has(main > .hero) main > .hero .hero-media {
+    margin-bottom: 24px !important;
+    border-radius: 16px !important;
+  }
+  body:has(main > .hero) main > .hero .hero-media img {
+    max-height: 62svh !important;
+    border-radius: 16px !important;
+    clip-path: inset(0 round 16px) !important;
+  }
+}
