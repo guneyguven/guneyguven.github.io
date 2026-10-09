@@ -2694,3 +2694,16 @@ main > .section .gallery img {
     max-height: 34svh !important;
   }
 }
+
+
+/* Home hero only: restore a larger artwork scale without changing other pages. */
+@media (max-width: 1200px) {
+  body:has(main > .hero) main > .hero .hero-media img {
+    max-height: clamp(520px, 76svh, 920px) !important;
+  }
+}
+@media (max-width: 600px) {
+  body:has(main > .hero) main > .hero .hero-media img {
+    max-height: 76svh !important;
+  }
+}
