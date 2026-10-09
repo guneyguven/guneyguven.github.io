@@ -3985,3 +3985,29 @@ body:has(main > .section > .project.project--image-left) main > .section > .proj
 body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right:nth-of-type(even)::before {
   background: var(--section-a) !important;
 }
+
+
+/* Site-wide placeholder visibility policy: hidden by default in both themes. */
+:where(
+  [class~="placeholder" i],
+  [class*="placeholder-" i],
+  [class*="-placeholder" i],
+  [id~="placeholder" i],
+  [id*="placeholder-" i],
+  [id*="-placeholder" i],
+  [data-placeholder],
+  [data-placeholder="true"],
+  [class~="skeleton" i],
+  [class*="skeleton-" i],
+  [class*="-skeleton" i],
+  [class~="loader" i],
+  [class*="loader-" i],
+  [class*="-loader" i],
+  [class~="loading-indicator" i],
+  [class~="loading-placeholder" i]
+) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
