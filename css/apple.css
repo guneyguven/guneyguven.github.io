@@ -3621,3 +3621,20 @@ body.home-page main > .selected-work-section .copy > .link {
   display: inline-flex !important;
   margin-top: calc(2 * 1.7em + 18px) !important;
 }
+
+
+/* The Selected Work link is a separate full-width row, independent of .copy layout. */
+body.home-page main > .selected-work-section .selected-work-link-row {
+  display: block !important;
+  width: 100% !important;
+  align-self: stretch !important;
+  margin: calc(2 * 1.7em + 18px) 0 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+body.home-page main > .selected-work-section .selected-work-link-row > .link {
+  display: inline-flex !important;
+  margin: 0 !important;
+  float: none !important;
+  position: static !important;
+}
