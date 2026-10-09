@@ -3694,3 +3694,22 @@ body.about-page main > .section:first-child > .split > div:last-child img {
 body.home-page main > .section .home-image-placeholder {
   display: none !important;
 }
+
+
+/* Site-wide rule: placeholders, skeletons and loading indicators stay hidden in every theme. */
+[class*="placeholder" i],
+[id*="placeholder" i],
+[class*="skeleton" i],
+[id*="skeleton" i],
+[class*="loading" i],
+[id*="loading" i],
+[class*="loader" i],
+[id*="loader" i],
+.placeholder,
+.skeleton,
+.loading,
+.loader {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
