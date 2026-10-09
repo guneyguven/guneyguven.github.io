@@ -3100,3 +3100,85 @@ main > .section .project {
     margin-right: auto !important;
   }
 }
+
+
+/* Projects page: wide, centered content with consistent alternating image/text columns. */
+main > .section:has(> .project) > .project {
+  width: 80% !important;
+  max-width: 1440px !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  column-gap: clamp(28px, 4vw, 72px) !important;
+  align-items: start !important;
+  direction: ltr !important;
+}
+main > .section:has(> .project) > .project > img {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  height: 560px !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  align-self: start !important;
+  object-fit: cover !important;
+  margin: 0 !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+  transform: none !important;
+}
+main > .section:has(> .project) > .project > div {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  align-self: start !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  direction: ltr !important;
+}
+main > .section:has(> .project) > .project h2 {
+  margin-top: 0 !important;
+}
+main > .section:has(> .project) > .project:nth-of-type(even) > img {
+  grid-column: 2 !important;
+}
+main > .section:has(> .project) > .project:nth-of-type(even) > div {
+  grid-column: 1 !important;
+}
+@media (max-width: 1200px) {
+  main > .section:has(> .project) > .project {
+    width: 90% !important;
+    column-gap: clamp(22px, 3vw, 42px) !important;
+  }
+  main > .section:has(> .project) > .project > img {
+    height: auto !important;
+    max-height: 52svh !important;
+    object-fit: contain !important;
+  }
+}
+@media (max-width: 700px) {
+  main > .section:has(> .project) > .project {
+    width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    row-gap: 22px !important;
+    padding: 42px 0 !important;
+  }
+  main > .section:has(> .project) > .project > img,
+  main > .section:has(> .project) > .project:nth-of-type(even) > img {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 55svh !important;
+    object-fit: contain !important;
+    border-radius: 16px !important;
+    clip-path: inset(0 round 16px) !important;
+  }
+  main > .section:has(> .project) > .project > div,
+  main > .section:has(> .project) > .project:nth-of-type(even) > div {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+}
