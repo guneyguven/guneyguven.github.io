@@ -4069,3 +4069,54 @@ body.about-page main > .section:first-child > .split > div:last-child img {
 html[data-theme="dark"] body.about-page main > .section:first-child > .split > div:last-child img {
   mix-blend-mode: normal !important;
 }
+
+
+/* Contact page: accessible icon links for email and social profiles. */
+.contact-socials {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+.contact-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 64px;
+  min-height: 64px;
+  padding: 13px 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  transition: transform .25s var(--ease), border-color .25s var(--ease), background-color .25s var(--ease);
+}
+.contact-social:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  background: var(--surface);
+}
+.contact-social svg {
+  display: block;
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.contact-social span {
+  font-size: 14px;
+  font-weight: 550;
+}
+.contact-social:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+@media (max-width: 480px) {
+  .contact-socials { gap: 10px; }
+  .contact-social { min-height: 58px; padding: 11px 13px; border-radius: 15px; }
+}
