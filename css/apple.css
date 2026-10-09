@@ -3638,3 +3638,53 @@ body.home-page main > .selected-work-section .selected-work-link-row > .link {
   float: none !important;
   position: static !important;
 }
+
+
+/* About page responsive composition:
+   wide content: portrait on the left, biography on the right;
+   narrow content: portrait first, biography below. */
+body.about-page main > .section:first-child > .split {
+  display: grid !important;
+  grid-template-columns: minmax(240px, .78fr) minmax(0, 1.22fr) !important;
+  grid-template-areas: "portrait biography" !important;
+  align-items: center !important;
+  gap: clamp(30px, 5vw, 76px) !important;
+}
+body.about-page main > .section:first-child > .split > .copy {
+  grid-area: biography !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+body.about-page main > .section:first-child > .split > div:last-child {
+  grid-area: portrait !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  display: block !important;
+}
+body.about-page main > .section:first-child > .split > div:last-child img {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: 700px !important;
+  margin: 0 auto !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 15px !important;
+}
+@media (max-width: 900px) {
+  body.about-page main > .section:first-child > .split {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas:
+      "portrait"
+      "biography" !important;
+    gap: 34px !important;
+  }
+  body.about-page main > .section:first-child > .split > div:last-child {
+    max-width: 420px !important;
+    margin: 0 auto !important;
+  }
+  body.about-page main > .section:first-child > .split > div:last-child img {
+    max-height: 58svh !important;
+  }
+}
