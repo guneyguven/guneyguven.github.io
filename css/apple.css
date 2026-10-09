@@ -2063,3 +2063,14 @@ main > .section::before {
 footer {
   border-top: 0 !important;
 }
+
+
+/* Tighten the Home hero-to-profile transition. */
+@media (max-width: 1200px) {
+  main > .hero {
+    padding-bottom: 12px;
+  }
+  main > .hero + .section {
+    padding-top: 38px !important;
+  }
+}
