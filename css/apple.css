@@ -3805,3 +3805,48 @@ body:has(main > .section > .project.project--image-right) main > .section > .pro
     grid-row: 2 !important;
   }
 }
+
+
+/* Projects page: breathing room after intro and alternating image sides on desktop/tablet. */
+body:not(.home-page) main > .section > .intro + .project {
+  margin-top: 56px !important;
+}
+body:not(.home-page) main > .section > .project.project--image-left,
+body:not(.home-page) main > .section > .project.project--image-right {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 88px !important;
+  padding: 0 24px !important;
+  box-sizing: border-box !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  column-gap: clamp(28px, 4vw, 64px) !important;
+  align-items: start !important;
+}
+body:not(.home-page) main > .section > .project.project--image-left > img {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+body:not(.home-page) main > .section > .project.project--image-left > div {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+body:not(.home-page) main > .section > .project.project--image-right > img {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+body:not(.home-page) main > .section > .project.project--image-right > div {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+@media (max-width: 700px) {
+  body:not(.home-page) main > .section > .intro + .project {
+    margin-top: 36px !important;
+  }
+  body:not(.home-page) main > .section > .project.project--image-left,
+  body:not(.home-page) main > .section > .project.project--image-right {
+    padding: 0 !important;
+    margin-bottom: 52px !important;
+  }
+}
