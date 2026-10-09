@@ -3324,3 +3324,9 @@ main > .section > .project.project--image-right h2 {
     clip-path: inset(0 round 15px) !important;
   }
 }
+
+
+/* Footer repair: keep the footer's own subtle top edge; separator cleanup applies to page sections, not the footer. */
+footer {
+  border-top: 1px solid var(--line) !important;
+}
