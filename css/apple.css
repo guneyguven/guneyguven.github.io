@@ -2954,3 +2954,12 @@ body:has(main > .hero) main > .section .media-wide img,
     clip-path: inset(0 round 16px) !important;
   }
 }
+
+
+/* Restore the original, more compact navigation width and spacing. */
+.nav-inner {
+  max-width: var(--max) !important;
+}
+.nav-links {
+  gap: 25px !important;
+}
