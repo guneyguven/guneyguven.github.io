@@ -2244,3 +2244,62 @@ main > .section .project > img {
     object-fit: cover !important;
   }
 }
+
+
+/* FINAL FIX: Projects media and Art gallery sizing on iPad and phones. */
+@media (min-width: 601px) and (max-width: 1200px) {
+  main > .section .project {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    align-items: center !important;
+  }
+  main > .section .project > img {
+    display: block !important;
+    width: 100% !important;
+    height: clamp(220px, 38svh, 390px) !important;
+    min-height: 0 !important;
+    max-height: 42svh !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    border-radius: 24px !important;
+    clip-path: inset(0 round 24px) !important;
+    align-self: center !important;
+  }
+}
+@media (max-width: 1200px) {
+  main > .section .gallery {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+    align-items: start !important;
+    margin-top: 36px !important;
+  }
+  main > .section .gallery figure {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+  }
+  main > .section .gallery img {
+    display: block !important;
+    width: 100% !important;
+    height: clamp(150px, 28svh, 320px) !important;
+    max-height: 32svh !important;
+    aspect-ratio: 4 / 3 !important;
+    object-fit: cover !important;
+    border-radius: 18px !important;
+    clip-path: inset(0 round 18px) !important;
+  }
+}
+@media (max-width: 600px) {
+  main > .section .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+  main > .section .gallery img {
+    height: clamp(130px, 24svh, 230px) !important;
+    max-height: 26svh !important;
+  }
+}
