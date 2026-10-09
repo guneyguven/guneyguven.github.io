@@ -2174,3 +2174,17 @@ main > .section .project:nth-of-type(3) {
     overflow: hidden;
   }
 }
+
+
+/* Projects: use one continuous section background, with no alternating project bands. */
+main > .section .project,
+main > .section .project:nth-of-type(2),
+main > .section .project:nth-of-type(3) {
+  background: transparent !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+}
+main > .section .project img {
+  border-radius: 24px !important;
+  overflow: hidden;
+}
