@@ -3076,3 +3076,16 @@ main > .section .project > img {
     clip-path: inset(0 round 16px) !important;
   }
 }
+
+
+/* Projects: use one centered content grid for every row so left edges stay aligned. */
+main > .section .project {
+  width: min(100%, 1080px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+@media (max-width: 1200px) {
+  main > .section .project {
+    width: 100% !important;
+  }
+}
