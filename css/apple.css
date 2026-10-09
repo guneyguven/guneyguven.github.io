@@ -2463,3 +2463,61 @@ main > .section .gallery img {
     height: clamp(140px, 22svh, 210px) !important;
   }
 }
+
+
+/* Definitive Art portfolio grid: override legacy masonry spans and avoid cropping artwork. */
+#art-gallery {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  grid-auto-rows: 240px !important;
+  grid-auto-flow: row dense !important;
+  gap: 16px !important;
+}
+#art-gallery > figure,
+#art-gallery > figure:nth-child(n) {
+  grid-column: auto / span 1 !important;
+  grid-row: auto / span 1 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  border-radius: 15px !important;
+  background: var(--section-b) !important;
+}
+#art-gallery > figure > img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+}
+@media (max-width: 1200px) {
+  #art-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-rows: clamp(170px, 25svh, 270px) !important;
+    gap: 12px !important;
+  }
+}
+@media (max-width: 600px) {
+  #art-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-rows: clamp(140px, 22svh, 210px) !important;
+    gap: 10px !important;
+  }
+}
+@media (hover: none) and (pointer: coarse) {
+  #art-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-rows: clamp(170px, 25svh, 270px) !important;
+  }
+}
