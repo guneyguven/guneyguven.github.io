@@ -2541,3 +2541,64 @@ main > .section .gallery img {
   border-radius: 15px !important;
   clip-path: inset(0 round 15px) !important;
 }
+
+
+/* Art page: true masonry columns, natural image proportions, rounded thumbnails. */
+#art-gallery {
+  display: block !important;
+  column-count: 3 !important;
+  column-gap: 16px !important;
+  column-fill: balance !important;
+  width: 100% !important;
+  margin: 44px auto 0 !important;
+}
+#art-gallery > figure,
+#art-gallery > figure:nth-child(n) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  break-inside: avoid !important;
+  -webkit-column-break-inside: avoid !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 0 16px !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+#art-gallery > figure > img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: initial !important;
+  object-position: center !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+}
+@media (max-width: 1200px) {
+  #art-gallery {
+    column-count: 2 !important;
+    column-gap: 14px !important;
+  }
+  #art-gallery > figure,
+  #art-gallery > figure:nth-child(n) {
+    margin-bottom: 14px !important;
+  }
+}
+@media (max-width: 600px) {
+  #art-gallery {
+    column-count: 2 !important;
+    column-gap: 10px !important;
+  }
+  #art-gallery > figure,
+  #art-gallery > figure:nth-child(n) {
+    margin-bottom: 10px !important;
+  }
+}
