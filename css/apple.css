@@ -2602,3 +2602,95 @@ main > .section .gallery img {
     margin-bottom: 10px !important;
   }
 }
+
+
+/* Site-wide responsive image scale: consistent, restrained media sizing on touch screens. */
+@media (max-width: 1200px) {
+  .hero-media {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 28px 0 0 !important;
+    overflow: hidden !important;
+    border-radius: 15px !important;
+  }
+  .hero-media img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: clamp(260px, 44svh, 460px) !important;
+    min-height: 0 !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    border-radius: 15px !important;
+  }
+  .media-wide {
+    width: 100% !important;
+    margin: 28px auto 0 !important;
+    border-radius: 15px !important;
+    overflow: hidden !important;
+  }
+  .media-wide img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: clamp(220px, 40svh, 420px) !important;
+    min-height: 0 !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    border-radius: 15px !important;
+  }
+  .about-image,
+  .split > div:last-child img,
+  main > .section .reveal > img[alt*="Portrait"] {
+    display: block !important;
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: clamp(260px, 48svh, 480px) !important;
+    min-height: 0 !important;
+    margin-inline: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    border-radius: 15px !important;
+  }
+  .split > div:last-child,
+  main > .section .reveal:has(> img[alt*="Portrait"]) {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  main > .section .project > img {
+    max-height: clamp(220px, 40svh, 400px) !important;
+    border-radius: 15px !important;
+    clip-path: inset(0 round 15px) !important;
+  }
+  #art-gallery > figure > img {
+    max-height: 42svh !important;
+    border-radius: 15px !important;
+    clip-path: inset(0 round 15px) !important;
+  }
+}
+@media (max-width: 600px) {
+  .hero-media img {
+    max-height: 38svh !important;
+  }
+  .media-wide img {
+    max-height: 34svh !important;
+  }
+  .about-image,
+  .split > div:last-child img,
+  main > .section .reveal > img[alt*="Portrait"] {
+    max-height: 42svh !important;
+  }
+  main > .section .project > img {
+    max-height: 34svh !important;
+  }
+  #art-gallery > figure > img {
+    max-height: 34svh !important;
+  }
+}
