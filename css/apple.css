@@ -3588,3 +3588,9 @@ body.home-page main > .section .home-image-placeholder {
     aspect-ratio: 16 / 9 !important;
   }
 }
+
+
+/* Keep the See projects link two text lines below the Selected work copy. */
+body.home-page .selected-work-section .copy > .link {
+  margin-top: calc(2 * 1.45em + 18px) !important;
+}
