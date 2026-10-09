@@ -4052,3 +4052,20 @@ body.about-page main > .section:first-child > .split > div:last-child img {
   object-fit: contain !important;
   border-radius: 0 !important;
 }
+
+
+/* About portrait: preserve the black shirt while blending the white studio backdrop. */
+body.about-page main > .section:first-child > .split > div:last-child {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body.about-page main > .section:first-child > .split > div:last-child img {
+  mix-blend-mode: multiply !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  object-fit: cover !important;
+  border-radius: 26px !important;
+}
+html[data-theme="dark"] body.about-page main > .section:first-child > .split > div:last-child img {
+  mix-blend-mode: normal !important;
+}
