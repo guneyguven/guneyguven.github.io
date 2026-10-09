@@ -2104,3 +2104,21 @@ footer {
     padding-top: 0 !important;
   }
 }
+
+
+/* Projects on iPad/tablet: keep artwork proportional and out of the full-screen scale. */
+.project .meta::before {
+  display: none !important;
+}
+@media (max-width: 1200px) {
+  .project img {
+    width: auto !important;
+    max-width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: 55svh;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    align-self: flex-start;
+  }
+}
