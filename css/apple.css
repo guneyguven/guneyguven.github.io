@@ -2159,3 +2159,18 @@ footer {
     grid-column: 1;
   }
 }
+
+
+/* Projects page: consistent section tone and rounded artwork. */
+main > .section .project:nth-of-type(2),
+main > .section .project:nth-of-type(3) {
+  background: transparent !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+}
+@media (max-width: 1200px) {
+  main > .section .project > img {
+    border-radius: 24px !important;
+    overflow: hidden;
+  }
+}
