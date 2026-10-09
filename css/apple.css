@@ -4026,3 +4026,15 @@ body.about-page .split > .reveal > img {
   transition: none !important;
   animation: none !important;
 }
+
+
+/* About portrait: visually blend the white studio backdrop into the page background. */
+body.about-page main > .section:first-child > .split > div:last-child {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body.about-page main > .section:first-child > .split > div:last-child img {
+  mix-blend-mode: multiply !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
