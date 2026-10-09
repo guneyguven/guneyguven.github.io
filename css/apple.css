@@ -3089,3 +3089,14 @@ main > .section .project {
     width: 100% !important;
   }
 }
+
+
+/* Fix Projects on tablet-sized Safari viewports: do not stretch alternating rows
+   edge-to-edge; keep every row inside the same centered content measure. */
+@media (min-width: 601px) and (max-width: 1200px) {
+  main > .section .project {
+    width: min(100%, 760px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
