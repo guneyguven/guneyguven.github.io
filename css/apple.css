@@ -2122,3 +2122,40 @@ footer {
     align-self: flex-start;
   }
 }
+
+
+/* Tablet Projects: alternate image/text columns, retain stacked layout on phones. */
+@media (min-width: 601px) and (max-width: 1200px) {
+  main > .section .project {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    column-gap: clamp(22px, 4vw, 48px);
+    row-gap: 24px;
+    padding: 54px 0;
+  }
+  main > .section .project > img {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 48svh;
+    min-height: 0 !important;
+    object-fit: contain !important;
+    align-self: center;
+  }
+  main > .section .project > div {
+    grid-column: 2;
+    grid-row: 1;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    align-self: center;
+  }
+  main > .section .project:nth-of-type(even) > img {
+    grid-column: 2;
+  }
+  main > .section .project:nth-of-type(even) > div {
+    grid-column: 1;
+  }
+}
