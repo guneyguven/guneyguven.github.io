@@ -2408,3 +2408,58 @@ main > .section .gallery img {
     height: clamp(140px, 22svh, 210px) !important;
   }
 }
+
+
+/* Dedicated Art gallery layout: override all legacy gallery rules. */
+#art-gallery {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  grid-auto-flow: row !important;
+  gap: 18px !important;
+  width: 100% !important;
+  margin: 44px auto 0 !important;
+  align-items: stretch !important;
+}
+#art-gallery > figure,
+#art-gallery > figure:nth-child(n) {
+  display: block !important;
+  width: 100% !important;
+  height: 250px !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border-radius: 15px !important;
+}
+#art-gallery > figure > img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+}
+@media (max-width: 1000px) {
+  #art-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+  }
+  #art-gallery > figure,
+  #art-gallery > figure:nth-child(n) {
+    height: clamp(170px, 25svh, 260px) !important;
+  }
+}
+@media (max-width: 600px) {
+  #art-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+  #art-gallery > figure,
+  #art-gallery > figure:nth-child(n) {
+    height: clamp(140px, 22svh, 210px) !important;
+  }
+}
