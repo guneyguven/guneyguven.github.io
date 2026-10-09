@@ -4038,3 +4038,17 @@ body.about-page main > .section:first-child > .split > div:last-child img {
   background: transparent !important;
   box-shadow: none !important;
 }
+
+
+/* About portrait: use the repository's real transparent PNG. */
+body.about-page main > .section:first-child > .split > div:last-child {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body.about-page main > .section:first-child > .split > div:last-child img {
+  mix-blend-mode: normal !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  object-fit: contain !important;
+  border-radius: 0 !important;
+}
