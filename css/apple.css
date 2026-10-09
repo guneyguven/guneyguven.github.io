@@ -3735,3 +3735,73 @@ body.home-page main > .section .home-image-placeholder {
   opacity: 0 !important;
   pointer-events: none !important;
 }
+
+
+/* Projects page: one consistent editorial alignment for every project row. */
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+  width: min(100%, 1280px) !important;
+  max-width: 1280px !important;
+  margin: 0 auto 72px !important;
+  padding: 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  column-gap: clamp(28px, 4vw, 64px) !important;
+  align-items: start !important;
+  direction: ltr !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > img,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > img {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 4 / 3 !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  align-self: start !important;
+  margin: 0 !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > div,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > div {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  align-self: start !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  direction: ltr !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project h2,
+body:has(main > .section > .project.project--image-right) main > .section > .project h2 {
+  margin-top: 0 !important;
+}
+@media (max-width: 700px) {
+  body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
+  body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+    width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    row-gap: 20px !important;
+    margin-bottom: 44px !important;
+  }
+  body:has(main > .section > .project.project--image-left) main > .section > .project > img,
+  body:has(main > .section > .project.project--image-right) main > .section > .project > img {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    aspect-ratio: 4 / 3 !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: cover !important;
+  }
+  body:has(main > .section > .project.project--image-left) main > .section > .project > div,
+  body:has(main > .section > .project.project--image-right) main > .section > .project > div {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+}
