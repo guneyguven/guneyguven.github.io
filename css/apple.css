@@ -3713,3 +3713,25 @@ body.home-page main > .section .home-image-placeholder {
   visibility: hidden !important;
   opacity: 0 !important;
 }
+
+
+/* Global placeholder suppression: keep placeholders hidden on every page and in both themes. */
+:where(
+  [class*="placeholder" i],
+  [id*="placeholder" i],
+  [data-placeholder],
+  [aria-placeholder],
+  .placeholder,
+  .is-placeholder,
+  .skeleton,
+  [class*="skeleton" i],
+  [id*="skeleton" i],
+  [data-loading],
+  [class*="loading-placeholder" i],
+  [class*="placeholder-loading" i]
+) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
