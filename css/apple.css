@@ -2049,3 +2049,17 @@ main > .section::before {
   }
   .project h2 { font-size: 12.2vw; }
 }
+
+
+/* Remove decorative horizontal separators site-wide; section color bands remain. */
+.project,
+main > .section + .section,
+.section + .section {
+  border-top: 0 !important;
+}
+main > .section::before {
+  display: none !important;
+}
+footer {
+  border-top: 0 !important;
+}
