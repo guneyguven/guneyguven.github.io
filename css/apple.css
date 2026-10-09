@@ -2188,3 +2188,19 @@ main > .section .project img {
   border-radius: 24px !important;
   overflow: hidden;
 }
+
+
+/* Restore the Projects page's alternating tonal bands without rectangular image panels. */
+main > .section .project:nth-of-type(2) {
+  background: var(--section-b) !important;
+  box-shadow: 0 0 0 100vmax var(--section-b) !important;
+  clip-path: inset(0 -100vmax) !important;
+}
+main > .section .project:nth-of-type(3) {
+  background: var(--section-a) !important;
+  box-shadow: 0 0 0 100vmax var(--section-a) !important;
+  clip-path: inset(0 -100vmax) !important;
+}
+main > .section .project img {
+  border-radius: 24px !important;
+}
