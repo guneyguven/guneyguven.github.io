@@ -3330,3 +3330,41 @@ main > .section > .project.project--image-right h2 {
 footer {
   border-top: 1px solid var(--line) !important;
 }
+
+
+/* Definitive footer layout: copyright on the left, role label on the right. */
+footer {
+  border-top: 1px solid var(--line) !important;
+  padding: 30px 24px !important;
+}
+footer .footer-inner {
+  width: 100% !important;
+  max-width: var(--max) !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+}
+footer .footer-inner > div {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.45 !important;
+}
+footer .footer-inner > div:last-child {
+  margin-left: auto !important;
+  text-align: right !important;
+}
+@media (max-width: 600px) {
+  footer { padding: 22px 17px !important; }
+  footer .footer-inner {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+  footer .footer-inner > div {
+    font-size: 10px !important;
+    white-space: nowrap !important;
+  }
+}
