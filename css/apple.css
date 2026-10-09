@@ -2212,3 +2212,35 @@ main > .section .project > img {
   border-radius: 26px !important;
   clip-path: inset(0 round 26px) !important;
 }
+
+
+/* Projects: make the actual image fill its rounded media frame. */
+main > .section .project > img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 48svh;
+  aspect-ratio: 3 / 2;
+  object-fit: cover !important;
+  object-position: center;
+  border-radius: 26px !important;
+  clip-path: inset(0 round 26px) !important;
+}
+@media (min-width: 601px) and (max-width: 1200px) {
+  main > .section .project > img {
+    width: 100% !important;
+    height: clamp(240px, 42svh, 440px) !important;
+    max-height: 48svh !important;
+    aspect-ratio: 3 / 2;
+    object-fit: cover !important;
+    object-position: center;
+  }
+}
+@media (max-width: 600px) {
+  main > .section .project > img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    aspect-ratio: 3 / 2;
+    object-fit: cover !important;
+  }
+}
