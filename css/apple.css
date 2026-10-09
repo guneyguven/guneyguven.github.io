@@ -4120,3 +4120,17 @@ html[data-theme="dark"] body.about-page main > .section:first-child > .split > d
   .contact-socials { gap: 10px; }
   .contact-social { min-height: 58px; padding: 11px 13px; border-radius: 15px; }
 }
+
+
+/* Brand colors for Contact page icons. */
+.contact-social-email svg { color: #ea4335; stroke: #ea4335; }
+.contact-social-linkedin svg { color: #0a66c2; stroke: #0a66c2; }
+.contact-social-linkedin svg rect { fill: #0a66c2; stroke: #0a66c2; }
+.contact-social-linkedin svg path { stroke: #fff; }
+.contact-social-instagram svg { stroke: url(#instagram-gradient); }
+.contact-social-instagram svg rect,
+.contact-social-instagram svg circle,
+.contact-social-instagram svg path { stroke: url(#instagram-gradient); }
+.contact-social-email:hover { border-color: #ea4335; }
+.contact-social-linkedin:hover { border-color: #0a66c2; }
+.contact-social-instagram:hover { border-color: #e1306c; }
