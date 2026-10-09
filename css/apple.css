@@ -3277,3 +3277,50 @@ main > .section > .project.project--image-right h2 {
     grid-row: 2 !important;
   }
 }
+
+
+/* Art gallery repair: preserve each artwork's native aspect ratio; never crop or stretch thumbnails. */
+#art-gallery {
+  display: block !important;
+  column-count: 3 !important;
+  column-gap: 16px !important;
+  column-fill: balance !important;
+}
+#art-gallery > figure,
+#art-gallery > figure:nth-child(n) {
+  display: inline-block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 0 16px !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+#art-gallery > figure > img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: initial !important;
+  object-position: center !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+}
+@media (max-width: 1200px) {
+  #art-gallery { column-count: 2 !important; column-gap: 14px !important; }
+  #art-gallery > figure { margin-bottom: 14px !important; }
+}
+@media (max-width: 600px) {
+  #art-gallery { column-count: 2 !important; column-gap: 10px !important; }
+  #art-gallery > figure { margin-bottom: 10px !important; }
+  #art-gallery > figure > img {
+    border-radius: 15px !important;
+    clip-path: inset(0 round 15px) !important;
+  }
+}
