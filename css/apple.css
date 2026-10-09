@@ -3688,3 +3688,9 @@ body.about-page main > .section:first-child > .split > div:last-child img {
     max-height: 58svh !important;
   }
 }
+
+
+/* Hide image placeholders in both light and dark themes. */
+body.home-page main > .section .home-image-placeholder {
+  display: none !important;
+}
