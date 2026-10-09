@@ -2899,3 +2899,20 @@ html, body, .nav, .theme, footer {
     transition: none !important;
   }
 }
+
+
+/* Home hero: remove the media holder entirely; only the rounded image remains visible. */
+body:has(main > .hero) main > .hero .hero-media {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  outline: 0 !important;
+}
+body:has(main > .hero) main > .hero .hero-media::before,
+body:has(main > .hero) main > .hero .hero-media::after {
+  content: none !important;
+  display: none !important;
+}
+body:has(main > .hero) main > .hero .hero-media img {
+  background: transparent !important;
+}
