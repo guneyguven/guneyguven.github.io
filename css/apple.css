@@ -2521,3 +2521,23 @@ main > .section .gallery img {
     grid-auto-rows: clamp(170px, 25svh, 270px) !important;
   }
 }
+
+
+/* Art gallery: invisible cells; round the actual image only. */
+#art-gallery > figure,
+#art-gallery > figure:nth-child(n) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+#art-gallery > figure > img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+}
