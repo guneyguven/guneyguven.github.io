@@ -2963,3 +2963,9 @@ body:has(main > .hero) main > .section .media-wide img,
 .nav-links {
   gap: 25px !important;
 }
+
+
+/* Keep the navigation bar from getting thicker after scrolling. */
+body.nav-scrolled .nav {
+  height: var(--nav) !important;
+}
