@@ -3031,3 +3031,34 @@ footer {
     transition: none !important;
   }
 }
+
+
+/* Projects: align each text block to the top edge of its image and keep a consistent grid. */
+main > .section .project {
+  align-items: start !important;
+}
+main > .section .project > img {
+  align-self: start !important;
+  margin-top: 0 !important;
+  transform: none !important;
+}
+main > .section .project > div {
+  align-self: start !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+main > .section .project h2 {
+  margin-top: 0 !important;
+}
+@media (min-width: 1201px) {
+  main > .section .project {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    column-gap: clamp(32px, 5vw, 72px) !important;
+  }
+  main > .section .project > img {
+    width: 100% !important;
+  }
+  main > .section .project > div {
+    max-width: none !important;
+  }
+}
