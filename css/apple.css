@@ -3920,3 +3920,39 @@ body:has(main > .section > .project.project--image-right) main > .section > .pro
     grid-row: 2 !important;
   }
 }
+
+
+/* Projects: each project is its own full-width section with alternating theme-aware backgrounds. */
+body:has(main > .section > .project.project--image-left) main > .section,
+body:has(main > .section > .project.project--image-right) main > .section {
+  padding-bottom: 0 !important;
+  background: var(--section-a) !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+  position: relative !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 64px max(24px, calc((100% - 1232px) / 2)) !important;
+  box-sizing: border-box !important;
+  background: var(--section-b) !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left:nth-of-type(even),
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right:nth-of-type(even) {
+  background: var(--section-a) !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > img,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > img {
+  width: 100% !important;
+  max-width: none !important;
+  aspect-ratio: 4 / 3 !important;
+  height: auto !important;
+  object-fit: cover !important;
+}
+@media (max-width: 700px) {
+  body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
+  body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+    padding: 36px 20px 44px !important;
+  }
+}
