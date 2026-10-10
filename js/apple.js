@@ -170,4 +170,34 @@ document.querySelectorAll('[data-current-year]').forEach(el=>{
   el.textContent=new Date().getFullYear();
 });
 
+
+/* Enforce the site-wide placeholder policy after scripts inject or update UI. */
+const hidePlaceholders = scope => {
+  const selector = '[class*="placeholder" i], [id*="placeholder" i], [data-placeholder], [class*="skeleton" i], [id*="skeleton" i], [class~="loader" i], [class*="loading-placeholder" i]';
+  if (scope && scope.nodeType === 1 && scope.matches(selector)) {
+    scope.style.setProperty('display', 'none', 'important');
+    scope.style.setProperty('visibility', 'hidden', 'important');
+    scope.style.setProperty('opacity', '0', 'important');
+  }
+  if (scope && scope.querySelectorAll) {
+    scope.querySelectorAll(selector).forEach(el => {
+      el.style.setProperty('display', 'none', 'important');
+      el.style.setProperty('visibility', 'hidden', 'important');
+      el.style.setProperty('opacity', '0', 'important');
+    });
+  }
+};
+hidePlaceholders(document);
+new MutationObserver(mutations => {
+  mutations.forEach(m => {
+    if (m.type === 'childList') m.addedNodes.forEach(hidePlaceholders);
+    else if (m.type === 'attributes') hidePlaceholders(m.target);
+  });
+}).observe(document.documentElement, {
+  subtree: true,
+  childList: true,
+  attributes: true,
+  attributeFilter: ['class', 'id', 'data-placeholder']
+});
+
 })();

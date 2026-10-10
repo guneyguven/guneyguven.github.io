@@ -1024,7 +1024,7 @@ html[data-theme="dark"] body.nav-scrolled .nav {
   padding-right: clamp(24px, 4vw, 64px);
   overflow: hidden;
 }
-/*.hero::before {
+.hero::before {
   content: "";
   position: absolute;
   width: 46vw;
@@ -1034,9 +1034,9 @@ html[data-theme="dark"] body.nav-scrolled .nav {
   right: -12vw;
   top: 14%;
   border-radius: 50%;
-  /*background: radial-gradient(circle, var(--hero-glow) 0%, transparent 68%);
+  background: radial-gradient(circle, var(--hero-glow) 0%, transparent 68%);
   pointer-events: none;
-}*/
+}
 .hero-copy {
   width: 55%;
   z-index: 3;
@@ -1051,6 +1051,11 @@ html[data-theme="dark"] .hero-media {
   box-shadow: 0 35px 110px rgba(0, 0, 0, 0.48);
 }
 .hero-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
   filter: saturate(0.96) contrast(1.01);
 }
 .hero .eyebrow {
@@ -1108,7 +1113,7 @@ main > .section::after {
 .project {
   padding: clamp(90px, 10vw, 150px) 0;
   min-height: 760px;
-  border-top: 1px solid var(--ink-soft);
+  border-top: 0;
 }
 .project:first-of-type {
   margin-top: 35px;
@@ -1373,12 +1378,12 @@ html[data-theme="dark"] .art-lightbox {
     margin: 54px 0 0;
     min-height: 62svh;
   }
-  /*.hero::before {
+  .hero::before {
     width: 90vw;
     height: 90vw;
     right: -35vw;
     top: 24%;
-  }*/
+  }
   .project {
     min-height: auto;
     padding: 85px 0;
@@ -1719,6 +1724,2608 @@ main > .section::before {
   }
 }
 
-.hero::before {
-  display: none;
+
+/* =========================================================
+   FINAL MOBILE / TABLET REDESIGN
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Navigation */
+  .nav { height: 56px; }
+  .nav-inner { padding: 0 18px; }
+  .brand { font-size: 14px; }
+  .nav-tools { gap: 7px; }
+  .theme { width: 30px; height: 30px; font-size: 14px; }
+
+  .mobile-nav {
+    top: 56px;
+    padding: 22px 20px 28px;
+    gap: 18px;
+    font-size: 18px;
+  }
+
+  /* Hero: mobile is a composition, not a shrunken desktop grid. */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    min-height: auto;
+    max-width: none;
+    padding: calc(var(--nav) + 48px) 20px 58px;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .hero::before { display: none; }
+
+  .hero-copy {
+    width: 100%;
+    max-width: 100%;
+    z-index: 3;
+  }
+
+  .hero h1 {
+    font-size: clamp(58px, 17.5vw, 86px);
+    line-height: .87;
+    letter-spacing: -.075em;
+  }
+
+  .hero-lead {
+    max-width: 100%;
+    margin-top: 28px;
+    font-size: clamp(24px, 6.7vw, 30px);
+    line-height: 1.08;
+    letter-spacing: -.035em;
+  }
+
+  .hero-sub {
+    max-width: 100%;
+    margin: 18px 0 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .hero-media {
+    width: calc(100% + 28px);
+    min-height: 0;
+    height: auto;
+    margin: 28px -14px 0;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none !important;
+  }
+
+  .hero-media img {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
+    transform: none !important;
+    filter: none;
+  }
+
+  .hero-media:hover,
+  .hero-media:hover img {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Sections */
+  main > .section,
+  main > .section[style] {
+    width: 100%;
+    max-width: none;
+    padding: 76px 20px !important;
+    overflow: hidden;
+  }
+
+  .section .display,
+  .display {
+    max-width: 100%;
+    font-size: clamp(46px, 13vw, 68px);
+    line-height: .91;
+    letter-spacing: -.065em;
+  }
+
+  .intro {
+    max-width: 100%;
+    font-size: clamp(24px, 6.5vw, 30px);
+    line-height: 1.08;
+  }
+
+  /* Split layouts */
+  .split {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .split > * { width: 100%; }
+
+  .copy p {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .media-wide {
+    width: 100%;
+    margin-top: 38px;
+    border-radius: 22px;
+    box-shadow: 0 18px 55px rgba(0,0,0,.08);
+  }
+
+  .media-wide img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    transform: none !important;
+  }
+
+  /* Projects: image -> metadata -> title -> copy */
+  .project {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    gap: 28px;
+    padding: 64px 0;
+    border-top: 0;
+  }
+
+  .project:first-of-type { margin-top: 0; }
+  .project:nth-child(even) { direction: ltr; }
+  .project > * { width: 100%; }
+  .project > div::before { display: none; }
+
+  .project img {
+    order: 0;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 22px;
+    transform: none !important;
+  }
+
+  .project > div {
+    order: 1;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .project .meta {
+    margin-bottom: 4px;
+    font-size: 11px;
+  }
+
+  .project h2 {
+    font-size: clamp(42px, 12vw, 64px);
+    line-height: .91;
+    letter-spacing: -.065em;
+    margin: 6px 0 18px;
+  }
+
+  .project p {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .project .link {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+
+  .project:nth-of-type(2) {
+    box-shadow: 0 0 0 100vmax var(--section-b);
+  }
+
+  .project:nth-of-type(3) {
+    box-shadow: 0 0 0 100vmax var(--section-a);
+  }
+
+  /* Resume */
+  .resume-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+    margin-top: 56px !important;
+  }
+
+  .timeline-row {
+    grid-template-columns: 1fr;
+    gap: 7px;
+    padding: 21px 0;
+  }
+
+  .timeline-row strong { font-size: 15px; }
+  .timeline-row span {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .skills {
+    grid-template-columns: 1fr;
+    margin-top: 46px;
+    border-radius: 22px;
+  }
+
+  .skills .skill:first-child { border-radius: 22px 22px 0 0; }
+  .skills .skill:nth-child(2),
+  .skills .skill:nth-child(3) { border-radius: 0; }
+  .skills .skill:last-child { border-radius: 0 0 22px 22px; }
+
+  .skill {
+    min-height: 0;
+    padding: 28px 24px;
+  }
+
+  .skill h3 { font-size: 20px; }
+  .skill p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* Art */
+  .gallery {
+    display: block;
+    margin-top: 46px;
+  }
+
+  .gallery figure {
+    width: 100%;
+    margin: 0 0 14px;
+    border-radius: 18px;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+  }
+
+  .gallery figure:hover,
+  .gallery figure:hover img {
+    transform: none;
+    filter: none;
+  }
+
+  /* Contact */
+  .contact {
+    min-height: calc(100svh - var(--nav));
+    padding-top: 68px !important;
+    padding-bottom: 68px !important;
+  }
+
+  .contact h1 {
+    font-size: clamp(58px, 17vw, 92px);
+    line-height: .9;
+  }
+
+  .contact p {
+    max-width: 100%;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .contact-email {
+    display: inline-block;
+    max-width: 100%;
+    margin-top: 8px;
+    font-size: clamp(21px, 5.8vw, 32px);
+    overflow-wrap: anywhere;
+  }
+
+  /* Footer */
+  footer { padding: 24px 20px; }
+
+  footer .footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+  }
+
+  footer .footer-inner div + div { margin-top: 0; }
+}
+
+@media (max-width: 390px) {
+  .hero { padding-left: 17px; padding-right: 17px; }
+  .hero h1 { font-size: 17.2vw; }
+  main > .section,
+  main > .section[style] {
+    padding-left: 17px !important;
+    padding-right: 17px !important;
+  }
+  .project h2 { font-size: 12.2vw; }
+}
+
+
+/* Remove decorative horizontal separators site-wide; section color bands remain. */
+.project,
+main > .section + .section,
+.section + .section {
+  border-top: 0 !important;
+}
+main > .section::before {
+  display: none !important;
+}
+footer {
+  border-top: 0 !important;
+}
+
+
+/* Tighten the Home hero-to-profile transition. */
+@media (max-width: 1200px) {
+  main > .hero {
+    padding-bottom: 12px;
+  }
+  main > .hero + .section {
+    padding-top: 38px !important;
+  }
+}
+
+
+/* Home: remove the black viewport-height tail below the hero artwork. */
+@media (max-width: 1200px) {
+  main > .hero {
+    min-height: 0 !important;
+    height: auto !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  main > .hero + .section {
+    margin-top: 0 !important;
+    padding-top: 38px !important;
+  }
+}
+
+
+/* Home: eliminate the viewport-height black gap completely on compact layouts. */
+@media (max-width: 1200px) {
+  main > .hero {
+    min-height: 0 !important;
+    height: auto !important;
+    padding-top: calc(var(--nav) + 28px) !important;
+    padding-bottom: 0 !important;
+  }
+  main > .hero + .section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+
+
+/* Projects on iPad/tablet: keep artwork proportional and out of the full-screen scale. */
+.project .meta::before {
+  display: none !important;
+}
+@media (max-width: 1200px) {
+  .project img {
+    width: auto !important;
+    max-width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: 55svh;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    align-self: flex-start;
+  }
+}
+
+
+/* Tablet Projects: alternate image/text columns, retain stacked layout on phones. */
+@media (min-width: 601px) and (max-width: 1200px) {
+  main > .section .project {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    column-gap: clamp(22px, 4vw, 48px);
+    row-gap: 24px;
+    padding: 54px 0;
+  }
+  main > .section .project > img {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 48svh;
+    min-height: 0 !important;
+    object-fit: contain !important;
+    align-self: center;
+  }
+  main > .section .project > div {
+    grid-column: 2;
+    grid-row: 1;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    align-self: center;
+  }
+  main > .section .project:nth-of-type(even) > img {
+    grid-column: 2;
+  }
+  main > .section .project:nth-of-type(even) > div {
+    grid-column: 1;
+  }
+}
+
+
+/* Projects page: consistent section tone and rounded artwork. */
+main > .section .project:nth-of-type(2),
+main > .section .project:nth-of-type(3) {
+  background: transparent !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+}
+@media (max-width: 1200px) {
+  main > .section .project > img {
+    border-radius: 24px !important;
+    overflow: hidden;
+  }
+}
+
+
+/* Projects: use one continuous section background, with no alternating project bands. */
+main > .section .project,
+main > .section .project:nth-of-type(2),
+main > .section .project:nth-of-type(3) {
+  background: transparent !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+}
+main > .section .project img {
+  border-radius: 24px !important;
+  overflow: hidden;
+}
+
+
+/* Restore the Projects page's alternating tonal bands without rectangular image panels. */
+main > .section .project:nth-of-type(2) {
+  background: var(--section-b) !important;
+  box-shadow: 0 0 0 100vmax var(--section-b) !important;
+  clip-path: inset(0 -100vmax) !important;
+}
+main > .section .project:nth-of-type(3) {
+  background: var(--section-a) !important;
+  box-shadow: 0 0 0 100vmax var(--section-a) !important;
+  clip-path: inset(0 -100vmax) !important;
+}
+main > .section .project img {
+  border-radius: 24px !important;
+}
+
+
+/* Force visibly rounded clipping on every Projects artwork image. */
+main > .section .project > img {
+  display: block;
+  border-radius: 26px !important;
+  clip-path: inset(0 round 26px) !important;
+}
+
+
+/* Projects: make the actual image fill its rounded media frame. */
+main > .section .project > img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 48svh;
+  aspect-ratio: 3 / 2;
+  object-fit: cover !important;
+  object-position: center;
+  border-radius: 26px !important;
+  clip-path: inset(0 round 26px) !important;
+}
+@media (min-width: 601px) and (max-width: 1200px) {
+  main > .section .project > img {
+    width: 100% !important;
+    height: clamp(240px, 42svh, 440px) !important;
+    max-height: 48svh !important;
+    aspect-ratio: 3 / 2;
+    object-fit: cover !important;
+    object-position: center;
+  }
+}
+@media (max-width: 600px) {
+  main > .section .project > img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    aspect-ratio: 3 / 2;
+    object-fit: cover !important;
+  }
+}
+
+
+/* FINAL FIX: Projects media and Art gallery sizing on iPad and phones. */
+@media (min-width: 601px) and (max-width: 1200px) {
+  main > .section .project {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    align-items: center !important;
+  }
+  main > .section .project > img {
+    display: block !important;
+    width: 100% !important;
+    height: clamp(220px, 38svh, 390px) !important;
+    min-height: 0 !important;
+    max-height: 42svh !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    border-radius: 24px !important;
+    clip-path: inset(0 round 24px) !important;
+    align-self: center !important;
+  }
+}
+@media (max-width: 1200px) {
+  main > .section .gallery {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+    align-items: start !important;
+    margin-top: 36px !important;
+  }
+  main > .section .gallery figure {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+  }
+  main > .section .gallery img {
+    display: block !important;
+    width: 100% !important;
+    height: clamp(150px, 28svh, 320px) !important;
+    max-height: 32svh !important;
+    aspect-ratio: 4 / 3 !important;
+    object-fit: cover !important;
+    border-radius: 18px !important;
+    clip-path: inset(0 round 18px) !important;
+  }
+}
+@media (max-width: 600px) {
+  main > .section .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+  main > .section .gallery img {
+    height: clamp(130px, 24svh, 230px) !important;
+    max-height: 26svh !important;
+  }
+}
+
+
+/* Touch devices (including iPadOS desktop-sized Safari): compact, uncropped art gallery. */
+@media (hover: none) and (pointer: coarse) {
+  main > .section .gallery {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    align-items: stretch !important;
+    margin-top: 32px !important;
+  }
+  main > .section .gallery figure {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: clamp(170px, 30svh, 300px) !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    border-radius: 18px !important;
+  }
+  main > .section .gallery img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    border-radius: 18px !important;
+    clip-path: inset(0 round 18px) !important;
+  }
+  main > .section .project > img {
+    width: 100% !important;
+    height: clamp(200px, 36svh, 360px) !important;
+    max-height: 40svh !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    border-radius: 24px !important;
+    clip-path: inset(0 round 24px) !important;
+  }
+}
+
+
+/* Art page final layout: centered, restrained video and a proper image gallery. */
+main > .section > section.section {
+  width: min(100%, 960px);
+  margin: 54px auto 64px;
+  padding: 0 !important;
+  background: transparent !important;
+}
+main > .section > section.section > div[style*="aspect-ratio:16/9"] {
+  width: min(100%, 760px) !important;
+  margin: 28px auto 0 !important;
+  border-radius: 15px !important;
+  overflow: hidden !important;
+}
+main > .section > section.section iframe {
+  border-radius: 15px !important;
+}
+main > .section .gallery {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  align-items: stretch !important;
+  margin: 44px auto 0 !important;
+}
+main > .section .gallery figure {
+  width: 100% !important;
+  height: 250px !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border-radius: 15px !important;
+}
+main > .section .gallery img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+}
+@media (max-width: 900px) {
+  main > .section .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+  }
+  main > .section .gallery figure {
+    height: clamp(170px, 25svh, 260px) !important;
+  }
+  main > .section > section.section > div[style*="aspect-ratio:16/9"] {
+    width: min(100%, 640px) !important;
+  }
+}
+@media (max-width: 600px) {
+  main > .section .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+  main > .section .gallery figure {
+    height: clamp(140px, 22svh, 210px) !important;
+  }
+}
+
+
+/* Dedicated Art gallery layout: override all legacy gallery rules. */
+#art-gallery {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  grid-auto-flow: row !important;
+  gap: 18px !important;
+  width: 100% !important;
+  margin: 44px auto 0 !important;
+  align-items: stretch !important;
+}
+#art-gallery > figure,
+#art-gallery > figure:nth-child(n) {
+  display: block !important;
+  width: 100% !important;
+  height: 250px !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border-radius: 15px !important;
+}
+#art-gallery > figure > img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+}
+@media (max-width: 1000px) {
+  #art-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+  }
+  #art-gallery > figure,
+  #art-gallery > figure:nth-child(n) {
+    height: clamp(170px, 25svh, 260px) !important;
+  }
+}
+@media (max-width: 600px) {
+  #art-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+  #art-gallery > figure,
+  #art-gallery > figure:nth-child(n) {
+    height: clamp(140px, 22svh, 210px) !important;
+  }
+}
+
+
+/* Definitive Art portfolio grid: override legacy masonry spans and avoid cropping artwork. */
+#art-gallery {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  grid-auto-rows: 240px !important;
+  grid-auto-flow: row dense !important;
+  gap: 16px !important;
+}
+#art-gallery > figure,
+#art-gallery > figure:nth-child(n) {
+  grid-column: auto / span 1 !important;
+  grid-row: auto / span 1 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  border-radius: 15px !important;
+  background: var(--section-b) !important;
+}
+#art-gallery > figure > img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+}
+@media (max-width: 1200px) {
+  #art-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-rows: clamp(170px, 25svh, 270px) !important;
+    gap: 12px !important;
+  }
+}
+@media (max-width: 600px) {
+  #art-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-rows: clamp(140px, 22svh, 210px) !important;
+    gap: 10px !important;
+  }
+}
+@media (hover: none) and (pointer: coarse) {
+  #art-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-rows: clamp(170px, 25svh, 270px) !important;
+  }
+}
+
+
+/* Art gallery: invisible cells; round the actual image only. */
+#art-gallery > figure,
+#art-gallery > figure:nth-child(n) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+#art-gallery > figure > img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+}
+
+
+/* Art page: true masonry columns, natural image proportions, rounded thumbnails. */
+#art-gallery {
+  display: block !important;
+  column-count: 3 !important;
+  column-gap: 16px !important;
+  column-fill: balance !important;
+  width: 100% !important;
+  margin: 44px auto 0 !important;
+}
+#art-gallery > figure,
+#art-gallery > figure:nth-child(n) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  break-inside: avoid !important;
+  -webkit-column-break-inside: avoid !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 0 16px !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+#art-gallery > figure > img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: initial !important;
+  object-position: center !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+}
+@media (max-width: 1200px) {
+  #art-gallery {
+    column-count: 2 !important;
+    column-gap: 14px !important;
+  }
+  #art-gallery > figure,
+  #art-gallery > figure:nth-child(n) {
+    margin-bottom: 14px !important;
+  }
+}
+@media (max-width: 600px) {
+  #art-gallery {
+    column-count: 2 !important;
+    column-gap: 10px !important;
+  }
+  #art-gallery > figure,
+  #art-gallery > figure:nth-child(n) {
+    margin-bottom: 10px !important;
+  }
+}
+
+
+/* Site-wide responsive image scale: consistent, restrained media sizing on touch screens. */
+@media (max-width: 1200px) {
+  .hero-media {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 28px 0 0 !important;
+    overflow: hidden !important;
+    border-radius: 15px !important;
+  }
+  .hero-media img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: clamp(260px, 44svh, 460px) !important;
+    min-height: 0 !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    border-radius: 15px !important;
+  }
+  .media-wide {
+    width: 100% !important;
+    margin: 28px auto 0 !important;
+    border-radius: 15px !important;
+    overflow: hidden !important;
+  }
+  .media-wide img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: clamp(220px, 40svh, 420px) !important;
+    min-height: 0 !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    border-radius: 15px !important;
+  }
+  .about-image,
+  .split > div:last-child img,
+  main > .section .reveal > img[alt*="Portrait"] {
+    display: block !important;
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: clamp(260px, 48svh, 480px) !important;
+    min-height: 0 !important;
+    margin-inline: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    border-radius: 15px !important;
+  }
+  .split > div:last-child,
+  main > .section .reveal:has(> img[alt*="Portrait"]) {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  main > .section .project > img {
+    max-height: clamp(220px, 40svh, 400px) !important;
+    border-radius: 15px !important;
+    clip-path: inset(0 round 15px) !important;
+  }
+  #art-gallery > figure > img {
+    max-height: 42svh !important;
+    border-radius: 15px !important;
+    clip-path: inset(0 round 15px) !important;
+  }
+}
+@media (max-width: 600px) {
+  .hero-media img {
+    max-height: 38svh !important;
+  }
+  .media-wide img {
+    max-height: 34svh !important;
+  }
+  .about-image,
+  .split > div:last-child img,
+  main > .section .reveal > img[alt*="Portrait"] {
+    max-height: 42svh !important;
+  }
+  main > .section .project > img {
+    max-height: 34svh !important;
+  }
+  #art-gallery > figure > img {
+    max-height: 34svh !important;
+  }
+}
+
+
+/* Home hero only: restore a larger artwork scale without changing other pages. */
+@media (max-width: 1200px) {
+  body:has(main > .hero) main > .hero .hero-media img {
+    max-height: clamp(520px, 76svh, 920px) !important;
+  }
+}
+@media (max-width: 600px) {
+  body:has(main > .hero) main > .hero .hero-media img {
+    max-height: 76svh !important;
+  }
+}
+
+
+/* Home hero only: restore a larger artwork scale without changing other pages. */
+@media (max-width: 1200px) {
+  body:has(main > .hero) main > .hero .hero-media img {
+    max-height: clamp(520px, 76svh, 920px) !important;
+  }
+}
+@media (max-width: 600px) {
+  body:has(main > .hero) main > .hero .hero-media img {
+    max-height: 76svh !important;
+  }
+}
+
+
+/* Home hero refinement: make the artwork lead the story on compact screens.
+   Desktop keeps the existing side-by-side composition; section tones remain untouched. */
+@media (max-width: 1200px) {
+  body:has(main > .hero) main > .hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding-top: calc(var(--nav) + 24px) !important;
+    padding-bottom: 36px !important;
+  }
+  body:has(main > .hero) main > .hero .hero-media {
+    order: 0 !important;
+    width: 100% !important;
+    margin: 0 0 30px !important;
+    min-height: 0 !important;
+    height: auto !important;
+    border-radius: 22px !important;
+  }
+  body:has(main > .hero) main > .hero .hero-media img {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: clamp(420px, 70svh, 760px) !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    border-radius: 22px !important;
+    clip-path: inset(0 round 22px) !important;
+  }
+  body:has(main > .hero) main > .hero .hero-copy {
+    order: 1 !important;
+    width: 100% !important;
+  }
+}
+@media (max-width: 600px) {
+  body:has(main > .hero) main > .hero {
+    padding-top: calc(var(--nav) + 16px) !important;
+    padding-left: 17px !important;
+    padding-right: 17px !important;
+    padding-bottom: 30px !important;
+  }
+  body:has(main > .hero) main > .hero .hero-media {
+    margin-bottom: 24px !important;
+    border-radius: 16px !important;
+  }
+  body:has(main > .hero) main > .hero .hero-media img {
+    max-height: 62svh !important;
+    border-radius: 16px !important;
+    clip-path: inset(0 round 16px) !important;
+  }
+}
+
+
+/* Home hero: keep name, introduction and artwork in one responsive composition. */
+@media (min-width: 901px) {
+  body:has(main > .hero) main > .hero {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr) !important;
+    align-items: center !important;
+    gap: clamp(28px, 3.2vw, 52px) !important;
+    padding: calc(var(--nav) + 56px) clamp(28px, 4vw, 56px) 64px !important;
+    min-height: min(900px, 100svh) !important;
+    height: auto !important;
+  }
+  body:has(main > .hero) main > .hero .hero-copy {
+    order: 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  body:has(main > .hero) main > .hero .hero-media {
+    order: 1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    border-radius: 24px !important;
+  }
+  body:has(main > .hero) main > .hero .hero-media img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: min(72svh, 820px) !important;
+    object-fit: contain !important;
+    border-radius: 24px !important;
+    clip-path: inset(0 round 24px) !important;
+  }
+}
+@media (max-width: 900px) {
+  body:has(main > .hero) main > .hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: calc(var(--nav) + 28px) 24px 44px !important;
+  }
+  body:has(main > .hero) main > .hero .hero-copy {
+    order: 0 !important;
+    width: 100% !important;
+  }
+  body:has(main > .hero) main > .hero .hero-media {
+    order: 1 !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 30px 0 0 !important;
+    border-radius: 22px !important;
+  }
+  body:has(main > .hero) main > .hero .hero-media img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: clamp(360px, 68svh, 680px) !important;
+    object-fit: contain !important;
+    border-radius: 22px !important;
+    clip-path: inset(0 round 22px) !important;
+  }
+}
+@media (max-width: 600px) {
+  body:has(main > .hero) main > .hero {
+    padding: calc(var(--nav) + 20px) 17px 34px !important;
+  }
+  body:has(main > .hero) main > .hero .hero-media {
+    margin-top: 24px !important;
+    border-radius: 16px !important;
+  }
+  body:has(main > .hero) main > .hero .hero-media img {
+    max-height: 58svh !important;
+    border-radius: 16px !important;
+    clip-path: inset(0 round 16px) !important;
+  }
+}
+
+/* Apple-like section rhythm: restrained light contrast, clearer dark-mode bands,
+   and smooth transitions when the theme changes. */
+:root {
+  --section-a: #f8f8fa;
+  --section-b: #eceef2;
+}
+html[data-theme="dark"] {
+  --section-a: #090a0c;
+  --section-b: #17191d;
+}
+main > .section {
+  background-color: var(--section-a);
+  transition:
+    background-color 700ms cubic-bezier(0.2, 0.75, 0.2, 1),
+    color 500ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+main > .section:nth-of-type(2n) {
+  background-color: var(--section-b);
+}
+main > .section:nth-of-type(2n + 1) {
+  background-color: var(--section-a);
+}
+main > .section::after {
+  background: linear-gradient(to bottom, transparent, var(--section-a));
+  transition: background 700ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+main > .section:nth-of-type(2n)::after {
+  background: linear-gradient(to bottom, transparent, var(--section-b));
+}
+html, body, .nav, .theme, footer {
+  transition:
+    background-color 700ms cubic-bezier(0.2, 0.75, 0.2, 1),
+    color 500ms cubic-bezier(0.2, 0.75, 0.2, 1),
+    border-color 700ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  main > .section, main > .section::after, html, body, .nav, .theme, footer {
+    transition: none !important;
+  }
+}
+
+
+/* Home hero: remove the media holder entirely; only the rounded image remains visible. */
+body:has(main > .hero) main > .hero .hero-media {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  outline: 0 !important;
+}
+body:has(main > .hero) main > .hero .hero-media::before,
+body:has(main > .hero) main > .hero .hero-media::after {
+  content: none !important;
+  display: none !important;
+}
+body:has(main > .hero) main > .hero .hero-media img {
+  background: transparent !important;
+}
+
+
+/* Lower home artwork and image thumbnails: invisible holders, rounded actual media. */
+body:has(main > .hero) main > .section .media-wide,
+body:has(main > .hero) main > .section .media-wide::before,
+body:has(main > .hero) main > .section .media-wide::after,
+#art-gallery figure,
+#art-gallery figure::before,
+#art-gallery figure::after {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  outline: 0 !important;
+}
+body:has(main > .hero) main > .section .media-wide {
+  overflow: hidden !important;
+  border-radius: 24px !important;
+}
+body:has(main > .hero) main > .section .media-wide img,
+.project > img,
+#art-gallery figure img {
+  display: block !important;
+  border-radius: 24px !important;
+  clip-path: inset(0 round 24px) !important;
+}
+.project > img,
+#art-gallery figure img {
+  overflow: hidden !important;
+}
+@media (max-width: 600px) {
+  body:has(main > .hero) main > .section .media-wide,
+  body:has(main > .hero) main > .section .media-wide img,
+  .project > img,
+  #art-gallery figure img {
+    border-radius: 16px !important;
+    clip-path: inset(0 round 16px) !important;
+  }
+}
+
+
+/* Restore the original, more compact navigation width and spacing. */
+.nav-inner {
+  max-width: var(--max) !important;
+}
+.nav-links {
+  gap: 25px !important;
+}
+
+
+/* Keep the navigation bar from getting thicker after scrolling. */
+body.nav-scrolled .nav {
+  height: var(--nav) !important;
+}
+
+
+/* Site-wide section colour reset: restrained neutral bands, no gradients or rainbow-like transitions. */
+:root {
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --text: #1d1d1f;
+  --muted: #6e6e73;
+  --line: rgba(29, 29, 31, 0.12);
+  --section-a: #f5f5f7;
+  --section-b: #ededf0;
+}
+html[data-theme="dark"] {
+  --bg: #101012;
+  --surface: #18181b;
+  --text: #f5f5f7;
+  --muted: #a1a1a6;
+  --line: rgba(255, 255, 255, 0.12);
+  --section-a: #101012;
+  --section-b: #19191d;
+}
+body {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+}
+main > .section {
+  background: var(--section-a) !important;
+  box-shadow: none !important;
+  border-top: 0 !important;
+  transition: background-color 450ms ease, color 350ms ease !important;
+}
+main > .section:nth-of-type(2n) {
+  background: var(--section-b) !important;
+}
+main > .section:nth-of-type(2n + 1) {
+  background: var(--section-a) !important;
+}
+main > .section::before,
+main > .section::after {
+  content: none !important;
+  display: none !important;
+}
+main > .section + .section {
+  box-shadow: none !important;
+  border-top: 0 !important;
+}
+main > .section .section,
+main > .section .section:nth-of-type(n) {
+  background: transparent !important;
+}
+.hero {
+  background: var(--bg) !important;
+}
+footer {
+  background: var(--bg) !important;
+  border-top-color: var(--line) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  main > .section, body, footer {
+    transition: none !important;
+  }
+}
+
+
+/* Projects: align each text block to the top edge of its image and keep a consistent grid. */
+main > .section .project {
+  align-items: start !important;
+}
+main > .section .project > img {
+  align-self: start !important;
+  margin-top: 0 !important;
+  transform: none !important;
+}
+main > .section .project > div {
+  align-self: start !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+main > .section .project h2 {
+  margin-top: 0 !important;
+}
+@media (min-width: 1201px) {
+  main > .section .project {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    column-gap: clamp(32px, 5vw, 72px) !important;
+  }
+  main > .section .project > img {
+    width: 100% !important;
+  }
+  main > .section .project > div {
+    max-width: none !important;
+  }
+}
+
+
+/* Projects thumbnails: match the Art gallery's rounded-image radius exactly. */
+main > .section .project > img {
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+  overflow: hidden !important;
+}
+@media (max-width: 600px) {
+  main > .section .project > img {
+    border-radius: 16px !important;
+    clip-path: inset(0 round 16px) !important;
+  }
+}
+
+
+/* Projects: use one centered content grid for every row so left edges stay aligned. */
+main > .section .project {
+  width: min(100%, 1080px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+@media (max-width: 1200px) {
+  main > .section .project {
+    width: 100% !important;
+  }
+}
+
+
+/* Fix Projects on tablet-sized Safari viewports: do not stretch alternating rows
+   edge-to-edge; keep every row inside the same centered content measure. */
+@media (min-width: 601px) and (max-width: 1200px) {
+  main > .section .project {
+    width: min(100%, 760px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+
+/* Projects page: wide, centered content with consistent alternating image/text columns. */
+main > .section:has(> .project) > .project {
+  width: 80% !important;
+  max-width: 1440px !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  column-gap: clamp(28px, 4vw, 72px) !important;
+  align-items: start !important;
+  direction: ltr !important;
+}
+main > .section:has(> .project) > .project > img {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  height: 560px !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  align-self: start !important;
+  object-fit: cover !important;
+  margin: 0 !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+  transform: none !important;
+}
+main > .section:has(> .project) > .project > div {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  align-self: start !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  direction: ltr !important;
+}
+main > .section:has(> .project) > .project h2 {
+  margin-top: 0 !important;
+}
+main > .section:has(> .project) > .project:nth-of-type(even) > img {
+  grid-column: 2 !important;
+}
+main > .section:has(> .project) > .project:nth-of-type(even) > div {
+  grid-column: 1 !important;
+}
+@media (max-width: 1200px) {
+  main > .section:has(> .project) > .project {
+    width: 90% !important;
+    column-gap: clamp(22px, 3vw, 42px) !important;
+  }
+  main > .section:has(> .project) > .project > img {
+    height: auto !important;
+    max-height: 52svh !important;
+    object-fit: contain !important;
+  }
+}
+@media (max-width: 700px) {
+  main > .section:has(> .project) > .project {
+    width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    row-gap: 22px !important;
+    padding: 42px 0 !important;
+  }
+  main > .section:has(> .project) > .project > img,
+  main > .section:has(> .project) > .project:nth-of-type(even) > img {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 55svh !important;
+    object-fit: contain !important;
+    border-radius: 16px !important;
+    clip-path: inset(0 round 16px) !important;
+  }
+  main > .section:has(> .project) > .project > div,
+  main > .section:has(> .project) > .project:nth-of-type(even) > div {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+}
+
+
+/* Definitive Projects layout: explicit row classes avoid nth-of-type ambiguity. */
+main > .section > .project.project--image-left,
+main > .section > .project.project--image-right {
+  width: 80% !important;
+  max-width: 1440px !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  column-gap: clamp(28px, 4vw, 72px) !important;
+  align-items: start !important;
+  direction: ltr !important;
+}
+main > .section > .project.project--image-left > img {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+main > .section > .project.project--image-left > div {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+main > .section > .project.project--image-right > img {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+main > .section > .project.project--image-right > div {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+main > .section > .project.project--image-left > img,
+main > .section > .project.project--image-right > img {
+  width: 100% !important;
+  height: 560px !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  align-self: start !important;
+  object-fit: cover !important;
+  margin: 0 !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+  transform: none !important;
+}
+main > .section > .project.project--image-left > div,
+main > .section > .project.project--image-right > div {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  align-self: start !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  direction: ltr !important;
+}
+main > .section > .project.project--image-left h2,
+main > .section > .project.project--image-right h2 {
+  margin-top: 0 !important;
+}
+@media (max-width: 1200px) {
+  main > .section > .project.project--image-left,
+  main > .section > .project.project--image-right {
+    width: 90% !important;
+    column-gap: clamp(22px, 3vw, 42px) !important;
+  }
+  main > .section > .project.project--image-left > img,
+  main > .section > .project.project--image-right > img {
+    height: auto !important;
+    max-height: 52svh !important;
+    object-fit: contain !important;
+  }
+}
+@media (max-width: 700px) {
+  main > .section > .project.project--image-left,
+  main > .section > .project.project--image-right {
+    width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    row-gap: 22px !important;
+    padding: 42px 0 !important;
+  }
+  main > .section > .project.project--image-left > img,
+  main > .section > .project.project--image-right > img {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 55svh !important;
+    object-fit: contain !important;
+    border-radius: 16px !important;
+    clip-path: inset(0 round 16px) !important;
+  }
+  main > .section > .project.project--image-left > div,
+  main > .section > .project.project--image-right > div {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+}
+
+
+/* Art gallery repair: preserve each artwork's native aspect ratio; never crop or stretch thumbnails. */
+#art-gallery {
+  display: block !important;
+  column-count: 3 !important;
+  column-gap: 16px !important;
+  column-fill: balance !important;
+}
+#art-gallery > figure,
+#art-gallery > figure:nth-child(n) {
+  display: inline-block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 0 16px !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+#art-gallery > figure > img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: initial !important;
+  object-position: center !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+}
+@media (max-width: 1200px) {
+  #art-gallery { column-count: 2 !important; column-gap: 14px !important; }
+  #art-gallery > figure { margin-bottom: 14px !important; }
+}
+@media (max-width: 600px) {
+  #art-gallery { column-count: 2 !important; column-gap: 10px !important; }
+  #art-gallery > figure { margin-bottom: 10px !important; }
+  #art-gallery > figure > img {
+    border-radius: 15px !important;
+    clip-path: inset(0 round 15px) !important;
+  }
+}
+
+
+/* Footer repair: keep the footer's own subtle top edge; separator cleanup applies to page sections, not the footer. */
+footer {
+  border-top: 1px solid var(--line) !important;
+}
+
+
+/* Definitive footer layout: copyright on the left, role label on the right. */
+footer {
+  border-top: 1px solid var(--line) !important;
+  padding: 30px 24px !important;
+}
+footer .footer-inner {
+  width: 100% !important;
+  max-width: var(--max) !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+}
+footer .footer-inner > div {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.45 !important;
+}
+footer .footer-inner > div:last-child {
+  margin-left: auto !important;
+  text-align: right !important;
+}
+@media (max-width: 600px) {
+  footer { padding: 22px 17px !important; }
+  footer .footer-inner {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+  footer .footer-inner > div {
+    font-size: 10px !important;
+    white-space: nowrap !important;
+  }
+}
+
+
+/* HOME PAGE — single authoritative layout override.
+   Keep these rules scoped to index.html to avoid changing other pages. */
+body.home-page main > .hero {
+  width: 100% !important;
+  max-width: 1400px !important;
+  min-height: min(900px, 100svh) !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  padding: calc(var(--nav) + 48px) clamp(24px, 4vw, 56px) 56px !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr) !important;
+  align-items: center !important;
+  gap: clamp(28px, 3.2vw, 52px) !important;
+}
+body.home-page main > .hero .hero-copy {
+  order: 0 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+body.home-page main > .hero .hero h1,
+body.home-page main > .hero h1 {
+  font-size: clamp(58px, 7.2vw, 112px) !important;
+  line-height: .92 !important;
+  letter-spacing: -.075em !important;
+  overflow-wrap: anywhere;
+}
+body.home-page main > .hero .hero-lead {
+  margin-top: clamp(22px, 3vw, 36px) !important;
+}
+body.home-page main > .hero .hero-sub {
+  max-width: 500px !important;
+  line-height: 1.55 !important;
+}
+body.home-page main > .hero .hero-media {
+  order: 1 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 22px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body.home-page main > .hero .hero-media img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: min(72svh, 760px) !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  border-radius: 22px !important;
+  clip-path: inset(0 round 22px) !important;
+}
+body.home-page main > .section {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: clamp(76px, 9vw, 132px) max(24px, calc((100% - 1280px) / 2)) !important;
+}
+body.home-page main > .section .display {
+  max-width: 1120px;
+  font-size: clamp(44px, 6.2vw, 88px) !important;
+  line-height: .98 !important;
+}
+body.home-page main > .section .media-wide {
+  width: 100% !important;
+  margin: clamp(28px, 4vw, 56px) auto 0 !important;
+  border-radius: 22px !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body.home-page main > .section .media-wide img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: min(58svh, 620px) !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  border-radius: 22px !important;
+  clip-path: inset(0 round 22px) !important;
+}
+body.home-page main > .section .split {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr) !important;
+  gap: clamp(32px, 7vw, 100px) !important;
+}
+body.home-page main > .section .copy p {
+  font-size: clamp(16px, 1.35vw, 19px) !important;
+  line-height: 1.7 !important;
+}
+@media (max-width: 800px) {
+  body.home-page main > .hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    min-height: 0 !important;
+    padding: calc(var(--nav) + 34px) 20px 44px !important;
+  }
+  body.home-page main > .hero .hero-copy {
+    order: 0 !important;
+    width: 100% !important;
+  }
+  body.home-page main > .hero h1 {
+    font-size: clamp(54px, 12.5vw, 90px) !important;
+    line-height: .94 !important;
+  }
+  body.home-page main > .hero .hero-media {
+    order: 1 !important;
+    width: 100% !important;
+    margin: 26px 0 0 !important;
+    border-radius: 16px !important;
+  }
+  body.home-page main > .hero .hero-media img {
+    max-height: 58svh !important;
+    border-radius: 16px !important;
+    clip-path: inset(0 round 16px) !important;
+  }
+  body.home-page main > .section {
+    padding: 76px 20px !important;
+  }
+  body.home-page main > .section .display {
+    font-size: clamp(40px, 8.6vw, 64px) !important;
+  }
+  body.home-page main > .section .media-wide,
+  body.home-page main > .section .media-wide img {
+    border-radius: 16px !important;
+    clip-path: inset(0 round 16px) !important;
+  }
+  body.home-page main > .section .split {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 24px !important;
+  }
+}
+@media (max-width: 420px) {
+  body.home-page main > .hero {
+    padding-left: 17px !important;
+    padding-right: 17px !important;
+  }
+  body.home-page main > .hero .eyebrow {
+    font-size: 11px !important;
+  }
+  body.home-page main > .hero .hero-lead {
+    font-size: 24px !important;
+  }
+  body.home-page main > .hero .hero-sub {
+    font-size: 15px !important;
+  }
+}
+
+
+/* Home-page three-image row: identical image dimensions, centered as a group,
+   and the same 15px corner radius used by the portfolio thumbnails. */
+body.home-page main > .section .home-image-grid {
+  width: 100% !important;
+  max-width: 1120px !important;
+  margin: 36px auto 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  align-items: stretch !important;
+  gap: 18px !important;
+}
+body.home-page main > .section .home-image-item {
+  min-width: 0 !important;
+  width: 100% !important;
+  aspect-ratio: 4 / 3 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: 15px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body.home-page main > .section .home-image-item > img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 auto !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+}
+body.home-page main > .section .home-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  background: var(--section-b);
+  border-radius: 15px;
+  font-size: 13px;
+}
+@media (max-width: 700px) {
+  body.home-page main > .section .home-image-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    margin-top: 28px !important;
+  }
+  body.home-page main > .section .home-image-item {
+    border-radius: 15px !important;
+  }
+  body.home-page main > .section .home-image-item:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 9 !important;
+  }
+}
+
+
+/* Keep the See projects link two text lines below the Selected work copy. */
+body.home-page .selected-work-section .copy > .link {
+  margin-top: calc(2 * 1.45em + 18px) !important;
+}
+
+
+/* Selected Work: put the project link on its own row below the description,
+   rather than aligning it beside the heading/copy at desktop widths. */
+body.home-page main > .selected-work-section .split {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 0 !important;
+}
+body.home-page main > .selected-work-section .split > div:first-child {
+  width: 100% !important;
+}
+body.home-page main > .selected-work-section .split > .copy {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  margin-top: clamp(28px, 4vw, 54px) !important;
+}
+body.home-page main > .selected-work-section .copy > p {
+  margin-bottom: 0 !important;
+}
+body.home-page main > .selected-work-section .copy > .link {
+  display: inline-flex !important;
+  margin-top: calc(2 * 1.7em + 18px) !important;
+}
+
+
+/* The Selected Work link is a separate full-width row, independent of .copy layout. */
+body.home-page main > .selected-work-section .selected-work-link-row {
+  display: block !important;
+  width: 100% !important;
+  align-self: stretch !important;
+  margin: calc(2 * 1.7em + 18px) 0 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+body.home-page main > .selected-work-section .selected-work-link-row > .link {
+  display: inline-flex !important;
+  margin: 0 !important;
+  float: none !important;
+  position: static !important;
+}
+
+
+/* About page responsive composition:
+   wide content: portrait on the left, biography on the right;
+   narrow content: portrait first, biography below. */
+body.about-page main > .section:first-child > .split {
+  display: grid !important;
+  grid-template-columns: minmax(240px, .78fr) minmax(0, 1.22fr) !important;
+  grid-template-areas: "portrait biography" !important;
+  align-items: center !important;
+  gap: clamp(30px, 5vw, 76px) !important;
+}
+body.about-page main > .section:first-child > .split > .copy {
+  grid-area: biography !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+body.about-page main > .section:first-child > .split > div:last-child {
+  grid-area: portrait !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  display: block !important;
+}
+body.about-page main > .section:first-child > .split > div:last-child img {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: 700px !important;
+  margin: 0 auto !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 15px !important;
+}
+@media (max-width: 900px) {
+  body.about-page main > .section:first-child > .split {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas:
+      "portrait"
+      "biography" !important;
+    gap: 34px !important;
+  }
+  body.about-page main > .section:first-child > .split > div:last-child {
+    max-width: 420px !important;
+    margin: 0 auto !important;
+  }
+  body.about-page main > .section:first-child > .split > div:last-child img {
+    max-height: 58svh !important;
+  }
+}
+
+
+/* Hide image placeholders in both light and dark themes. */
+body.home-page main > .section .home-image-placeholder {
+  display: none !important;
+}
+
+
+/* Site-wide rule: placeholders, skeletons and loading indicators stay hidden in every theme. */
+[class*="placeholder" i],
+[id*="placeholder" i],
+[class*="skeleton" i],
+[id*="skeleton" i],
+[class*="loading" i],
+[id*="loading" i],
+[class*="loader" i],
+[id*="loader" i],
+.placeholder,
+.skeleton,
+.loading,
+.loader {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+
+/* Global placeholder suppression: keep placeholders hidden on every page and in both themes. */
+:where(
+  [class*="placeholder" i],
+  [id*="placeholder" i],
+  [data-placeholder],
+  [aria-placeholder],
+  .placeholder,
+  .is-placeholder,
+  .skeleton,
+  [class*="skeleton" i],
+  [id*="skeleton" i],
+  [data-loading],
+  [class*="loading-placeholder" i],
+  [class*="placeholder-loading" i]
+) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+
+/* Projects page: one consistent editorial alignment for every project row. */
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+  width: min(100%, 1280px) !important;
+  max-width: 1280px !important;
+  margin: 0 auto 72px !important;
+  padding: 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  column-gap: clamp(28px, 4vw, 64px) !important;
+  align-items: start !important;
+  direction: ltr !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > img,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > img {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 4 / 3 !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  align-self: start !important;
+  margin: 0 !important;
+  border-radius: 15px !important;
+  clip-path: inset(0 round 15px) !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > div,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > div {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  align-self: start !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  direction: ltr !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project h2,
+body:has(main > .section > .project.project--image-right) main > .section > .project h2 {
+  margin-top: 0 !important;
+}
+@media (max-width: 700px) {
+  body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
+  body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+    width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    row-gap: 20px !important;
+    margin-bottom: 44px !important;
+  }
+  body:has(main > .section > .project.project--image-left) main > .section > .project > img,
+  body:has(main > .section > .project.project--image-right) main > .section > .project > img {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    aspect-ratio: 4 / 3 !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: cover !important;
+  }
+  body:has(main > .section > .project.project--image-left) main > .section > .project > div,
+  body:has(main > .section > .project.project--image-right) main > .section > .project > div {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+}
+
+
+/* Projects page: breathing room after intro and alternating image sides on desktop/tablet. */
+body:not(.home-page) main > .section > .intro + .project {
+  margin-top: 56px !important;
+}
+body:not(.home-page) main > .section > .project.project--image-left,
+body:not(.home-page) main > .section > .project.project--image-right {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 88px !important;
+  padding: 0 24px !important;
+  box-sizing: border-box !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  column-gap: clamp(28px, 4vw, 64px) !important;
+  align-items: start !important;
+}
+body:not(.home-page) main > .section > .project.project--image-left > img {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+body:not(.home-page) main > .section > .project.project--image-left > div {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+body:not(.home-page) main > .section > .project.project--image-right > img {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+body:not(.home-page) main > .section > .project.project--image-right > div {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+@media (max-width: 700px) {
+  body:not(.home-page) main > .section > .intro + .project {
+    margin-top: 36px !important;
+  }
+  body:not(.home-page) main > .section > .project.project--image-left,
+  body:not(.home-page) main > .section > .project.project--image-right {
+    padding: 0 !important;
+    margin-bottom: 52px !important;
+  }
+}
+
+
+/* Projects final correction: consistent section background, intro breathing room, true alternating rows. */
+body:has(main > .section > .project.project--image-left) main > .section,
+body:has(main > .section > .project.project--image-right) main > .section {
+  background: var(--section-a) !important;
+  padding-bottom: 64px !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .intro + .project.project--image-left,
+body:has(main > .section > .project.project--image-right) main > .section > .intro + .project.project--image-left {
+  margin-top: 64px !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
+body:has(main > .section > .project.project--right) main > .section > .project.project--image-right,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right,
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-right {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  width: min(100%, 1280px) !important;
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 88px !important;
+  padding: 0 24px !important;
+  box-sizing: border-box !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  column-gap: clamp(28px, 4vw, 64px) !important;
+  align-items: start !important;
+  direction: ltr !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > img,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > img {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > div,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > div {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > img {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > div {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+@media (max-width: 700px) {
+  body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
+  body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+    width: 100% !important;
+    padding: 0 !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    row-gap: 20px !important;
+    margin-bottom: 52px !important;
+  }
+  body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > img,
+  body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > img {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+  body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > div,
+  body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > div {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+}
+
+
+/* Projects: each project is its own full-width section with alternating theme-aware backgrounds. */
+body:has(main > .section > .project.project--image-left) main > .section,
+body:has(main > .section > .project.project--image-right) main > .section {
+  padding-bottom: 0 !important;
+  background: var(--section-a) !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+  position: relative !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 64px max(24px, calc((100% - 1232px) / 2)) !important;
+  box-sizing: border-box !important;
+  background: var(--section-b) !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left:nth-of-type(even),
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right:nth-of-type(even) {
+  background: var(--section-a) !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > img,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > img {
+  width: 100% !important;
+  max-width: none !important;
+  aspect-ratio: 4 / 3 !important;
+  height: auto !important;
+  object-fit: cover !important;
+}
+@media (max-width: 700px) {
+  body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
+  body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+    padding: 36px 20px 44px !important;
+  }
+}
+
+
+/* Full-bleed alternating project bands: background spans the viewport, content stays on the shared grid. */
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left::before,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  z-index: -1 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  transform: translateX(-50%) !important;
+  background: var(--section-b) !important;
+  pointer-events: none !important;
+}
+body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left:nth-of-type(even)::before,
+body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right:nth-of-type(even)::before {
+  background: var(--section-a) !important;
+}
+
+
+/* Site-wide placeholder visibility policy: hidden by default in both themes. */
+:where(
+  [class~="placeholder" i],
+  [class*="placeholder-" i],
+  [class*="-placeholder" i],
+  [id~="placeholder" i],
+  [id*="placeholder-" i],
+  [id*="-placeholder" i],
+  [data-placeholder],
+  [data-placeholder="true"],
+  [class~="skeleton" i],
+  [class*="skeleton-" i],
+  [class*="-skeleton" i],
+  [class~="loader" i],
+  [class*="loader-" i],
+  [class*="-loader" i],
+  [class~="loading-indicator" i],
+  [class~="loading-placeholder" i]
+) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+
+/* About page: render portrait and copy immediately; avoid the delayed blur/reveal flash on reload. */
+body.about-page .split > .reveal,
+body.about-page .split > .reveal.on,
+body.about-page .split > .copy.reveal,
+body.about-page .split > .copy.reveal.on,
+body.about-page .split > .reveal > img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+
+/* About portrait: visually blend the white studio backdrop into the page background. */
+body.about-page main > .section:first-child > .split > div:last-child {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body.about-page main > .section:first-child > .split > div:last-child img {
+  mix-blend-mode: multiply !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+
+/* About portrait: use the repository's real transparent PNG. */
+body.about-page main > .section:first-child > .split > div:last-child {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body.about-page main > .section:first-child > .split > div:last-child img {
+  mix-blend-mode: normal !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  object-fit: contain !important;
+  border-radius: 0 !important;
+}
+
+
+/* About portrait: preserve the black shirt while blending the white studio backdrop. */
+body.about-page main > .section:first-child > .split > div:last-child {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body.about-page main > .section:first-child > .split > div:last-child img {
+  mix-blend-mode: multiply !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  object-fit: cover !important;
+  border-radius: 26px !important;
+}
+html[data-theme="dark"] body.about-page main > .section:first-child > .split > div:last-child img {
+  mix-blend-mode: normal !important;
+}
+
+
+/* Contact page: accessible icon links for email and social profiles. */
+.contact-socials {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+.contact-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 64px;
+  min-height: 64px;
+  padding: 13px 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  transition: transform .25s var(--ease), border-color .25s var(--ease), background-color .25s var(--ease);
+}
+.contact-social:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  background: var(--surface);
+}
+.contact-social svg {
+  display: block;
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.contact-social span {
+  font-size: 14px;
+  font-weight: 550;
+}
+.contact-social:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+@media (max-width: 480px) {
+  .contact-socials { gap: 10px; }
+  .contact-social { min-height: 58px; padding: 11px 13px; border-radius: 15px; }
+}
+
+
+/* Brand colors for Contact page icons. */
+.contact-social-email svg { color: #ea4335; stroke: #ea4335; }
+.contact-social-linkedin svg { color: #0a66c2; stroke: #0a66c2; }
+.contact-social-linkedin svg rect { fill: #0a66c2; stroke: #0a66c2; }
+.contact-social-linkedin svg path { stroke: #fff; }
+.contact-social-instagram svg { stroke: url(#instagram-gradient); }
+.contact-social-instagram svg rect,
+.contact-social-instagram svg circle,
+.contact-social-instagram svg path { stroke: url(#instagram-gradient); }
+.contact-social-email:hover { border-color: #ea4335; }
+.contact-social-linkedin:hover { border-color: #0a66c2; }
+.contact-social-instagram:hover { border-color: #e1306c; }
+
+
+/* Contact brand marks: double the former 64px icon size. */
+.contact-socials { display:flex; align-items:center; gap:32px; margin-top:42px; }
+.contact-social { display:grid; place-items:center; width:152px; height:152px; min-width:152px; min-height:152px; padding:8px; border:0; border-radius:24px; background:transparent; box-shadow:none; transition:transform .25s var(--ease), filter .25s var(--ease); }
+.contact-social svg, .contact-social img { display:block; width:128px; height:128px; object-fit:contain; fill:initial; stroke:initial; stroke-width:initial; }
+.contact-social span { display:none; }
+.contact-social:hover { transform:translateY(-5px) scale(1.04); filter:drop-shadow(0 8px 12px rgba(0,0,0,.16)); background:transparent; border-color:transparent; }
+@media (max-width:600px) { .contact-socials { gap:16px; } .contact-social { width:112px; height:112px; min-width:112px; min-height:112px; padding:4px; } .contact-social svg, .contact-social img { width:96px; height:96px; } }
+
+/* Official brand image treatments for Contact links. */
+.contact-social-email img { width:128px; height:128px; }
+.contact-social-instagram { border-radius:28px; background:linear-gradient(45deg,#ffdc80 0%,#fcaf45 22%,#f77737 42%,#e1306c 66%,#833ab4 100%); }
+.contact-social-instagram img { width:82px; height:82px; filter:brightness(0) invert(1); }
+.contact-social-instagram:hover { background:linear-gradient(45deg,#ffdc80 0%,#fcaf45 22%,#f77737 42%,#e1306c 66%,#833ab4 100%); }
+@media (max-width:600px) { .contact-social-email img { width:96px; height:96px; } .contact-social-instagram img { width:64px; height:64px; } }
+
+
+/* Contact page: use the supplied transparent PNG icons, in mail / LinkedIn / Instagram order. */
+.contact-socials {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 42px;
+}
+.contact-social {
+  display: grid;
+  place-items: center;
+  flex: 0 0 152px;
+  width: 152px;
+  height: 152px;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.contact-social img {
+  display: block;
+  width: 128px;
+  height: 128px;
+  max-width: none;
+  object-fit: contain;
+  filter: none;
+}
+.contact-social:hover {
+  transform: translateY(-3px);
+  background: transparent;
+  border-color: transparent;
+  filter: none;
+}
+.contact-social-email:hover { border-color: transparent; }
+.contact-social-linkedin:hover { border-color: transparent; }
+.contact-social-instagram { background: transparent; border-radius: 0; }
+.contact-social-instagram:hover { background: transparent; }
+@media (max-width: 600px) {
+  .contact-socials { gap: 16px; margin-top: 32px; }
+  .contact-social { flex-basis: 112px; width: 112px; height: 112px; }
+  .contact-social img { width: 96px; height: 96px; }
+}
+
+
+/* Final Contact icon correction: use each supplied PNG as-is. */
+.contact-socials { display:flex; align-items:center; justify-content:flex-start; flex-wrap:wrap; gap:28px; margin-top:42px; }
+.contact-social { flex:0 1 128px; width:128px; height:128px; min-width:0; min-height:0; padding:0; border:0; border-radius:0; background:transparent; box-shadow:none; }
+.contact-social img { display:block; width:128px; height:128px; max-width:100%; object-fit:contain; filter:none; }
+.contact-social-instagram { background:transparent; border-radius:0; }
+.contact-social-instagram img { width:128px; height:128px; filter:none; }
+.contact-social:hover, .contact-social-instagram:hover { transform:translateY(-3px); background:transparent; border-color:transparent; filter:none; }
+@media (max-width:600px) {
+  .contact-socials { gap:18px; margin-top:32px; }
+  .contact-social { flex-basis:96px; width:96px; height:96px; }
+  .contact-social img, .contact-social-instagram img { width:96px; height:96px; }
+}
+
+
+/* Contact icons: preserve the exact uploaded PNG artwork; CSS controls size only. */
+.contact-socials { display:flex; flex-wrap:wrap; align-items:center; gap:28px; margin-top:42px; }
+.contact-social { display:grid; place-items:center; flex:0 0 128px; width:128px; height:128px; min-width:0; min-height:0; padding:0; border:0; border-radius:0; background:transparent; box-shadow:none; }
+.contact-social img { display:block; width:128px; height:128px; max-width:100%; object-fit:contain; filter:none; }
+.contact-social-instagram { background:transparent; border-radius:0; }
+.contact-social-instagram img { width:128px; height:128px; filter:none; }
+.contact-social:hover, .contact-social-instagram:hover { transform:none; background:transparent; border-color:transparent; filter:none; }
+@media (max-width:600px) {
+ .contact-socials { gap:18px; margin-top:32px; }
+ .contact-social { flex-basis:96px; width:96px; height:96px; }
+ .contact-social img, .contact-social-instagram img { width:96px; height:96px; }
+}
+
+
+/* Contact: enlarge only the visible airplane artwork to match the other icons. */
+.contact-social-email img { transform: scale(1.3); transform-origin: center; }
+
+
+/* Contact icon final alignment: enlarge only the visible mail-plane artwork; keep three equal-width slots and equal gaps. */
+.contact-socials { display:flex !important; align-items:center !important; gap:28px !important; }
+.contact-social { flex:0 0 128px !important; width:128px !important; height:128px !important; }
+.contact-social-email img { width:128px !important; height:128px !important; transform:scale(1.3) !important; transform-origin:center !important; }
+.contact-social-linkedin img { transform:translateX(15px) !important; }
+.contact-social-instagram img { transform:none !important; }
+@media (max-width:600px) {
+  .contact-socials { gap:18px !important; }
+  .contact-social { flex:0 0 96px !important; width:96px !important; height:96px !important; }
+  .contact-social-email img { width:96px !important; height:96px !important; transform:scale(1.3) !important; }
+  .contact-social-linkedin img { transform:translateX(10px) !important; }
+  .contact-social-instagram img { transform:none !important; }
+}
+
+
+/* Contact icons: equalize the visible edge-to-edge gaps without modifying the supplied PNGs. */
+.contact-socials {
+  display: grid !important;
+  grid-template-columns: repeat(3, 128px) !important;
+  column-gap: 28px !important;
+  row-gap: 0 !important;
+  justify-content: start !important;
+  align-items: center !important;
+}
+.contact-social {
+  width: 128px !important;
+  height: 128px !important;
+  flex: none !important;
+  justify-self: center !important;
+  align-self: center !important;
+}
+@media (max-width: 600px) {
+  .contact-socials {
+    grid-template-columns: repeat(3, 96px) !important;
+    column-gap: 18px !important;
+  }
+  .contact-social { width: 96px !important; height: 96px !important; }
+}
+
+
+/* Contact page: balance visible gaps by shifting the LinkedIn artwork right slightly. */
+.contact-social-linkedin img { transform: translateX(15px) !important; }
+@media (max-width:600px) {
+  .contact-social-linkedin img { transform: translateX(10px) !important; }
+}
+
+
+/* Contact icons: correct visible edge spacing; shift LinkedIn left to balance both gaps. */
+.contact-social-linkedin img { transform: translateX(-13px) !important; }
+@media (max-width:600px) {
+  .contact-social-linkedin img { transform: translateX(-8px) !important; }
+}
+
+
+/* Roll back experimental horizontal shifts: keep all Contact icons centered in their own slots. */
+.contact-social-linkedin img { transform: none !important; }
+
+
+/* Contact icons: small optical correction for equal visible edge gaps. */
+.contact-social-linkedin img { transform: translateX(3.5px) !important; }
+@media (max-width:600px) {
+  .contact-social-linkedin img { transform: translateX(2.5px) !important; }
+}
+
+
+/* Minimal shared footer: consistent desktop/mobile structure and theme-aware colors. */
+.site-footer { border-top:1px solid var(--line); padding:30px 24px; color:var(--muted); font-size:13px; }
+.site-footer .footer-inner { max-width:var(--max); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:28px; }
+.footer-brand { flex:0 0 auto; display:flex; flex-direction:column; gap:4px; }
+.footer-copyright { color:var(--text); font-size:16px; font-weight:500; letter-spacing:-.025em; }
+.footer-made { font-size:13px; white-space:nowrap; }
+.footer-nav { display:flex; align-items:center; justify-content:center; flex:1 1 auto; flex-wrap:wrap; gap:clamp(12px,2.1vw,28px); }
+.footer-nav a { color:var(--text); font-size:14px; white-space:nowrap; transition:opacity .2s ease; }
+.footer-nav a:hover, .footer-actions a:hover { opacity:.62; }
+.footer-actions { display:flex; align-items:center; gap:18px; padding-left:24px; border-left:1px solid var(--line); }
+.footer-actions a { display:grid; place-items:center; width:28px; height:32px; color:var(--text); transition:opacity .2s ease; }
+.footer-actions svg { display:block; width:25px; height:25px; fill:currentColor; }
+.footer-actions .footer-top { width:44px; height:44px; margin-left:4px; border-radius:50%; background:color-mix(in srgb,var(--text) 7%,transparent); }
+.footer-actions .footer-top svg { width:22px; height:22px; fill:none; }
+@media (max-width:1000px) {
+ .site-footer .footer-inner { flex-wrap:wrap; row-gap:22px; }
+ .footer-brand { flex:1 1 auto; }
+ .footer-actions { border-left:0; padding-left:0; }
+ .footer-nav { order:3; flex:1 0 100%; justify-content:center; padding-top:20px; border-top:1px solid var(--line); }
+}
+@media (max-width:600px) {
+ .site-footer { padding:28px 22px; }
+ .site-footer .footer-inner { gap:20px 12px; }
+ .footer-copyright { font-size:15px; }
+ .footer-made { font-size:12px; }
+ .footer-actions { gap:12px; }
+ .footer-actions a { width:26px; }
+ .footer-actions svg { width:23px; height:23px; }
+ .footer-actions .footer-top { width:38px; height:38px; }
+ .footer-nav { gap:14px 20px; justify-content:center; padding-top:20px; }
+ .footer-nav a { font-size:13px; }
 }

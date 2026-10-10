@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Footer Preview — Minimal</title>
+<style>
+:root{color-scheme:light;--bg:#f5f5f7;--surface:#fff;--text:#1d1d1f;--muted:#6e6e73;--line:rgba(0,0,0,.12);--link:#424245}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+main{width:min(1040px,calc(100% - 48px));margin:auto;padding:72px 0;flex:1}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+h1{font-size:clamp(32px,5vw,54px);letter-spacing:-.045em;font-weight:650;line-height:1.06;margin:0 0 18px}
+.lede{color:var(--muted);font-size:16px;line-height:1.6;max-width:580px}
+.preview{margin-top:54px;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.preview-label{padding:18px 24px;border-bottom:1px solid var(--line);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.site-footer{padding:25px 28px 22px;display:flex;flex-direction:column;gap:19px}
+.footer-top{display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap}
+.brandline{display:flex;flex-direction:column;gap:6px;font-size:13px}
+.brandline strong{font-size:14px;letter-spacing:.02em;font-weight:650}
+.brandline span{color:var(--muted)}
+.nav{display:flex;flex-wrap:wrap;gap:9px 20px}
+a{color:var(--link);text-decoration:none;font-size:13px;transition:opacity .2s}a:hover{opacity:.62}
+.footer-bottom{border-top:1px solid var(--line);padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.legal{font-size:12px;color:var(--muted)}
+.actions{display:flex;align-items:center;gap:18px}.actions a{display:inline-flex;align-items:center;gap:7px}
+svg{width:17px;height:17px;display:block;fill:currentColor}
+.note{font-size:12px;color:var(--muted);margin-top:14px}
+@media(max-width:640px){main{width:calc(100% - 32px);padding:44px 0}.preview{margin-top:36px}.site-footer{padding:22px 18px 18px}.footer-top{align-items:flex-start;flex-direction:column;gap:18px}.nav{gap:12px 18px}.footer-bottom{align-items:flex-start;flex-direction:column;gap:13px}}
+</style>
+</head>
+<body>
+<main>
+<p class="eyebrow">Website redesign · Footer</p>
+<h1>Minimal footer</h1>
+<p class="lede">Sade, dengeli ve mevcut üst menüyle aynı navigasyonu kullanan alt alan. Geniş ekranda yatay; mobilde doğal biçimde alt alta yerleşir.</p>
+<section class="preview" aria-label="Footer tasarım önizlemesi">
+<div class="preview-label">Live design preview</div>
+<footer class="site-footer">
+<div class="footer-top">
+<div class="brandline"><strong>GÜVEN © 2026</strong><span>Made with ❤️ &amp; ☕️</span></div>
+<nav class="nav" aria-label="Footer navigation">
+<a href="https://guneyguven.github.io/">Home</a><a href="https://guneyguven.github.io/about.html">About</a><a href="https://guneyguven.github.io/resume.html">Resume</a><a href="https://guneyguven.github.io/projects.html">Projects</a><a href="https://guneyguven.github.io/art.html">Art</a><a href="https://guneyguven.github.io/blog/">Blog</a><a href="https://guneyguven.github.io/contact.html">Contact</a>
+</nav>
+</div>
+<div class="footer-bottom">
+<span class="legal">© 2026 Güven Çalışkan. All rights reserved.</span>
+<div class="actions">
+<a href="https://www.linkedin.com/in/guneyguven" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.74H4.96V9.2h2.97v9.54ZM6.45 7.9a1.72 1.72 0 1 1 .02-3.44 1.72 1.72 0 0 1-.02 3.44Zm12.3 10.84h-2.97V14.1c0-1.1-.02-2.52-1.54-2.52-1.55 0-1.79 1.2-1.79 2.44v4.72H9.48V9.2h2.85v1.3h.04c.4-.75 1.37-1.54 2.82-1.54 3.01 0 3.56 1.98 3.56 4.55v5.23Z"/></svg><span>LinkedIn</span></a>
+<a href="mailto:guneyguven@live.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-.4 4.25-7 4.38a1.15 1.15 0 0 1-1.2 0l-7-4.38a.75.75 0 1 1 .8-1.27L12 11.3l6.8-4.32a.75.75 0 1 1 .8 1.27Z"/></svg><span>Email</span></a>
+<a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Top</a>
+</div>
+</div>
+</footer>
+</section>
+<p class="note">Önizleme bağımsız bir demo sayfasıdır; ana siteye aktarım yapılmamıştır.</p>
+</main>
+</body>
+</html>
