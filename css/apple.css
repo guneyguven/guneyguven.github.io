@@ -4212,3 +4212,17 @@ html[data-theme="dark"] body.about-page main > .section:first-child > .split > d
   .contact-social { flex-basis:96px; width:96px; height:96px; }
   .contact-social img, .contact-social-instagram img { width:96px; height:96px; }
 }
+
+
+/* Contact icons: preserve the exact uploaded PNG artwork; CSS controls size only. */
+.contact-socials { display:flex; flex-wrap:wrap; align-items:center; gap:28px; margin-top:42px; }
+.contact-social { display:grid; place-items:center; flex:0 0 128px; width:128px; height:128px; min-width:0; min-height:0; padding:0; border:0; border-radius:0; background:transparent; box-shadow:none; }
+.contact-social img { display:block; width:128px; height:128px; max-width:100%; object-fit:contain; filter:none; }
+.contact-social-instagram { background:transparent; border-radius:0; }
+.contact-social-instagram img { width:128px; height:128px; filter:none; }
+.contact-social:hover, .contact-social-instagram:hover { transform:none; background:transparent; border-color:transparent; filter:none; }
+@media (max-width:600px) {
+ .contact-socials { gap:18px; margin-top:32px; }
+ .contact-social { flex-basis:96px; width:96px; height:96px; }
+ .contact-social img, .contact-social-instagram img { width:96px; height:96px; }
+}
