@@ -4288,3 +4288,10 @@ html[data-theme="dark"] body.about-page main > .section:first-child > .split > d
 
 /* Roll back experimental horizontal shifts: keep all Contact icons centered in their own slots. */
 .contact-social-linkedin img { transform: none !important; }
+
+
+/* Contact icons: small optical correction for equal visible edge gaps. */
+.contact-social-linkedin img { transform: translateX(3.5px) !important; }
+@media (max-width:600px) {
+  .contact-social-linkedin img { transform: translateX(2.5px) !important; }
+}
