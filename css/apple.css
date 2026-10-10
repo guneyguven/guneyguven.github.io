@@ -4295,3 +4295,37 @@ html[data-theme="dark"] body.about-page main > .section:first-child > .split > d
 @media (max-width:600px) {
   .contact-social-linkedin img { transform: translateX(2.5px) !important; }
 }
+
+
+/* Minimal shared footer: consistent desktop/mobile structure and theme-aware colors. */
+.site-footer { border-top:1px solid var(--line); padding:30px 24px; color:var(--muted); font-size:13px; }
+.site-footer .footer-inner { max-width:var(--max); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:28px; }
+.footer-brand { flex:0 0 auto; display:flex; flex-direction:column; gap:4px; }
+.footer-copyright { color:var(--text); font-size:16px; font-weight:500; letter-spacing:-.025em; }
+.footer-made { font-size:13px; white-space:nowrap; }
+.footer-nav { display:flex; align-items:center; justify-content:center; flex:1 1 auto; flex-wrap:wrap; gap:clamp(12px,2.1vw,28px); }
+.footer-nav a { color:var(--text); font-size:14px; white-space:nowrap; transition:opacity .2s ease; }
+.footer-nav a:hover, .footer-actions a:hover { opacity:.62; }
+.footer-actions { display:flex; align-items:center; gap:18px; padding-left:24px; border-left:1px solid var(--line); }
+.footer-actions a { display:grid; place-items:center; width:28px; height:32px; color:var(--text); transition:opacity .2s ease; }
+.footer-actions svg { display:block; width:25px; height:25px; fill:currentColor; }
+.footer-actions .footer-top { width:44px; height:44px; margin-left:4px; border-radius:50%; background:color-mix(in srgb,var(--text) 7%,transparent); }
+.footer-actions .footer-top svg { width:22px; height:22px; fill:none; }
+@media (max-width:1000px) {
+ .site-footer .footer-inner { flex-wrap:wrap; row-gap:22px; }
+ .footer-brand { flex:1 1 auto; }
+ .footer-actions { border-left:0; padding-left:0; }
+ .footer-nav { order:3; flex:1 0 100%; justify-content:center; padding-top:20px; border-top:1px solid var(--line); }
+}
+@media (max-width:600px) {
+ .site-footer { padding:28px 22px; }
+ .site-footer .footer-inner { gap:20px 12px; }
+ .footer-copyright { font-size:15px; }
+ .footer-made { font-size:12px; }
+ .footer-actions { gap:12px; }
+ .footer-actions a { width:26px; }
+ .footer-actions svg { width:23px; height:23px; }
+ .footer-actions .footer-top { width:38px; height:38px; }
+ .footer-nav { gap:14px 20px; justify-content:flex-start; padding-top:20px; }
+ .footer-nav a { font-size:13px; }
+}
