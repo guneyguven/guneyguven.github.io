@@ -1024,7 +1024,7 @@ html[data-theme="dark"] body.nav-scrolled .nav {
   padding-right: clamp(24px, 4vw, 64px);
   overflow: hidden;
 }
-.hero::before {
+/*.hero::before {
   content: "";
   position: absolute;
   width: 46vw;
@@ -1034,9 +1034,9 @@ html[data-theme="dark"] body.nav-scrolled .nav {
   right: -12vw;
   top: 14%;
   border-radius: 50%;
-  background: radial-gradient(circle, var(--hero-glow) 0%, transparent 68%);
+  /*background: radial-gradient(circle, var(--hero-glow) 0%, transparent 68%);
   pointer-events: none;
-}
+}*/
 .hero-copy {
   width: 55%;
   z-index: 3;
@@ -1373,12 +1373,12 @@ html[data-theme="dark"] .art-lightbox {
     margin: 54px 0 0;
     min-height: 62svh;
   }
-  .hero::before {
+  /*.hero::before {
     width: 90vw;
     height: 90vw;
     right: -35vw;
     top: 24%;
-  }
+  }*/
   .project {
     min-height: auto;
     padding: 85px 0;
@@ -1717,4 +1717,8 @@ main > .section::before {
   .gallery figure {
     transition: none;
   }
+}
+
+.hero::before {
+  display: none;
 }
