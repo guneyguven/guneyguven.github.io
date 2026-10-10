@@ -4143,3 +4143,10 @@ html[data-theme="dark"] body.about-page main > .section:first-child > .split > d
 .contact-social span { display:none; }
 .contact-social:hover { transform:translateY(-5px) scale(1.04); filter:drop-shadow(0 8px 12px rgba(0,0,0,.16)); background:transparent; border-color:transparent; }
 @media (max-width:600px) { .contact-socials { gap:16px; } .contact-social { width:112px; height:112px; min-width:112px; min-height:112px; padding:4px; } .contact-social svg, .contact-social img { width:96px; height:96px; } }
+
+/* Official brand image treatments for Contact links. */
+.contact-social-email img { width:128px; height:128px; }
+.contact-social-instagram { border-radius:28px; background:linear-gradient(45deg,#ffdc80 0%,#fcaf45 22%,#f77737 42%,#e1306c 66%,#833ab4 100%); }
+.contact-social-instagram img { width:82px; height:82px; filter:brightness(0) invert(1); }
+.contact-social-instagram:hover { background:linear-gradient(45deg,#ffdc80 0%,#fcaf45 22%,#f77737 42%,#e1306c 66%,#833ab4 100%); }
+@media (max-width:600px) { .contact-social-email img { width:96px; height:96px; } .contact-social-instagram img { width:64px; height:64px; } }
