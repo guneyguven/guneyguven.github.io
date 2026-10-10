@@ -4150,3 +4150,51 @@ html[data-theme="dark"] body.about-page main > .section:first-child > .split > d
 .contact-social-instagram img { width:82px; height:82px; filter:brightness(0) invert(1); }
 .contact-social-instagram:hover { background:linear-gradient(45deg,#ffdc80 0%,#fcaf45 22%,#f77737 42%,#e1306c 66%,#833ab4 100%); }
 @media (max-width:600px) { .contact-social-email img { width:96px; height:96px; } .contact-social-instagram img { width:64px; height:64px; } }
+
+
+/* Contact page: use the supplied transparent PNG icons, in mail / LinkedIn / Instagram order. */
+.contact-socials {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 42px;
+}
+.contact-social {
+  display: grid;
+  place-items: center;
+  flex: 0 0 152px;
+  width: 152px;
+  height: 152px;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.contact-social img {
+  display: block;
+  width: 128px;
+  height: 128px;
+  max-width: none;
+  object-fit: contain;
+  filter: none;
+}
+.contact-social:hover {
+  transform: translateY(-3px);
+  background: transparent;
+  border-color: transparent;
+  filter: none;
+}
+.contact-social-email:hover { border-color: transparent; }
+.contact-social-linkedin:hover { border-color: transparent; }
+.contact-social-instagram { background: transparent; border-radius: 0; }
+.contact-social-instagram:hover { background: transparent; }
+@media (max-width: 600px) {
+  .contact-socials { gap: 16px; margin-top: 32px; }
+  .contact-social { flex-basis: 112px; width: 112px; height: 112px; }
+  .contact-social img { width: 96px; height: 96px; }
+}
