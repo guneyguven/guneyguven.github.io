@@ -4326,6 +4326,6 @@ html[data-theme="dark"] body.about-page main > .section:first-child > .split > d
  .footer-actions a { width:26px; }
  .footer-actions svg { width:23px; height:23px; }
  .footer-actions .footer-top { width:38px; height:38px; }
- .footer-nav { gap:14px 20px; justify-content:flex-start; padding-top:20px; }
+ .footer-nav { gap:14px 20px; justify-content:center; padding-top:20px; }
  .footer-nav a { font-size:13px; }
 }
