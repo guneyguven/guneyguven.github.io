@@ -4284,3 +4284,7 @@ html[data-theme="dark"] body.about-page main > .section:first-child > .split > d
 @media (max-width:600px) {
   .contact-social-linkedin img { transform: translateX(-8px) !important; }
 }
+
+
+/* Roll back experimental horizontal shifts: keep all Contact icons centered in their own slots. */
+.contact-social-linkedin img { transform: none !important; }
