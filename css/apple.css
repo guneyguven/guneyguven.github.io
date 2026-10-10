@@ -4270,3 +4270,10 @@ html[data-theme="dark"] body.about-page main > .section:first-child > .split > d
   }
   .contact-social { width: 96px !important; height: 96px !important; }
 }
+
+
+/* Contact page: balance visible gaps by shifting the LinkedIn artwork right slightly. */
+.contact-social-linkedin img { transform: translateX(15px) !important; }
+@media (max-width:600px) {
+  .contact-social-linkedin img { transform: translateX(10px) !important; }
+}
