@@ -4230,3 +4230,16 @@ html[data-theme="dark"] body.about-page main > .section:first-child > .split > d
 
 /* Contact: enlarge only the visible airplane artwork to match the other icons. */
 .contact-social-email img { transform: scale(1.3); transform-origin: center; }
+
+
+/* Contact icon final alignment: enlarge only the visible mail-plane artwork; keep three equal-width slots and equal gaps. */
+.contact-socials { display:flex !important; align-items:center !important; gap:28px !important; }
+.contact-social { flex:0 0 128px !important; width:128px !important; height:128px !important; }
+.contact-social-email img { width:128px !important; height:128px !important; transform:scale(1.3) !important; transform-origin:center !important; }
+.contact-social-linkedin img, .contact-social-instagram img { transform:none !important; }
+@media (max-width:600px) {
+  .contact-socials { gap:18px !important; }
+  .contact-social { flex:0 0 96px !important; width:96px !important; height:96px !important; }
+  .contact-social-email img { width:96px !important; height:96px !important; transform:scale(1.3) !important; }
+  .contact-social-linkedin img, .contact-social-instagram img { transform:none !important; }
+}
