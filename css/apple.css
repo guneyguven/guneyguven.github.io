@@ -4277,3 +4277,10 @@ html[data-theme="dark"] body.about-page main > .section:first-child > .split > d
 @media (max-width:600px) {
   .contact-social-linkedin img { transform: translateX(10px) !important; }
 }
+
+
+/* Contact icons: correct visible edge spacing; shift LinkedIn left to balance both gaps. */
+.contact-social-linkedin img { transform: translateX(-13px) !important; }
+@media (max-width:600px) {
+  .contact-social-linkedin img { transform: translateX(-8px) !important; }
+}
