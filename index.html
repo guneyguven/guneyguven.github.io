@@ -72,6 +72,49 @@
       }
     </style>
 
+
+    <style id="newhero-copy-below-animation">
+      /* Put the text card after the animation, with a clear gap; do not overlay the artwork. */
+      body.home-page #newhero-feature {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+      }
+      body.home-page #newhero-feature .newhero-stage {
+        position: relative !important;
+        inset: auto !important;
+        width: 100% !important;
+        height: calc(100svh - 82px) !important;
+        min-height: 590px !important;
+        overflow: hidden !important;
+      }
+      body.home-page #newhero-feature .newhero-copy {
+        position: relative !important;
+        inset: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: min(760px, calc(100% - 40px)) !important;
+        max-width: 760px !important;
+        margin: clamp(48px, 8vh, 96px) auto 0 !important;
+        padding: clamp(20px, 3vw, 36px) !important;
+      }
+      @media (min-width: 761px) {
+        body.home-page #newhero-feature .newhero-stage {
+          height: calc(100svh - 88px) !important;
+          min-height: 620px !important;
+        }
+      }
+      @media (max-width: 760px) {
+        body.home-page #newhero-feature .newhero-copy {
+          width: calc(100% - 28px) !important;
+          max-width: none !important;
+          margin: 56px auto 0 !important;
+          text-align: center !important;
+        }
+      }
+    </style>
+
   </head>
   <body class="home-page">
     <header class="nav">
