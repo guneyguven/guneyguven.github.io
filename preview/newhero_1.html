@@ -43,6 +43,27 @@
       @media(max-width:760px){.home-page .newhero{height:100svh;min-height:590px}.home-page .newhero .newhero-copy{left:14px;right:14px;bottom:18px;max-width:none;padding:16px;text-align:center}.home-page .newhero .newhero-copy h1{font-size:clamp(2.5rem,12vw,4.2rem)}.home-page .newhero .newhero-stage-label{right:0;left:0;bottom:auto;top:72px;text-align:center;font-size:.56rem}.home-page .newhero .newhero-term{font-size:.66rem}.home-page .newhero.is-terms .newhero-term.tech{transform:translate(calc(-50% - 24vw),calc(-50% + var(--rise,0px)))}.home-page .newhero.is-terms .newhero-term.art{transform:translate(calc(-50% + 24vw),calc(-50% + var(--rise,0px)))}.home-page .newhero .term-1{--rise:-120px}.home-page .newhero .term-2{--rise:-60px}.home-page .newhero .term-3{--rise:0px}.home-page .newhero .term-4{--rise:60px}}
       @media(prefers-reduced-motion:reduce){.home-page .newhero .newhero-half,.home-page .newhero .newhero-term{transition-duration:.01ms}}
     </style>
+
+    <style id="preview-scroll-fix">
+      html { scroll-behavior: auto !important; scroll-padding-top: 0 !important; }
+      body.home-page { margin-top: 0 !important; }
+      body.home-page > .nav { position: relative !important; top: auto !important; }
+      body.home-page main { margin-top: 0 !important; padding-top: 0 !important; }
+      body.home-page .newhero { margin-top: 0 !important; scroll-margin-top: 0 !important; }
+      @media (max-width: 760px) {
+        body.home-page .newhero { height: calc(100svh - 82px) !important; min-height: 540px !important; }
+        body.home-page .newhero .newhero-stage { inset: 0 !important; }
+      }
+    </style>
+    <script>
+      (() => {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        const goTop = () => { window.scrollTo(0, 0); };
+        window.addEventListener('pageshow', goTop);
+        document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(goTop));
+      })();
+    </script>
+
   </head>
   <body class="home-page">
     <header class="nav">
