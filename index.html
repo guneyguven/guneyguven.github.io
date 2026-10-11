@@ -369,6 +369,40 @@
     </style>
 
   
+
+    <style id="newhero-4-quiet-reveal">
+      /* One restrained entrance: portrait settles into place, labels and copy fade in once. */
+      #newhero-feature .dannaway-portrait {
+        opacity: 0;
+        transform: translate(-50%, calc(-50% + 14px));
+        transition: opacity .8s ease, transform 1s cubic-bezier(.2,.75,.25,1);
+      }
+      #newhero-feature.is-started .dannaway-portrait {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+      #newhero-feature .dannaway-label,
+      #newhero-feature .dannaway-copy {
+        opacity: 0;
+        transition: opacity .7s ease;
+      }
+      #newhero-feature.is-started .dannaway-label,
+      #newhero-feature.is-started .dannaway-copy {
+        opacity: 1;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #newhero-feature .dannaway-portrait,
+        #newhero-feature .dannaway-label,
+        #newhero-feature .dannaway-copy {
+          transition: none !important;
+          opacity: 1 !important;
+          transform: translate(-50%, -50%);
+        }
+        #newhero-feature .dannaway-label,
+        #newhero-feature .dannaway-copy { transform: none !important; }
+      }
+    </style>
+
     <style id="newhero-4-dannaway-layout">
       /* Dannaway-inspired split portrait: minimal, centered, and still unmistakably Güven. */
       body.home-page #newhero-feature.dannaway-hero {
