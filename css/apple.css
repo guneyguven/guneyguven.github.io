@@ -1724,24 +1724,36 @@ main > .section::before {
   }
 }
 
-
 /* =========================================================
    FINAL MOBILE / TABLET REDESIGN
    ========================================================= */
 
 @media (max-width: 1200px) {
-  html, body {
+  html,
+  body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
   }
 
   /* Navigation */
-  .nav { height: 56px; }
-  .nav-inner { padding: 0 18px; }
-  .brand { font-size: 14px; }
-  .nav-tools { gap: 7px; }
-  .theme { width: 30px; height: 30px; font-size: 14px; }
+  .nav {
+    height: 56px;
+  }
+  .nav-inner {
+    padding: 0 18px;
+  }
+  .brand {
+    font-size: 14px;
+  }
+  .nav-tools {
+    gap: 7px;
+  }
+  .theme {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
 
   .mobile-nav {
     top: 56px;
@@ -1763,7 +1775,9 @@ main > .section::before {
     overflow: hidden;
   }
 
-  .hero::before { display: none; }
+  .hero::before {
+    display: none;
+  }
 
   .hero-copy {
     width: 100%;
@@ -1773,8 +1787,8 @@ main > .section::before {
 
   .hero h1 {
     font-size: clamp(58px, 17.5vw, 86px);
-    line-height: .87;
-    letter-spacing: -.075em;
+    line-height: 0.87;
+    letter-spacing: -0.075em;
   }
 
   .hero-lead {
@@ -1782,7 +1796,7 @@ main > .section::before {
     margin-top: 28px;
     font-size: clamp(24px, 6.7vw, 30px);
     line-height: 1.08;
-    letter-spacing: -.035em;
+    letter-spacing: -0.035em;
   }
 
   .hero-sub {
@@ -1830,8 +1844,8 @@ main > .section::before {
   .display {
     max-width: 100%;
     font-size: clamp(46px, 13vw, 68px);
-    line-height: .91;
-    letter-spacing: -.065em;
+    line-height: 0.91;
+    letter-spacing: -0.065em;
   }
 
   .intro {
@@ -1847,7 +1861,9 @@ main > .section::before {
     gap: 36px;
   }
 
-  .split > * { width: 100%; }
+  .split > * {
+    width: 100%;
+  }
 
   .copy p {
     max-width: 100%;
@@ -1859,7 +1875,7 @@ main > .section::before {
     width: 100%;
     margin-top: 38px;
     border-radius: 22px;
-    box-shadow: 0 18px 55px rgba(0,0,0,.08);
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.08);
   }
 
   .media-wide img {
@@ -1880,10 +1896,18 @@ main > .section::before {
     border-top: 0;
   }
 
-  .project:first-of-type { margin-top: 0; }
-  .project:nth-child(even) { direction: ltr; }
-  .project > * { width: 100%; }
-  .project > div::before { display: none; }
+  .project:first-of-type {
+    margin-top: 0;
+  }
+  .project:nth-child(even) {
+    direction: ltr;
+  }
+  .project > * {
+    width: 100%;
+  }
+  .project > div::before {
+    display: none;
+  }
 
   .project img {
     order: 0;
@@ -1909,8 +1933,8 @@ main > .section::before {
 
   .project h2 {
     font-size: clamp(42px, 12vw, 64px);
-    line-height: .91;
-    letter-spacing: -.065em;
+    line-height: 0.91;
+    letter-spacing: -0.065em;
     margin: 6px 0 18px;
   }
 
@@ -1947,7 +1971,9 @@ main > .section::before {
     padding: 21px 0;
   }
 
-  .timeline-row strong { font-size: 15px; }
+  .timeline-row strong {
+    font-size: 15px;
+  }
   .timeline-row span {
     font-size: 15px;
     line-height: 1.5;
@@ -1959,17 +1985,25 @@ main > .section::before {
     border-radius: 22px;
   }
 
-  .skills .skill:first-child { border-radius: 22px 22px 0 0; }
+  .skills .skill:first-child {
+    border-radius: 22px 22px 0 0;
+  }
   .skills .skill:nth-child(2),
-  .skills .skill:nth-child(3) { border-radius: 0; }
-  .skills .skill:last-child { border-radius: 0 0 22px 22px; }
+  .skills .skill:nth-child(3) {
+    border-radius: 0;
+  }
+  .skills .skill:last-child {
+    border-radius: 0 0 22px 22px;
+  }
 
   .skill {
     min-height: 0;
     padding: 28px 24px;
   }
 
-  .skill h3 { font-size: 20px; }
+  .skill h3 {
+    font-size: 20px;
+  }
   .skill p {
     font-size: 15px;
     line-height: 1.5;
@@ -2009,7 +2043,7 @@ main > .section::before {
 
   .contact h1 {
     font-size: clamp(58px, 17vw, 92px);
-    line-height: .9;
+    line-height: 0.9;
   }
 
   .contact p {
@@ -2027,7 +2061,9 @@ main > .section::before {
   }
 
   /* Footer */
-  footer { padding: 24px 20px; }
+  footer {
+    padding: 24px 20px;
+  }
 
   footer .footer-inner {
     display: flex;
@@ -2036,20 +2072,28 @@ main > .section::before {
     gap: 7px;
   }
 
-  footer .footer-inner div + div { margin-top: 0; }
+  footer .footer-inner div + div {
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 390px) {
-  .hero { padding-left: 17px; padding-right: 17px; }
-  .hero h1 { font-size: 17.2vw; }
+  .hero {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+  .hero h1 {
+    font-size: 17.2vw;
+  }
   main > .section,
   main > .section[style] {
     padding-left: 17px !important;
     padding-right: 17px !important;
   }
-  .project h2 { font-size: 12.2vw; }
+  .project h2 {
+    font-size: 12.2vw;
+  }
 }
-
 
 /* Remove decorative horizontal separators site-wide; section color bands remain. */
 .project,
@@ -2064,7 +2108,6 @@ footer {
   border-top: 0 !important;
 }
 
-
 /* Tighten the Home hero-to-profile transition. */
 @media (max-width: 1200px) {
   main > .hero {
@@ -2074,7 +2117,6 @@ footer {
     padding-top: 38px !important;
   }
 }
-
 
 /* Home: remove the black viewport-height tail below the hero artwork. */
 @media (max-width: 1200px) {
@@ -2090,7 +2132,6 @@ footer {
   }
 }
 
-
 /* Home: eliminate the viewport-height black gap completely on compact layouts. */
 @media (max-width: 1200px) {
   main > .hero {
@@ -2104,7 +2145,6 @@ footer {
     padding-top: 0 !important;
   }
 }
-
 
 /* Projects on iPad/tablet: keep artwork proportional and out of the full-screen scale. */
 .project .meta::before {
@@ -2122,7 +2162,6 @@ footer {
     align-self: flex-start;
   }
 }
-
 
 /* Tablet Projects: alternate image/text columns, retain stacked layout on phones. */
 @media (min-width: 601px) and (max-width: 1200px) {
@@ -2160,7 +2199,6 @@ footer {
   }
 }
 
-
 /* Projects page: consistent section tone and rounded artwork. */
 main > .section .project:nth-of-type(2),
 main > .section .project:nth-of-type(3) {
@@ -2175,7 +2213,6 @@ main > .section .project:nth-of-type(3) {
   }
 }
 
-
 /* Projects: use one continuous section background, with no alternating project bands. */
 main > .section .project,
 main > .section .project:nth-of-type(2),
@@ -2188,7 +2225,6 @@ main > .section .project img {
   border-radius: 24px !important;
   overflow: hidden;
 }
-
 
 /* Restore the Projects page's alternating tonal bands without rectangular image panels. */
 main > .section .project:nth-of-type(2) {
@@ -2205,14 +2241,12 @@ main > .section .project img {
   border-radius: 24px !important;
 }
 
-
 /* Force visibly rounded clipping on every Projects artwork image. */
 main > .section .project > img {
   display: block;
   border-radius: 26px !important;
   clip-path: inset(0 round 26px) !important;
 }
-
 
 /* Projects: make the actual image fill its rounded media frame. */
 main > .section .project > img {
@@ -2244,7 +2278,6 @@ main > .section .project > img {
     object-fit: cover !important;
   }
 }
-
 
 /* FINAL FIX: Projects media and Art gallery sizing on iPad and phones. */
 @media (min-width: 601px) and (max-width: 1200px) {
@@ -2304,7 +2337,6 @@ main > .section .project > img {
   }
 }
 
-
 /* Touch devices (including iPadOS desktop-sized Safari): compact, uncropped art gallery. */
 @media (hover: none) and (pointer: coarse) {
   main > .section .gallery {
@@ -2344,7 +2376,6 @@ main > .section .project > img {
     clip-path: inset(0 round 24px) !important;
   }
 }
-
 
 /* Art page final layout: centered, restrained video and a proper image gallery. */
 main > .section > section.section {
@@ -2409,7 +2440,6 @@ main > .section .gallery img {
   }
 }
 
-
 /* Dedicated Art gallery layout: override all legacy gallery rules. */
 #art-gallery {
   display: grid !important;
@@ -2463,7 +2493,6 @@ main > .section .gallery img {
     height: clamp(140px, 22svh, 210px) !important;
   }
 }
-
 
 /* Definitive Art portfolio grid: override legacy masonry spans and avoid cropping artwork. */
 #art-gallery {
@@ -2522,7 +2551,6 @@ main > .section .gallery img {
   }
 }
 
-
 /* Art gallery: invisible cells; round the actual image only. */
 #art-gallery > figure,
 #art-gallery > figure:nth-child(n) {
@@ -2541,7 +2569,6 @@ main > .section .gallery img {
   border-radius: 15px !important;
   clip-path: inset(0 round 15px) !important;
 }
-
 
 /* Art page: true masonry columns, natural image proportions, rounded thumbnails. */
 #art-gallery {
@@ -2602,7 +2629,6 @@ main > .section .gallery img {
     margin-bottom: 10px !important;
   }
 }
-
 
 /* Site-wide responsive image scale: consistent, restrained media sizing on touch screens. */
 @media (max-width: 1200px) {
@@ -2695,7 +2721,6 @@ main > .section .gallery img {
   }
 }
 
-
 /* Home hero only: restore a larger artwork scale without changing other pages. */
 @media (max-width: 1200px) {
   body:has(main > .hero) main > .hero .hero-media img {
@@ -2708,7 +2733,6 @@ main > .section .gallery img {
   }
 }
 
-
 /* Home hero only: restore a larger artwork scale without changing other pages. */
 @media (max-width: 1200px) {
   body:has(main > .hero) main > .hero .hero-media img {
@@ -2720,7 +2744,6 @@ main > .section .gallery img {
     max-height: 76svh !important;
   }
 }
-
 
 /* Home hero refinement: make the artwork lead the story on compact screens.
    Desktop keeps the existing side-by-side composition; section tones remain untouched. */
@@ -2774,12 +2797,11 @@ main > .section .gallery img {
   }
 }
 
-
 /* Home hero: keep name, introduction and artwork in one responsive composition. */
 @media (min-width: 901px) {
   body:has(main > .hero) main > .hero {
     display: grid !important;
-    grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr) !important;
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr) !important;
     align-items: center !important;
     gap: clamp(28px, 3.2vw, 52px) !important;
     padding: calc(var(--nav) + 56px) clamp(28px, 4vw, 56px) 64px !important;
@@ -2888,18 +2910,27 @@ main > .section::after {
 main > .section:nth-of-type(2n)::after {
   background: linear-gradient(to bottom, transparent, var(--section-b));
 }
-html, body, .nav, .theme, footer {
+html,
+body,
+.nav,
+.theme,
+footer {
   transition:
     background-color 700ms cubic-bezier(0.2, 0.75, 0.2, 1),
     color 500ms cubic-bezier(0.2, 0.75, 0.2, 1),
     border-color 700ms cubic-bezier(0.2, 0.75, 0.2, 1);
 }
 @media (prefers-reduced-motion: reduce) {
-  main > .section, main > .section::after, html, body, .nav, .theme, footer {
+  main > .section,
+  main > .section::after,
+  html,
+  body,
+  .nav,
+  .theme,
+  footer {
     transition: none !important;
   }
 }
-
 
 /* Home hero: remove the media holder entirely; only the rounded image remains visible. */
 body:has(main > .hero) main > .hero .hero-media {
@@ -2916,7 +2947,6 @@ body:has(main > .hero) main > .hero .hero-media::after {
 body:has(main > .hero) main > .hero .hero-media img {
   background: transparent !important;
 }
-
 
 /* Lower home artwork and image thumbnails: invisible holders, rounded actual media. */
 body:has(main > .hero) main > .section .media-wide,
@@ -2955,7 +2985,6 @@ body:has(main > .hero) main > .section .media-wide img,
   }
 }
 
-
 /* Restore the original, more compact navigation width and spacing. */
 .nav-inner {
   max-width: var(--max) !important;
@@ -2964,12 +2993,10 @@ body:has(main > .hero) main > .section .media-wide img,
   gap: 25px !important;
 }
 
-
 /* Keep the navigation bar from getting thicker after scrolling. */
 body.nav-scrolled .nav {
   height: var(--nav) !important;
 }
-
 
 /* Site-wide section colour reset: restrained neutral bands, no gradients or rainbow-like transitions. */
 :root {
@@ -2998,7 +3025,9 @@ main > .section {
   background: var(--section-a) !important;
   box-shadow: none !important;
   border-top: 0 !important;
-  transition: background-color 450ms ease, color 350ms ease !important;
+  transition:
+    background-color 450ms ease,
+    color 350ms ease !important;
 }
 main > .section:nth-of-type(2n) {
   background: var(--section-b) !important;
@@ -3027,11 +3056,12 @@ footer {
   border-top-color: var(--line) !important;
 }
 @media (prefers-reduced-motion: reduce) {
-  main > .section, body, footer {
+  main > .section,
+  body,
+  footer {
     transition: none !important;
   }
 }
-
 
 /* Projects: align each text block to the top edge of its image and keep a consistent grid. */
 main > .section .project {
@@ -3063,7 +3093,6 @@ main > .section .project h2 {
   }
 }
 
-
 /* Projects thumbnails: match the Art gallery's rounded-image radius exactly. */
 main > .section .project > img {
   border-radius: 15px !important;
@@ -3077,7 +3106,6 @@ main > .section .project > img {
   }
 }
 
-
 /* Projects: use one centered content grid for every row so left edges stay aligned. */
 main > .section .project {
   width: min(100%, 1080px) !important;
@@ -3090,7 +3118,6 @@ main > .section .project {
   }
 }
 
-
 /* Fix Projects on tablet-sized Safari viewports: do not stretch alternating rows
    edge-to-edge; keep every row inside the same centered content measure. */
 @media (min-width: 601px) and (max-width: 1200px) {
@@ -3100,7 +3127,6 @@ main > .section .project {
     margin-right: auto !important;
   }
 }
-
 
 /* Projects page: wide, centered content with consistent alternating image/text columns. */
 main > .section:has(> .project) > .project {
@@ -3182,7 +3208,6 @@ main > .section:has(> .project) > .project:nth-of-type(even) > div {
     grid-row: 2 !important;
   }
 }
-
 
 /* Definitive Projects layout: explicit row classes avoid nth-of-type ambiguity. */
 main > .section > .project.project--image-left,
@@ -3278,7 +3303,6 @@ main > .section > .project.project--image-right h2 {
   }
 }
 
-
 /* Art gallery repair: preserve each artwork's native aspect ratio; never crop or stretch thumbnails. */
 #art-gallery {
   display: block !important;
@@ -3313,24 +3337,32 @@ main > .section > .project.project--image-right h2 {
   clip-path: inset(0 round 15px) !important;
 }
 @media (max-width: 1200px) {
-  #art-gallery { column-count: 2 !important; column-gap: 14px !important; }
-  #art-gallery > figure { margin-bottom: 14px !important; }
+  #art-gallery {
+    column-count: 2 !important;
+    column-gap: 14px !important;
+  }
+  #art-gallery > figure {
+    margin-bottom: 14px !important;
+  }
 }
 @media (max-width: 600px) {
-  #art-gallery { column-count: 2 !important; column-gap: 10px !important; }
-  #art-gallery > figure { margin-bottom: 10px !important; }
+  #art-gallery {
+    column-count: 2 !important;
+    column-gap: 10px !important;
+  }
+  #art-gallery > figure {
+    margin-bottom: 10px !important;
+  }
   #art-gallery > figure > img {
     border-radius: 15px !important;
     clip-path: inset(0 round 15px) !important;
   }
 }
 
-
 /* Footer repair: keep the footer's own subtle top edge; separator cleanup applies to page sections, not the footer. */
 footer {
   border-top: 1px solid var(--line) !important;
 }
-
 
 /* Definitive footer layout: copyright on the left, role label on the right. */
 footer {
@@ -3357,7 +3389,9 @@ footer .footer-inner > div:last-child {
   text-align: right !important;
 }
 @media (max-width: 600px) {
-  footer { padding: 22px 17px !important; }
+  footer {
+    padding: 22px 17px !important;
+  }
   footer .footer-inner {
     flex-direction: row !important;
     align-items: center !important;
@@ -3369,7 +3403,6 @@ footer .footer-inner > div:last-child {
   }
 }
 
-
 /* HOME PAGE — single authoritative layout override.
    Keep these rules scoped to index.html to avoid changing other pages. */
 body.home-page main > .hero {
@@ -3380,7 +3413,7 @@ body.home-page main > .hero {
   margin: 0 auto !important;
   padding: calc(var(--nav) + 48px) clamp(24px, 4vw, 56px) 56px !important;
   display: grid !important;
-  grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr) !important;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr) !important;
   align-items: center !important;
   gap: clamp(28px, 3.2vw, 52px) !important;
 }
@@ -3392,8 +3425,8 @@ body.home-page main > .hero .hero-copy {
 body.home-page main > .hero .hero h1,
 body.home-page main > .hero h1 {
   font-size: clamp(58px, 7.2vw, 112px) !important;
-  line-height: .92 !important;
-  letter-spacing: -.075em !important;
+  line-height: 0.92 !important;
+  letter-spacing: -0.075em !important;
   overflow-wrap: anywhere;
 }
 body.home-page main > .hero .hero-lead {
@@ -3437,7 +3470,7 @@ body.home-page main > .section {
 body.home-page main > .section .display {
   max-width: 1120px;
   font-size: clamp(44px, 6.2vw, 88px) !important;
-  line-height: .98 !important;
+  line-height: 0.98 !important;
 }
 body.home-page main > .section .media-wide {
   width: 100% !important;
@@ -3461,7 +3494,7 @@ body.home-page main > .section .split {
   width: 100% !important;
   max-width: 1280px !important;
   margin: 0 auto !important;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr) !important;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr) !important;
   gap: clamp(32px, 7vw, 100px) !important;
 }
 body.home-page main > .section .copy p {
@@ -3483,7 +3516,7 @@ body.home-page main > .section .copy p {
   }
   body.home-page main > .hero h1 {
     font-size: clamp(54px, 12.5vw, 90px) !important;
-    line-height: .94 !important;
+    line-height: 0.94 !important;
   }
   body.home-page main > .hero .hero-media {
     order: 1 !important;
@@ -3527,7 +3560,6 @@ body.home-page main > .section .copy p {
     font-size: 15px !important;
   }
 }
-
 
 /* Home-page three-image row: identical image dimensions, centered as a group,
    and the same 15px corner radius used by the portfolio thumbnails. */
@@ -3589,12 +3621,10 @@ body.home-page main > .section .home-image-placeholder {
   }
 }
 
-
 /* Keep the See projects link two text lines below the Selected work copy. */
 body.home-page .selected-work-section .copy > .link {
   margin-top: calc(2 * 1.45em + 18px) !important;
 }
-
 
 /* Selected Work: put the project link on its own row below the description,
    rather than aligning it beside the heading/copy at desktop widths. */
@@ -3622,7 +3652,6 @@ body.home-page main > .selected-work-section .copy > .link {
   margin-top: calc(2 * 1.7em + 18px) !important;
 }
 
-
 /* The Selected Work link is a separate full-width row, independent of .copy layout. */
 body.home-page main > .selected-work-section .selected-work-link-row {
   display: block !important;
@@ -3639,13 +3668,12 @@ body.home-page main > .selected-work-section .selected-work-link-row > .link {
   position: static !important;
 }
 
-
 /* About page responsive composition:
    wide content: portrait on the left, biography on the right;
    narrow content: portrait first, biography below. */
 body.about-page main > .section:first-child > .split {
   display: grid !important;
-  grid-template-columns: minmax(240px, .78fr) minmax(0, 1.22fr) !important;
+  grid-template-columns: minmax(240px, 0.78fr) minmax(0, 1.22fr) !important;
   grid-template-areas: "portrait biography" !important;
   align-items: center !important;
   gap: clamp(30px, 5vw, 76px) !important;
@@ -3689,12 +3717,10 @@ body.about-page main > .section:first-child > .split > div:last-child img {
   }
 }
 
-
 /* Hide image placeholders in both light and dark themes. */
 body.home-page main > .section .home-image-placeholder {
   display: none !important;
 }
-
 
 /* Site-wide rule: placeholders, skeletons and loading indicators stay hidden in every theme. */
 [class*="placeholder" i],
@@ -3713,7 +3739,6 @@ body.home-page main > .section .home-image-placeholder {
   visibility: hidden !important;
   opacity: 0 !important;
 }
-
 
 /* Global placeholder suppression: keep placeholders hidden on every page and in both themes. */
 :where(
@@ -3736,10 +3761,15 @@ body.home-page main > .section .home-image-placeholder {
   pointer-events: none !important;
 }
 
-
 /* Projects page: one consistent editorial alignment for every project row. */
-body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
-body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+body:has(main > .section > .project.project--image-left)
+  main
+  > .section
+  > .project.project--image-left,
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .project.project--image-right {
   width: min(100%, 1280px) !important;
   max-width: 1280px !important;
   margin: 0 auto 72px !important;
@@ -3750,8 +3780,16 @@ body:has(main > .section > .project.project--image-right) main > .section > .pro
   align-items: start !important;
   direction: ltr !important;
 }
-body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > img,
-body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > img {
+body:has(main > .section > .project.project--image-left)
+  main
+  > .section
+  > .project.project--image-left
+  > img,
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .project.project--image-right
+  > img {
   grid-column: 1 !important;
   grid-row: 1 !important;
   width: 100% !important;
@@ -3766,8 +3804,16 @@ body:has(main > .section > .project.project--image-right) main > .section > .pro
   border-radius: 15px !important;
   clip-path: inset(0 round 15px) !important;
 }
-body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > div,
-body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > div {
+body:has(main > .section > .project.project--image-left)
+  main
+  > .section
+  > .project.project--image-left
+  > div,
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .project.project--image-right
+  > div {
   grid-column: 2 !important;
   grid-row: 1 !important;
   width: 100% !important;
@@ -3778,20 +3824,42 @@ body:has(main > .section > .project.project--image-right) main > .section > .pro
   padding: 0 !important;
   direction: ltr !important;
 }
-body:has(main > .section > .project.project--image-left) main > .section > .project h2,
-body:has(main > .section > .project.project--image-right) main > .section > .project h2 {
+body:has(main > .section > .project.project--image-left)
+  main
+  > .section
+  > .project
+  h2,
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .project
+  h2 {
   margin-top: 0 !important;
 }
 @media (max-width: 700px) {
-  body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
-  body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+  body:has(main > .section > .project.project--image-left)
+    main
+    > .section
+    > .project.project--image-left,
+  body:has(main > .section > .project.project--image-right)
+    main
+    > .section
+    > .project.project--image-right {
     width: 100% !important;
     grid-template-columns: minmax(0, 1fr) !important;
     row-gap: 20px !important;
     margin-bottom: 44px !important;
   }
-  body:has(main > .section > .project.project--image-left) main > .section > .project > img,
-  body:has(main > .section > .project.project--image-right) main > .section > .project > img {
+  body:has(main > .section > .project.project--image-left)
+    main
+    > .section
+    > .project
+    > img,
+  body:has(main > .section > .project.project--image-right)
+    main
+    > .section
+    > .project
+    > img {
     grid-column: 1 !important;
     grid-row: 1 !important;
     aspect-ratio: 4 / 3 !important;
@@ -3799,13 +3867,20 @@ body:has(main > .section > .project.project--image-right) main > .section > .pro
     max-height: none !important;
     object-fit: cover !important;
   }
-  body:has(main > .section > .project.project--image-left) main > .section > .project > div,
-  body:has(main > .section > .project.project--image-right) main > .section > .project > div {
+  body:has(main > .section > .project.project--image-left)
+    main
+    > .section
+    > .project
+    > div,
+  body:has(main > .section > .project.project--image-right)
+    main
+    > .section
+    > .project
+    > div {
     grid-column: 1 !important;
     grid-row: 2 !important;
   }
 }
-
 
 /* Projects page: breathing room after intro and alternating image sides on desktop/tablet. */
 body:not(.home-page) main > .section > .intro + .project {
@@ -3851,21 +3926,40 @@ body:not(.home-page) main > .section > .project.project--image-right > div {
   }
 }
 
-
 /* Projects final correction: consistent section background, intro breathing room, true alternating rows. */
 body:has(main > .section > .project.project--image-left) main > .section,
 body:has(main > .section > .project.project--image-right) main > .section {
   background: var(--section-a) !important;
   padding-bottom: 64px !important;
 }
-body:has(main > .section > .project.project--image-left) main > .section > .intro + .project.project--image-left,
-body:has(main > .section > .project.project--image-right) main > .section > .intro + .project.project--image-left {
+body:has(main > .section > .project.project--image-left)
+  main
+  > .section
+  > .intro
+  + .project.project--image-left,
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .intro
+  + .project.project--image-left {
   margin-top: 64px !important;
 }
-body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
-body:has(main > .section > .project.project--right) main > .section > .project.project--image-right,
-body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right,
-body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-right {
+body:has(main > .section > .project.project--image-left)
+  main
+  > .section
+  > .project.project--image-left,
+body:has(main > .section > .project.project--right)
+  main
+  > .section
+  > .project.project--image-right,
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .project.project--image-right,
+body:has(main > .section > .project.project--image-left)
+  main
+  > .section
+  > .project.project--image-right {
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
@@ -3882,45 +3976,90 @@ body:has(main > .section > .project.project--image-left) main > .section > .proj
   align-items: start !important;
   direction: ltr !important;
 }
-body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > img,
-body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > img {
+body:has(main > .section > .project.project--image-left)
+  main
+  > .section
+  > .project.project--image-left
+  > img,
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .project.project--image-right
+  > img {
   grid-column: 1 !important;
   grid-row: 1 !important;
 }
-body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > div,
-body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > div {
+body:has(main > .section > .project.project--image-left)
+  main
+  > .section
+  > .project.project--image-left
+  > div,
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .project.project--image-right
+  > div {
   grid-column: 2 !important;
   grid-row: 1 !important;
 }
-body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > img {
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .project.project--image-right
+  > img {
   grid-column: 2 !important;
   grid-row: 1 !important;
 }
-body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > div {
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .project.project--image-right
+  > div {
   grid-column: 1 !important;
   grid-row: 1 !important;
 }
 @media (max-width: 700px) {
-  body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
-  body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+  body:has(main > .section > .project.project--image-left)
+    main
+    > .section
+    > .project.project--image-left,
+  body:has(main > .section > .project.project--image-right)
+    main
+    > .section
+    > .project.project--image-right {
     width: 100% !important;
     padding: 0 !important;
     grid-template-columns: minmax(0, 1fr) !important;
     row-gap: 20px !important;
     margin-bottom: 52px !important;
   }
-  body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > img,
-  body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > img {
+  body:has(main > .section > .project.project--image-right)
+    main
+    > .section
+    > .project.project--image-right
+    > img,
+  body:has(main > .section > .project.project--image-left)
+    main
+    > .section
+    > .project.project--image-left
+    > img {
     grid-column: 1 !important;
     grid-row: 1 !important;
   }
-  body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > div,
-  body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > div {
+  body:has(main > .section > .project.project--image-right)
+    main
+    > .section
+    > .project.project--image-right
+    > div,
+  body:has(main > .section > .project.project--image-left)
+    main
+    > .section
+    > .project.project--image-left
+    > div {
     grid-column: 1 !important;
     grid-row: 2 !important;
   }
 }
-
 
 /* Projects: each project is its own full-width section with alternating theme-aware backgrounds. */
 body:has(main > .section > .project.project--image-left) main > .section,
@@ -3928,8 +4067,14 @@ body:has(main > .section > .project.project--image-right) main > .section {
   padding-bottom: 0 !important;
   background: var(--section-a) !important;
 }
-body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
-body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+body:has(main > .section > .project.project--image-left)
+  main
+  > .section
+  > .project.project--image-left,
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .project.project--image-right {
   position: relative !important;
   width: 100% !important;
   max-width: none !important;
@@ -3938,12 +4083,26 @@ body:has(main > .section > .project.project--image-right) main > .section > .pro
   box-sizing: border-box !important;
   background: var(--section-b) !important;
 }
-body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left:nth-of-type(even),
-body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right:nth-of-type(even) {
+body:has(main > .section > .project.project--image-left)
+  main
+  > .section
+  > .project.project--image-left:nth-of-type(even),
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .project.project--image-right:nth-of-type(even) {
   background: var(--section-a) !important;
 }
-body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left > img,
-body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right > img {
+body:has(main > .section > .project.project--image-left)
+  main
+  > .section
+  > .project.project--image-left
+  > img,
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .project.project--image-right
+  > img {
   width: 100% !important;
   max-width: none !important;
   aspect-ratio: 4 / 3 !important;
@@ -3951,23 +4110,40 @@ body:has(main > .section > .project.project--image-right) main > .section > .pro
   object-fit: cover !important;
 }
 @media (max-width: 700px) {
-  body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
-  body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+  body:has(main > .section > .project.project--image-left)
+    main
+    > .section
+    > .project.project--image-left,
+  body:has(main > .section > .project.project--image-right)
+    main
+    > .section
+    > .project.project--image-right {
     padding: 36px 20px 44px !important;
   }
 }
 
-
 /* Full-bleed alternating project bands: background spans the viewport, content stays on the shared grid. */
-body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left,
-body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right {
+body:has(main > .section > .project.project--image-left)
+  main
+  > .section
+  > .project.project--image-left,
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .project.project--image-right {
   position: relative !important;
   isolation: isolate !important;
   overflow: visible !important;
   background: transparent !important;
 }
-body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left::before,
-body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right::before {
+body:has(main > .section > .project.project--image-left)
+  main
+  > .section
+  > .project.project--image-left::before,
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .project.project--image-right::before {
   content: "" !important;
   display: block !important;
   position: absolute !important;
@@ -3981,11 +4157,16 @@ body:has(main > .section > .project.project--image-right) main > .section > .pro
   background: var(--section-b) !important;
   pointer-events: none !important;
 }
-body:has(main > .section > .project.project--image-left) main > .section > .project.project--image-left:nth-of-type(even)::before,
-body:has(main > .section > .project.project--image-right) main > .section > .project.project--image-right:nth-of-type(even)::before {
+body:has(main > .section > .project.project--image-left)
+  main
+  > .section
+  > .project.project--image-left:nth-of-type(even)::before,
+body:has(main > .section > .project.project--image-right)
+  main
+  > .section
+  > .project.project--image-right:nth-of-type(even)::before {
   background: var(--section-a) !important;
 }
-
 
 /* Site-wide placeholder visibility policy: hidden by default in both themes. */
 :where(
@@ -4012,7 +4193,6 @@ body:has(main > .section > .project.project--image-right) main > .section > .pro
   pointer-events: none !important;
 }
 
-
 /* About page: render portrait and copy immediately; avoid the delayed blur/reveal flash on reload. */
 body.about-page .split > .reveal,
 body.about-page .split > .reveal.on,
@@ -4027,7 +4207,6 @@ body.about-page .split > .reveal > img {
   animation: none !important;
 }
 
-
 /* About portrait: visually blend the white studio backdrop into the page background. */
 body.about-page main > .section:first-child > .split > div:last-child {
   background: transparent !important;
@@ -4038,7 +4217,6 @@ body.about-page main > .section:first-child > .split > div:last-child img {
   background: transparent !important;
   box-shadow: none !important;
 }
-
 
 /* About portrait: use the repository's real transparent PNG. */
 body.about-page main > .section:first-child > .split > div:last-child {
@@ -4053,7 +4231,6 @@ body.about-page main > .section:first-child > .split > div:last-child img {
   border-radius: 0 !important;
 }
 
-
 /* About portrait: preserve the black shirt while blending the white studio backdrop. */
 body.about-page main > .section:first-child > .split > div:last-child {
   background: transparent !important;
@@ -4066,10 +4243,15 @@ body.about-page main > .section:first-child > .split > div:last-child img {
   object-fit: cover !important;
   border-radius: 26px !important;
 }
-html[data-theme="dark"] body.about-page main > .section:first-child > .split > div:last-child img {
+html[data-theme="dark"]
+  body.about-page
+  main
+  > .section:first-child
+  > .split
+  > div:last-child
+  img {
   mix-blend-mode: normal !important;
 }
-
 
 /* Contact page: accessible icon links for email and social profiles. */
 .contact-socials {
@@ -4091,7 +4273,10 @@ html[data-theme="dark"] body.about-page main > .section:first-child > .split > d
   border-radius: 18px;
   color: var(--text);
   background: color-mix(in srgb, var(--surface) 72%, transparent);
-  transition: transform .25s var(--ease), border-color .25s var(--ease), background-color .25s var(--ease);
+  transition:
+    transform 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    background-color 0.25s var(--ease);
 }
 .contact-social:hover {
   transform: translateY(-3px);
@@ -4117,40 +4302,151 @@ html[data-theme="dark"] body.about-page main > .section:first-child > .split > d
   outline-offset: 4px;
 }
 @media (max-width: 480px) {
-  .contact-socials { gap: 10px; }
-  .contact-social { min-height: 58px; padding: 11px 13px; border-radius: 15px; }
+  .contact-socials {
+    gap: 10px;
+  }
+  .contact-social {
+    min-height: 58px;
+    padding: 11px 13px;
+    border-radius: 15px;
+  }
 }
 
-
 /* Brand colors for Contact page icons. */
-.contact-social-email svg { color: #ea4335; stroke: #ea4335; }
-.contact-social-linkedin svg { color: #0a66c2; stroke: #0a66c2; }
-.contact-social-linkedin svg rect { fill: #0a66c2; stroke: #0a66c2; }
-.contact-social-linkedin svg path { stroke: #fff; }
-.contact-social-instagram svg { stroke: url(#instagram-gradient); }
+.contact-social-email svg {
+  color: #ea4335;
+  stroke: #ea4335;
+}
+.contact-social-linkedin svg {
+  color: #0a66c2;
+  stroke: #0a66c2;
+}
+.contact-social-linkedin svg rect {
+  fill: #0a66c2;
+  stroke: #0a66c2;
+}
+.contact-social-linkedin svg path {
+  stroke: #fff;
+}
+.contact-social-instagram svg {
+  stroke: url(#instagram-gradient);
+}
 .contact-social-instagram svg rect,
 .contact-social-instagram svg circle,
-.contact-social-instagram svg path { stroke: url(#instagram-gradient); }
-.contact-social-email:hover { border-color: #ea4335; }
-.contact-social-linkedin:hover { border-color: #0a66c2; }
-.contact-social-instagram:hover { border-color: #e1306c; }
-
+.contact-social-instagram svg path {
+  stroke: url(#instagram-gradient);
+}
+.contact-social-email:hover {
+  border-color: #ea4335;
+}
+.contact-social-linkedin:hover {
+  border-color: #0a66c2;
+}
+.contact-social-instagram:hover {
+  border-color: #e1306c;
+}
 
 /* Contact brand marks: double the former 64px icon size. */
-.contact-socials { display:flex; align-items:center; gap:32px; margin-top:42px; }
-.contact-social { display:grid; place-items:center; width:152px; height:152px; min-width:152px; min-height:152px; padding:8px; border:0; border-radius:24px; background:transparent; box-shadow:none; transition:transform .25s var(--ease), filter .25s var(--ease); }
-.contact-social svg, .contact-social img { display:block; width:128px; height:128px; object-fit:contain; fill:initial; stroke:initial; stroke-width:initial; }
-.contact-social span { display:none; }
-.contact-social:hover { transform:translateY(-5px) scale(1.04); filter:drop-shadow(0 8px 12px rgba(0,0,0,.16)); background:transparent; border-color:transparent; }
-@media (max-width:600px) { .contact-socials { gap:16px; } .contact-social { width:112px; height:112px; min-width:112px; min-height:112px; padding:4px; } .contact-social svg, .contact-social img { width:96px; height:96px; } }
+.contact-socials {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 42px;
+}
+.contact-social {
+  display: grid;
+  place-items: center;
+  width: 152px;
+  height: 152px;
+  min-width: 152px;
+  min-height: 152px;
+  padding: 8px;
+  border: 0;
+  border-radius: 24px;
+  background: transparent;
+  box-shadow: none;
+  transition:
+    transform 0.25s var(--ease),
+    filter 0.25s var(--ease);
+}
+.contact-social svg,
+.contact-social img {
+  display: block;
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+  fill: initial;
+  stroke: initial;
+  stroke-width: initial;
+}
+.contact-social span {
+  display: none;
+}
+.contact-social:hover {
+  transform: translateY(-5px) scale(1.04);
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.16));
+  background: transparent;
+  border-color: transparent;
+}
+@media (max-width: 600px) {
+  .contact-socials {
+    gap: 16px;
+  }
+  .contact-social {
+    width: 112px;
+    height: 112px;
+    min-width: 112px;
+    min-height: 112px;
+    padding: 4px;
+  }
+  .contact-social svg,
+  .contact-social img {
+    width: 96px;
+    height: 96px;
+  }
+}
 
 /* Official brand image treatments for Contact links. */
-.contact-social-email img { width:128px; height:128px; }
-.contact-social-instagram { border-radius:28px; background:linear-gradient(45deg,#ffdc80 0%,#fcaf45 22%,#f77737 42%,#e1306c 66%,#833ab4 100%); }
-.contact-social-instagram img { width:82px; height:82px; filter:brightness(0) invert(1); }
-.contact-social-instagram:hover { background:linear-gradient(45deg,#ffdc80 0%,#fcaf45 22%,#f77737 42%,#e1306c 66%,#833ab4 100%); }
-@media (max-width:600px) { .contact-social-email img { width:96px; height:96px; } .contact-social-instagram img { width:64px; height:64px; } }
-
+.contact-social-email img {
+  width: 128px;
+  height: 128px;
+}
+.contact-social-instagram {
+  border-radius: 28px;
+  background: linear-gradient(
+    45deg,
+    #ffdc80 0%,
+    #fcaf45 22%,
+    #f77737 42%,
+    #e1306c 66%,
+    #833ab4 100%
+  );
+}
+.contact-social-instagram img {
+  width: 82px;
+  height: 82px;
+  filter: brightness(0) invert(1);
+}
+.contact-social-instagram:hover {
+  background: linear-gradient(
+    45deg,
+    #ffdc80 0%,
+    #fcaf45 22%,
+    #f77737 42%,
+    #e1306c 66%,
+    #833ab4 100%
+  );
+}
+@media (max-width: 600px) {
+  .contact-social-email img {
+    width: 96px;
+    height: 96px;
+  }
+  .contact-social-instagram img {
+    width: 64px;
+    height: 64px;
+  }
+}
 
 /* Contact page: use the supplied transparent PNG icons, in mail / LinkedIn / Instagram order. */
 .contact-socials {
@@ -4189,63 +4485,210 @@ html[data-theme="dark"] body.about-page main > .section:first-child > .split > d
   border-color: transparent;
   filter: none;
 }
-.contact-social-email:hover { border-color: transparent; }
-.contact-social-linkedin:hover { border-color: transparent; }
-.contact-social-instagram { background: transparent; border-radius: 0; }
-.contact-social-instagram:hover { background: transparent; }
-@media (max-width: 600px) {
-  .contact-socials { gap: 16px; margin-top: 32px; }
-  .contact-social { flex-basis: 112px; width: 112px; height: 112px; }
-  .contact-social img { width: 96px; height: 96px; }
+.contact-social-email:hover {
+  border-color: transparent;
 }
-
+.contact-social-linkedin:hover {
+  border-color: transparent;
+}
+.contact-social-instagram {
+  background: transparent;
+  border-radius: 0;
+}
+.contact-social-instagram:hover {
+  background: transparent;
+}
+@media (max-width: 600px) {
+  .contact-socials {
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .contact-social {
+    flex-basis: 112px;
+    width: 112px;
+    height: 112px;
+  }
+  .contact-social img {
+    width: 96px;
+    height: 96px;
+  }
+}
 
 /* Final Contact icon correction: use each supplied PNG as-is. */
-.contact-socials { display:flex; align-items:center; justify-content:flex-start; flex-wrap:wrap; gap:28px; margin-top:42px; }
-.contact-social { flex:0 1 128px; width:128px; height:128px; min-width:0; min-height:0; padding:0; border:0; border-radius:0; background:transparent; box-shadow:none; }
-.contact-social img { display:block; width:128px; height:128px; max-width:100%; object-fit:contain; filter:none; }
-.contact-social-instagram { background:transparent; border-radius:0; }
-.contact-social-instagram img { width:128px; height:128px; filter:none; }
-.contact-social:hover, .contact-social-instagram:hover { transform:translateY(-3px); background:transparent; border-color:transparent; filter:none; }
-@media (max-width:600px) {
-  .contact-socials { gap:18px; margin-top:32px; }
-  .contact-social { flex-basis:96px; width:96px; height:96px; }
-  .contact-social img, .contact-social-instagram img { width:96px; height:96px; }
+.contact-socials {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 42px;
 }
-
+.contact-social {
+  flex: 0 1 128px;
+  width: 128px;
+  height: 128px;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.contact-social img {
+  display: block;
+  width: 128px;
+  height: 128px;
+  max-width: 100%;
+  object-fit: contain;
+  filter: none;
+}
+.contact-social-instagram {
+  background: transparent;
+  border-radius: 0;
+}
+.contact-social-instagram img {
+  width: 128px;
+  height: 128px;
+  filter: none;
+}
+.contact-social:hover,
+.contact-social-instagram:hover {
+  transform: translateY(-3px);
+  background: transparent;
+  border-color: transparent;
+  filter: none;
+}
+@media (max-width: 600px) {
+  .contact-socials {
+    gap: 18px;
+    margin-top: 32px;
+  }
+  .contact-social {
+    flex-basis: 96px;
+    width: 96px;
+    height: 96px;
+  }
+  .contact-social img,
+  .contact-social-instagram img {
+    width: 96px;
+    height: 96px;
+  }
+}
 
 /* Contact icons: preserve the exact uploaded PNG artwork; CSS controls size only. */
-.contact-socials { display:flex; flex-wrap:wrap; align-items:center; gap:28px; margin-top:42px; }
-.contact-social { display:grid; place-items:center; flex:0 0 128px; width:128px; height:128px; min-width:0; min-height:0; padding:0; border:0; border-radius:0; background:transparent; box-shadow:none; }
-.contact-social img { display:block; width:128px; height:128px; max-width:100%; object-fit:contain; filter:none; }
-.contact-social-instagram { background:transparent; border-radius:0; }
-.contact-social-instagram img { width:128px; height:128px; filter:none; }
-.contact-social:hover, .contact-social-instagram:hover { transform:none; background:transparent; border-color:transparent; filter:none; }
-@media (max-width:600px) {
- .contact-socials { gap:18px; margin-top:32px; }
- .contact-social { flex-basis:96px; width:96px; height:96px; }
- .contact-social img, .contact-social-instagram img { width:96px; height:96px; }
+.contact-socials {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 28px;
+  margin-top: 42px;
 }
-
+.contact-social {
+  display: grid;
+  place-items: center;
+  flex: 0 0 128px;
+  width: 128px;
+  height: 128px;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.contact-social img {
+  display: block;
+  width: 128px;
+  height: 128px;
+  max-width: 100%;
+  object-fit: contain;
+  filter: none;
+}
+.contact-social-instagram {
+  background: transparent;
+  border-radius: 0;
+}
+.contact-social-instagram img {
+  width: 128px;
+  height: 128px;
+  filter: none;
+}
+.contact-social:hover,
+.contact-social-instagram:hover {
+  transform: none;
+  background: transparent;
+  border-color: transparent;
+  filter: none;
+}
+@media (max-width: 600px) {
+  .contact-socials {
+    gap: 18px;
+    margin-top: 32px;
+  }
+  .contact-social {
+    flex-basis: 96px;
+    width: 96px;
+    height: 96px;
+  }
+  .contact-social img,
+  .contact-social-instagram img {
+    width: 96px;
+    height: 96px;
+  }
+}
 
 /* Contact: enlarge only the visible airplane artwork to match the other icons. */
-.contact-social-email img { transform: scale(1.3); transform-origin: center; }
-
-
-/* Contact icon final alignment: enlarge only the visible mail-plane artwork; keep three equal-width slots and equal gaps. */
-.contact-socials { display:flex !important; align-items:center !important; gap:28px !important; }
-.contact-social { flex:0 0 128px !important; width:128px !important; height:128px !important; }
-.contact-social-email img { width:128px !important; height:128px !important; transform:scale(1.3) !important; transform-origin:center !important; }
-.contact-social-linkedin img { transform:translateX(15px) !important; }
-.contact-social-instagram img { transform:none !important; }
-@media (max-width:600px) {
-  .contact-socials { gap:18px !important; }
-  .contact-social { flex:0 0 96px !important; width:96px !important; height:96px !important; }
-  .contact-social-email img { width:96px !important; height:96px !important; transform:scale(1.3) !important; }
-  .contact-social-linkedin img { transform:translateX(10px) !important; }
-  .contact-social-instagram img { transform:none !important; }
+.contact-social-email img {
+  transform: scale(1.3);
+  transform-origin: center;
 }
 
+/* Contact icon final alignment: enlarge only the visible mail-plane artwork; keep three equal-width slots and equal gaps. */
+.contact-socials {
+  display: flex !important;
+  align-items: center !important;
+  gap: 28px !important;
+}
+.contact-social {
+  flex: 0 0 128px !important;
+  width: 128px !important;
+  height: 128px !important;
+}
+.contact-social-email img {
+  width: 128px !important;
+  height: 128px !important;
+  transform: scale(1.3) !important;
+  transform-origin: center !important;
+}
+.contact-social-linkedin img {
+  transform: translateX(15px) !important;
+}
+.contact-social-instagram img {
+  transform: none !important;
+}
+@media (max-width: 600px) {
+  .contact-socials {
+    gap: 18px !important;
+  }
+  .contact-social {
+    flex: 0 0 96px !important;
+    width: 96px !important;
+    height: 96px !important;
+  }
+  .contact-social-email img {
+    width: 96px !important;
+    height: 96px !important;
+    transform: scale(1.3) !important;
+  }
+  .contact-social-linkedin img {
+    transform: translateX(10px) !important;
+  }
+  .contact-social-instagram img {
+    transform: none !important;
+  }
+}
 
 /* Contact icons: equalize the visible edge-to-edge gaps without modifying the supplied PNGs. */
 .contact-socials {
@@ -4268,64 +4711,182 @@ html[data-theme="dark"] body.about-page main > .section:first-child > .split > d
     grid-template-columns: repeat(3, 96px) !important;
     column-gap: 18px !important;
   }
-  .contact-social { width: 96px !important; height: 96px !important; }
+  .contact-social {
+    width: 96px !important;
+    height: 96px !important;
+  }
 }
-
 
 /* Contact page: balance visible gaps by shifting the LinkedIn artwork right slightly. */
-.contact-social-linkedin img { transform: translateX(15px) !important; }
-@media (max-width:600px) {
-  .contact-social-linkedin img { transform: translateX(10px) !important; }
+.contact-social-linkedin img {
+  transform: translateX(15px) !important;
 }
-
+@media (max-width: 600px) {
+  .contact-social-linkedin img {
+    transform: translateX(10px) !important;
+  }
+}
 
 /* Contact icons: correct visible edge spacing; shift LinkedIn left to balance both gaps. */
-.contact-social-linkedin img { transform: translateX(-13px) !important; }
-@media (max-width:600px) {
-  .contact-social-linkedin img { transform: translateX(-8px) !important; }
+.contact-social-linkedin img {
+  transform: translateX(-13px) !important;
 }
-
+@media (max-width: 600px) {
+  .contact-social-linkedin img {
+    transform: translateX(-8px) !important;
+  }
+}
 
 /* Roll back experimental horizontal shifts: keep all Contact icons centered in their own slots. */
-.contact-social-linkedin img { transform: none !important; }
-
+.contact-social-linkedin img {
+  transform: none !important;
+}
 
 /* Contact icons: small optical correction for equal visible edge gaps. */
-.contact-social-linkedin img { transform: translateX(3.5px) !important; }
-@media (max-width:600px) {
-  .contact-social-linkedin img { transform: translateX(2.5px) !important; }
+.contact-social-linkedin img {
+  transform: translateX(3.5px) !important;
 }
-
+@media (max-width: 600px) {
+  .contact-social-linkedin img {
+    transform: translateX(2.5px) !important;
+  }
+}
 
 /* Minimal shared footer: consistent desktop/mobile structure and theme-aware colors. */
-.site-footer { border-top:1px solid var(--line); padding:30px 24px; color:var(--muted); font-size:13px; }
-.site-footer .footer-inner { max-width:var(--max); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:28px; }
-.footer-brand { flex:0 0 auto; display:flex; flex-direction:column; gap:4px; }
-.footer-copyright { color:var(--text); font-size:16px; font-weight:500; letter-spacing:-.025em; }
-.footer-made { font-size:13px; white-space:nowrap; }
-.footer-nav { display:flex; align-items:center; justify-content:center; flex:1 1 auto; flex-wrap:wrap; gap:clamp(12px,2.1vw,28px); }
-.footer-nav a { color:var(--text); font-size:14px; white-space:nowrap; transition:opacity .2s ease; }
-.footer-nav a:hover, .footer-actions a:hover { opacity:.62; }
-.footer-actions { display:flex; align-items:center; gap:18px; padding-left:24px; border-left:1px solid var(--line); }
-.footer-actions a { display:grid; place-items:center; width:28px; height:32px; color:var(--text); transition:opacity .2s ease; }
-.footer-actions svg { display:block; width:25px; height:25px; fill:currentColor; }
-.footer-actions .footer-top { width:44px; height:44px; margin-left:4px; border-radius:50%; background:color-mix(in srgb,var(--text) 7%,transparent); }
-.footer-actions .footer-top svg { width:22px; height:22px; fill:none; }
-@media (max-width:1000px) {
- .site-footer .footer-inner { flex-wrap:wrap; row-gap:22px; }
- .footer-brand { flex:1 1 auto; }
- .footer-actions { border-left:0; padding-left:0; }
- .footer-nav { order:3; flex:1 0 100%; justify-content:center; padding-top:20px; border-top:1px solid var(--line); }
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 30px 24px;
+  color: var(--muted);
+  font-size: 13px;
 }
-@media (max-width:600px) {
- .site-footer { padding:28px 22px; }
- .site-footer .footer-inner { gap:20px 12px; }
- .footer-copyright { font-size:15px; }
- .footer-made { font-size:12px; }
- .footer-actions { gap:12px; }
- .footer-actions a { width:26px; }
- .footer-actions svg { width:23px; height:23px; }
- .footer-actions .footer-top { width:38px; height:38px; }
- .footer-nav { gap:14px 20px; justify-content:center; padding-top:20px; }
- .footer-nav a { font-size:13px; }
+.site-footer .footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+.footer-brand {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.footer-copyright {
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+.footer-made {
+  font-size: 13px;
+  white-space: nowrap;
+}
+.footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  gap: clamp(12px, 2.1vw, 28px);
+}
+.footer-nav a {
+  color: var(--text);
+  font-size: 14px;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+.footer-nav a:hover,
+.footer-actions a:hover {
+  opacity: 0.62;
+}
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
+}
+.footer-actions a {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 32px;
+  color: var(--text);
+  transition: opacity 0.2s ease;
+}
+.footer-actions svg {
+  display: block;
+  width: 25px;
+  height: 25px;
+  fill: currentColor;
+}
+.footer-actions .footer-top {
+  width: 44px;
+  height: 44px;
+  margin-left: 4px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--text) 7%, transparent);
+}
+.footer-actions .footer-top svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+}
+@media (max-width: 1000px) {
+  .site-footer .footer-inner {
+    flex-wrap: wrap;
+    row-gap: 22px;
+  }
+  .footer-brand {
+    flex: 1 1 auto;
+  }
+  .footer-actions {
+    border-left: 0;
+    padding-left: 0;
+  }
+  .footer-nav {
+    order: 3;
+    flex: 1 0 100%;
+    justify-content: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+}
+@media (max-width: 600px) {
+  .site-footer {
+    padding: 28px 22px;
+  }
+  .site-footer .footer-inner {
+    gap: 20px 12px;
+  }
+  .footer-copyright {
+    font-size: 15px;
+  }
+  .footer-made {
+    font-size: 12px;
+  }
+  .footer-actions {
+    gap: 12px;
+  }
+  .footer-actions a {
+    width: 26px;
+  }
+  .footer-actions svg {
+    width: 23px;
+    height: 23px;
+  }
+  .footer-actions .footer-top {
+    width: 38px;
+    height: 38px;
+  }
+  .footer-nav {
+    gap: 14px 20px;
+    justify-content: center;
+    padding-top: 20px;
+  }
+  .footer-nav a {
+    font-size: 13px;
+  }
 }

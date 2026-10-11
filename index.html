@@ -1,592 +1,226 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Güven ÇALIŞKAN — engineer, software engineer, project manager and multidisciplinary digital artist.">
-    <title>
-      Güven ÇALIŞKAN
-    </title>
-    <link rel="icon" href="https://guneyguven.github.io/images/icon.png">
-    <link rel="stylesheet" href="https://guneyguven.github.io/css/apple.css?v=20261010-footer-center-1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Güven ÇALIŞKAN — engineer, software engineer, project manager and multidisciplinary digital artist."
+    />
+    <title>Güven ÇALIŞKAN</title>
+    <link rel="icon" href="images/icon.png" />
+    <link rel="stylesheet" href="css/apple.css?v=20261010-footer-center-1" />
     <script>
-      try{const s=localStorage.getItem("siteTheme")||localStorage.getItem("theme");document.documentElement.dataset.theme=s||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){}
+      try {
+        const s =
+          localStorage.getItem("siteTheme") || localStorage.getItem("theme");
+        document.documentElement.dataset.theme =
+          s ||
+          (matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+      } catch (e) {}
     </script>
-    <style id="newhero-feature-styles">
-      .home-page .newhero{width:100%;max-width:none;margin:0;padding:0;height:100svh;min-height:620px;position:relative;display:block;overflow:hidden;isolation:isolate;background:#101419;color:#fff}
-      .home-page .newhero .newhero-stage{position:absolute;inset:0;overflow:hidden;background:#101419}
-      .home-page .newhero .newhero-half{position:absolute;inset:0;overflow:hidden;will-change:transform;backface-visibility:hidden;transition:transform 1.85s cubic-bezier(.16,1,.3,1)}
-      .home-page .newhero .newhero-half img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center;display:block}
-      .home-page .newhero .newhero-robot{clip-path:inset(0 50% 0 0);transform:translateX(-110vw)}
-      .home-page .newhero .newhero-paint{clip-path:inset(0 0 0 50%);transform:translateX(110vw)}
-      .home-page .newhero.is-started .newhero-robot,.home-page .newhero.is-started .newhero-paint{transform:translateX(0)}
-      .home-page .newhero .newhero-glow{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,174,255,.12),transparent 50%,rgba(255,115,22,.12));opacity:0;transition:opacity .7s ease 1.35s}
-      .home-page .newhero.is-started .newhero-glow{opacity:1}
-      .home-page .newhero .newhero-copy{position:absolute;z-index:5;left:clamp(20px,5vw,80px);bottom:clamp(22px,6vh,70px);max-width:min(560px,88vw);padding:clamp(18px,2.4vw,30px);border-radius:14px;background:rgba(12,15,19,.68);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff}
-      .home-page .newhero .newhero-copy .eyebrow{color:rgba(255,255,255,.7)}
-      .home-page .newhero .newhero-copy h1{color:#fff;margin:12px 0 14px;font-size:clamp(2.8rem,6.5vw,6.5rem);line-height:.9;letter-spacing:-.075em}
-      .home-page .newhero .newhero-copy h1 span{color:#fff;font-weight:350}
-      .home-page .newhero .newhero-copy p{color:rgba(255,255,255,.83)}
-      .home-page .newhero .newhero-copy .link{color:#fff}
-      .home-page .newhero .newhero-stage-label{position:absolute;z-index:2;right:20px;bottom:18px;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.72);pointer-events:none}
-      .home-page .newhero .newhero-terms{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden}
-      .home-page .newhero .newhero-term{position:absolute;top:50%;opacity:0;white-space:nowrap;font-size:clamp(.75rem,1.45vw,1.15rem);font-weight:650;letter-spacing:.13em;text-transform:uppercase;transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity .65s ease;text-shadow:0 2px 12px rgba(0,0,0,.35)}
-      .home-page .newhero .newhero-term.tech{left:50%;color:#73d7ff;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;transform:translate(-50%,18px);text-shadow:0 0 14px rgba(0,174,255,.6)}
-      .home-page .newhero .newhero-term.art{left:50%;color:#fff;font-family:Georgia,serif;font-style:italic;letter-spacing:.08em;transform:translate(-50%,18px);text-shadow:0 2px 12px rgba(0,0,0,.7)}
-      .home-page .newhero.is-terms .newhero-term{opacity:1}
-      .home-page .newhero.is-terms .newhero-term.tech{transform:translate(calc(-50% - 22vw),calc(-50% + var(--rise,0px)))}
-      .home-page .newhero.is-terms .newhero-term.art{transform:translate(calc(-50% + 22vw),calc(-50% + var(--rise,0px)))}
-      .home-page .newhero .term-1{--rise:-150px;transition-delay:0s}
-      .home-page .newhero .term-2{--rise:-75px;transition-delay:.12s}
-      .home-page .newhero .term-3{--rise:0px;transition-delay:.24s}
-      .home-page .newhero .term-4{--rise:75px;transition-delay:.36s}
-      .home-page .newhero .newhero-term.tech:before{content:"⌁ ";opacity:.7}
-      .home-page .newhero .newhero-term.art:before{content:"✳ ";opacity:.75}
-      @media(max-width:760px){.home-page .newhero{height:100svh;min-height:590px}.home-page .newhero .newhero-copy{left:14px;right:14px;bottom:18px;max-width:none;padding:16px;text-align:center}.home-page .newhero .newhero-copy h1{font-size:clamp(2.5rem,12vw,4.2rem)}.home-page .newhero .newhero-stage-label{right:0;left:0;bottom:auto;top:72px;text-align:center;font-size:.56rem}.home-page .newhero .newhero-term{font-size:.66rem}.home-page .newhero.is-terms .newhero-term.tech{transform:translate(calc(-50% - 24vw),calc(-50% + var(--rise,0px)))}.home-page .newhero.is-terms .newhero-term.art{transform:translate(calc(-50% + 24vw),calc(-50% + var(--rise,0px)))}.home-page .newhero .term-1{--rise:-120px}.home-page .newhero .term-2{--rise:-60px}.home-page .newhero .term-3{--rise:0px}.home-page .newhero .term-4{--rise:60px}}
-      @media(prefers-reduced-motion:reduce){.home-page .newhero .newhero-half,.home-page .newhero .newhero-term{transition-duration:.01ms}}
-    </style>
-
-    <style id="newhero-page-flow-fix">
-      /* This is the actual feature homepage: hero replaces the old hero, while the rest of the page scrolls normally. */
-      html, body { height: auto; min-height: 100%; overflow-x: hidden; overflow-y: auto; }
-      body.home-page { overflow-x: hidden; overflow-y: auto; }
-      body.home-page > header.nav { position: sticky; top: 0; z-index: 1000; }
-      body.home-page > main { margin-top: 0; padding-top: 0; }
-      body.home-page #newhero-feature {
-        position: relative !important;
-        inset: auto !important;
-        display: block !important;
-        width: 100% !important;
-        height: calc(100svh - var(--nav-height, 0px)) !important;
-        min-height: 620px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow: hidden !important;
-      }
-      body.home-page #newhero-feature + .section,
-      body.home-page .selected-work-section,
-      body.home-page > footer { display: block; }
-      body.home-page #newhero-feature .newhero-stage { position: absolute !important; inset: 0 !important; }
-      @media (max-width: 760px) {
-        body.home-page #newhero-feature { height: calc(100svh - 82px) !important; min-height: 590px !important; }
-      }
-    </style>
-
-
-    <style id="newhero-word-connection-animation">
-      /* Animate the actual lettering area in sequence with circuit energy and ink strokes. */
-      .newhero-stage .word-effects { position:absolute; inset:0; z-index:4; width:100%; height:100%; pointer-events:none; overflow:visible; }
-      .newhero-stage .word-effects path { fill:none; stroke-linecap:round; stroke-linejoin:round; }
-      .newhero-stage .word-effects .electric { stroke:#69dcff; stroke-width:3; stroke-dasharray:1; stroke-dashoffset:1; filter:drop-shadow(0 0 5px #00aaff) drop-shadow(0 0 13px #00aaff); animation: circuit-draw 1.05s ease-out forwards; }
-      .newhero-stage .word-effects .spark { fill:#e9fbff; filter:drop-shadow(0 0 5px #00baff); opacity:0; animation:spark-pop .45s ease-out forwards; }
-      .newhero-stage .word-effects .ink { stroke:#15100e; stroke-width:5; stroke-dasharray:1; stroke-dashoffset:1; filter:drop-shadow(0 1px 1px rgba(0,0,0,.25)); animation: ink-draw 1.1s cubic-bezier(.3,.1,.2,1) forwards; }
-      .newhero-stage .word-effects .ink-glint { stroke:#b94324; stroke-width:1.5; stroke-dasharray:1; stroke-dashoffset:1; opacity:.75; animation: ink-draw 1.1s ease-out forwards; }
-      .newhero-stage .word-effects .pulse { opacity:0; animation: word-pulse .9s ease-out forwards; }
-      .newhero-stage .word-effects .hero-word-left,
-      .newhero-stage .word-effects .hero-word-right { font-weight:700; opacity:0; }
-      .newhero-stage .word-effects .hero-word-left { fill:#b8f1ff; font-family:Arial,Helvetica,sans-serif; paint-order:stroke fill; stroke:#4bd5ff; stroke-width:1.2; filter:drop-shadow(0 0 5px rgba(0,174,255,.85)); animation: electric-word-reveal .55s ease-out forwards; }
-      .newhero-stage .word-effects .hero-word-right { fill:#17110f; font-family:Arial,Helvetica,sans-serif; paint-order:stroke fill; stroke:#17110f; stroke-width:.45; }
-      .newhero-stage .word-effects .hero-word-right .draw { stroke-dasharray:1; stroke-dashoffset:1; animation: ink-letter-draw 1.05s ease-out forwards; }
-      .newhero-stage .word-effects .hero-word-right.draw::selection,
-      .newhero-stage .word-effects .hero-word-left::selection { background:transparent; }
-      .newhero-stage .word-effects .hero-word-right .ink-fill { fill:#17110f; }
-      @keyframes electric-word-reveal { 0%{opacity:0;filter:brightness(2) drop-shadow(0 0 16px #00baff);transform:translateX(-8px)} 55%{opacity:1;filter:brightness(1.8) drop-shadow(0 0 12px #00baff)} 100%{opacity:1;filter:drop-shadow(0 0 4px rgba(0,174,255,.6));transform:translateX(0)} }
-      @keyframes ink-letter-draw { 0%{opacity:0;stroke-dashoffset:1;fill:transparent} 10%{opacity:1} 85%{stroke-dashoffset:0;fill:transparent} 100%{opacity:1;stroke-dashoffset:0;fill:#17110f} }
-
-      @keyframes circuit-draw { to { stroke-dashoffset:0; } }
-      @keyframes ink-draw { to { stroke-dashoffset:0; } }
-      @keyframes spark-pop { 0%{opacity:0;transform:scale(.4)} 35%{opacity:1;transform:scale(1.5)} 100%{opacity:0;transform:scale(.8)} }
-      @keyframes word-pulse { 0%,100%{opacity:0} 30%{opacity:.85} 65%{opacity:.18} }
-      @media(max-width:760px){ .newhero-stage .word-effects .electric{stroke-width:2.5}.newhero-stage .word-effects .ink{stroke-width:4} }
-      @media(prefers-reduced-motion:reduce){.newhero-stage .word-effects *{animation-duration:.01ms!important;animation-delay:0ms!important}}
-    </style>
-
-    <style id="newhero-mobile-and-word-fix">
-      /* Text is real SVG text now: reveal it without drawing stray baselines across the portrait. */
-      .newhero-stage .word-effects .hero-word-right { opacity:1; stroke:none; filter:none; }
-      .newhero-stage .word-effects .hero-word-right .draw {
-        stroke:none !important;
-        fill:#17110f;
-        opacity:0;
-        animation: ink-text-write 1.15s ease-out forwards;
-      }
-      @keyframes ink-text-write { 0% { opacity:0; transform:translateX(-10px); filter:blur(3px); } 35% { opacity:1; } 100% { opacity:1; transform:translateX(0); filter:blur(0); } }
-      .newhero-stage .word-effects .hero-word-left { opacity:1; animation:electric-word-reveal .6s ease-out both; }
-      .newhero-stage .word-effects .hero-word-right { opacity:1; }
-      @media(max-width:760px) {
-        body.home-page #newhero-feature .newhero-stage {
-          height:auto !important;
-          min-height:0 !important;
-          aspect-ratio:3 / 2 !important;
-          overflow:hidden !important;
-        }
-        body.home-page #newhero-feature .newhero-half img {
-          width:100% !important;
-          height:100% !important;
-          object-fit:fill !important;
-          object-position:center !important;
-        }
-        body.home-page #newhero-feature .newhero-copy {
-          margin-top:36px !important;
-        }
-      }
-    </style>
-
-    <style id="newhero-fullwidth-image-text">
-      /* Full-bleed hero: image reaches both viewport edges. Animate only the lettering already baked into the artwork. */
-      body.home-page #newhero-feature {
-        width: 100vw !important;
-        max-width: none !important;
-        margin-left: calc(50% - 50vw) !important;
-        margin-right: calc(50% - 50vw) !important;
-        padding: 0 !important;
-        background: #101419 !important;
-      }
-      body.home-page #newhero-feature .newhero-stage {
-        width: 100% !important;
-        background: #101419 !important;
-      }
-      body.home-page #newhero-feature .newhero-half img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: center !important;
-      }
-      /* No extra HTML text labels on top of the image. */
-      body.home-page #newhero-feature .newhero-terms,
-      body.home-page #newhero-feature .newhero-stage-label {
-        display: none !important;
-      }
-    </style>
-
-    <style id="newhero-copy-below-animation">
-      /* Put the text card after the animation, with a clear gap; do not overlay the artwork. */
-      body.home-page #newhero-feature {
-        height: auto !important;
-        min-height: 0 !important;
-        overflow: visible !important;
-        padding-bottom: clamp(48px, 8vh, 96px) !important;
-      }
-      body.home-page #newhero-feature .newhero-stage {
-        position: relative !important;
-        inset: auto !important;
-        width: 100% !important;
-        height: calc(100svh - 82px) !important;
-        min-height: 590px !important;
-        overflow: hidden !important;
-      }
-      body.home-page #newhero-feature .newhero-copy {
-        position: relative !important;
-        inset: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        width: min(760px, calc(100% - 40px)) !important;
-        max-width: 760px !important;
-        margin: clamp(48px, 8vh, 96px) auto 0 !important;
-        padding: clamp(20px, 3vw, 36px) !important;
-      }
-      @media (min-width: 761px) {
-        body.home-page #newhero-feature .newhero-stage {
-          height: calc(100svh - 88px) !important;
-          min-height: 620px !important;
-        }
-      }
-      @media (max-width: 760px) {
-        body.home-page #newhero-feature .newhero-copy {
-          width: calc(100% - 28px) !important;
-          max-width: none !important;
-          margin: 56px auto 0 !important;
-          text-align: center !important;
-        }
-      }
-    </style>
-
-
-    <style id="newhero-animated-type-v2">
-      /* Stagger the lettering itself; SVG group delays do not reliably cascade to child text. */
-      #newhero-feature .word-effects .hero-word-left text {
-        opacity: 0;
-        animation: hero-electric-type-in .72s cubic-bezier(.16,1,.3,1) forwards;
-      }
-      #newhero-feature .word-effects .hero-word-right text.draw {
-        opacity: 0;
-        animation: hero-ink-type-in 1.05s cubic-bezier(.2,.75,.2,1) forwards;
-      }
-      #newhero-feature .word-effects g:nth-of-type(1) text { animation-delay: 1.5s; }
-      #newhero-feature .word-effects g:nth-of-type(2) text { animation-delay: 2s; }
-      #newhero-feature .word-effects g:nth-of-type(3) text { animation-delay: 3.1s; }
-      #newhero-feature .word-effects g:nth-of-type(4) text { animation-delay: 3.6s; }
-      #newhero-feature .word-effects g:nth-of-type(5) text { animation-delay: 4.7s; }
-      #newhero-feature .word-effects g:nth-of-type(6) text { animation-delay: 5.2s; }
-      #newhero-feature .word-effects g:nth-of-type(7) text { animation-delay: 6.3s; }
-      #newhero-feature .word-effects g:nth-of-type(8) text { animation-delay: 6.8s; }
-      @keyframes hero-electric-type-in {
-        0% { opacity:0; filter:brightness(2.4) drop-shadow(0 0 18px #00baff); transform:translateX(-12px); }
-        28% { opacity:1; filter:brightness(2) drop-shadow(0 0 15px #00baff); }
-        48% { opacity:.55; }
-        63% { opacity:1; }
-        100% { opacity:1; filter:drop-shadow(0 0 5px rgba(0,174,255,.72)); transform:translateX(0); }
-      }
-      @keyframes hero-ink-type-in {
-        0% { opacity:0; filter:blur(5px); transform:translateY(7px) scale(.985); }
-        45% { opacity:.9; filter:blur(1.5px); }
-        100% { opacity:1; filter:blur(0); transform:translateY(0) scale(1); }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        #newhero-feature .word-effects .hero-word-left text,
-        #newhero-feature .word-effects .hero-word-right text.draw {
-          animation:none !important; opacity:1 !important; filter:none !important; transform:none !important;
-        }
-      }
-    </style>
-
-
-    <style id="newhero-hover-interactions-v2">
-      /* Soft cybernetic gradient: strongest at the far left, dissolving into the real face at center. */
-      #newhero-feature .newhero-stage { position:relative; isolation:isolate; }
-      #newhero-feature .newhero-tech-overlay,
-      #newhero-feature .newhero-art-overlay,
-      #newhero-feature .newhero-paint-energy {
-        position:absolute; inset:0; pointer-events:none;
-      }
-      #newhero-feature .newhero-tech-overlay {
-        z-index:3; opacity:.7; transition:opacity .35s ease;
-        background:
-          repeating-linear-gradient(0deg, transparent 0 31px, rgba(0,165,255,.16) 32px, transparent 33px 56px),
-          repeating-linear-gradient(90deg, transparent 0 39px, rgba(0,165,255,.14) 40px, transparent 41px 68px),
-          radial-gradient(ellipse 32% 52% at 16% 42%, rgba(0,153,255,.2), transparent 100%),
-          linear-gradient(90deg, rgba(2,20,39,.36) 0%, rgba(0,117,204,.24) 18%, rgba(0,139,219,.12) 34%, rgba(0,139,219,.035) 45%, transparent 53%);
-        mix-blend-mode:screen;
-        -webkit-mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.95) 18%,rgba(0,0,0,.65) 33%,rgba(0,0,0,.22) 45%,transparent 55%);
-        mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.95) 18%,rgba(0,0,0,.65) 33%,rgba(0,0,0,.22) 45%,transparent 55%);
-      }
-      #newhero-feature .newhero-tech-overlay:after {
-        content:""; position:absolute; inset:0;
-        background:
-          linear-gradient(90deg,transparent 0 10%,rgba(74,214,255,.32) 10.1% 10.2%,transparent 10.3% 20%,rgba(74,214,255,.25) 20.1% 20.2%,transparent 20.3%),
-          radial-gradient(circle at 10% 22%,#71e8ff 0 2px,transparent 3px),
-          radial-gradient(circle at 24% 63%,#71e8ff 0 2px,transparent 3px),
-          radial-gradient(circle at 35% 34%,#71e8ff 0 2px,transparent 3px);
-        opacity:.5;
-        -webkit-mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.75) 30%,transparent 52%);
-        mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.75) 30%,transparent 52%);
-      }
-      #newhero-feature .newhero-art-overlay {
-        z-index:3; opacity:0;
-        background:
-          radial-gradient(ellipse at 73% 27%,rgba(255,25,105,.78),transparent 30%),
-          radial-gradient(ellipse at 83% 48%,rgba(255,190,0,.72),transparent 34%),
-          radial-gradient(ellipse at 66% 69%,rgba(0,220,255,.72),transparent 32%),
-          radial-gradient(ellipse at 77% 78%,rgba(142,45,255,.62),transparent 30%);
-        background-size:135% 135%;
-        mix-blend-mode:screen;
-        filter:saturate(1.9) contrast(1.08);
-        transition:opacity .22s ease;
-      }
-      #newhero-feature .newhero-eye-laser {
-        position:absolute; z-index:5; left:44.1%; top:39.2%; width:0; height:2px;
-        opacity:0; pointer-events:none; transform:translateY(-50%);
-        background:linear-gradient(90deg,#e9fdff 0%,#51eaff 30%,#00aaff 72%,transparent 100%);
-        box-shadow:0 0 6px #00baff,0 0 16px rgba(0,174,255,.9);
-        transition:width .2s ease,opacity .15s ease;
-      }
-      #newhero-feature .newhero-eye-laser:before {
-        content:""; position:absolute; width:10px;height:10px;border-radius:50%;
-        left:-4px;top:50%;transform:translateY(-50%);
-        background:#f1ffff;box-shadow:0 0 6px 3px #00caff,0 0 19px 7px rgba(0,174,255,.8);
-      }
-      #newhero-feature .newhero-eye-laser:after {
-        content:""; position:absolute;left:0;right:0;top:-5px;height:12px;
-        background:linear-gradient(90deg,rgba(0,174,255,.4),transparent);filter:blur(4px);
-      }
-      #newhero-feature .newhero-paint-energy {
-        z-index:4; opacity:0; transform:scale(.96);
-        transition:opacity .25s ease,transform .7s cubic-bezier(.2,.8,.2,1);
-        background:
-          radial-gradient(ellipse at 74% 29%,rgba(255,20,105,.66),transparent 25%),
-          radial-gradient(ellipse at 81% 49%,rgba(255,205,0,.62),transparent 31%),
-          radial-gradient(ellipse at 69% 69%,rgba(0,225,255,.62),transparent 29%),
-          radial-gradient(ellipse at 76% 78%,rgba(145,35,255,.5),transparent 28%);
-        background-size:145% 145%;
-        mix-blend-mode:screen;
-        filter:saturate(2) contrast(1.12);
-      }
-      #newhero-feature .newhero-stage.is-tech-active .newhero-tech-overlay { opacity:1; }
-      #newhero-feature .newhero-stage.is-tech-active .newhero-eye-laser { opacity:1; width:17%; animation:hero-laser-scan .7s ease-out both; }
-      #newhero-feature .newhero-stage.is-art-active .newhero-art-overlay,
-      #newhero-feature .newhero-stage.is-art-active .newhero-paint-energy {
-        animation:hero-colour-dance 3.2s ease-in-out 1 normal both;
-      }
-      #newhero-feature .newhero-stage.is-art-active .newhero-paint-energy { transform:scale(1); }
-      #newhero-feature .newhero-stage.is-tech-active .newhero-half.newhero-robot img { filter:saturate(1.15) contrast(1.06); }
-      #newhero-feature .newhero-stage.is-art-active .newhero-half.newhero-paint img { filter:saturate(1.85) contrast(1.05); transition:filter .35s ease; }
-      @keyframes hero-laser-scan { 0%{width:0;opacity:.2} 30%{opacity:1} 100%{width:17%;opacity:1} }
-      /* One complete colour sweep: fade in, move once, then fade out. */
-      @keyframes hero-colour-dance {
-        0% { opacity:0; filter:hue-rotate(0deg) saturate(1.8) contrast(1.05); transform:scale(.99); background-position:0% 50%; }
-        16% { opacity:1; }
-        52% { opacity:1; filter:hue-rotate(24deg) saturate(2.15) contrast(1.12); transform:scale(1.035); background-position:50% 30%; }
-        82% { opacity:.75; }
-        100% { opacity:0; filter:hue-rotate(-18deg) saturate(2.3) contrast(1.1); transform:scale(1.055); background-position:100% 70%; }
-      }
-      @media(max-width:760px) {
-        #newhero-feature .newhero-eye-laser { left:44.1%; top:39.2%; }
-        #newhero-feature .newhero-stage.is-tech-active .newhero-eye-laser { width:18%; }
-      }
-      @media(prefers-color-scheme:dark) {
-        html:not([data-theme="light"]) #newhero-feature .newhero-tech-overlay {
-          background:
-            repeating-linear-gradient(0deg, transparent 0 31px, rgba(0,165,255,.22) 32px, transparent 33px 56px),
-            repeating-linear-gradient(90deg, transparent 0 39px, rgba(0,165,255,.18) 40px, transparent 41px 68px),
-            radial-gradient(ellipse 32% 52% at 16% 42%, rgba(0,153,255,.27), transparent 100%),
-            linear-gradient(90deg, rgba(0,0,0,.45) 0%, rgba(0,117,204,.27) 18%, rgba(0,139,219,.13) 34%, rgba(0,139,219,.04) 45%, transparent 53%);
-        }
-      }
-      html[data-theme="dark"] #newhero-feature .newhero-tech-overlay { opacity:.85; }
-      @media(prefers-reduced-motion:reduce) {
-        #newhero-feature .newhero-tech-overlay,#newhero-feature .newhero-art-overlay,
-        #newhero-feature .newhero-paint-energy,#newhero-feature .newhero-eye-laser { transition:none; animation:none!important; }
-      }
-    </style>
-
-    <style id="newhero-preview-background-fix">
-      /* The artwork is the hero background; do not paint a separate grid over it. */
-      #newhero-feature .newhero-tech-overlay,
-      #newhero-feature .newhero-tech-overlay::after { display: none !important; }
-      #newhero-feature .newhero-stage { background: transparent !important; }
-    </style>
-
   </head>
   <body class="home-page">
     <header class="nav">
       <div class="nav-inner">
-        <a class="brand" href="index.html">
-          Güven ÇALIŞKAN
-        </a>
+        <a class="brand" href="index.html"> Güven ÇALIŞKAN </a>
         <nav class="nav-links">
-          <a class="active" href="index.html">
-            Home
-          </a>
-          <a href="https://guneyguven.github.io/about.html">
-            About
-          </a>
-          <a href="https://guneyguven.github.io/resume.html">
-            Resume
-          </a>
-          <a href="https://guneyguven.github.io/projects.html">
-            Projects
-          </a>
-          <a href="https://guneyguven.github.io/art.html">
-            Art
-          </a>
-          <a href="Blog/blog/index.html">
-            Blog
-          </a>
-          <a href="https://guneyguven.github.io/contact.html">
-            Contact
-          </a>
+          <a class="active" href="index.html"> Home </a>
+          <a href="about.html"> About </a>
+          <a href="resume.html"> Resume </a>
+          <a href="projects.html"> Projects </a>
+          <a href="art.html"> Art </a>
+          <a href="blog/index.html"> Blog </a>
+          <a href="contact.html"> Contact </a>
         </nav>
         <div class="nav-tools">
-          <button class="theme" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false">
+          <button
+            class="theme"
+            type="button"
+            data-theme-toggle
+            aria-label="Switch to dark mode"
+            aria-pressed="false"
+          >
             ◐
           </button>
           <details class="mobile-menu">
-            <summary aria-label="Open navigation">
-              ☰
-            </summary>
+            <summary aria-label="Open navigation">☰</summary>
             <nav class="mobile-nav" aria-label="Mobile navigation">
-              <a href="index.html">
-                Home
-              </a>
-              <a href="https://guneyguven.github.io/about.html">
-                About
-              </a>
-              <a href="https://guneyguven.github.io/resume.html">
-                Resume
-              </a>
-              <a href="https://guneyguven.github.io/projects.html">
-                Projects
-              </a>
-              <a href="https://guneyguven.github.io/art.html">
-                Art
-              </a>
-              <a href="Blog/blog/index.html">
-                Blog
-              </a>
-              <a href="https://guneyguven.github.io/contact.html">
-                Contact
-              </a>
+              <a href="index.html"> Home </a>
+              <a href="about.html"> About </a>
+              <a href="resume.html"> Resume </a>
+              <a href="projects.html"> Projects </a>
+              <a href="art.html"> Art </a>
+              <a href="blog/index.html"> Blog </a>
+              <a href="contact.html"> Contact </a>
             </nav>
           </details>
         </div>
       </div>
     </header>
     <main>
-      <section class="hero newhero" id="newhero-feature" data-hero-version="newhero_2">
-        <div class="newhero-stage" aria-label="Engineer and artist split portrait with hover-reactive effects">
-          <div class="newhero-half newhero-robot"><img src="https://raw.githubusercontent.com/guneyguven/guneyguven.github.io/newhero_2/images/88B37D6F-2840-4CFC-A7B8-4FC610986B42.png" alt="Cybernetic engineering portrait half" fetchpriority="high"></div>
-          <div class="newhero-half newhero-paint"><img src="https://raw.githubusercontent.com/guneyguven/guneyguven.github.io/newhero_2/images/88B37D6F-2840-4CFC-A7B8-4FC610986B42.png" alt="Oil-painted artistic portrait half" fetchpriority="high"></div>
-          <div class="newhero-glow" aria-hidden="true"></div>
-          <div class="newhero-tech-overlay" aria-hidden="true"></div>
-          <div class="newhero-art-overlay" aria-hidden="true"></div>
-          <div class="newhero-eye-laser" aria-hidden="true"></div>
-          <div class="newhero-paint-energy" aria-hidden="true"></div>
-          <button class="newhero-hover-zone tech-zone" type="button" aria-label="Activate engineer effects"></button>
-          <button class="newhero-hover-zone art-zone" type="button" aria-label="Activate artist effects"></button>
-
-
-
-
-        </div>
-        <div class="newhero-copy">
+      <section class="hero">
+        <div class="hero-copy reveal">
           <p class="eyebrow">Engineer · Software · Project Management · Art</p>
-          <h1>Güven<br><span>ÇALIŞKAN</span></h1>
+          <h1>
+            Güven
+            <br />
+            <span> ÇALIŞKAN </span>
+          </h1>
           <p class="hero-lead">an Artist, a SWE and a PM.</p>
-          <p class="hero-sub">A multidisciplinary practice connecting engineering, technology, project management and visual art.</p>
-          <a class="link" href="https://guneyguven.github.io/projects.html">Explore my work →</a>
+          <p class="hero-sub">
+            A multidisciplinary practice connecting engineering, technology,
+            project management and visual art.
+          </p>
+          <a class="link" href="projects.html"> Explore my work → </a>
+        </div>
+        <div class="hero-media reveal">
+          <img
+            src="images/banner.png"
+            alt="Güven ÇALIŞKAN portfolio artwork"
+            width="1200"
+            height="1200"
+            fetchpriority="high"
+          />
         </div>
       </section>
       <section class="section">
-        <p class="eyebrow">
-          A multidisciplinary profile
-        </p>
+        <p class="eyebrow">A multidisciplinary profile</p>
         <h2 class="display">
           Engineering gives me structure.
-          <br>
-          <em>
-            Art gives me another way to think.
-          </em>
+          <br />
+          <em> Art gives me another way to think. </em>
         </h2>
         <div class="home-image-grid reveal" aria-label="Selected visual work">
           <figure class="home-image-item">
-            <img src="https://raw.githubusercontent.com/guneyguven/guneyguven.github.io/newhero_2/images/roboduck.jpg" alt="Robo Duck" width="1200" height="800" loading="lazy" decoding="async">
+            <img
+              src="images/roboduck.jpg"
+              alt="Robo Duck"
+              width="1200"
+              height="800"
+              loading="lazy"
+              decoding="async"
+            />
           </figure>
           <figure class="home-image-item">
-            <img src="https://raw.githubusercontent.com/guneyguven/guneyguven.github.io/newhero_2/images/run.jpg" alt="Run — digital artwork" width="1200" height="800" loading="lazy" decoding="async">
+            <img
+              src="images/run.jpg"
+              alt="Run — digital artwork"
+              width="1200"
+              height="800"
+              loading="lazy"
+              decoding="async"
+            />
           </figure>
           <figure class="home-image-item">
-            <img src="https://raw.githubusercontent.com/guneyguven/guneyguven.github.io/newhero_2/images/bomber.jpg" alt="Bomber — character artwork" width="1200" height="800" loading="lazy" decoding="async">
+            <img
+              src="images/bomber.jpg"
+              alt="Bomber — character artwork"
+              width="1200"
+              height="800"
+              loading="lazy"
+              decoding="async"
+            />
           </figure>
         </div>
       </section>
       <section class="section selected-work-section">
         <div class="split">
           <div>
-            <p class="eyebrow">
-              Selected work
-            </p>
+            <p class="eyebrow">Selected work</p>
             <h2 class="display">
               Ideas into
-              <br>
+              <br />
               real things.
             </h2>
           </div>
           <div class="copy">
             <p>
-              From research and software to project management, continuous improvement and digital art, my work sits at the intersection of analytical thinking and creative practice.
+              From research and software to project management, continuous
+              improvement and digital art, my work sits at the intersection of
+              analytical thinking and creative practice.
             </p>
           </div>
           <div class="selected-work-link-row">
-            <a class="link" href="https://guneyguven.github.io/projects.html">See projects →</a>
+            <a class="link" href="projects.html">See projects →</a>
           </div>
         </div>
       </section>
     </main>
     <footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="footer-copyright">GÜVEN ©<span data-current-year>2026</span></div>
-      <div class="footer-made">Made with ❤️ &amp; ☕️</div>
-    </div>
-    <nav class="footer-nav" aria-label="Footer navigation">
-      <a href="index.html">Home</a>
-      <a href="https://guneyguven.github.io/about.html">About</a>
-      <a href="https://guneyguven.github.io/resume.html">Resume</a>
-      <a href="https://guneyguven.github.io/projects.html">Projects</a>
-      <a href="https://guneyguven.github.io/art.html">Art</a>
-      <a href="Blog/blog/index.html">Blog</a>
-      <a href="https://guneyguven.github.io/contact.html">Contact</a>
-    </nav>
-    <div class="footer-actions">
-      <a href="https://www.linkedin.com/in/guneyguven" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" title="LinkedIn">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2ZM8.3 18H5.8V9.5h2.5ZM7 8.35a1.45 1.45 0 1 1 0-2.9 1.45 1.45 0 0 1 0 2.9ZM18.2 18h-2.5v-4.15c0-.99-.02-2.27-1.38-2.27-1.39 0-1.6 1.08-1.6 2.2V18h-2.5V9.5h2.4v1.16h.04a2.63 2.63 0 0 1 2.37-1.3c2.54 0 3.01 1.67 3.01 3.84Z"/></svg>
-      </a>
-      <a href="mailto:guneyguven@live.com" aria-label="Send email" title="Email">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5h17a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-17a1 1 0 0 1-1-1v-11a1 1 0 0 1 1-1Zm.6 2 7.9 6 7.9-6H4.1Zm15.4 9V9.8L12.6 15a1 1 0 0 1-1.2 0L4.5 9.8v6.7h15Z"/></svg>
-      </a>
-      <a class="footer-top" href="#" aria-label="Back to top" title="Back to top">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 14 7-7 7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-  </div>
-</footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-copyright">
+            GÜVEN ©<span data-current-year>2026</span>
+          </div>
+          <div class="footer-made">Made with ❤️ &amp; ☕️</div>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="resume.html">Resume</a>
+          <a href="projects.html">Projects</a>
+          <a href="art.html">Art</a>
+          <a href="blog/index.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="footer-actions">
+          <a
+            href="https://www.linkedin.com/in/guneyguven"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
+            title="LinkedIn"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2ZM8.3 18H5.8V9.5h2.5ZM7 8.35a1.45 1.45 0 1 1 0-2.9 1.45 1.45 0 0 1 0 2.9ZM18.2 18h-2.5v-4.15c0-.99-.02-2.27-1.38-2.27-1.39 0-1.6 1.08-1.6 2.2V18h-2.5V9.5h2.4v1.16h.04a2.63 2.63 0 0 1 2.37-1.3c2.54 0 3.01 1.67 3.01 3.84Z"
+              />
+            </svg>
+          </a>
+          <a
+            href="mailto:guneyguven@live.com"
+            aria-label="Send email"
+            title="Email"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M3.5 5.5h17a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-17a1 1 0 0 1-1-1v-11a1 1 0 0 1 1-1Zm.6 2 7.9 6 7.9-6H4.1Zm15.4 9V9.8L12.6 15a1 1 0 0 1-1.2 0L4.5 9.8v6.7h15Z"
+              />
+            </svg>
+          </a>
+          <a
+            class="footer-top"
+            href="#"
+            aria-label="Back to top"
+            title="Back to top"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="m5 14 7-7 7 7"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
     <script>
-      (() => {
-        const hero = document.getElementById('newhero-feature');
-        if (!hero) return;
-        const image = hero.querySelector('img');
-        const start = () => setTimeout(() => { requestAnimationFrame(() => hero.classList.add('is-started')); }, 220);
-        if (!image || image.complete) start();
-        else image.addEventListener('load', start, { once: true });
-      })();
+      document.addEventListener(
+        "click",
+        function (e) {
+          var m = document.querySelector(".mobile-menu[open]");
+          if (m && !m.contains(e.target)) m.removeAttribute("open");
+        },
+        true,
+      );
     </script>
-    <script>
-      document.addEventListener('click',function(e){
-  var m=document.querySelector('.mobile-menu[open]');
-  if(m && !m.contains(e.target)) m.removeAttribute('open');
-},true);
-    </script>
-
-    <style id="newhero-touch-zones">
-      /* Two transparent, full-height touch targets over the artwork. */
-      #newhero-feature .newhero-hover-zone {
-        position:absolute; top:0; bottom:0; z-index:8; display:block;
-        width:50%; height:100%; margin:0; padding:0;
-        border:0; border-radius:0; background:transparent;
-        opacity:0; cursor:pointer; touch-action:manipulation;
-        -webkit-tap-highlight-color:transparent;
-      }
-      #newhero-feature .newhero-hover-zone.tech-zone { left:0; right:auto; }
-      #newhero-feature .newhero-hover-zone.art-zone { left:50%; right:0; }
-    </style>
-    <script id="newhero-hover-interactions-v3">
-      (() => {
-        const hero = document.getElementById('newhero-feature');
-        const stage = hero && hero.querySelector('.newhero-stage');
-        if (!stage) return;
-        const zones = [...stage.querySelectorAll('.newhero-hover-zone')];
-        let touchMode = '';
-        const setMode = (mode) => {
-          stage.classList.toggle('is-tech-active', mode === 'tech');
-          stage.classList.toggle('is-art-active', mode === 'art');
-        };
-        zones.forEach((zone) => {
-          const mode = zone.classList.contains('tech-zone') ? 'tech' : 'art';
-          zone.addEventListener('pointerenter', (event) => {
-            if (event.pointerType === 'mouse') setMode(mode);
-          });
-          zone.addEventListener('pointerleave', (event) => {
-            if (event.pointerType === 'mouse') setMode('');
-          });
-          zone.addEventListener('focus', () => {
-            if (!('ontouchstart' in window)) setMode(mode);
-          });
-          zone.addEventListener('pointerdown', (event) => {
-            if (event.pointerType === 'touch') {
-              event.preventDefault();
-              touchMode = touchMode === mode ? '' : mode;
-              setMode(touchMode);
-            }
-          });
-          zone.addEventListener('click', (event) => {
-            if (event.detail === 0) setMode(mode);
-          });
-        });
-      })();
-    </script>
-
-    <script src="https://guneyguven.github.io/js/apple.js?v=20261010global-placeholder-fix" defer>
-    </script>
+    <script src="js/apple.js?v=20261010global-placeholder-fix" defer></script>
   </body>
 </html>
