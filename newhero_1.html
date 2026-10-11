@@ -19,12 +19,14 @@ h1{font-size:clamp(2.7rem,5.7vw,6rem);line-height:.92;letter-spacing:-.075em;mar
 h1 span{display:block;font-weight:350;letter-spacing:-.06em}
 .intro{font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.65;color:#55514d;max-width:38ch}
 .portrait-stage{position:relative;width:100%;max-width:1040px;justify-self:center;aspect-ratio:3/2;overflow:hidden;isolation:isolate;background:#101419;box-shadow:0 24px 70px rgba(0,0,0,.16)}
-.portrait-half{position:absolute;inset:0;overflow:hidden;transition:transform 1.15s var(--ease);will-change:transform;backface-visibility:hidden}
+.portrait-half{position:absolute;inset:0;overflow:hidden;will-change:transform;backface-visibility:hidden}
 .portrait-half img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;max-width:none}
-.robot{clip-path:inset(0 50% 0 0);transform:translateX(-3.5%)}
-.paint{clip-path:inset(0 0 0 50%);transform:translateX(3.5%)}
-.hero.started .robot{transform:translateX(0)}
-.hero.started .paint{transform:translateX(0)}
+.portrait-half .half-image{transition:transform 1.15s var(--ease);will-change:transform}
+.robot{clip-path:inset(0 50% 0 0)}
+.paint{clip-path:inset(0 0 0 50%)}
+.robot .half-image{transform:translateX(-3.5%)}
+.paint .half-image{transform:translateX(3.5%)}
+.hero.started .robot .half-image,.hero.started .paint .half-image{transform:translateX(0)}
 .ambient{position:absolute;inset:0;pointer-events:none;z-index:2;opacity:0;transition:opacity .5s ease .85s}
 .ambient:before,.ambient:after{content:"";position:absolute;top:-10%;bottom:-10%;width:50%;mix-blend-mode:screen}
 .ambient:before{left:0;background:linear-gradient(90deg,rgba(0,174,255,.09),transparent 72%);animation:tech-drift 7s ease-in-out infinite alternate}
@@ -46,9 +48,9 @@ h1 span{display:block;font-weight:350;letter-spacing:-.06em}
       <p class="intro">Where engineering thought meets the intuition of art.</p>
     </section>
     <div class="portrait-stage" aria-label="A split portrait combining engineering and art">
-      <!-- Add the approved final artwork at images/newhero-portrait.jpg -->
-      <div class="portrait-half robot"><img src="images/newhero-portrait.jpg" alt="Cybernetic engineering half" fetchpriority="high"></div>
-      <div class="portrait-half paint"><img src="images/newhero-portrait.jpg" alt="Oil-painted artistic half" fetchpriority="high"></div>
+      <!-- Put the approved final image at images/newhero-portrait.jpg. Both halves use this exact composite. -->
+      <div class="portrait-half robot"><img class="half-image" src="images/newhero-portrait.jpg" alt="Cybernetic engineering half" fetchpriority="high"></div>
+      <div class="portrait-half paint"><img class="half-image" src="images/newhero-portrait.jpg" alt="Oil-painted artistic half" fetchpriority="high"></div>
       <div class="ambient" aria-hidden="true"></div>
       <div class="stage-label">Engineering × Imagination</div>
     </div>
@@ -57,7 +59,11 @@ h1 span{display:block;font-weight:350;letter-spacing:-.06em}
 <script>
 (() => {
   const hero = document.getElementById('hero');
-  const start = () => requestAnimationFrame(() => hero.classList.add('started'));
+  const image = document.querySelector('.portrait-half img');
+  const start = () => {
+    if (!image || image.complete) requestAnimationFrame(() => hero.classList.add('started'));
+    else image.addEventListener('load', () => requestAnimationFrame(() => hero.classList.add('started')), {once:true});
+  };
   if (document.readyState === 'complete') start();
   else window.addEventListener('load', start, {once:true});
 })();
