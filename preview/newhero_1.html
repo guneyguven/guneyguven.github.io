@@ -93,6 +93,27 @@
       body.home-page > footer { display: none !important; }
     </style>
 
+
+    <style id="preview-remove-original-hero-art">
+      /* Keep the preview layout focused on the new hero; remove the legacy hero's image treatment. */
+      body.home-page #newhero-feature .newhero-stage { z-index: 1 !important; }
+      body.home-page #newhero-feature .newhero-copy { z-index: 5 !important; }
+      body.home-page #newhero-feature .newhero-stage img { object-fit: cover !important; }
+      body.home-page #newhero-feature { overflow: hidden !important; }
+      body.home-page #newhero-feature + .section,
+      body.home-page > footer { display: none !important; }
+      body.home-page #newhero-feature .newhero-stage-label { display: none !important; }
+      body.home-page #newhero-feature .newhero-terms { display: block !important; }
+      @media (max-width: 760px) {
+        body.home-page #newhero-feature .newhero-copy {
+          left: 16px !important; right: 16px !important;
+          bottom: max(18px, env(safe-area-inset-bottom)) !important;
+          max-width: none !important;
+        }
+        body.home-page #newhero-feature .newhero-half img { object-position: center center !important; }
+      }
+    </style>
+
   </head>
   <body class="home-page">
     <header class="nav">
