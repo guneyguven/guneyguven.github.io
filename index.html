@@ -332,6 +332,42 @@
       }
     </style>
 
+  
+    <style id="newhero-4-minimal-split-face">
+      /* newhero_4: a calm, Dannaway-inspired split portrait. Keep the artwork; remove the visual noise. */
+      #newhero-feature .newhero-half {
+        transition: transform 1.15s cubic-bezier(.2,.75,.25,1) !important;
+        will-change: transform;
+      }
+      #newhero-feature .newhero-robot { transform: translateX(-1.6vw) !important; }
+      #newhero-feature .newhero-paint { transform: translateX(1.6vw) !important; }
+      #newhero-feature.is-started .newhero-robot,
+      #newhero-feature.is-started .newhero-paint { transform: translateX(0) !important; }
+      #newhero-feature .newhero-glow,
+      #newhero-feature .newhero-tech-overlay,
+      #newhero-feature .newhero-art-overlay,
+      #newhero-feature .newhero-eye-laser,
+      #newhero-feature .newhero-paint-energy,
+      #newhero-feature .newhero-hover-zone,
+      #newhero-feature .word-effects { display: none !important; }
+      #newhero-feature .newhero-stage { background: #101419; }
+      #newhero-feature .newhero-half img { filter: none !important; }
+      @media (max-width: 760px) {
+        #newhero-feature .newhero-robot { transform: translateX(-2.4vw) !important; }
+        #newhero-feature .newhero-paint { transform: translateX(2.4vw) !important; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #newhero-feature .newhero-half,
+        #newhero-feature .newhero-robot,
+        #newhero-feature .newhero-paint,
+        #newhero-feature.is-started .newhero-robot,
+        #newhero-feature.is-started .newhero-paint {
+          transition: none !important;
+          transform: none !important;
+        }
+      }
+    </style>
+
   </head>
   <body class="home-page">
     <header class="nav">
@@ -398,7 +434,7 @@
       </div>
     </header>
     <main>
-      <section class="hero newhero" id="newhero-feature" data-hero-version="newhero_2">
+      <section class="hero newhero" id="newhero-feature" data-hero-version="newhero_4">
         <div class="newhero-stage" aria-label="Engineer and artist split portrait with hover-reactive effects">
           <div class="newhero-half newhero-robot"><img src="images/88B37D6F-2840-4CFC-A7B8-4FC610986B42.png" alt="Cybernetic engineering portrait half" fetchpriority="high"></div>
           <div class="newhero-half newhero-paint"><img src="images/88B37D6F-2840-4CFC-A7B8-4FC610986B42.png" alt="Oil-painted artistic portrait half" fetchpriority="high"></div>
