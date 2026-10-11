@@ -368,6 +368,83 @@
       }
     </style>
 
+  
+    <style id="newhero-4-dannaway-layout">
+      /* Dannaway-inspired split portrait: minimal, centered, and still unmistakably Güven. */
+      body.home-page #newhero-feature.dannaway-hero {
+        width:100% !important; max-width:none !important; height:auto !important; min-height:0 !important;
+        margin:0 !important; padding:0 !important; overflow:visible !important; background:transparent !important; color:var(--text);
+      }
+      #newhero-feature .dannaway-stage {
+        position:relative !important; inset:auto !important; width:100%; height:clamp(440px,64vh,650px);
+        min-height:0 !important; display:flex; align-items:center; justify-content:center; overflow:hidden;
+        background:#f7f6f2; isolation:isolate;
+      }
+      html[data-theme="dark"] #newhero-feature .dannaway-stage { background:#141414; }
+      #newhero-feature .dannaway-portrait {
+        position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+        width:clamp(250px,27vw,360px); height:clamp(330px,52vh,500px); overflow:hidden; background:#e7e3dc;
+      }
+      #newhero-feature .dannaway-half { position:absolute; inset:0; overflow:hidden; }
+      #newhero-feature .dannaway-half img {
+        position:absolute; inset:0; display:block; width:100%; height:100%; max-width:none;
+        object-fit:cover; object-position:center 28%; border-radius:0; box-shadow:none;
+      }
+      #newhero-feature .dannaway-half-left { clip-path:inset(0 50% 0 0); }
+      #newhero-feature .dannaway-half-right { clip-path:inset(0 0 0 50%); }
+      #newhero-feature .dannaway-half-right img {
+        filter:sepia(.42) saturate(1.32) contrast(1.08) brightness(1.02);
+        transform:scale(1.015);
+      }
+      #newhero-feature .dannaway-seam {
+        position:absolute; z-index:2; top:0; bottom:0; left:50%; width:1px;
+        background:rgba(255,255,255,.7); transform:translateX(-.5px); pointer-events:none;
+      }
+      #newhero-feature .dannaway-label {
+        position:absolute; top:50%; z-index:3; margin:0; transform:translateY(-50%);
+        display:flex; flex-direction:column; gap:10px; color:#171717; max-width:26vw;
+      }
+      html[data-theme="dark"] #newhero-feature .dannaway-label { color:#f3f3f3; }
+      #newhero-feature .dannaway-label-left { right:calc(50% + clamp(155px,19vw,250px)); text-align:right; align-items:flex-end; }
+      #newhero-feature .dannaway-label-right { left:calc(50% + clamp(155px,19vw,250px)); text-align:left; align-items:flex-start; }
+      #newhero-feature .dannaway-label span { font-size:clamp(1.5rem,3.1vw,2.8rem); line-height:1; font-weight:650; letter-spacing:-.055em; }
+      #newhero-feature .dannaway-label small { font-size:clamp(.72rem,.95vw,.9rem); line-height:1.5; color:#777; max-width:180px; letter-spacing:.01em; }
+      html[data-theme="dark"] #newhero-feature .dannaway-label small { color:#aaa; }
+      #newhero-feature .newhero-glow,
+      #newhero-feature .newhero-tech-overlay,
+      #newhero-feature .newhero-art-overlay,
+      #newhero-feature .newhero-eye-laser,
+      #newhero-feature .newhero-paint-energy,
+      #newhero-feature .newhero-hover-zone,
+      #newhero-feature .word-effects,
+      #newhero-feature .newhero-terms,
+      #newhero-feature .newhero-stage-label { display:none !important; }
+      #newhero-feature .dannaway-copy {
+        position:relative !important; inset:auto !important; left:auto !important; right:auto !important; bottom:auto !important;
+        width:min(760px,calc(100% - 40px)) !important; max-width:760px !important; margin:0 auto !important;
+        padding:clamp(36px,5vw,64px) 0 52px !important; border:0 !important; border-radius:0 !important;
+        background:transparent !important; color:var(--text) !important; text-align:center; backdrop-filter:none !important;
+      }
+      #newhero-feature .dannaway-copy .eyebrow { color:var(--muted) !important; }
+      #newhero-feature .dannaway-copy h1 { color:var(--text) !important; font-size:clamp(2.6rem,6vw,5.4rem) !important; line-height:.94 !important; }
+      #newhero-feature .dannaway-copy h1 span { color:var(--text) !important; }
+      #newhero-feature .dannaway-copy p { color:var(--muted) !important; }
+      #newhero-feature .dannaway-copy .link { color:var(--text) !important; }
+      @media(max-width:760px) {
+        #newhero-feature .dannaway-stage { height:clamp(510px,72svh,650px); }
+        #newhero-feature .dannaway-portrait { width:min(72vw,330px); height:clamp(350px,53svh,470px); top:54%; }
+        #newhero-feature .dannaway-label { top:28px; transform:none; max-width:42%; gap:5px; }
+        #newhero-feature .dannaway-label-left { left:18px; right:auto; text-align:left; align-items:flex-start; }
+        #newhero-feature .dannaway-label-right { right:18px; left:auto; text-align:right; align-items:flex-end; }
+        #newhero-feature .dannaway-label span { font-size:clamp(1.25rem,5.5vw,1.7rem); }
+        #newhero-feature .dannaway-label small { font-size:.68rem; max-width:145px; }
+        #newhero-feature .dannaway-copy { width:calc(100% - 32px) !important; padding:34px 0 42px !important; }
+      }
+      @media(prefers-reduced-motion:reduce) {
+        #newhero-feature .dannaway-half { transition:none !important; }
+      }
+    </style>
+
   </head>
   <body class="home-page">
     <header class="nav">
@@ -434,48 +511,25 @@
       </div>
     </header>
     <main>
-      <section class="hero newhero" id="newhero-feature" data-hero-version="newhero_4">
-        <div class="newhero-stage" aria-label="Engineer and artist split portrait with hover-reactive effects">
-          <div class="newhero-half newhero-robot"><img src="images/88B37D6F-2840-4CFC-A7B8-4FC610986B42.png" alt="Cybernetic engineering portrait half" fetchpriority="high"></div>
-          <div class="newhero-half newhero-paint"><img src="images/88B37D6F-2840-4CFC-A7B8-4FC610986B42.png" alt="Oil-painted artistic portrait half" fetchpriority="high"></div>
-          <div class="newhero-glow" aria-hidden="true"></div>
-          <div class="newhero-tech-overlay" aria-hidden="true"></div>
-          <div class="newhero-art-overlay" aria-hidden="true"></div>
-          <div class="newhero-eye-laser" aria-hidden="true"></div>
-          <div class="newhero-paint-energy" aria-hidden="true"></div>
-          <button class="newhero-hover-zone tech-zone" type="button" aria-label="Activate engineer effects"></button>
-          <button class="newhero-hover-zone art-zone" type="button" aria-label="Activate artist effects"></button>
-
-          <svg class="word-effects" viewBox="0 0 1536 1024" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              </defs>
-            
-            <g class="hero-word-left" style="animation-delay:1.65s"><text x="247" y="190" font-size="38">AI</text></g>
-            <g class="hero-word-right" style="animation-delay:2.15s"><text class="draw" x="1305" y="194" font-size="39">Imagination</text></g>
-            <g class="hero-word-left" style="animation-delay:3.7s"><text x="175" y="356" font-size="39">ML</text></g>
-            <g class="hero-word-right" style="animation-delay:4.15s"><text class="draw" x="1360" y="365" font-size="39">Art</text></g>
-            <g class="hero-word-left" style="animation-delay:5.7s"><text x="82" y="546" font-size="36">Engineering</text></g>
-            <g class="hero-word-right" style="animation-delay:6.15s"><text class="draw" x="1352" y="554" font-size="39">Talent</text></g>
-            <g class="hero-word-left" style="animation-delay:7.7s"><text x="120" y="664" font-size="37">Analytics</text></g>
-            <g class="hero-word-right" style="animation-delay:8.15s"><text class="draw" x="1334" y="744" font-size="39">Abstract</text></g>
-
-            
-            
-            
-            
-            
-            
-            
-            
-          </svg>
-
-
+      <section class="hero newhero dannaway-hero" id="newhero-feature" data-hero-version="newhero_4">
+        <div class="dannaway-stage" aria-label="Split portrait representing engineering and digital art">
+          <p class="dannaway-label dannaway-label-left"><span>Engineer</span><small>Technology · Systems · Software</small></p>
+          <div class="dannaway-portrait" aria-label="Portrait split into two creative disciplines">
+            <div class="dannaway-half dannaway-half-left">
+              <img src="images/IMG_4706.png" alt="Güven Çalışkan — engineer portrait" fetchpriority="high">
+            </div>
+            <div class="dannaway-half dannaway-half-right">
+              <img src="images/IMG_4706.png" alt="" aria-hidden="true">
+            </div>
+            <span class="dannaway-seam" aria-hidden="true"></span>
+          </div>
+          <p class="dannaway-label dannaway-label-right"><span>Artist</span><small>Illustration · Visual Thinking</small></p>
         </div>
-        <div class="newhero-copy">
+        <div class="newhero-copy dannaway-copy">
           <p class="eyebrow">Engineer · Software · Project Management · Art</p>
           <h1>Güven<br><span>ÇALIŞKAN</span></h1>
-          <p class="hero-lead">an Artist, a SWE and a PM.</p>
-          <p class="hero-sub">A multidisciplinary practice connecting engineering, technology, project management and visual art.</p>
+          <p class="hero-lead">An engineer with an artist’s eye.</p>
+          <p class="hero-sub">Connecting analytical thinking, technology, project management and visual art.</p>
           <a class="link" href="projects.html">Explore my work →</a>
         </div>
       </section>
