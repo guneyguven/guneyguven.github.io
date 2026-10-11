@@ -240,6 +240,84 @@
       }
     </style>
 
+
+    <style id="newhero-hover-interactions-v1">
+      /* Interaction is layered over the existing portrait; the source image remains untouched. */
+      #newhero-feature .newhero-stage { --tech-glow: rgba(0,174,255,.0); --art-energy: 0; }
+      #newhero-feature .newhero-hover-zone {
+        position:absolute; z-index:6; top:0; bottom:0; width:50%;
+        border:0; padding:0; margin:0; background:transparent; color:inherit;
+        cursor:pointer; pointer-events:auto; -webkit-tap-highlight-color:transparent;
+      }
+      #newhero-feature .newhero-hover-zone.tech-zone { left:0; }
+      #newhero-feature .newhero-hover-zone.art-zone { right:0; }
+      #newhero-feature .newhero-hover-zone:focus-visible { outline:2px solid #26c8ff; outline-offset:-8px; }
+      #newhero-feature .newhero-tech-overlay,
+      #newhero-feature .newhero-art-overlay {
+        position:absolute; inset:0; z-index:3; pointer-events:none; opacity:0;
+        transition:opacity .35s ease;
+      }
+      #newhero-feature .newhero-tech-overlay {
+        background:
+          radial-gradient(ellipse 15% 9% at 43.5% 36%, rgba(83,226,255,.65), transparent 72%),
+          linear-gradient(90deg, rgba(0,143,255,.25) 0%, rgba(0,143,255,.16) 22%, rgba(0,143,255,.08) 38%, transparent 55%);
+        mix-blend-mode:screen;
+        mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.9) 20%,rgba(0,0,0,.45) 39%,transparent 58%);
+      }
+      #newhero-feature .newhero-art-overlay {
+        background:
+          radial-gradient(ellipse at 75% 45%, rgba(255,95,25,.22), transparent 45%),
+          radial-gradient(ellipse at 66% 58%, rgba(0,180,255,.18), transparent 34%);
+        mix-blend-mode:screen;
+      }
+      #newhero-feature .newhero-eye-laser {
+        position:absolute; z-index:5; left:43.5%; top:36%; width:0; height:2px;
+        opacity:0; pointer-events:none; transform:translateY(-50%);
+        background:linear-gradient(90deg,rgba(115,238,255,.95),#00aaff 55%,transparent);
+        box-shadow:0 0 7px #00baff,0 0 18px rgba(0,174,255,.85);
+        transition:width .22s ease,opacity .18s ease;
+      }
+      #newhero-feature .newhero-eye-laser:before {
+        content:""; position:absolute; width:13px;height:13px;border-radius:50%;
+        left:-6px;top:50%;transform:translateY(-50%);
+        background:#dffcff;box-shadow:0 0 7px 3px #00baff,0 0 22px 8px rgba(0,174,255,.8);
+      }
+      #newhero-feature .newhero-eye-laser:after {
+        content:""; position:absolute;left:0;right:0;top:-5px;height:12px;
+        background:linear-gradient(90deg,rgba(0,174,255,.35),transparent);
+        filter:blur(4px);
+      }
+      #newhero-feature .newhero-paint-energy {
+        position:absolute;z-index:4;inset:0;pointer-events:none;opacity:0;
+        background:
+          radial-gradient(ellipse at 73% 28%,rgba(255,55,45,.22),transparent 24%),
+          radial-gradient(ellipse at 79% 52%,rgba(255,160,0,.24),transparent 30%),
+          radial-gradient(ellipse at 68% 70%,rgba(0,177,255,.2),transparent 28%);
+        transform:scale(.94);transition:opacity .25s ease,transform .65s cubic-bezier(.2,.8,.2,1);
+      }
+      #newhero-feature .newhero-stage.is-tech-active .newhero-tech-overlay,
+      #newhero-feature .newhero-stage.is-tech-active .newhero-eye-laser { opacity:1; }
+      #newhero-feature .newhero-stage.is-tech-active .newhero-eye-laser { width:18%; }
+      #newhero-feature .newhero-stage.is-art-active .newhero-art-overlay,
+      #newhero-feature .newhero-stage.is-art-active .newhero-paint-energy { opacity:1; }
+      #newhero-feature .newhero-stage.is-art-active .newhero-paint-energy { transform:scale(1.04); }
+      #newhero-feature .newhero-stage.is-tech-active .newhero-half.newhero-robot img {
+        filter:saturate(1.08) contrast(1.04);
+      }
+      #newhero-feature .newhero-stage.is-art-active .newhero-half.newhero-paint img {
+        filter:saturate(1.12);
+      }
+      @media(max-width:760px) {
+        #newhero-feature .newhero-hover-zone { width:50%; }
+        #newhero-feature .newhero-eye-laser { left:43.5%; top:36%; }
+        #newhero-feature .newhero-stage.is-tech-active .newhero-eye-laser { width:14%; }
+      }
+      @media(prefers-reduced-motion:reduce) {
+        #newhero-feature .newhero-tech-overlay,#newhero-feature .newhero-art-overlay,
+        #newhero-feature .newhero-paint-energy,#newhero-feature .newhero-eye-laser { transition:none; }
+      }
+    </style>
+
   </head>
   <body class="home-page">
     <header class="nav">
@@ -311,6 +389,13 @@
           <div class="newhero-half newhero-robot"><img src="images/hero-clean.png" alt="Cybernetic engineering portrait half" fetchpriority="high"></div>
           <div class="newhero-half newhero-paint"><img src="images/hero-clean.png" alt="Oil-painted artistic portrait half" fetchpriority="high"></div>
           <div class="newhero-glow" aria-hidden="true"></div>
+          <div class="newhero-tech-overlay" aria-hidden="true"></div>
+          <div class="newhero-art-overlay" aria-hidden="true"></div>
+          <div class="newhero-eye-laser" aria-hidden="true"></div>
+          <div class="newhero-paint-energy" aria-hidden="true"></div>
+          <button class="newhero-hover-zone tech-zone" type="button" aria-label="Activate engineer effects"></button>
+          <button class="newhero-hover-zone art-zone" type="button" aria-label="Activate artist effects"></button>
+
           <svg class="word-effects" viewBox="0 0 1536 1024" preserveAspectRatio="none" aria-hidden="true">
             <defs>
               </defs>
@@ -434,6 +519,34 @@
   if(m && !m.contains(e.target)) m.removeAttribute('open');
 },true);
     </script>
+
+    <script id="newhero-hover-interactions-v1">
+      (() => {
+        const hero = document.getElementById('newhero-feature');
+        const stage = hero && hero.querySelector('.newhero-stage');
+        if (!stage) return;
+        const zones = [...stage.querySelectorAll('.newhero-hover-zone')];
+        const setMode = (mode) => {
+          stage.classList.toggle('is-tech-active', mode === 'tech');
+          stage.classList.toggle('is-art-active', mode === 'art');
+        };
+        zones.forEach((zone) => {
+          const mode = zone.classList.contains('tech-zone') ? 'tech' : 'art';
+          zone.addEventListener('pointerenter', () => setMode(mode));
+          zone.addEventListener('pointerleave', () => setMode(''));
+          zone.addEventListener('focus', () => setMode(mode));
+          zone.addEventListener('blur', () => setMode(''));
+          zone.addEventListener('click', () => {
+            const active = stage.classList.contains(mode === 'tech' ? 'is-tech-active' : 'is-art-active');
+            setMode(active ? '' : mode);
+          });
+          zone.addEventListener('pointerdown', (event) => {
+            if (event.pointerType === 'touch') setMode(mode);
+          });
+        });
+      })();
+    </script>
+
     <script src="js/apple.js?v=20261010global-placeholder-fix" defer>
     </script>
   </body>
