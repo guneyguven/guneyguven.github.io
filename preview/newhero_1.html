@@ -1,71 +1,227 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="light dark">
-<title>New Hero 1 — Güven Çalışkan</title>
-<style>
-:root{--paper:#f4f1eb;--ease:cubic-bezier(.2,.75,.2,1)}
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:var(--paper);color:#111;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-body{overflow-x:hidden}
-.hero{min-height:100svh;height:100svh;display:block;padding:0;position:relative;isolation:isolate;overflow:hidden}
-.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,#fff 0,transparent 65%);z-index:-1}
-.hero-inner{width:100%;height:100%;display:block;position:relative}
-.copy{max-width:520px;position:absolute;z-index:5;left:clamp(22px,5vw,84px);bottom:clamp(26px,7vh,84px);padding:clamp(16px,2vw,28px);background:rgba(244,241,235,.84);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:12px}
-.kicker{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#68645f;font-weight:700}
-h1{font-size:clamp(2.7rem,5.7vw,6rem);line-height:.92;letter-spacing:-.075em;margin:18px 0 22px;font-weight:760}
-h1 span{display:block;font-weight:350;letter-spacing:-.06em}
-.intro{font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.65;color:#55514d;max-width:38ch}
-.portrait-stage{position:absolute;inset:0;width:100vw;height:100%;max-width:none;aspect-ratio:auto;overflow:hidden;isolation:isolate;background:#101419}
-.portrait-half{position:absolute;inset:0;overflow:hidden;will-change:transform;backface-visibility:hidden;transition:transform 1.65s cubic-bezier(.16,1,.3,1)}
-.portrait-half img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;max-width:none}
-.portrait-half .half-image{will-change:transform}
-.robot{clip-path:inset(0 50% 0 0);transform:translateX(-105%)}
-.paint{clip-path:inset(0 0 0 50%);transform:translateX(105%)}
-.hero.started .robot,.hero.started .paint{transform:translateX(0)}
-.hero.started .robot,.hero.started .paint{transition-delay:.08s}
-.ambient{position:absolute;inset:0;pointer-events:none;z-index:2;opacity:0;transition:opacity .5s ease .85s}
-.ambient:before,.ambient:after{content:"";position:absolute;top:-10%;bottom:-10%;width:50%;mix-blend-mode:screen}
-.ambient:before{left:0;background:linear-gradient(90deg,rgba(0,174,255,.09),transparent 72%);animation:tech-drift 7s ease-in-out infinite alternate}
-.ambient:after{right:0;background:linear-gradient(270deg,rgba(255,115,22,.10),transparent 72%);animation:art-drift 9s ease-in-out infinite alternate}
-.hero.started .ambient{opacity:1}
-.stage-label{position:absolute;z-index:3;bottom:12px;left:0;right:0;text-align:center;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.68);text-shadow:0 1px 5px #000;pointer-events:none}
-@keyframes tech-drift{from{transform:translateX(-2%)}to{transform:translateX(2%)}}
-@keyframes art-drift{from{transform:translateX(2%)}to{transform:translateX(-2%)}}
-@media(max-width:760px){.copy{left:14px;right:14px;bottom:18px;text-align:center;margin:auto;padding:16px}h1{font-size:clamp(2.4rem,11vw,4rem);margin:12px 0 14px}.intro{margin-inline:auto}.kicker{font-size:.62rem}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-</style>
-</head>
-<body>
-<main class="hero" id="hero">
-  <div class="hero-inner">
-    <section class="copy" aria-label="Introduction">
-      <div class="kicker">Engineering × Imagination</div>
-      <h1>Güven <span>Çalışkan</span></h1>
-      <p class="intro">Where engineering thought meets the intuition of art.</p>
-    </section>
-    <div class="portrait-stage" aria-label="A split portrait combining engineering and art">
-      <!-- The approved composite image is served from the existing site images folder. Both halves use this exact composite. -->
-      <div class="portrait-half robot"><img class="half-image" src="../images/A82F576F-ECFB-4BCB-8843-5265066709E5.png" alt="Cybernetic engineering half" fetchpriority="high"></div>
-      <div class="portrait-half paint"><img class="half-image" src="../images/A82F576F-ECFB-4BCB-8843-5265066709E5.png" alt="Oil-painted artistic half" fetchpriority="high"></div>
-      <div class="ambient" aria-hidden="true"></div>
-      <div class="stage-label">Engineering × Imagination</div>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Güven ÇALIŞKAN — engineer, software engineer, project manager and multidisciplinary digital artist.">
+    <title>Homepage Preview — Güven Çalışkan</title>
+    <link rel="icon" href="../images/icon.png">
+    <link rel="stylesheet" href="../css/apple.css?v=20261010-footer-center-1">
+    <script>
+      try{const s=localStorage.getItem("siteTheme")||localStorage.getItem("theme");document.documentElement.dataset.theme=s||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){}
+    </script>
+    <style id="newhero-feature-styles">
+      .home-page .newhero{width:100%;max-width:none;margin:0;padding:0;height:100svh;min-height:620px;position:relative;display:block;overflow:hidden;isolation:isolate;background:#101419;color:#fff}
+      .home-page .newhero .newhero-stage{position:absolute;inset:0;overflow:hidden;background:#101419}
+      .home-page .newhero .newhero-half{position:absolute;inset:0;overflow:hidden;will-change:transform;backface-visibility:hidden;transition:transform 1.85s cubic-bezier(.16,1,.3,1)}
+      .home-page .newhero .newhero-half img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center;display:block}
+      .home-page .newhero .newhero-robot{clip-path:inset(0 50% 0 0);transform:translateX(-110vw)}
+      .home-page .newhero .newhero-paint{clip-path:inset(0 0 0 50%);transform:translateX(110vw)}
+      .home-page .newhero.is-started .newhero-robot,.home-page .newhero.is-started .newhero-paint{transform:translateX(0)}
+      .home-page .newhero .newhero-glow{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,174,255,.12),transparent 50%,rgba(255,115,22,.12));opacity:0;transition:opacity .7s ease 1.35s}
+      .home-page .newhero.is-started .newhero-glow{opacity:1}
+      .home-page .newhero .newhero-copy{position:absolute;z-index:5;left:clamp(20px,5vw,80px);bottom:clamp(22px,6vh,70px);max-width:min(560px,88vw);padding:clamp(18px,2.4vw,30px);border-radius:14px;background:rgba(12,15,19,.68);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff}
+      .home-page .newhero .newhero-copy .eyebrow{color:rgba(255,255,255,.7)}
+      .home-page .newhero .newhero-copy h1{color:#fff;margin:12px 0 14px;font-size:clamp(2.8rem,6.5vw,6.5rem);line-height:.9;letter-spacing:-.075em}
+      .home-page .newhero .newhero-copy h1 span{color:#fff;font-weight:350}
+      .home-page .newhero .newhero-copy p{color:rgba(255,255,255,.83)}
+      .home-page .newhero .newhero-copy .link{color:#fff}
+      .home-page .newhero .newhero-stage-label{position:absolute;z-index:2;right:20px;bottom:18px;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.72);pointer-events:none}
+      .home-page .newhero .newhero-terms{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden}
+      .home-page .newhero .newhero-term{position:absolute;top:50%;opacity:0;white-space:nowrap;font-size:clamp(.75rem,1.45vw,1.15rem);font-weight:650;letter-spacing:.13em;text-transform:uppercase;transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity .65s ease;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+      .home-page .newhero .newhero-term.tech{left:50%;color:#73d7ff;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;transform:translate(-50%,18px);text-shadow:0 0 14px rgba(0,174,255,.6)}
+      .home-page .newhero .newhero-term.art{left:50%;color:#fff;font-family:Georgia,serif;font-style:italic;letter-spacing:.08em;transform:translate(-50%,18px);text-shadow:0 2px 12px rgba(0,0,0,.7)}
+      .home-page .newhero.is-terms .newhero-term{opacity:1}
+      .home-page .newhero.is-terms .newhero-term.tech{transform:translate(calc(-50% - 22vw),calc(-50% + var(--rise,0px)))}
+      .home-page .newhero.is-terms .newhero-term.art{transform:translate(calc(-50% + 22vw),calc(-50% + var(--rise,0px)))}
+      .home-page .newhero .term-1{--rise:-150px;transition-delay:0s}
+      .home-page .newhero .term-2{--rise:-75px;transition-delay:.12s}
+      .home-page .newhero .term-3{--rise:0px;transition-delay:.24s}
+      .home-page .newhero .term-4{--rise:75px;transition-delay:.36s}
+      .home-page .newhero .newhero-term.tech:before{content:"⌁ ";opacity:.7}
+      .home-page .newhero .newhero-term.art:before{content:"✳ ";opacity:.75}
+      @media(max-width:760px){.home-page .newhero{height:100svh;min-height:590px}.home-page .newhero .newhero-copy{left:14px;right:14px;bottom:18px;max-width:none;padding:16px;text-align:center}.home-page .newhero .newhero-copy h1{font-size:clamp(2.5rem,12vw,4.2rem)}.home-page .newhero .newhero-stage-label{right:0;left:0;bottom:auto;top:72px;text-align:center;font-size:.56rem}.home-page .newhero .newhero-term{font-size:.66rem}.home-page .newhero.is-terms .newhero-term.tech{transform:translate(calc(-50% - 24vw),calc(-50% + var(--rise,0px)))}.home-page .newhero.is-terms .newhero-term.art{transform:translate(calc(-50% + 24vw),calc(-50% + var(--rise,0px)))}.home-page .newhero .term-1{--rise:-120px}.home-page .newhero .term-2{--rise:-60px}.home-page .newhero .term-3{--rise:0px}.home-page .newhero .term-4{--rise:60px}}
+      @media(prefers-reduced-motion:reduce){.home-page .newhero .newhero-half,.home-page .newhero .newhero-term{transition-duration:.01ms}}
+    </style>
+  </head>
+  <body class="home-page">
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html">
+          Güven ÇALIŞKAN
+        </a>
+        <nav class="nav-links">
+          <a class="active" href="../index.html">
+            Home
+          </a>
+          <a href="../about.html">
+            About
+          </a>
+          <a href="../resume.html">
+            Resume
+          </a>
+          <a href="../projects.html">
+            Projects
+          </a>
+          <a href="../art.html">
+            Art
+          </a>
+          <a href="../blog/index.html">
+            Blog
+          </a>
+          <a href="../contact.html">
+            Contact
+          </a>
+        </nav>
+        <div class="nav-tools">
+          <button class="theme" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false">
+            ◐
+          </button>
+          <details class="mobile-menu">
+            <summary aria-label="Open navigation">
+              ☰
+            </summary>
+            <nav class="mobile-nav" aria-label="Mobile navigation">
+              <a href="../index.html">
+                Home
+              </a>
+              <a href="../about.html">
+                About
+              </a>
+              <a href="../resume.html">
+                Resume
+              </a>
+              <a href="../projects.html">
+                Projects
+              </a>
+              <a href="../art.html">
+                Art
+              </a>
+              <a href="../blog/index.html">
+                Blog
+              </a>
+              <a href="../contact.html">
+                Contact
+              </a>
+            </nav>
+          </details>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="hero newhero" id="newhero-feature">
+        <div class="newhero-stage" aria-label="Split portrait entering from both sides">
+          <div class="newhero-half newhero-robot"><img src="../images/A82F576F-ECFB-4BCB-8843-5265066709E5.png" alt="Cybernetic engineering portrait half" fetchpriority="high"></div>
+          <div class="newhero-half newhero-paint"><img src="../images/A82F576F-ECFB-4BCB-8843-5265066709E5.png" alt="Oil-painted artistic portrait half" fetchpriority="high"></div>
+          <div class="newhero-glow" aria-hidden="true"></div>
+          <div class="newhero-terms" aria-hidden="true">
+            <span class="newhero-term tech term-1">AI</span><span class="newhero-term art term-1">Abstract</span>
+            <span class="newhero-term tech term-2">Machine Learning</span><span class="newhero-term art term-2">Imagination</span>
+            <span class="newhero-term tech term-3">Engineering</span><span class="newhero-term art term-3">Art</span>
+            <span class="newhero-term tech term-4">Analytics</span><span class="newhero-term art term-4">Talent</span>
+          </div>
+
+          <div class="newhero-stage-label">Engineering × Imagination</div>
+        </div>
+        <div class="newhero-copy">
+          <p class="eyebrow">Engineer · Software · Project Management · Art</p>
+          <h1>Güven<br><span>ÇALIŞKAN</span></h1>
+          <p class="hero-lead">an Artist, a SWE and a PM.</p>
+          <p class="hero-sub">A multidisciplinary practice connecting engineering, technology, project management and visual art.</p>
+          <a class="link" href="../projects.html">Explore my work →</a>
+        </div>
+      </section>
+      <section class="section">
+        <p class="eyebrow">
+          A multidisciplinary profile
+        </p>
+        <h2 class="display">
+          Engineering gives me structure.
+          <br>
+          <em>
+            Art gives me another way to think.
+          </em>
+        </h2>
+        <div class="home-image-grid reveal" aria-label="Selected visual work">
+          <figure class="home-image-item">
+            <img src="../images/roboduck.jpg" alt="Robo Duck" width="1200" height="800" loading="lazy" decoding="async">
+          </figure>
+          <figure class="home-image-item">
+            <img src="../images/run.jpg" alt="Run — digital artwork" width="1200" height="800" loading="lazy" decoding="async">
+          </figure>
+          <figure class="home-image-item">
+            <img src="../images/bomber.jpg" alt="Bomber — character artwork" width="1200" height="800" loading="lazy" decoding="async">
+          </figure>
+        </div>
+      </section>
+      <section class="section selected-work-section">
+        <div class="split">
+          <div>
+            <p class="eyebrow">
+              Selected work
+            </p>
+            <h2 class="display">
+              Ideas into
+              <br>
+              real things.
+            </h2>
+          </div>
+          <div class="copy">
+            <p>
+              From research and software to project management, continuous improvement and digital art, my work sits at the intersection of analytical thinking and creative practice.
+            </p>
+          </div>
+          <div class="selected-work-link-row">
+            <a class="link" href="../projects.html">See projects →</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-copyright">GÜVEN ©<span data-current-year>2026</span></div>
+      <div class="footer-made">Made with ❤️ &amp; ☕️</div>
+    </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../resume.html">Resume</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../art.html">Art</a>
+      <a href="../blog/index.html">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="footer-actions">
+      <a href="https://www.linkedin.com/in/guneyguven" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" title="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2ZM8.3 18H5.8V9.5h2.5ZM7 8.35a1.45 1.45 0 1 1 0-2.9 1.45 1.45 0 0 1 0 2.9ZM18.2 18h-2.5v-4.15c0-.99-.02-2.27-1.38-2.27-1.39 0-1.6 1.08-1.6 2.2V18h-2.5V9.5h2.4v1.16h.04a2.63 2.63 0 0 1 2.37-1.3c2.54 0 3.01 1.67 3.01 3.84Z"/></svg>
+      </a>
+      <a href="mailto:guneyguven@live.com" aria-label="Send email" title="Email">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5h17a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-17a1 1 0 0 1-1-1v-11a1 1 0 0 1 1-1Zm.6 2 7.9 6 7.9-6H4.1Zm15.4 9V9.8L12.6 15a1 1 0 0 1-1.2 0L4.5 9.8v6.7h15Z"/></svg>
+      </a>
+      <a class="footer-top" href="#" aria-label="Back to top" title="Back to top">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 14 7-7 7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </div>
-</main>
-<script>
-(() => {
-  const hero = document.getElementById('hero');
-  const image = document.querySelector('.portrait-half img');
-  const start = () => {
-    if (!image || image.complete) setTimeout(() => requestAnimationFrame(() => hero.classList.add('started')), 220);
-    else image.addEventListener('load', () => setTimeout(() => requestAnimationFrame(() => hero.classList.add('started')), 220), {once:true});
-  };
-  if (document.readyState === 'complete') start();
-  else window.addEventListener('load', start, {once:true});
-})();
-</script>
-</body>
+</footer>
+    <script>
+      (() => {
+        const hero = document.getElementById('newhero-feature');
+        if (!hero) return;
+        const image = hero.querySelector('img');
+        const start = () => setTimeout(() => { requestAnimationFrame(() => hero.classList.add('is-started')); setTimeout(() => hero.classList.add('is-terms'), 2350); }, 220);
+        if (!image || image.complete) start();
+        else image.addEventListener('load', start, { once: true });
+      })();
+    </script>
+    <script>
+      document.addEventListener('click',function(e){
+  var m=document.querySelector('.mobile-menu[open]');
+  if(m && !m.contains(e.target)) m.removeAttribute('open');
+},true);
+    </script>
+    <script src="../js/apple.js?v=20261010global-placeholder-fix" defer>
+    </script>
+  </body>
 </html>
