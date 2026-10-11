@@ -12,7 +12,6 @@
     <script>
       try{const s=localStorage.getItem("siteTheme")||localStorage.getItem("theme");document.documentElement.dataset.theme=s||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){}
     </script>
-
     <style id="newhero-feature-styles">
       .home-page .newhero{width:100%;max-width:none;margin:0;padding:0;height:100svh;min-height:620px;position:relative;display:block;overflow:hidden;isolation:isolate;background:#101419;color:#fff}
       .home-page .newhero .newhero-stage{position:absolute;inset:0;overflow:hidden;background:#101419}
@@ -208,7 +207,6 @@
     </div>
   </div>
 </footer>
-
     <script>
       (() => {
         const hero = document.getElementById('newhero-feature');
