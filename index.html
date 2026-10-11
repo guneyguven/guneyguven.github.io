@@ -241,80 +241,94 @@
     </style>
 
 
-    <style id="newhero-hover-interactions-v1">
-      /* Interaction is layered over the existing portrait; the source image remains untouched. */
-      #newhero-feature .newhero-stage { --tech-glow: rgba(0,174,255,.0); --art-energy: 0; }
-      #newhero-feature .newhero-hover-zone {
-        position:absolute; z-index:6; top:0; bottom:0; width:50%;
-        border:0; padding:0; margin:0; background:transparent; color:inherit;
-        cursor:pointer; pointer-events:auto; -webkit-tap-highlight-color:transparent;
-      }
-      #newhero-feature .newhero-hover-zone.tech-zone { left:0; }
-      #newhero-feature .newhero-hover-zone.art-zone { right:0; }
-      #newhero-feature .newhero-hover-zone:focus-visible { outline:2px solid #26c8ff; outline-offset:-8px; }
+    <style id="newhero-hover-interactions-v2">
+      /* Soft cybernetic gradient: strongest at the far left, dissolving into the real face at center. */
+      #newhero-feature .newhero-stage { position:relative; isolation:isolate; }
       #newhero-feature .newhero-tech-overlay,
-      #newhero-feature .newhero-art-overlay {
-        position:absolute; inset:0; z-index:3; pointer-events:none; opacity:0;
-        transition:opacity .35s ease;
+      #newhero-feature .newhero-art-overlay,
+      #newhero-feature .newhero-paint-energy {
+        position:absolute; inset:0; pointer-events:none;
       }
       #newhero-feature .newhero-tech-overlay {
+        z-index:3; opacity:.7; transition:opacity .35s ease;
         background:
-          radial-gradient(ellipse 15% 9% at 43.5% 36%, rgba(83,226,255,.65), transparent 72%),
-          linear-gradient(90deg, rgba(0,143,255,.25) 0%, rgba(0,143,255,.16) 22%, rgba(0,143,255,.08) 38%, transparent 55%);
+          repeating-linear-gradient(0deg, transparent 0 31px, rgba(0,165,255,.16) 32px, transparent 33px 56px),
+          repeating-linear-gradient(90deg, transparent 0 39px, rgba(0,165,255,.14) 40px, transparent 41px 68px),
+          radial-gradient(ellipse 32% 52% at 16% 42%, rgba(0,153,255,.2), transparent 100%),
+          linear-gradient(90deg, rgba(2,20,39,.36) 0%, rgba(0,117,204,.24) 18%, rgba(0,139,219,.12) 34%, rgba(0,139,219,.035) 45%, transparent 53%);
         mix-blend-mode:screen;
-        mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.9) 20%,rgba(0,0,0,.45) 39%,transparent 58%);
+        -webkit-mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.95) 18%,rgba(0,0,0,.65) 33%,rgba(0,0,0,.22) 45%,transparent 55%);
+        mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.95) 18%,rgba(0,0,0,.65) 33%,rgba(0,0,0,.22) 45%,transparent 55%);
+      }
+      #newhero-feature .newhero-tech-overlay:after {
+        content:""; position:absolute; inset:0;
+        background:
+          linear-gradient(90deg,transparent 0 10%,rgba(74,214,255,.32) 10.1% 10.2%,transparent 10.3% 20%,rgba(74,214,255,.25) 20.1% 20.2%,transparent 20.3%),
+          radial-gradient(circle at 10% 22%,#71e8ff 0 2px,transparent 3px),
+          radial-gradient(circle at 24% 63%,#71e8ff 0 2px,transparent 3px),
+          radial-gradient(circle at 35% 34%,#71e8ff 0 2px,transparent 3px);
+        opacity:.5;
+        -webkit-mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.75) 30%,transparent 52%);
+        mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.75) 30%,transparent 52%);
       }
       #newhero-feature .newhero-art-overlay {
+        z-index:3; opacity:0; transition:opacity .3s ease;
         background:
-          radial-gradient(ellipse at 75% 45%, rgba(255,95,25,.22), transparent 45%),
-          radial-gradient(ellipse at 66% 58%, rgba(0,180,255,.18), transparent 34%);
+          radial-gradient(ellipse at 72% 30%,rgba(255,73,39,.28),transparent 28%),
+          radial-gradient(ellipse at 80% 55%,rgba(255,174,0,.28),transparent 32%),
+          radial-gradient(ellipse at 66% 70%,rgba(0,180,255,.22),transparent 30%);
         mix-blend-mode:screen;
       }
       #newhero-feature .newhero-eye-laser {
-        position:absolute; z-index:5; left:43.5%; top:36%; width:0; height:2px;
+        position:absolute; z-index:5; left:48.5%; top:39%; width:0; height:2px;
         opacity:0; pointer-events:none; transform:translateY(-50%);
-        background:linear-gradient(90deg,rgba(115,238,255,.95),#00aaff 55%,transparent);
-        box-shadow:0 0 7px #00baff,0 0 18px rgba(0,174,255,.85);
-        transition:width .22s ease,opacity .18s ease;
+        background:linear-gradient(90deg,#e9fdff 0%,#51eaff 30%,#00aaff 72%,transparent 100%);
+        box-shadow:0 0 6px #00baff,0 0 16px rgba(0,174,255,.9);
+        transition:width .2s ease,opacity .15s ease;
       }
       #newhero-feature .newhero-eye-laser:before {
-        content:""; position:absolute; width:13px;height:13px;border-radius:50%;
-        left:-6px;top:50%;transform:translateY(-50%);
-        background:#dffcff;box-shadow:0 0 7px 3px #00baff,0 0 22px 8px rgba(0,174,255,.8);
+        content:""; position:absolute; width:10px;height:10px;border-radius:50%;
+        left:-4px;top:50%;transform:translateY(-50%);
+        background:#f1ffff;box-shadow:0 0 6px 3px #00caff,0 0 19px 7px rgba(0,174,255,.8);
       }
       #newhero-feature .newhero-eye-laser:after {
         content:""; position:absolute;left:0;right:0;top:-5px;height:12px;
-        background:linear-gradient(90deg,rgba(0,174,255,.35),transparent);
-        filter:blur(4px);
+        background:linear-gradient(90deg,rgba(0,174,255,.4),transparent);filter:blur(4px);
       }
       #newhero-feature .newhero-paint-energy {
-        position:absolute;z-index:4;inset:0;pointer-events:none;opacity:0;
+        z-index:4; opacity:0; transform:scale(.96);
+        transition:opacity .25s ease,transform .7s cubic-bezier(.2,.8,.2,1);
         background:
-          radial-gradient(ellipse at 73% 28%,rgba(255,55,45,.22),transparent 24%),
-          radial-gradient(ellipse at 79% 52%,rgba(255,160,0,.24),transparent 30%),
-          radial-gradient(ellipse at 68% 70%,rgba(0,177,255,.2),transparent 28%);
-        transform:scale(.94);transition:opacity .25s ease,transform .65s cubic-bezier(.2,.8,.2,1);
+          radial-gradient(ellipse at 74% 29%,rgba(255,60,45,.24),transparent 23%),
+          radial-gradient(ellipse at 81% 49%,rgba(255,160,0,.26),transparent 30%),
+          radial-gradient(ellipse at 69% 69%,rgba(0,177,255,.24),transparent 28%);
       }
-      #newhero-feature .newhero-stage.is-tech-active .newhero-tech-overlay,
-      #newhero-feature .newhero-stage.is-tech-active .newhero-eye-laser { opacity:1; }
-      #newhero-feature .newhero-stage.is-tech-active .newhero-eye-laser { width:18%; }
+      #newhero-feature .newhero-stage.is-tech-active .newhero-tech-overlay { opacity:1; }
+      #newhero-feature .newhero-stage.is-tech-active .newhero-eye-laser { opacity:1; width:17%; animation:hero-laser-scan .7s ease-out both; }
       #newhero-feature .newhero-stage.is-art-active .newhero-art-overlay,
       #newhero-feature .newhero-stage.is-art-active .newhero-paint-energy { opacity:1; }
-      #newhero-feature .newhero-stage.is-art-active .newhero-paint-energy { transform:scale(1.04); }
-      #newhero-feature .newhero-stage.is-tech-active .newhero-half.newhero-robot img {
-        filter:saturate(1.08) contrast(1.04);
-      }
-      #newhero-feature .newhero-stage.is-art-active .newhero-half.newhero-paint img {
-        filter:saturate(1.12);
-      }
+      #newhero-feature .newhero-stage.is-art-active .newhero-paint-energy { transform:scale(1.045); animation:hero-paint-pulse 1.6s ease-in-out infinite alternate; }
+      #newhero-feature .newhero-stage.is-tech-active .newhero-half.newhero-robot img { filter:saturate(1.08) contrast(1.04); }
+      #newhero-feature .newhero-stage.is-art-active .newhero-half.newhero-paint img { filter:saturate(1.12); }
+      @keyframes hero-laser-scan { 0%{width:0;opacity:.2} 30%{opacity:1} 100%{width:17%;opacity:1} }
+      @keyframes hero-paint-pulse { from{filter:saturate(1);transform:scale(.99)} to{filter:saturate(1.45);transform:scale(1.045)} }
       @media(max-width:760px) {
-        #newhero-feature .newhero-hover-zone { width:50%; }
-        #newhero-feature .newhero-eye-laser { left:43.5%; top:36%; }
-        #newhero-feature .newhero-stage.is-tech-active .newhero-eye-laser { width:14%; }
+        #newhero-feature .newhero-eye-laser { left:48.5%; top:39%; }
+        #newhero-feature .newhero-stage.is-tech-active .newhero-eye-laser { width:13%; }
       }
+      @media(prefers-color-scheme:dark) {
+        html:not([data-theme="light"]) #newhero-feature .newhero-tech-overlay {
+          background:
+            repeating-linear-gradient(0deg, transparent 0 31px, rgba(0,165,255,.22) 32px, transparent 33px 56px),
+            repeating-linear-gradient(90deg, transparent 0 39px, rgba(0,165,255,.18) 40px, transparent 41px 68px),
+            radial-gradient(ellipse 32% 52% at 16% 42%, rgba(0,153,255,.27), transparent 100%),
+            linear-gradient(90deg, rgba(0,0,0,.45) 0%, rgba(0,117,204,.27) 18%, rgba(0,139,219,.13) 34%, rgba(0,139,219,.04) 45%, transparent 53%);
+        }
+      }
+      html[data-theme="dark"] #newhero-feature .newhero-tech-overlay { opacity:.85; }
       @media(prefers-reduced-motion:reduce) {
         #newhero-feature .newhero-tech-overlay,#newhero-feature .newhero-art-overlay,
-        #newhero-feature .newhero-paint-energy,#newhero-feature .newhero-eye-laser { transition:none; }
+        #newhero-feature .newhero-paint-energy,#newhero-feature .newhero-eye-laser { transition:none; animation:none!important; }
       }
     </style>
 
