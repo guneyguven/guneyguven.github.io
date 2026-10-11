@@ -10,15 +10,15 @@
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;background:var(--paper);color:#111;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 body{overflow-x:hidden}
-.hero{min-height:100svh;display:grid;place-items:center;padding:clamp(18px,4vw,64px);position:relative;isolation:isolate}
+.hero{min-height:100svh;height:100svh;display:block;padding:0;position:relative;isolation:isolate;overflow:hidden}
 .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,#fff 0,transparent 65%);z-index:-1}
-.hero-inner{width:min(1440px,100%);display:grid;grid-template-columns:minmax(230px,.55fr) minmax(0,1.45fr);align-items:center;gap:clamp(22px,4vw,56px)}
-.copy{max-width:520px}
+.hero-inner{width:100%;height:100%;display:block;position:relative}
+.copy{max-width:520px;position:absolute;z-index:5;left:clamp(22px,5vw,84px);bottom:clamp(26px,7vh,84px);padding:clamp(16px,2vw,28px);background:rgba(244,241,235,.84);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:12px}
 .kicker{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#68645f;font-weight:700}
 h1{font-size:clamp(2.7rem,5.7vw,6rem);line-height:.92;letter-spacing:-.075em;margin:18px 0 22px;font-weight:760}
 h1 span{display:block;font-weight:350;letter-spacing:-.06em}
 .intro{font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.65;color:#55514d;max-width:38ch}
-.portrait-stage{position:relative;width:100%;max-width:1040px;justify-self:center;aspect-ratio:3/2;overflow:hidden;isolation:isolate;background:#101419;box-shadow:0 24px 70px rgba(0,0,0,.16)}
+.portrait-stage{position:absolute;inset:0;width:100vw;height:100%;max-width:none;aspect-ratio:auto;overflow:hidden;isolation:isolate;background:#101419}
 .portrait-half{position:absolute;inset:0;overflow:hidden;will-change:transform;backface-visibility:hidden;transition:transform 1.65s cubic-bezier(.16,1,.3,1)}
 .portrait-half img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;max-width:none}
 .portrait-half .half-image{will-change:transform}
@@ -34,7 +34,7 @@ h1 span{display:block;font-weight:350;letter-spacing:-.06em}
 .stage-label{position:absolute;z-index:3;bottom:12px;left:0;right:0;text-align:center;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.68);text-shadow:0 1px 5px #000;pointer-events:none}
 @keyframes tech-drift{from{transform:translateX(-2%)}to{transform:translateX(2%)}}
 @keyframes art-drift{from{transform:translateX(2%)}to{transform:translateX(-2%)}}
-@media(max-width:760px){.hero-inner{grid-template-columns:1fr;gap:24px}.copy{order:1;text-align:center;margin:auto}.portrait-stage{order:0;width:100%;max-width:680px;aspect-ratio:3/2}h1{font-size:clamp(2.8rem,13vw,4.6rem)}.intro{margin-inline:auto}}
+@media(max-width:760px){.copy{left:14px;right:14px;bottom:18px;text-align:center;margin:auto;padding:16px}h1{font-size:clamp(2.4rem,11vw,4rem);margin:12px 0 14px}.intro{margin-inline:auto}.kicker{font-size:.62rem}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 </head>
