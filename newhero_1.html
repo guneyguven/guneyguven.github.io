@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>New Hero 1 — Güven Çalışkan</title>
+<style>
+:root{--ink:#111;--paper:#f4f1eb;--line:#00d5ff;--ease:cubic-bezier(.2,.75,.2,1)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{overflow-x:hidden}
+.hero{min-height:100svh;display:grid;place-items:center;padding:clamp(20px,4vw,64px);position:relative;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,#fff 0,transparent 62%);z-index:-1}
+.hero-inner{width:min(1160px,100%);display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.82fr);align-items:center;gap:clamp(28px,5vw,76px)}
+.copy{order:0;max-width:520px}
+.kicker{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#68645f;font-weight:700}
+h1{font-size:clamp(2.7rem,6vw,6rem);line-height:.92;letter-spacing:-.075em;margin:18px 0 22px;font-weight:760}
+h1 span{display:block;font-weight:350;letter-spacing:-.06em}
+.intro{font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.65;color:#55514d;max-width:38ch}
+.portrait-stage{position:relative;width:100%;max-width:520px;justify-self:center;aspect-ratio:4/5;overflow:visible;isolation:isolate}
+.portrait-half{position:absolute;inset:0;overflow:hidden;transition:clip-path 1.15s var(--ease),transform 1.15s var(--ease);will-change:clip-path,transform}
+.portrait-half img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
+.robot{clip-path:inset(0 50% 0 0);transform:translateX(-4.5%)}
+.paint{clip-path:inset(0 0 0 50%);transform:translateX(4.5%)}
+.robot img{filter:grayscale(1) contrast(1.15) brightness(.9) sepia(.15) hue-rotate(145deg) saturate(1.9)}
+.paint img{filter:saturate(1.12) contrast(1.03);mix-blend-mode:multiply}
+.paint::after{content:"";position:absolute;inset:-3%;pointer-events:none;background:
+linear-gradient(116deg,transparent 0 28%,rgba(14,14,14,.92) 28.5% 30%,transparent 31% 100%),
+linear-gradient(72deg,transparent 0 60%,rgba(0,0,0,.72) 60.5% 62%,transparent 63%),
+linear-gradient(164deg,transparent 0 38%,rgba(0,0,0,.5) 38.5% 39.5%,transparent 40%);mix-blend-mode:multiply;opacity:.8;mask-image:linear-gradient(90deg,transparent 0%,#000 48%,#000 100%)}
+.circuit{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity .45s ease .8s}
+.circuit path,.circuit circle{stroke:var(--line);stroke-width:1.35;fill:none;filter:drop-shadow(0 0 3px rgba(0,213,255,.7))}
+.brushes{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .45s ease .8s}
+.brushes path{stroke:#080808;stroke-width:7;stroke-linecap:round;fill:none}
+.seam{position:absolute;top:0;bottom:0;left:50%;width:1px;background:#fff;opacity:.9;box-shadow:0 0 18px #fff;transform:scaleY(.05);transition:transform .7s var(--ease) .55s}
+.words{position:absolute;inset:0;pointer-events:none}
+.word{position:absolute;font-weight:800;letter-spacing:-.035em;font-size:clamp(.75rem,1.4vw,1rem);white-space:nowrap;opacity:0;transform:translateY(12px) scale(.96);transition:opacity .45s ease,transform .6s var(--ease);text-shadow:0 1px 0 rgba(255,255,255,.5)}
+.word.tech{color:#007c98;text-shadow:0 0 10px rgba(0,213,255,.4)}
+.word.art{color:#111;font-family:Georgia,serif;font-style:italic}
+.word.show{opacity:1;transform:translateY(0) scale(1)}
+.w1{left:-18%;top:15%}.w2{right:-18%;top:22%}.w3{left:-15%;top:39%}.w4{right:-20%;top:47%}.w5{left:-13%;top:63%}.w6{right:-17%;top:70%}.w7{left:0;top:82%}.w8{right:-4%;top:88%}
+.stage-label{position:absolute;bottom:-30px;left:0;right:0;text-align:center;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#827d76}
+.hero.started .robot,.hero.started .paint{clip-path:inset(0);transform:translateX(0)}
+.hero.started .circuit,.hero.started .brushes{opacity:1}
+.hero.started .seam{transform:scaleY(1)}
+@media(max-width:760px){.hero-inner{grid-template-columns:1fr;gap:28px}.copy{order:1;text-align:center;margin:auto}.portrait-stage{order:0;width:min(82vw,410px)}h1{font-size:clamp(2.8rem,13vw,4.6rem)}.intro{margin-inline:auto}.word{font-size:.7rem}.w1{left:-5%}.w2{right:-5%}.w3{left:-7%}.w4{right:-7%}.w5{left:-4%}.w6{right:-5%}.w7{left:3%}.w8{right:3%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="hero" id="hero">
+  <div class="hero-inner">
+    <section class="copy" aria-label="Tanıtım">
+      <div class="kicker">Engineering × Imagination</div>
+      <h1>Güven <span>Çalışkan</span></h1>
+      <p class="intro">Mühendislik düşüncesiyle sanatın sezgisi aynı zihinde buluştuğunda.</p>
+    </section>
+    <div class="portrait-stage" aria-label="Mühendislik ve sanatın birleştiği portre">
+      <!-- Replace this image with the user's approved split portrait asset. -->
+      <div class="portrait-half robot"><img src="images/newhero-portrait.jpg" alt="Portre — robotik yorum"></div>
+      <div class="portrait-half paint"><img src="images/newhero-portrait.jpg" alt="Portre — yağlıboya yorum"></div>
+      <svg class="circuit" viewBox="0 0 520 650" aria-hidden="true">
+        <path d="M255 240 L218 220 L190 220 L168 198 L125 198 M255 270 L225 290 L188 290 L160 318 L118 318 M256 330 L222 350 L202 380 L162 380 M260 210 L278 185 L278 150 L310 118 M263 275 L300 275 L325 250 L370 250 M264 315 L298 340 L335 340 L360 366 M255 365 L230 400 L230 435 L198 467"/>
+        <circle cx="125" cy="198" r="4"/><circle cx="118" cy="318" r="4"/><circle cx="162" cy="380" r="4"/><circle cx="310" cy="118" r="4"/><circle cx="370" cy="250" r="4"/><circle cx="360" cy="366" r="4"/><circle cx="198" cy="467" r="4"/>
+      </svg>
+      <svg class="brushes" viewBox="0 0 520 650" aria-hidden="true">
+        <path d="M310 85 Q380 130 470 95 M340 150 Q395 170 450 145 M315 410 Q380 390 485 430 M340 460 Q400 475 455 450 M320 535 Q390 560 470 520"/>
+      </svg>
+      <div class="seam"></div>
+      <div class="words" aria-hidden="true">
+        <span class="word tech w1">AI</span><span class="word art w2">Hayalgücü</span>
+        <span class="word tech w3">ML</span><span class="word art w4">Sanat</span>
+        <span class="word tech w5">Engineering</span><span class="word art w6">Yetenek</span>
+        <span class="word tech w7">Analytics</span><span class="word art w8">Soyut</span>
+      </div>
+      <div class="stage-label">Logic / Instinct — 01</div>
+    </div>
+  </div>
+</main>
+<script>
+(() => {
+  const hero = document.getElementById('hero');
+  const words = [...document.querySelectorAll('.word')];
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const start = () => {
+    hero.classList.add('started');
+    // Begin word reveals 500 ms after the two halves meet; reveal in balanced left/right pairs.
+    window.setTimeout(() => {
+      const pairs = [[words[0],words[1]],[words[2],words[3]],[words[4],words[5]],[words[6],words[7]]];
+      pairs.forEach((pair, i) => window.setTimeout(() => pair.forEach(word => word.classList.add('show')), reduced ? 0 : i * 260));
+    }, reduced ? 0 : 1650);
+  };
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start, {once:true});
+})();
+</script>
+</body>
+</html>
