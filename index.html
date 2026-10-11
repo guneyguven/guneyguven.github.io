@@ -536,10 +536,6 @@
           zone.addEventListener('pointerleave', () => setMode(''));
           zone.addEventListener('focus', () => setMode(mode));
           zone.addEventListener('blur', () => setMode(''));
-          zone.addEventListener('click', () => {
-            const active = stage.classList.contains(mode === 'tech' ? 'is-tech-active' : 'is-art-active');
-            setMode(active ? '' : mode);
-          });
           zone.addEventListener('pointerdown', (event) => {
             if (event.pointerType === 'touch') setMode(mode);
           });
