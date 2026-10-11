@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>New Hero 1 — Güven Çalışkan</title>
+<style>
+:root{--paper:#f4f1eb;--ease:cubic-bezier(.2,.75,.2,1)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--paper);color:#111;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{overflow-x:hidden}
+.hero{min-height:100svh;display:grid;place-items:center;padding:clamp(18px,4vw,64px);position:relative;isolation:isolate}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,#fff 0,transparent 65%);z-index:-1}
+.hero-inner{width:min(1440px,100%);display:grid;grid-template-columns:minmax(230px,.55fr) minmax(0,1.45fr);align-items:center;gap:clamp(22px,4vw,56px)}
+.copy{max-width:520px}
+.kicker{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#68645f;font-weight:700}
+h1{font-size:clamp(2.7rem,5.7vw,6rem);line-height:.92;letter-spacing:-.075em;margin:18px 0 22px;font-weight:760}
+h1 span{display:block;font-weight:350;letter-spacing:-.06em}
+.intro{font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.65;color:#55514d;max-width:38ch}
+.portrait-stage{position:relative;width:100%;max-width:1040px;justify-self:center;aspect-ratio:3/2;overflow:hidden;isolation:isolate;background:#101419;box-shadow:0 24px 70px rgba(0,0,0,.16)}
+.portrait-half{position:absolute;inset:0;overflow:hidden;will-change:transform;backface-visibility:hidden}
+.portrait-half img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;max-width:none}
+.portrait-half .half-image{transition:transform 1.15s var(--ease);will-change:transform}
+.robot{clip-path:inset(0 50% 0 0)}
+.paint{clip-path:inset(0 0 0 50%)}
+.robot .half-image{transform:translateX(-3.5%)}
+.paint .half-image{transform:translateX(3.5%)}
+.hero.started .robot .half-image,.hero.started .paint .half-image{transform:translateX(0)}
+.ambient{position:absolute;inset:0;pointer-events:none;z-index:2;opacity:0;transition:opacity .5s ease .85s}
+.ambient:before,.ambient:after{content:"";position:absolute;top:-10%;bottom:-10%;width:50%;mix-blend-mode:screen}
+.ambient:before{left:0;background:linear-gradient(90deg,rgba(0,174,255,.09),transparent 72%);animation:tech-drift 7s ease-in-out infinite alternate}
+.ambient:after{right:0;background:linear-gradient(270deg,rgba(255,115,22,.10),transparent 72%);animation:art-drift 9s ease-in-out infinite alternate}
+.hero.started .ambient{opacity:1}
+.stage-label{position:absolute;z-index:3;bottom:12px;left:0;right:0;text-align:center;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.68);text-shadow:0 1px 5px #000;pointer-events:none}
+@keyframes tech-drift{from{transform:translateX(-2%)}to{transform:translateX(2%)}}
+@keyframes art-drift{from{transform:translateX(2%)}to{transform:translateX(-2%)}}
+@media(max-width:760px){.hero-inner{grid-template-columns:1fr;gap:24px}.copy{order:1;text-align:center;margin:auto}.portrait-stage{order:0;width:100%;max-width:680px;aspect-ratio:3/2}h1{font-size:clamp(2.8rem,13vw,4.6rem)}.intro{margin-inline:auto}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="hero" id="hero">
+  <div class="hero-inner">
+    <section class="copy" aria-label="Introduction">
+      <div class="kicker">Engineering × Imagination</div>
+      <h1>Güven <span>Çalışkan</span></h1>
+      <p class="intro">Where engineering thought meets the intuition of art.</p>
+    </section>
+    <div class="portrait-stage" aria-label="A split portrait combining engineering and art">
+      <!-- The approved composite image is served from the existing site images folder. Both halves use this exact composite. -->
+      <div class="portrait-half robot"><img class="half-image" src="../images/A82F576F-ECFB-4BCB-8843-5265066709E5.png" alt="Cybernetic engineering half" fetchpriority="high"></div>
+      <div class="portrait-half paint"><img class="half-image" src="../images/A82F576F-ECFB-4BCB-8843-5265066709E5.png" alt="Oil-painted artistic half" fetchpriority="high"></div>
+      <div class="ambient" aria-hidden="true"></div>
+      <div class="stage-label">Engineering × Imagination</div>
+    </div>
+  </div>
+</main>
+<script>
+(() => {
+  const hero = document.getElementById('hero');
+  const image = document.querySelector('.portrait-half img');
+  const start = () => {
+    if (!image || image.complete) requestAnimationFrame(() => hero.classList.add('started'));
+    else image.addEventListener('load', () => requestAnimationFrame(() => hero.classList.add('started')), {once:true});
+  };
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start, {once:true});
+})();
+</script>
+</body>
+</html>
