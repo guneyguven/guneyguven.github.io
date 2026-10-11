@@ -45,6 +45,33 @@
       @media(max-width:760px){.home-page .newhero{height:100svh;min-height:590px}.home-page .newhero .newhero-copy{left:14px;right:14px;bottom:18px;max-width:none;padding:16px;text-align:center}.home-page .newhero .newhero-copy h1{font-size:clamp(2.5rem,12vw,4.2rem)}.home-page .newhero .newhero-stage-label{right:0;left:0;bottom:auto;top:72px;text-align:center;font-size:.56rem}.home-page .newhero .newhero-term{font-size:.66rem}.home-page .newhero.is-terms .newhero-term.tech{transform:translate(calc(-50% - 24vw),calc(-50% + var(--rise,0px)))}.home-page .newhero.is-terms .newhero-term.art{transform:translate(calc(-50% + 24vw),calc(-50% + var(--rise,0px)))}.home-page .newhero .term-1{--rise:-120px}.home-page .newhero .term-2{--rise:-60px}.home-page .newhero .term-3{--rise:0px}.home-page .newhero .term-4{--rise:60px}}
       @media(prefers-reduced-motion:reduce){.home-page .newhero .newhero-half,.home-page .newhero .newhero-term{transition-duration:.01ms}}
     </style>
+
+    <style id="newhero-page-flow-fix">
+      /* This is the actual feature homepage: hero replaces the old hero, while the rest of the page scrolls normally. */
+      html, body { height: auto; min-height: 100%; overflow-x: hidden; overflow-y: auto; }
+      body.home-page { overflow-x: hidden; overflow-y: auto; }
+      body.home-page > header.nav { position: sticky; top: 0; z-index: 1000; }
+      body.home-page > main { margin-top: 0; padding-top: 0; }
+      body.home-page #newhero-feature {
+        position: relative !important;
+        inset: auto !important;
+        display: block !important;
+        width: 100% !important;
+        height: calc(100svh - var(--nav-height, 0px)) !important;
+        min-height: 620px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+      }
+      body.home-page #newhero-feature + .section,
+      body.home-page .selected-work-section,
+      body.home-page > footer { display: block; }
+      body.home-page #newhero-feature .newhero-stage { position: absolute !important; inset: 0 !important; }
+      @media (max-width: 760px) {
+        body.home-page #newhero-feature { height: calc(100svh - 82px) !important; min-height: 590px !important; }
+      }
+    </style>
+
   </head>
   <body class="home-page">
     <header class="nav">
