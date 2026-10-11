@@ -73,6 +73,33 @@
     </style>
 
 
+    <style id="newhero-fullwidth-image-text">
+      /* Full-bleed hero: image reaches both viewport edges. Animate only the lettering already baked into the artwork. */
+      body.home-page #newhero-feature {
+        width: 100vw !important;
+        max-width: none !important;
+        margin-left: calc(50% - 50vw) !important;
+        margin-right: calc(50% - 50vw) !important;
+        padding: 0 !important;
+        background: #101419 !important;
+      }
+      body.home-page #newhero-feature .newhero-stage {
+        width: 100% !important;
+        background: #101419 !important;
+      }
+      body.home-page #newhero-feature .newhero-half img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+      }
+      /* No extra HTML text labels on top of the image. */
+      body.home-page #newhero-feature .newhero-terms,
+      body.home-page #newhero-feature .newhero-stage-label {
+        display: none !important;
+      }
+    </style>
+
     <style id="newhero-copy-below-animation">
       /* Put the text card after the animation, with a clear gap; do not overlay the artwork. */
       body.home-page #newhero-feature {
@@ -186,14 +213,7 @@
           <div class="newhero-half newhero-robot"><img src="images/A82F576F-ECFB-4BCB-8843-5265066709E5.png" alt="Cybernetic engineering portrait half" fetchpriority="high"></div>
           <div class="newhero-half newhero-paint"><img src="images/A82F576F-ECFB-4BCB-8843-5265066709E5.png" alt="Oil-painted artistic portrait half" fetchpriority="high"></div>
           <div class="newhero-glow" aria-hidden="true"></div>
-          <div class="newhero-terms" aria-hidden="true">
-            <span class="newhero-term tech term-1">AI</span><span class="newhero-term art term-1">Abstract</span>
-            <span class="newhero-term tech term-2">Machine Learning</span><span class="newhero-term art term-2">Imagination</span>
-            <span class="newhero-term tech term-3">Engineering</span><span class="newhero-term art term-3">Art</span>
-            <span class="newhero-term tech term-4">Analytics</span><span class="newhero-term art term-4">Talent</span>
-          </div>
 
-          <div class="newhero-stage-label">Engineering × Imagination</div>
         </div>
         <div class="newhero-copy">
           <p class="eyebrow">Engineer · Software · Project Management · Art</p>
