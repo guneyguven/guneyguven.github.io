@@ -64,6 +64,35 @@
       })();
     </script>
 
+
+    <style id="hero-preview-viewport-lock">
+      /* Preview-only: pin the new hero to the viewport so iOS Safari cannot reopen mid-page. */
+      html, body { height: 100% !important; min-height: 100% !important; overflow: hidden !important; }
+      body.home-page { overflow: hidden !important; }
+      body.home-page > header.nav {
+        position: fixed !important;
+        inset: 0 0 auto 0 !important;
+        z-index: 1000 !important;
+      }
+      body.home-page > main { margin: 0 !important; padding: 0 !important; }
+      body.home-page #newhero-feature {
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 1 !important;
+        width: 100vw !important;
+        height: 100svh !important;
+        min-height: 100svh !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      body.home-page #newhero-feature .newhero-stage { position: absolute !important; inset: 0 !important; }
+      body.home-page #newhero-feature .newhero-copy {
+        bottom: max(22px, env(safe-area-inset-bottom)) !important;
+      }
+      body.home-page > main > .section,
+      body.home-page > footer { display: none !important; }
+    </style>
+
   </head>
   <body class="home-page">
     <header class="nav">
