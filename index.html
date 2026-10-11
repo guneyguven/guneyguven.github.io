@@ -73,6 +73,23 @@
     </style>
 
 
+    <style id="newhero-word-connection-animation">
+      /* Animate the actual lettering area in sequence with circuit energy and ink strokes. */
+      .newhero-stage .word-effects { position:absolute; inset:0; z-index:4; width:100%; height:100%; pointer-events:none; overflow:visible; }
+      .newhero-stage .word-effects path { fill:none; stroke-linecap:round; stroke-linejoin:round; }
+      .newhero-stage .word-effects .electric { stroke:#69dcff; stroke-width:3; stroke-dasharray:1; stroke-dashoffset:1; filter:drop-shadow(0 0 5px #00aaff) drop-shadow(0 0 13px #00aaff); animation: circuit-draw 1.05s ease-out forwards; }
+      .newhero-stage .word-effects .spark { fill:#e9fbff; filter:drop-shadow(0 0 5px #00baff); opacity:0; animation:spark-pop .45s ease-out forwards; }
+      .newhero-stage .word-effects .ink { stroke:#15100e; stroke-width:5; stroke-dasharray:1; stroke-dashoffset:1; filter:drop-shadow(0 1px 1px rgba(0,0,0,.25)); animation: ink-draw 1.1s cubic-bezier(.3,.1,.2,1) forwards; }
+      .newhero-stage .word-effects .ink-glint { stroke:#b94324; stroke-width:1.5; stroke-dasharray:1; stroke-dashoffset:1; opacity:.75; animation: ink-draw 1.1s ease-out forwards; }
+      .newhero-stage .word-effects .pulse { opacity:0; animation: word-pulse .9s ease-out forwards; }
+      @keyframes circuit-draw { to { stroke-dashoffset:0; } }
+      @keyframes ink-draw { to { stroke-dashoffset:0; } }
+      @keyframes spark-pop { 0%{opacity:0;transform:scale(.4)} 35%{opacity:1;transform:scale(1.5)} 100%{opacity:0;transform:scale(.8)} }
+      @keyframes word-pulse { 0%,100%{opacity:0} 30%{opacity:.85} 65%{opacity:.18} }
+      @media(max-width:760px){ .newhero-stage .word-effects .electric{stroke-width:2.5}.newhero-stage .word-effects .ink{stroke-width:4} }
+      @media(prefers-reduced-motion:reduce){.newhero-stage .word-effects *{animation-duration:.01ms!important;animation-delay:0ms!important}}
+    </style>
+
     <style id="newhero-fullwidth-image-text">
       /* Full-bleed hero: image reaches both viewport edges. Animate only the lettering already baked into the artwork. */
       body.home-page #newhero-feature {
@@ -213,6 +230,28 @@
           <div class="newhero-half newhero-robot"><img src="images/A82F576F-ECFB-4BCB-8843-5265066709E5.png" alt="Cybernetic engineering portrait half" fetchpriority="high"></div>
           <div class="newhero-half newhero-paint"><img src="images/A82F576F-ECFB-4BCB-8843-5265066709E5.png" alt="Oil-painted artistic portrait half" fetchpriority="high"></div>
           <div class="newhero-glow" aria-hidden="true"></div>
+          <svg class="word-effects" viewBox="0 0 1536 1024" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <path id="electric-ai" d="M258 183 L326 208 L386 208 L416 244 L470 274 L510 274"/>
+              <path id="electric-ml" d="M210 347 L269 374 L319 374 L350 405 L398 405"/>
+              <path id="electric-engineering" d="M74 536 L359 536 L430 500 L468 500"/>
+              <path id="electric-analytics" d="M108 684 L315 684 L384 614 L468 614"/>
+              <path id="ink-imagination" d="M741 166 C850 165 1000 192 1135 193 L1272 193"/>
+              <path id="ink-art" d="M740 364 C880 358 1034 354 1170 358 L1308 358"/>
+              <path id="ink-talent" d="M743 558 C910 555 1080 556 1230 560 L1321 560"/>
+              <path id="ink-abstract" d="M741 755 C920 751 1090 756 1230 755 L1312 755"/>
+            </defs>
+            <g class="electric" pathLength="1" style="animation-delay:1.1s"><use href="#electric-ai"/></g>
+            <circle class="spark" cx="510" cy="274" r="6" style="animation-delay:1.95s"/>
+            <g class="ink" pathLength="1" style="animation-delay:2.2s"><use href="#ink-imagination"/></g><g class="ink-glint" pathLength="1" style="animation-delay:2.25s"><use href="#ink-imagination"/></g>
+            <g class="electric" pathLength="1" style="animation-delay:3.15s"><use href="#electric-ml"/></g><circle class="spark" cx="398" cy="405" r="6" style="animation-delay:3.95s"/>
+            <g class="ink" pathLength="1" style="animation-delay:4.2s"><use href="#ink-art"/></g><g class="ink-glint" pathLength="1" style="animation-delay:4.25s"><use href="#ink-art"/></g>
+            <g class="electric" pathLength="1" style="animation-delay:5.15s"><use href="#electric-engineering"/></g><circle class="spark" cx="468" cy="500" r="6" style="animation-delay:5.95s"/>
+            <g class="ink" pathLength="1" style="animation-delay:6.2s"><use href="#ink-talent"/></g><g class="ink-glint" pathLength="1" style="animation-delay:6.25s"><use href="#ink-talent"/></g>
+            <g class="electric" pathLength="1" style="animation-delay:7.15s"><use href="#electric-analytics"/></g><circle class="spark" cx="468" cy="614" r="6" style="animation-delay:7.95s"/>
+            <g class="ink" pathLength="1" style="animation-delay:8.2s"><use href="#ink-abstract"/></g><g class="ink-glint" pathLength="1" style="animation-delay:8.25s"><use href="#ink-abstract"/></g>
+          </svg>
+
 
         </div>
         <div class="newhero-copy">
@@ -302,7 +341,7 @@
         const hero = document.getElementById('newhero-feature');
         if (!hero) return;
         const image = hero.querySelector('img');
-        const start = () => setTimeout(() => { requestAnimationFrame(() => hero.classList.add('is-started')); setTimeout(() => hero.classList.add('is-terms'), 2350); }, 220);
+        const start = () => setTimeout(() => { requestAnimationFrame(() => hero.classList.add('is-started')); }, 220);
         if (!image || image.complete) start();
         else image.addEventListener('load', start, { once: true });
       })();
