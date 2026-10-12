@@ -4894,6 +4894,24 @@ html[data-theme="dark"]
 
 
 
+
+/* Align the How I Work heading vertically with the robot's visual center. */
+body.about-page .how-work-section .how-work-layout > .copy {
+  align-self: center !important;
+  padding-top: 100px !important;
+}
+@media (max-width: 900px) {
+  body.about-page .how-work-section .how-work-layout > .copy {
+    padding-top: 64px !important;
+  }
+}
+@media (max-width: 680px) {
+  body.about-page .how-work-section .how-work-layout > .copy {
+    align-self: start !important;
+    padding-top: 0 !important;
+  }
+}
+
 /* About — How I work: balanced text/robot composition */
 body.about-page .how-work-section {
   padding-top: clamp(76px, 8vw, 112px) !important;
