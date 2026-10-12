@@ -4892,86 +4892,26 @@ html[data-theme="dark"]
 }
 
 
-/* About: place the robot farther right and higher, with more visual weight. */
-body.about-page main > .section:has(.how-work-layout) {
-  padding-top: 110px;
-  padding-bottom: 90px;
-}
-body.about-page .how-work-layout {
-  grid-template-columns: minmax(300px, 0.78fr) minmax(420px, 1.22fr);
-  gap: clamp(36px, 5vw, 80px);
-  align-items: center;
-  min-height: 680px;
-}
-body.about-page .how-work-layout .copy {
-  align-self: start;
-  padding-top: 20px;
-  position: relative;
-  z-index: 1;
-}
-body.about-page .how-work-visual {
-  width: 100%;
-  justify-self: end;
-  transform: translate(7%, 42px) !important;
-  overflow: visible;
-}
-body.about-page .how-work-robot {
-  width: 112% !important;
-  max-width: none !important;
-  max-height: 760px !important;
-  object-fit: contain !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  mix-blend-mode: lighten;
-}
-html[data-theme="light"] body.about-page .how-work-robot {
-  mix-blend-mode: multiply;
-}
-@media (max-width: 800px) {
-  body.about-page main > .section:has(.how-work-layout) {
-    padding-top: 70px;
-    padding-bottom: 60px;
-  }
-  body.about-page .how-work-layout {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 18px;
-    min-height: 0;
-  }
-  body.about-page .how-work-layout .copy {
-    padding-top: 0;
-  }
-  body.about-page .how-work-visual {
-    width: 100%;
-    max-width: 620px;
-    justify-self: center;
-    transform: translate(5%, -4px) !important;
-    margin-top: -4px;
-  }
-  body.about-page .how-work-robot {
-    width: 108% !important;
-    max-height: 680px !important;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  body.about-page .how-work-visual {
-    transform: none !important;
-  }
-}
 
-
-/* Final About robot sizing/position: use the portrait canvas height, not a narrow 112% width. */
+/* About / How I work — clean, responsive robot composition. */
 body.about-page main > .section:has(.how-work-layout) {
+  padding-top: 90px !important;
+  padding-bottom: 100px !important;
   overflow: visible !important;
 }
 body.about-page .how-work-layout {
-  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr) !important;
-  gap: clamp(24px, 3vw, 56px) !important;
-  min-height: 760px !important;
+  display: grid !important;
+  grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.22fr) !important;
+  align-items: center !important;
+  gap: clamp(32px, 5vw, 76px) !important;
+  min-height: 660px !important;
   overflow: visible !important;
 }
-body.about-page .how-work-layout .copy {
-  align-self: start !important;
-  padding-top: 20px !important;
+body.about-page .how-work-layout > .copy {
+  align-self: center !important;
+  padding: 0 !important;
+  position: relative !important;
+  z-index: 1 !important;
 }
 body.about-page .how-work-visual {
   width: 100% !important;
@@ -4979,36 +4919,55 @@ body.about-page .how-work-visual {
   justify-self: end !important;
   align-self: center !important;
   margin: 0 !important;
-  transform: translate(5%, -55px) !important;
+  transform: translate(4%, -18px) !important;
   overflow: visible !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 body.about-page .how-work-robot {
   display: block !important;
-  height: min(94vh, 980px) !important;
   width: auto !important;
+  height: min(78vh, 760px) !important;
   max-width: none !important;
   max-height: none !important;
   object-fit: contain !important;
   object-position: center !important;
-  margin-left: auto !important;
+  margin: 0 0 0 auto !important;
+  border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
+  background: transparent !important;
+  mix-blend-mode: multiply !important;
+}
+html[data-theme="dark"] body.about-page .how-work-robot {
+  mix-blend-mode: lighten !important;
 }
 @media (max-width: 800px) {
+  body.about-page main > .section:has(.how-work-layout) {
+    padding-top: 70px !important;
+    padding-bottom: 60px !important;
+  }
   body.about-page .how-work-layout {
     grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
     min-height: 0 !important;
-    gap: 12px !important;
+  }
+  body.about-page .how-work-layout > .copy {
+    align-self: start !important;
   }
   body.about-page .how-work-visual {
     justify-self: center !important;
     width: 100% !important;
-    transform: translate(3%, -12px) !important;
-    margin: 0 !important;
+    transform: translate(2%, -8px) !important;
   }
   body.about-page .how-work-robot {
-    height: min(78vh, 760px) !important;
+    height: min(72vh, 620px) !important;
     max-width: 100% !important;
     margin: 0 auto !important;
+  }
+}
+@media (max-width: 420px) {
+  body.about-page .how-work-robot {
+    height: min(66vh, 520px) !important;
   }
 }
