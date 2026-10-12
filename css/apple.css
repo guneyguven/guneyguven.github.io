@@ -4893,81 +4893,108 @@ html[data-theme="dark"]
 
 
 
-/* About / How I work — clean, responsive robot composition. */
-body.about-page main > .section:has(.how-work-layout) {
-  padding-top: 90px !important;
-  padding-bottom: 100px !important;
+
+/* About — How I work: balanced text/robot composition */
+body.about-page .how-work-section {
+  padding-top: clamp(76px, 8vw, 112px) !important;
+  padding-bottom: clamp(76px, 8vw, 112px) !important;
   overflow: visible !important;
 }
-body.about-page .how-work-layout {
+body.about-page .how-work-section .how-work-layout {
   display: grid !important;
-  grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.22fr) !important;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr) !important;
   align-items: center !important;
-  gap: clamp(32px, 5vw, 76px) !important;
-  min-height: 660px !important;
+  gap: clamp(28px, 4vw, 64px) !important;
+  min-height: 0 !important;
   overflow: visible !important;
 }
-body.about-page .how-work-layout > .copy {
-  align-self: center !important;
-  padding: 0 !important;
+body.about-page .how-work-section .how-work-layout > .copy {
+  align-self: start !important;
+  padding: clamp(18px, 3vw, 42px) 0 0 !important;
   position: relative !important;
   z-index: 1 !important;
 }
-body.about-page .how-work-visual {
+body.about-page .how-work-section .how-work-visual {
   width: 100% !important;
   min-width: 0 !important;
-  justify-self: end !important;
-  align-self: center !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
   margin: 0 !important;
-  transform: translate(4%, -18px) !important;
+  padding: 0 !important;
+  transform: translate(2.5%, -24px) !important;
   overflow: visible !important;
   background: transparent !important;
   box-shadow: none !important;
 }
-body.about-page .how-work-robot {
+body.about-page .how-work-section .how-work-robot {
   display: block !important;
+  flex: 0 1 auto !important;
   width: auto !important;
-  height: min(78vh, 760px) !important;
-  max-width: none !important;
+  height: clamp(600px, 68vw, 820px) !important;
+  max-width: 100% !important;
   max-height: none !important;
   object-fit: contain !important;
   object-position: center !important;
-  margin: 0 0 0 auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
   border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   background: transparent !important;
   mix-blend-mode: multiply !important;
 }
-html[data-theme="dark"] body.about-page .how-work-robot {
+html[data-theme="dark"] body.about-page .how-work-section .how-work-robot {
   mix-blend-mode: lighten !important;
 }
-@media (max-width: 800px) {
-  body.about-page main > .section:has(.how-work-layout) {
-    padding-top: 70px !important;
-    padding-bottom: 60px !important;
+@media (min-width: 1500px) {
+  body.about-page .how-work-section .how-work-robot {
+    height: min(76vh, 860px) !important;
   }
-  body.about-page .how-work-layout {
+}
+@media (max-width: 900px) {
+  body.about-page .how-work-section {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+  body.about-page .how-work-section .how-work-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 24px !important;
+  }
+  body.about-page .how-work-section .how-work-layout > .copy {
+    padding-top: 12px !important;
+  }
+  body.about-page .how-work-section .how-work-visual {
+    transform: translate(2%, -10px) !important;
+  }
+  body.about-page .how-work-section .how-work-robot {
+    height: min(68vw, 680px) !important;
+  }
+}
+@media (max-width: 680px) {
+  body.about-page .how-work-section {
+    padding-top: 58px !important;
+    padding-bottom: 48px !important;
+  }
+  body.about-page .how-work-section .how-work-layout {
     grid-template-columns: minmax(0, 1fr) !important;
-    gap: 8px !important;
-    min-height: 0 !important;
+    gap: 0 !important;
   }
-  body.about-page .how-work-layout > .copy {
-    align-self: start !important;
+  body.about-page .how-work-section .how-work-layout > .copy {
+    padding: 0 !important;
   }
-  body.about-page .how-work-visual {
-    justify-self: center !important;
-    width: 100% !important;
-    transform: translate(2%, -8px) !important;
+  body.about-page .how-work-section .how-work-visual {
+    justify-content: center !important;
+    transform: translate(1%, -4px) !important;
+    margin-top: -4px !important;
   }
-  body.about-page .how-work-robot {
-    height: min(72vh, 620px) !important;
+  body.about-page .how-work-section .how-work-robot {
+    height: min(78svh, 620px) !important;
     max-width: 100% !important;
-    margin: 0 auto !important;
   }
 }
 @media (max-width: 420px) {
-  body.about-page .how-work-robot {
-    height: min(66vh, 520px) !important;
+  body.about-page .how-work-section .how-work-robot {
+    height: min(70svh, 540px) !important;
   }
 }
