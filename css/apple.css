@@ -5037,3 +5037,20 @@ html[data-theme="dark"] body.about-page .how-work-section .how-work-robot {
     padding-top: 0 !important;
   }
 }
+
+
+/* Medium, diffuse shadow cast toward the left of the robot. */
+body.about-page .how-work-section .how-work-robot {
+  filter: drop-shadow(-24px 14px 24px rgba(22, 20, 16, 0.26)) !important;
+}
+html[data-theme="dark"] body.about-page .how-work-section .how-work-robot {
+  filter: drop-shadow(-24px 14px 24px rgba(0, 0, 0, 0.42)) !important;
+}
+@media (max-width: 680px) {
+  body.about-page .how-work-section .how-work-robot {
+    filter: drop-shadow(-14px 10px 18px rgba(22, 20, 16, 0.22)) !important;
+  }
+  html[data-theme="dark"] body.about-page .how-work-section .how-work-robot {
+    filter: drop-shadow(-14px 10px 18px rgba(0, 0, 0, 0.38)) !important;
+  }
+}
