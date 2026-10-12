@@ -313,12 +313,6 @@
         mix-blend-mode:normal;
       }
       #newhero-feature .newhero-paint-energy { z-index:4;opacity:0; }
-      /* The original portrait cutout sits above both animated background effects. */
-      #newhero-feature .newhero-foreground {
-        position:absolute;inset:0;z-index:6;width:100%;height:100%;
-        object-fit:cover;object-position:center;max-width:none;
-        pointer-events:none;display:block;
-      }
       #newhero-feature .newhero-eye-laser { display:none !important; }
       #newhero-feature .newhero-stage.is-tech-active .newhero-tech-overlay { opacity:1; }
       #newhero-feature .newhero-stage.is-art-active .newhero-art-overlay { opacity:1;animation:swirl-spin-v4 8s linear infinite; }
@@ -451,7 +445,6 @@
           <div class="newhero-art-overlay" aria-hidden="true"></div>
           <div class="newhero-eye-laser" aria-hidden="true"></div>
           <div class="newhero-paint-energy" aria-hidden="true"></div>
-          <img class="newhero-foreground" src="images/hero3-foreground.png" alt="" aria-hidden="true" fetchpriority="high">
           <button class="newhero-hover-zone tech-zone" type="button" aria-label="Activate engineer effects"></button>
           <button class="newhero-hover-zone art-zone" type="button" aria-label="Activate artist effects"></button>
 
