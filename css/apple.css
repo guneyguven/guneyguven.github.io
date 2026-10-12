@@ -5138,3 +5138,47 @@ html[data-theme="dark"] body.about-page .how-work-section .how-work-robot {
     filter: drop-shadow(-12px 8px 14px rgba(0, 0, 0, 0.4)) !important;
   }
 }
+
+
+/* Prevent the section/grid from clipping the robot's shadow spill. */
+html body.about-page main > .how-work-section,
+html body.about-page main > .how-work-section .how-work-layout,
+html body.about-page main > .how-work-section .how-work-visual {
+  overflow: visible !important;
+  clip-path: none !important;
+  contain: none !important;
+}
+html body.about-page main > .how-work-section .how-work-visual {
+  isolation: isolate !important;
+  z-index: 0 !important;
+}
+html body.about-page main > .how-work-section .how-work-visual::before {
+  left: -28% !important;
+  width: 105% !important;
+  top: 12% !important;
+  height: 76% !important;
+  background: radial-gradient(ellipse at 62% 50%,
+    rgba(24, 22, 19, 0.30) 0%,
+    rgba(24, 22, 19, 0.25) 20%,
+    rgba(24, 22, 19, 0.16) 40%,
+    rgba(24, 22, 19, 0.075) 60%,
+    rgba(24, 22, 19, 0.025) 73%,
+    rgba(24, 22, 19, 0) 86%) !important;
+  filter: blur(18px) !important;
+}
+html[data-theme="dark"] body.about-page main > .how-work-section .how-work-visual::before {
+  background: radial-gradient(ellipse at 62% 50%,
+    rgba(0, 0, 0, 0.48) 0%,
+    rgba(0, 0, 0, 0.36) 23%,
+    rgba(0, 0, 0, 0.22) 44%,
+    rgba(0, 0, 0, 0.09) 64%,
+    rgba(0, 0, 0, 0.025) 76%,
+    rgba(0, 0, 0, 0) 88%) !important;
+}
+@media (max-width: 680px) {
+  html body.about-page main > .how-work-section .how-work-visual::before {
+    left: -18% !important;
+    width: 95% !important;
+    filter: blur(15px) !important;
+  }
+}
