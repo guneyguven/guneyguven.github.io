@@ -5182,3 +5182,26 @@ html[data-theme="dark"] body.about-page main > .how-work-section .how-work-visua
     filter: blur(15px) !important;
   }
 }
+
+
+/* Phone-specific shadow: remove the broad radial patch that can read as a cut-off shape.
+   Keep only the robot silhouette shadow, which naturally follows its transparent edges. */
+@media (max-width: 680px) {
+  html body.about-page main > .how-work-section,
+  html body.about-page main > .how-work-section .how-work-layout,
+  html body.about-page main > .how-work-section .how-work-visual {
+    overflow: visible !important;
+    clip-path: none !important;
+    contain: none !important;
+  }
+  html body.about-page main > .how-work-section .how-work-visual::before {
+    content: none !important;
+    display: none !important;
+  }
+  html body.about-page main > .how-work-section .how-work-robot {
+    filter: drop-shadow(-10px 8px 16px rgba(22, 20, 16, 0.24)) !important;
+  }
+  html[data-theme="dark"] body.about-page main > .how-work-section .how-work-robot {
+    filter: drop-shadow(-10px 8px 16px rgba(0, 0, 0, 0.42)) !important;
+  }
+}
