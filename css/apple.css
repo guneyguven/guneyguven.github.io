@@ -5054,3 +5054,41 @@ html[data-theme="dark"] body.about-page .how-work-section .how-work-robot {
     filter: drop-shadow(-14px 10px 18px rgba(0, 0, 0, 0.38)) !important;
   }
 }
+
+
+/* Shadow spill fix: use a blurred left-side halo behind the robot as well as its silhouette shadow. */
+body.about-page .how-work-section .how-work-visual {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: visible !important;
+}
+body.about-page .how-work-section .how-work-visual::before {
+  content: "" !important;
+  position: absolute !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+  left: -17% !important;
+  top: 18% !important;
+  width: 76% !important;
+  height: 66% !important;
+  border-radius: 50% !important;
+  background: radial-gradient(ellipse at center, rgba(24, 22, 19, 0.24) 0%, rgba(24, 22, 19, 0.14) 34%, rgba(24, 22, 19, 0.055) 58%, rgba(24, 22, 19, 0) 76%) !important;
+  filter: blur(24px) !important;
+  transform: translateX(-4%) !important;
+}
+html[data-theme="dark"] body.about-page .how-work-section .how-work-visual::before {
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.24) 38%, rgba(0, 0, 0, 0.08) 62%, rgba(0, 0, 0, 0) 78%) !important;
+}
+body.about-page .how-work-section .how-work-robot {
+  position: relative !important;
+  z-index: 1 !important;
+}
+@media (max-width: 680px) {
+  body.about-page .how-work-section .how-work-visual::before {
+    left: -8% !important;
+    top: 17% !important;
+    width: 66% !important;
+    height: 62% !important;
+    filter: blur(20px) !important;
+  }
+}
