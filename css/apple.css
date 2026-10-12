@@ -5039,108 +5039,9 @@ html[data-theme="dark"] body.about-page .how-work-section .how-work-robot {
 }
 
 
-/* Medium, diffuse shadow cast toward the left of the robot. */
-body.about-page .how-work-section .how-work-robot {
-  filter: drop-shadow(-24px 14px 24px rgba(22, 20, 16, 0.26)) !important;
-}
-html[data-theme="dark"] body.about-page .how-work-section .how-work-robot {
-  filter: drop-shadow(-24px 14px 24px rgba(0, 0, 0, 0.42)) !important;
-}
-@media (max-width: 680px) {
-  body.about-page .how-work-section .how-work-robot {
-    filter: drop-shadow(-14px 10px 18px rgba(22, 20, 16, 0.22)) !important;
-  }
-  html[data-theme="dark"] body.about-page .how-work-section .how-work-robot {
-    filter: drop-shadow(-14px 10px 18px rgba(0, 0, 0, 0.38)) !important;
-  }
-}
+/* --- Responsive hardening: preserve layout, remove robot shadow --- */
 
-
-/* Shadow spill fix: use a blurred left-side halo behind the robot as well as its silhouette shadow. */
-body.about-page .how-work-section .how-work-visual {
-  position: relative !important;
-  isolation: isolate !important;
-  overflow: visible !important;
-}
-body.about-page .how-work-section .how-work-visual::before {
-  content: "" !important;
-  position: absolute !important;
-  z-index: -1 !important;
-  pointer-events: none !important;
-  left: -17% !important;
-  top: 18% !important;
-  width: 76% !important;
-  height: 66% !important;
-  border-radius: 50% !important;
-  background: radial-gradient(ellipse at center, rgba(24, 22, 19, 0.24) 0%, rgba(24, 22, 19, 0.14) 34%, rgba(24, 22, 19, 0.055) 58%, rgba(24, 22, 19, 0) 76%) !important;
-  filter: blur(24px) !important;
-  transform: translateX(-4%) !important;
-}
-html[data-theme="dark"] body.about-page .how-work-section .how-work-visual::before {
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.24) 38%, rgba(0, 0, 0, 0.08) 62%, rgba(0, 0, 0, 0) 78%) !important;
-}
-body.about-page .how-work-section .how-work-robot {
-  position: relative !important;
-  z-index: 1 !important;
-}
-@media (max-width: 680px) {
-  body.about-page .how-work-section .how-work-visual::before {
-    left: -8% !important;
-    top: 17% !important;
-    width: 66% !important;
-    height: 62% !important;
-    filter: blur(20px) !important;
-  }
-}
-
-
-/* Shadow refinement: clearer near the robot, smoothly feathered outward to the left. */
-body.about-page .how-work-section .how-work-visual::before {
-  left: -19% !important;
-  top: 15% !important;
-  width: 82% !important;
-  height: 70% !important;
-  background: radial-gradient(ellipse at 58% 50%,
-    rgba(24, 22, 19, 0.34) 0%,
-    rgba(24, 22, 19, 0.27) 22%,
-    rgba(24, 22, 19, 0.16) 43%,
-    rgba(24, 22, 19, 0.07) 62%,
-    rgba(24, 22, 19, 0) 79%) !important;
-  filter: blur(15px) !important;
-  transform: translateX(-3%) !important;
-}
-html[data-theme="dark"] body.about-page .how-work-section .how-work-visual::before {
-  background: radial-gradient(ellipse at 58% 50%,
-    rgba(0, 0, 0, 0.50) 0%,
-    rgba(0, 0, 0, 0.37) 24%,
-    rgba(0, 0, 0, 0.22) 46%,
-    rgba(0, 0, 0, 0.09) 65%,
-    rgba(0, 0, 0, 0) 81%) !important;
-}
-body.about-page .how-work-section .how-work-robot {
-  filter: drop-shadow(-18px 10px 18px rgba(22, 20, 16, 0.28)) !important;
-}
-html[data-theme="dark"] body.about-page .how-work-section .how-work-robot {
-  filter: drop-shadow(-18px 10px 18px rgba(0, 0, 0, 0.46)) !important;
-}
-@media (max-width: 680px) {
-  body.about-page .how-work-section .how-work-visual::before {
-    left: -10% !important;
-    top: 16% !important;
-    width: 72% !important;
-    height: 66% !important;
-    filter: blur(13px) !important;
-  }
-  body.about-page .how-work-section .how-work-robot {
-    filter: drop-shadow(-12px 8px 14px rgba(22, 20, 16, 0.24)) !important;
-  }
-  html[data-theme="dark"] body.about-page .how-work-section .how-work-robot {
-    filter: drop-shadow(-12px 8px 14px rgba(0, 0, 0, 0.4)) !important;
-  }
-}
-
-
-/* Prevent the section/grid from clipping the robot's shadow spill. */
+/* Keep the original robot artwork untouched; remove all CSS-generated shadows. */
 html body.about-page main > .how-work-section,
 html body.about-page main > .how-work-section .how-work-layout,
 html body.about-page main > .how-work-section .how-work-visual {
@@ -5149,59 +5050,134 @@ html body.about-page main > .how-work-section .how-work-visual {
   contain: none !important;
 }
 html body.about-page main > .how-work-section .how-work-visual {
-  isolation: isolate !important;
-  z-index: 0 !important;
+  position: relative !important;
+  min-width: 0 !important;
+  isolation: auto !important;
+  box-shadow: none !important;
 }
 html body.about-page main > .how-work-section .how-work-visual::before {
-  left: -28% !important;
-  width: 105% !important;
-  top: 12% !important;
-  height: 76% !important;
-  background: radial-gradient(ellipse at 62% 50%,
-    rgba(24, 22, 19, 0.30) 0%,
-    rgba(24, 22, 19, 0.25) 20%,
-    rgba(24, 22, 19, 0.16) 40%,
-    rgba(24, 22, 19, 0.075) 60%,
-    rgba(24, 22, 19, 0.025) 73%,
-    rgba(24, 22, 19, 0) 86%) !important;
-  filter: blur(18px) !important;
+  content: none !important;
+  display: none !important;
 }
-html[data-theme="dark"] body.about-page main > .how-work-section .how-work-visual::before {
-  background: radial-gradient(ellipse at 62% 50%,
-    rgba(0, 0, 0, 0.48) 0%,
-    rgba(0, 0, 0, 0.36) 23%,
-    rgba(0, 0, 0, 0.22) 44%,
-    rgba(0, 0, 0, 0.09) 64%,
-    rgba(0, 0, 0, 0.025) 76%,
-    rgba(0, 0, 0, 0) 88%) !important;
+html body.about-page main > .how-work-section .how-work-robot {
+  filter: none !important;
+  box-shadow: none !important;
 }
-@media (max-width: 680px) {
-  html body.about-page main > .how-work-section .how-work-visual::before {
-    left: -18% !important;
-    width: 95% !important;
-    filter: blur(15px) !important;
+
+/* Prevent grid and flex children from forcing horizontal overflow. */
+.split > *,
+.project > *,
+.resume-grid > *,
+.how-work-layout > *,
+.nav-inner > *,
+.site-footer .footer-inner > * {
+  min-width: 0;
+}
+
+/* Give the desktop navigation and two-column layouts breathing room on laptops. */
+@media (min-width: 801px) and (max-width: 1100px) {
+  .nav-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .nav-links {
+    gap: clamp(10px, 1.35vw, 18px);
+  }
+  .nav-links a {
+    font-size: 11px;
+  }
+  .split,
+  .resume-grid {
+    gap: clamp(28px, 4vw, 48px);
+  }
+  .project {
+    gap: clamp(28px, 4vw, 48px);
+    min-height: 0;
+  }
+  .project img {
+    height: clamp(360px, 42vw, 500px);
   }
 }
 
+/* Tablet: retain two columns where they fit, but avoid oversized project imagery. */
+@media (min-width: 681px) and (max-width: 900px) {
+  .split,
+  .resume-grid {
+    gap: 28px;
+  }
+  .project {
+    gap: 26px;
+    padding: 76px 0;
+  }
+  .project img {
+    height: clamp(340px, 48vw, 460px);
+  }
+  .how-work-section .how-work-layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) !important;
+  }
+  .how-work-section .how-work-robot {
+    max-width: 100% !important;
+    height: min(68vw, 620px) !important;
+  }
+}
 
-/* Phone-specific shadow: remove the broad radial patch that can read as a cut-off shape.
-   Keep only the robot silhouette shadow, which naturally follows its transparent edges. */
+/* Phones: keep the heading first, the full robot visible beneath it, and no shadow. */
 @media (max-width: 680px) {
-  html body.about-page main > .how-work-section,
-  html body.about-page main > .how-work-section .how-work-layout,
-  html body.about-page main > .how-work-section .how-work-visual {
+  html body.about-page main > .how-work-section {
+    padding: 58px 20px 48px !important;
     overflow: visible !important;
-    clip-path: none !important;
-    contain: none !important;
   }
-  html body.about-page main > .how-work-section .how-work-visual::before {
-    content: none !important;
-    display: none !important;
+  html body.about-page main > .how-work-section .how-work-layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+    width: 100%;
+  }
+  html body.about-page main > .how-work-section .how-work-layout > .copy {
+    padding: 0 !important;
+    align-self: start !important;
+  }
+  html body.about-page main > .how-work-section .how-work-visual {
+    justify-content: center !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
   }
   html body.about-page main > .how-work-section .how-work-robot {
-    filter: drop-shadow(-10px 8px 16px rgba(22, 20, 16, 0.24)) !important;
+    width: auto !important;
+    height: min(76svh, 600px) !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    transform: none !important;
+    filter: none !important;
+    box-shadow: none !important;
   }
-  html[data-theme="dark"] body.about-page main > .how-work-section .how-work-robot {
-    filter: drop-shadow(-10px 8px 16px rgba(0, 0, 0, 0.42)) !important;
+}
+
+@media (max-width: 420px) {
+  html body.about-page main > .how-work-section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  html body.about-page main > .how-work-section .how-work-robot {
+    height: min(70svh, 520px) !important;
+  }
+}
+
+/* Keep motion preferences and narrow viewport behavior predictable. */
+@media (prefers-reduced-motion: reduce) {
+  .nav,
+  .nav-links a,
+  .brand,
+  .theme,
+  .project,
+  .project img,
+  .gallery figure,
+  .gallery img,
+  .skill,
+  .link {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
