@@ -4890,3 +4890,70 @@ html[data-theme="dark"]
     font-size: 13px;
   }
 }
+
+
+/* About: place the robot farther right and higher, with more visual weight. */
+body.about-page main > .section:has(.how-work-layout) {
+  padding-top: 110px;
+  padding-bottom: 90px;
+}
+body.about-page .how-work-layout {
+  grid-template-columns: minmax(300px, 0.78fr) minmax(420px, 1.22fr);
+  gap: clamp(36px, 5vw, 80px);
+  align-items: center;
+  min-height: 680px;
+}
+body.about-page .how-work-layout .copy {
+  align-self: start;
+  padding-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+body.about-page .how-work-visual {
+  width: 100%;
+  justify-self: end;
+  transform: translate(7%, 42px) !important;
+  overflow: visible;
+}
+body.about-page .how-work-robot {
+  width: 112% !important;
+  max-width: none !important;
+  max-height: 760px !important;
+  object-fit: contain !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  mix-blend-mode: lighten;
+}
+html[data-theme="light"] body.about-page .how-work-robot {
+  mix-blend-mode: multiply;
+}
+@media (max-width: 800px) {
+  body.about-page main > .section:has(.how-work-layout) {
+    padding-top: 70px;
+    padding-bottom: 60px;
+  }
+  body.about-page .how-work-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    min-height: 0;
+  }
+  body.about-page .how-work-layout .copy {
+    padding-top: 0;
+  }
+  body.about-page .how-work-visual {
+    width: 100%;
+    max-width: 620px;
+    justify-self: center;
+    transform: translate(5%, -4px) !important;
+    margin-top: -4px;
+  }
+  body.about-page .how-work-robot {
+    width: 108% !important;
+    max-height: 680px !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.about-page .how-work-visual {
+    transform: none !important;
+  }
+}
