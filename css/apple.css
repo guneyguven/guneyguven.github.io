@@ -5018,17 +5018,17 @@ html[data-theme="dark"] body.about-page .how-work-section .how-work-robot {
 }
 
 
-/* Final override: lower desktop heading beside the centered robot. */
+/* Final override: fine-tune heading position beside the centered robot. */
 @media (min-width: 901px) {
   body.about-page .how-work-section .how-work-layout > .copy {
     align-self: center !important;
-    padding-top: 100px !important;
+    padding-top: 48px !important;
   }
 }
 @media (min-width: 681px) and (max-width: 900px) {
   body.about-page .how-work-section .how-work-layout > .copy {
     align-self: center !important;
-    padding-top: 64px !important;
+    padding-top: 32px !important;
   }
 }
 @media (max-width: 680px) {
