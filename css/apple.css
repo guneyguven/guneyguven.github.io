@@ -5016,3 +5016,24 @@ html[data-theme="dark"] body.about-page .how-work-section .how-work-robot {
     height: min(70svh, 540px) !important;
   }
 }
+
+
+/* Final override: lower desktop heading beside the centered robot. */
+@media (min-width: 901px) {
+  body.about-page .how-work-section .how-work-layout > .copy {
+    align-self: center !important;
+    padding-top: 100px !important;
+  }
+}
+@media (min-width: 681px) and (max-width: 900px) {
+  body.about-page .how-work-section .how-work-layout > .copy {
+    align-self: center !important;
+    padding-top: 64px !important;
+  }
+}
+@media (max-width: 680px) {
+  body.about-page .how-work-section .how-work-layout > .copy {
+    align-self: start !important;
+    padding-top: 0 !important;
+  }
+}
