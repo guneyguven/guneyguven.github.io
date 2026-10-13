@@ -5427,3 +5427,45 @@ html body::before {
   animation: none !important;
   pointer-events: none !important;
 }
+
+
+/* Projects page: final layout override — the explicit row classes are the
+   source of truth; later legacy rules must not force every image into column 1. */
+html body > main > .projects-list > article.project--image-left {
+  direction: ltr !important;
+}
+html body > main > .projects-list > article.project--image-left > img {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+html body > main > .projects-list > article.project--image-left > div {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+html body > main > .projects-list > article.project--image-right {
+  direction: ltr !important;
+}
+html body > main > .projects-list > article.project--image-right > img {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+html body > main > .projects-list > article.project--image-right > div {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+@media (max-width: 700px) {
+  html body > main > .projects-list > article.project--image-left > img,
+  html body > main > .projects-list > article.project--image-right > img,
+  html body > main > .projects-list > article.project--image-left > div,
+  html body > main > .projects-list > article.project--image-right > div {
+    grid-column: 1 !important;
+  }
+  html body > main > .projects-list > article.project--image-left > img,
+  html body > main > .projects-list > article.project--image-right > img {
+    grid-row: 1 !important;
+  }
+  html body > main > .projects-list > article.project--image-left > div,
+  html body > main > .projects-list > article.project--image-right > div {
+    grid-row: 2 !important;
+  }
+}
