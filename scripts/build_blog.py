@@ -98,6 +98,9 @@ def main():
     INBOX.mkdir(parents=True, exist_ok=True)
     POSTS.mkdir(parents=True, exist_ok=True)
     INDEX.parent.mkdir(parents=True, exist_ok=True)
+    # All HTML files in Blog/posts are generated from the current inbox; remove stale outputs first.
+    for generated in POSTS.glob("*.html"):
+        generated.unlink()
     entries = []
     seen = set()
     for source in sorted(INBOX.glob("*.txt")):
