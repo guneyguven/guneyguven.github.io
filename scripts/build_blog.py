@@ -1,0 +1,152 @@
+#!/usr/bin/env python3
+"""Build static blog pages from Blog/inbox/*.txt.
+First non-empty line is the title; remaining lines are the article.
+"""
+from datetime import date
+from html import escape
+from pathlib import Path
+import re
+import subprocess
+
+ROOT = Path(__file__).resolve().parents[1]
+INBOX = ROOT / "Blog" / "inbox"
+POSTS = ROOT / "Blog" / "posts"
+INDEX = ROOT / "Blog" / "blog" / "index.html"
+CSS = "../../css/apple.css?v=20261013-blog-feature"
+JS = "../../js/apple.js?v=20261013-blog-feature"
+ICON = "../../images/icon.png"
+BASE_STYLE = """
+.blog-shell{width:min(920px,calc(100% - 40px));margin:0 auto;padding:clamp(48px,8vw,100px) 0 90px}
+.blog-eyebrow{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;opacity:.65}
+.blog-heading{font-size:clamp(2.7rem,7vw,5.8rem);letter-spacing:-.065em;line-height:.98;margin:.35em 0 .45em}
+.blog-intro{max-width:620px;line-height:1.7;opacity:.75;margin-bottom:46px}
+.blog-list{display:grid;grid-template-columns:1fr;gap:0}
+.blog-card{display:block;text-decoration:none;color:inherit;padding:25px 0;border-top:1px solid var(--line,rgba(128,128,128,.25))}
+.blog-card h2{font-size:clamp(1.35rem,3vw,2rem);letter-spacing:-.035em;margin:0 0 10px}
+.blog-card p{line-height:1.7;opacity:.75;margin:0 0 12px}
+.blog-date{font-size:.78rem;opacity:.6}
+.blog-empty{border:1px dashed var(--line,rgba(128,128,128,.35));border-radius:16px;padding:28px;line-height:1.7;opacity:.8}
+.blog-article{width:min(760px,calc(100% - 40px));margin:0 auto;padding:clamp(48px,8vw,100px) 0 100px}
+.blog-article h1{font-size:clamp(2.3rem,6vw,4.8rem);letter-spacing:-.06em;line-height:1.03;margin:.35em 0}
+.blog-article .article-body{font-size:clamp(1.03rem,1.5vw,1.16rem);line-height:1.9;margin-top:42px;overflow-wrap:anywhere}
+.blog-article .article-body p{margin:0 0 1.45em}
+.blog-back{display:inline-block;margin-top:36px}
+@media(max-width:600px){.blog-shell,.blog-article{width:calc(100% - 36px)}}
+"""
+def slugify(value):
+    value = value.lower().strip()
+    value = value.replace("ı", "i").replace("ğ", "g").replace("ü", "u").replace("ş", "s").replace("ö", "o").replace("ç", "c")
+    value = re.sub(r"[^a-z0-9]+", "-", value).strip("-")
+    return value or "blog-yazisi"
+
+def published_date(path):
+    try:
+        value = subprocess.check_output(["git", "log", "-1", "--format=%cs", "--", str(path.relative_to(ROOT))], cwd=ROOT, text=True, stderr=subprocess.DEVNULL).strip()
+        return date.fromisoformat(value) if value else date.today()
+    except Exception:
+        return date.today()
+
+def paragraphs(text):
+    blocks = re.split(r"\n\s*\n", text.strip())
+    rendered = []
+    for block in blocks:
+        if not block.strip():
+            continue
+        lines = [escape(line.strip()) for line in block.splitlines() if line.strip()]
+        rendered.append("<p>" + "<br>\n".join(lines) + "</p>")
+    return "\n".join(rendered)
+
+def document(title, content, page_title=None):
+    description = escape(re.sub(r"<[^>]+>", " ", content)[:155], quote=True)
+    return f'''<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="{description}">
+  <title>{escape(page_title or title)} — Güven ÇALIŞKAN</title>
+  <link rel="icon" href="{ICON}">
+  <link rel="stylesheet" href="{CSS}">
+  <script>
+    try{{const s=localStorage.getItem("siteTheme")||localStorage.getItem("theme");document.documentElement.dataset.theme=s||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}}catch(e){{}}
+  </script>
+  <style>{BASE_STYLE}</style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="../../">Güven ÇALIŞKAN</a>
+      <nav class="nav-links">
+        <a href="../../">Home</a><a href="../../about.html">About</a><a href="../../resume.html">Resume</a><a href="../../projects.html">Projects</a><a href="../../art.html">Art</a><a class="active" href="../blog/index.html">Blog</a><a href="../../contact.html">Contact</a>
+      </nav>
+      <div class="nav-tools">
+        <button class="theme" type="button" data-theme-toggle aria-label="Switch theme" aria-pressed="false">◐</button>
+        <details class="mobile-menu"><summary aria-label="Open navigation">☰</summary><nav class="mobile-nav" aria-label="Mobile navigation">
+          <a href="../../">Home</a><a href="../../about.html">About</a><a href="../../resume.html">Resume</a><a href="../../projects.html">Projects</a><a href="../../art.html">Art</a><a href="../blog/index.html">Blog</a><a href="../../contact.html">Contact</a>
+        </nav></details>
+      </div>
+    </div>
+  </header>
+  {content}
+  <footer><div><span>GÜVEN ©2026</span><span>Engineer · Artist · Project Manager</span></div></footer>
+  <script src="{JS}" defer></script>
+</body>
+</html>
+'''
+
+def main():
+    INBOX.mkdir(parents=True, exist_ok=True)
+    POSTS.mkdir(parents=True, exist_ok=True)
+    INDEX.parent.mkdir(parents=True, exist_ok=True)
+    entries = []
+    seen = set()
+    for source in sorted(INBOX.glob("*.txt")):
+        raw = source.read_text(encoding="utf-8-sig").strip()
+        if not raw:
+            continue
+        lines = raw.splitlines()
+        title_index = next((i for i, line in enumerate(lines) if line.strip()), None)
+        if title_index is None:
+            continue
+        title = lines[title_index].strip().lstrip("#").strip()
+        body = "\n".join(lines[title_index + 1:]).strip()
+        slug = slugify(source.stem)
+        if slug in seen:
+            slug = slug + "-" + slugify(title)
+        seen.add(slug)
+        published = published_date(source)
+        body_html = paragraphs(body) if body else "<p>Bu yazının içeriği hazırlanıyor.</p>"
+        excerpt = re.sub(r"\s+", " ", body)[:190]
+        article = f'''<main class="blog-article">
+  <p class="blog-eyebrow">Writing · Ideas · Practice</p>
+  <h1>{escape(title)}</h1>
+  <div class="blog-date">{published.strftime("%d %B %Y")}</div>
+  <div class="article-body">{body_html}</div>
+  <a class="blog-back" href="../blog/index.html">← All articles</a>
+</main>'''
+        (POSTS / f"{slug}.html").write_text(document(title, article), encoding="utf-8")
+        entries.append((published, title, excerpt, slug))
+    entries.sort(key=lambda item: (item[0], item[1].lower()), reverse=True)
+    if entries:
+        cards = []
+        for published, title, excerpt, slug in entries:
+            extra = "…" if len(excerpt) >= 190 else ""
+            cards.append(f'''<a class="blog-card" href="../posts/{escape(slug)}.html">
+  <h2>{escape(title)}</h2>
+  <p>{escape(excerpt)}{extra}</p>
+  <span class="blog-date">{published.strftime("%d %B %Y")}</span>
+</a>''')
+        listing = '<div class="blog-list">\n' + "\n".join(cards) + '\n</div>'
+    else:
+        listing = '<div class="blog-empty">The first article is on its way. New writing will appear here soon.</div>'
+    content = f'''<main class="blog-shell">
+  <p class="blog-eyebrow">Notes · Ideas · Perspectives</p>
+  <h1 class="blog-heading">Blog<span aria-hidden="true">.</span></h1>
+  <p class="blog-intro">Writing on engineering, project management, artificial intelligence, Kaizen, digital transformation and the ideas connecting them.</p>
+  {listing}
+</main>'''
+    INDEX.write_text(document("Blog", content), encoding="utf-8")
+    print(f"Built {len(entries)} blog post(s).")
+
+if __name__ == "__main__":
+    main()
