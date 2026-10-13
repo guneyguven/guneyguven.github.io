@@ -30,6 +30,8 @@ BASE_STYLE = """
 .blog-article h1{font-size:clamp(2.3rem,6vw,4.8rem);letter-spacing:-.06em;line-height:1.03;margin:.35em 0}
 .blog-article .article-body{font-size:clamp(1.03rem,1.5vw,1.16rem);line-height:1.9;margin-top:42px;overflow-wrap:anywhere}
 .blog-article .article-body p{margin:0 0 1.45em}
+.blog-article .article-body img{display:block;width:100%;height:auto;max-height:620px;object-fit:cover;border-radius:16px;margin:30px auto 12px}
+.blog-article .image-caption{font-size:.82rem;opacity:.65;margin-top:-2px;margin-bottom:30px}
 .blog-back{display:inline-block;margin-top:36px}
 @media(max-width:600px){.blog-shell,.blog-article{width:calc(100% - 36px)}}
 """
@@ -51,6 +53,12 @@ def paragraphs(text):
     rendered = []
     for block in blocks:
         if not block.strip():
+            continue
+        stripped = block.strip()
+        image_match = re.fullmatch(r"!\[([^\]]*)\]\((https?://[^\s)]+)\)", stripped)
+        if image_match:
+            alt, url = image_match.groups()
+            rendered.append(f'<figure><img src="{escape(url, quote=True)}" alt="{escape(alt, quote=True)}" loading="lazy"><figcaption class="image-caption">{escape(alt)}</figcaption></figure>')
             continue
         lines = [escape(line.strip()) for line in block.splitlines() if line.strip()]
         rendered.append("<p>" + "<br>\n".join(lines) + "</p>")
