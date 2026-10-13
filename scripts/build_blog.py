@@ -34,6 +34,11 @@ BASE_STYLE = """
 .blog-article .image-caption{font-size:.82rem;opacity:.65;margin-top:-2px;margin-bottom:30px}
 .blog-back{display:inline-block;margin-top:36px}
 @media(max-width:600px){.blog-shell,.blog-article{width:calc(100% - 36px)}}
+/* Keep blog content comfortably inset even if global site CSS overrides main margins. */
+html body main.blog-shell{box-sizing:border-box!important;width:calc(100% - 80px)!important;max-width:920px!important;margin-left:auto!important;margin-right:auto!important;padding-left:0!important;padding-right:0!important}
+html body main.blog-article{box-sizing:border-box!important;width:calc(100% - 80px)!important;max-width:760px!important;margin-left:auto!important;margin-right:auto!important;padding-left:0!important;padding-right:0!important}
+@media(max-width:700px){html body main.blog-shell,html body main.blog-article{width:calc(100% - 36px)!important}}
+
 """
 def slugify(value):
     value = value.lower().strip()
