@@ -5274,3 +5274,141 @@ html body.about-page > main > .how-work-section::before {
   background: var(--section-b) !important;
   pointer-events: none !important;
 }
+
+
+/* =========================================================
+   Unified layout system — shared geometry across all pages
+   ========================================================= */
+:root {
+  --site-content-max: 1280px;
+  --site-nav-content-max: 1400px;
+  --site-gutter: clamp(20px, 3.2vw, 48px);
+  --site-section-space: clamp(76px, 8vw, 128px);
+  --site-section-space-mobile: clamp(52px, 9vw, 76px);
+  --site-page-top: clamp(132px, 13vw, 180px);
+}
+html {
+  overflow-x: clip;
+}
+body {
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+html body > header.nav {
+  position: fixed !important;
+  inset: 0 0 auto !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  height: var(--nav) !important;
+}
+html body > header.nav > .nav-inner {
+  width: 100% !important;
+  max-width: var(--site-nav-content-max) !important;
+  min-width: 0 !important;
+  margin-inline: auto !important;
+  padding-inline: var(--site-gutter) !important;
+}
+html body.nav-scrolled > header.nav {
+  height: 58px !important;
+}
+html body > main {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin-inline: 0 !important;
+}
+html body > main > .section {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin-inline: 0 !important;
+  padding-inline: max(var(--site-gutter), calc((100vw - var(--site-content-max)) / 2 + 24px)) !important;
+}
+html body > main > .section > :where(.split, .resume-grid, .gallery, .contact, .projects-intro-inner) {
+  width: 100%;
+  max-width: var(--site-content-max);
+  margin-inline: auto;
+}
+html body > main > .section > .split,
+html body > main > .section > .resume-grid {
+  min-width: 0;
+}
+html body > main > .section > .split > *,
+html body > main > .section > .resume-grid > * {
+  min-width: 0;
+}
+
+/* Consistent top offset for interior-page opening sections. */
+html body.about-page > main > .page-intro-section,
+html body:not(.home-page):not(.about-page):not(.contact-page) > main > .page-intro-section {
+  padding-top: var(--site-page-top) !important;
+}
+
+/* Keep section backgrounds full-bleed while the content follows the same grid. */
+html body > main > .section {
+  background-clip: border-box;
+}
+html body > main > .section::before,
+html body > main > .section::after {
+  pointer-events: none;
+}
+html body > main > .section > .project {
+  max-width: var(--site-content-max);
+  margin-inline: auto;
+}
+
+/* Shared responsive spacing and geometry. */
+@media (max-width: 900px) {
+  :root {
+    --site-gutter: 24px;
+    --site-page-top: 132px;
+  }
+  html body > header.nav > .nav-inner {
+    padding-inline: var(--site-gutter) !important;
+  }
+  html body > main > .section {
+    padding-inline: var(--site-gutter) !important;
+  }
+}
+@media (max-width: 600px) {
+  :root {
+    --site-gutter: 20px;
+    --site-page-top: 112px;
+  }
+  html body > header.nav > .nav-inner {
+    padding-inline: var(--site-gutter) !important;
+  }
+  html body > main > .section {
+    padding-inline: var(--site-gutter) !important;
+  }
+  html body > main > .section:not(.contact) {
+    scroll-margin-top: var(--nav);
+  }
+}
+/* Landscape phones: use compact top spacing, but never constrain full-width bands. */
+@media (orientation: landscape) and (max-width: 900px) {
+  :root {
+    --site-gutter: clamp(20px, 3vw, 32px);
+    --site-page-top: 92px;
+  }
+  html body > header.nav {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+  }
+  html body > main > .section {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+/* Tablet and desktop content remains centered on one shared maximum-width grid. */
+@media (min-width: 901px) {
+  html body > main > .section > .split,
+  html body > main > .section > .resume-grid,
+  html body > main > .section > .gallery {
+    max-width: var(--site-content-max);
+    margin-inline: auto;
+  }
+}
