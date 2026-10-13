@@ -157,27 +157,7 @@
   );
   updateParallax();
 
-  /* Seamless page transitions for internal navigation. */
-  const transitionable = (l) =>
-    l &&
-    l.href &&
-    l.origin === location.origin &&
-    l.target !== "_blank" &&
-    !l.hasAttribute("download") &&
-    !l.href.includes("#");
-
-  document.addEventListener("click", (e) => {
-    const l = e.target.closest("a");
-    if (!transitionable(l) || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)
-      return;
-    e.preventDefault();
-    closeMenu();
-    document.body.classList.remove("page-enter");
-    document.body.classList.add("page-leave");
-    setTimeout(() => (location.href = l.href), 520);
-  });
-
-  document.body.classList.add("page-enter");
+  /* Use native browser navigation so links and Back behave reliably on mobile. */
 
   /* Art exhibition lightbox. Works with the existing gallery without changing its content. */
   const galleryImages = [...document.querySelectorAll(".gallery figure img")];
