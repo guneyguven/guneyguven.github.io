@@ -5181,3 +5181,48 @@ html body.about-page main > .how-work-section .how-work-robot {
     animation-iteration-count: 1 !important;
   }
 }
+
+
+/* About portrait: show the complete transparent artwork on portrait and landscape phones. */
+html body.about-page main > .section:first-child > .split > div:last-child {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  align-self: start !important;
+}
+html body.about-page main > .section:first-child > .split > div:last-child img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: center top !important;
+  transform: none !important;
+  border-radius: 0 !important;
+}
+@media (max-width: 900px) {
+  html body.about-page main > .section:first-child > .split > div:last-child {
+    width: 100% !important;
+    max-width: 460px !important;
+    margin: 0 auto !important;
+  }
+  html body.about-page main > .section:first-child > .split > div:last-child img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+}
+@media (orientation: landscape) and (max-width: 900px) {
+  html body.about-page main > .section:first-child {
+    padding-top: calc(var(--nav) + 24px) !important;
+  }
+  html body.about-page main > .section:first-child > .split > div:last-child {
+    max-width: 300px !important;
+  }
+}
