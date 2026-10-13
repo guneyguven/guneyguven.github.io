@@ -1,5 +1,0 @@
-Temporary Blog Test
-
-This temporary entry verifies that uploading a plain text file generates an individual article page and adds it to the blog index.
-
-This test entry will be removed before the feature is merged.
