@@ -6,8 +6,7 @@ on:
       - features/blog
       - main
     paths:
-      - "Blog/inbox/**.txt"
-      - "Blog/inbox/**/*.txt"
+      - "Blog/inbox/**"
       - "scripts/build_blog.py"
       - ".github/workflows/blog-from-text.yml"
   workflow_dispatch:
