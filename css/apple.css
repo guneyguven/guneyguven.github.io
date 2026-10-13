@@ -5418,3 +5418,12 @@ html body > main > .section > .project {
 html body > main > .projects-list > article:nth-child(3) > img {
   object-position: center top !important;
 }
+
+
+/* Disable the full-screen page-transition curtain: it could leave links black
+   and interfere with browser Back navigation on mobile Safari. */
+html body::before {
+  display: none !important;
+  animation: none !important;
+  pointer-events: none !important;
+}
