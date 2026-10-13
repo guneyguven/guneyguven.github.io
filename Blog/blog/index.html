@@ -28,6 +28,8 @@
 .blog-article h1{font-size:clamp(2.3rem,6vw,4.8rem);letter-spacing:-.06em;line-height:1.03;margin:.35em 0}
 .blog-article .article-body{font-size:clamp(1.03rem,1.5vw,1.16rem);line-height:1.9;margin-top:42px;overflow-wrap:anywhere}
 .blog-article .article-body p{margin:0 0 1.45em}
+.blog-article .article-body img{display:block;width:100%;height:auto;max-height:620px;object-fit:cover;border-radius:16px;margin:30px auto 12px}
+.blog-article .image-caption{font-size:.82rem;opacity:.65;margin-top:-2px;margin-bottom:30px}
 .blog-back{display:inline-block;margin-top:36px}
 @media(max-width:600px){.blog-shell,.blog-article{width:calc(100% - 36px)}}
 </style>
@@ -51,7 +53,18 @@
   <p class="blog-eyebrow">Notes · Ideas · Perspectives</p>
   <h1 class="blog-heading">Blog<span aria-hidden="true">.</span></h1>
   <p class="blog-intro">Writing on engineering, project management, artificial intelligence, Kaizen, digital transformation and the ideas connecting them.</p>
-  <div class="blog-empty">The first article is on its way. New writing will appear here soon.</div>
+  <div class="blog-list">
+<a class="blog-card" href="../posts/lorem-ipsum-landscape.html">
+  <h2>Notes from an Imaginary Landscape</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, co…</p>
+  <span class="blog-date">13 October 2026</span>
+</a>
+<a class="blog-card" href="../posts/lorem-ipsum-studio.html">
+  <h2>Lorem Ipsum and the Art of a Quiet Space</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Mae…</p>
+  <span class="blog-date">13 October 2026</span>
+</a>
+</div>
 </main>
   <footer><div><span>GÜVEN ©2026</span><span>Engineer · Artist · Project Manager</span></div></footer>
   <script src="../../js/apple.js?v=20261013-blog-feature" defer></script>
