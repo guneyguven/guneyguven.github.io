@@ -5412,3 +5412,9 @@ html body > main > .section > .project {
     margin-inline: auto;
   }
 }
+
+
+/* Pharmaton project portrait: prioritize the upper part of the tall photo. */
+html body > main > .projects-list > article:nth-child(3) > img {
+  object-position: center top !important;
+}
